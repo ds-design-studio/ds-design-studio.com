@@ -1,0 +1,47 @@
+---
+import Card from "@components/Card.astro";
+import Icon from "@components/Icon.astro";
+
+import type { CollectionEntry } from "astro:content";
+import type { IconName } from "@components/Icon.astro";
+
+type Props = {
+  entries: CollectionEntry<"services">[];
+};
+
+const { entries } = Astro.props;
+---
+
+<div class="grid-6 feature-span">
+  {
+    entries.map((entry) => (
+      <Card>
+        <div class="icon-wrapper gradient">
+          <Icon
+            name={entry.data.icon as IconName}
+            color="currentColor"
+            size="1em"
+          />
+        </div>
+        <h3 class="text-step-1">
+          <a class="color-underline" href={`/services/${entry.slug}`}>
+            {entry.data.tagline}
+          </a>
+        </h3>
+        <p>{entry.data.summary}</p>
+        <a href={`/services/${entry.slug}`}>Learn More</a>
+      </Card>
+    ))
+  }
+  <Card theme="dark">
+    <div class="icon-wrapper gradient">
+      <Icon name="envelope" color="currentColor" size="1em" />
+    </div>
+    <h3 class="text-step-1">
+      <a class="color-underline" href={`/contact`}>Get in Touch</a>
+    </h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, eaque.
+    </p>
+  </Card>
+</div>

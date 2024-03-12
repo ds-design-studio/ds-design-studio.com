@@ -1,0 +1,57 @@
+---
+import ButtonLink from "@components/ButtonLink.astro";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+
+const featuredProject = await getEntry("projects", "haymarket-writing-freedom");
+---
+
+<article id="featured-project">
+  <div class="grid-9 content-wrapper">
+    <Image
+      src={featuredProject.data.featuredImage.src}
+      alt={featuredProject.data.featuredImage.alt}
+      width={900}
+      format="webp"
+      loading="lazy"
+    />
+    <div class="text | flow">
+      <header>
+        <div class="eyebrow | small-title text-gradient">Featured Project</div>
+        <h2>{featuredProject.data.title}</h2>
+      </header>
+      <p>{featuredProject.data.summary}</p>
+      <ul role="list">
+        {featuredProject.data.scope.map((item) => <li>{item}</li>)}
+      </ul>
+      <ButtonLink href={`/work/${featuredProject.slug}`}>See More</ButtonLink>
+    </div>
+  </div>
+</article>
+
+<style>
+  article {
+    padding-block: var(--section-spacer);
+    background: linear-gradient(
+      to right,
+      var(--color-neutral-9),
+      var(--color-neutral-10)
+    );
+  }
+
+  .grid-9 {
+    align-items: center;
+  }
+
+  .text {
+    grid-column: 5/10;
+  }
+
+  h2 {
+    color: var(--color-neutral-1);
+  }
+
+  :is(p, ul) {
+    color: var(--color-neutral-4);
+  }
+</style>

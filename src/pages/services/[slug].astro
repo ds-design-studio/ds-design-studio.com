@@ -1,0 +1,49 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getEntry } from "astro:content";
+import { getEntries } from "astro:content";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const services = await getCollection("services");
+
+  const addFeatures = services.map(async (service) => {
+    const features = await getEntries(service.data.features);
+    return {
+      features,
+      ...service,
+    };
+  });
+
+  const pages = await Promise.all(addFeatures);
+
+  return pages.map((page) => {
+    return {
+      params: { slug: page.slug },
+      props: { page },
+    };
+  });
+}
+
+const { page } = Astro.props;
+const { Content } = await page.render();
+---
+
+<Layout>
+  <main slot="content">
+    <h1>{page.data.title}</h1>
+    <Content />
+    <ul>
+      {
+        page.features.map((feature) => (
+          <li>
+            <>
+              <h2>{feature.data.title}</h2>
+              <p>{feature.data.summary}</p>
+            </>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>

@@ -1,0 +1,86 @@
+.card {
+  &:hover {
+    & .icon-wrapper {
+      background-color: transparent;
+
+      & svg {
+        color: white;
+      }
+    }
+  }
+
+  &[data-theme="dark"] {
+    & :is(h2, h3) {
+      color: var(--color-neutral-1);
+    }
+
+    & p {
+      color: var(--color-neutral-4);
+    }
+
+    & .color-underline {
+      text-decoration-color: var(--color-neutral-6);
+
+      &:hover {
+        text-decoration-color: var(--color-primary-3);
+      }
+    }
+
+    & .icon-wrapper {
+      background: var(--color-neutral-8);
+      border-color: var(--color-neutral-9);
+
+      & svg {
+        color: var(--color-neutral-1);
+      }
+    }
+  }
+
+  & .illustration {
+    height: 10rem;
+    object-fit: contain;
+    align-self: flex-start;
+    width: fit-content;
+  }
+}
+
+.icon-wrapper {
+  --icon-size: 1.5rem;
+  border-radius: 0.5rem;
+  justify-content: center;
+  place-self: flex-start;
+  align-items: center;
+  padding: 0.5rem;
+  display: inline-flex;
+  position: relative;
+  border: 1px solid var(--color-neutral-2);
+  color: var(--color-neutral-8);
+  background: var(--color-neutral-1);
+  transition: all 0.2s ease-in-out;
+
+  &.gradient {
+    &::after {
+      content: "";
+      z-index: -1;
+      background: linear-gradient(
+        to bottom right,
+        var(--color-primary-4),
+        var(--color-secondary-5)
+      );
+      border-radius: 0.5rem;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transform: scale(1.1);
+    }
+  }
+
+  & svg {
+    position: relative;
+    z-index: 1;
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+}

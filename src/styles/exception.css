@@ -1,0 +1,11 @@
+.text-gradient {
+  background: linear-gradient(
+    to right,
+    var(--color-primary-4),
+    var(--color-secondary-5) 80%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  width: fit-content;
+}

@@ -1,0 +1,34 @@
+title: Main Navigation
+entries:
+  - title: Services
+    slug: /services
+    children:
+      - title: Web Design
+        slug: /services/web-design
+        icon: layout
+        tagline: Lorem ipsum sit dolor amet
+      - title: Frontend Development
+        slug: /services/frontend-development
+        icon: computer
+        tagline: Lorem ipsum sit dolor amet
+      - title: Digital Design
+        slug: /services/digital-design
+        icon: swatch
+        tagline: Lorem ipsum sit dolor amet
+      - title: Ongoing Support
+        slug: /services/ongoing-support
+        icon: chat-bubbles
+        tagline: Lorem ipsum sit dolor amet
+  - title: Work
+    slug: /work
+  - title: About
+    slug: /about
+    children:
+      - title: Our Process
+        slug: /about
+      - title: Pricing
+        slug: /about
+      - title: Who We Are
+        slug: /about
+  - title: Blog
+    slug: /blog

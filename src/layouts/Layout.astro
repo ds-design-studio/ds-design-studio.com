@@ -1,0 +1,94 @@
+---
+import "../styles/site.css";
+
+import SiteHeader from "@components/SiteHeader.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/svg/web-logo.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Document</title>
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://unpkg.com/@alpinejs/ui@3.13.6-beta.0/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.13.6/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/anchor@3.13.6/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.13.6/dist/cdn.min.js"
+    ></script>
+    <script defer src="https://unpkg.com/@alpinejs/focus@3.13.6/dist/cdn.min.js"
+    ></script>
+    <!-- Alpine Core -->
+    <script defer src="https://unpkg.com/alpinejs@3.13.6/dist/cdn.min.js"
+    ></script>
+    <style is:inline>
+      @font-face {
+        font-family: "Geist";
+        src: url("/fonts/Geist-UltraBlack.woff2") format("woff2");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Geist";
+        src: url("/fonts/Geist-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Body Grotesque Large";
+        src: url("/fonts/Body-Grotesque-Large-Extrabold-trial.ttf")
+          format("opentype");
+        font-weight: 800;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Body Grotesque Fit";
+        src: url("/fonts/Body-Grotesque-Fit-Extrabold-trial.ttf")
+          format("opentype");
+        font-weight: 800;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Body Text Fit";
+        src: url("/fonts/Body-Text-Fit-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Bakemono Stereo";
+        src: url("/fonts/Bakemono-Stereo-Extrabold-trial.ttf")
+          format("opentype");
+        font-weight: 800;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <slot name="pageHead" />
+  </head>
+  <body>
+    <SiteHeader theme={path === "/" ? "dark" : "normal"} />
+    <slot name="content" />
+    <SiteFooter />
+  </body>
+</html>

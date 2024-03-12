@@ -1,0 +1,62 @@
+---
+type Props = {
+  align: "left" | "center";
+};
+
+const { align = "left" } = Astro.props;
+---
+
+<header data-align={align}>
+  <div class="text">
+    <slot name="text" />
+  </div>
+  {
+    align === "left" && (
+      <div class="image">
+        <slot name="image" />
+      </div>
+    )
+  }
+</header>
+
+<style>
+  header {
+    grid-template-columns: repeat(9, 1fr);
+    gap: 1rem;
+    display: grid;
+    align-items: center;
+    margin-block: calc(var(--section-spacer) * 0.25);
+
+    &[data-align="left"] {
+      & .text {
+        grid-column: span 7;
+      }
+
+      & .image {
+        justify-self: end;
+        grid-column: span 2;
+
+        & :global(img) {
+          height: 6rem;
+          object-fit: contain;
+          width: fit-content;
+        }
+      }
+    }
+
+    &[data-align="center"] {
+      & .text {
+        text-align: center;
+        grid-column: 2 / span 7;
+
+        & > * {
+          margin-inline: auto;
+        }
+      }
+    }
+  }
+
+  h2 {
+    font-size: var(--step-4);
+  }
+</style>

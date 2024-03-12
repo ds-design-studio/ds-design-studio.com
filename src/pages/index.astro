@@ -1,0 +1,176 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Card from "@components/Card.astro";
+import ButtonLink from "@components/ButtonLink.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import ServicesGrid from "@components/page_sections/ServicesGrid.astro";
+import HomeHero from "@components/page_sections/HomeHero.astro";
+import HomeProject from "@components/page_sections/HomeProject.astro";
+import { Image } from "astro:assets";
+import { getEntries } from "astro:content";
+import { getCollection } from "astro:content";
+// const features = await getCollection("features");
+const services = await getCollection("services");
+const tools = await getCollection("tools");
+// const features = await getEntries(services)
+
+import shapes1 from "@assets/shapes-1.png";
+import illustration1 from "@assets/illustration-1.png";
+import illustration2 from "@assets/illustration-2.png";
+import illustration3 from "@assets/illustration-3.png";
+---
+
+<Layout>
+  <main slot="content">
+    <HomeHero />
+    <div class="home-content">
+      <div class="bg-gradient">
+        <article class="content-wrapper" id="services">
+          <SectionHeader align="left">
+            <Fragment slot="text">
+              <div class="eyebrow | small-title text-gradient">
+                Our Services
+              </div>
+              <h2 class="text-step-4">
+                Bridging the realms of design & development
+              </h2>
+            </Fragment>
+            <Image
+              slot="image"
+              src={shapes1}
+              alt=""
+              width={600}
+              format="webp"
+              loading="eager"
+            />
+          </SectionHeader>
+          <ServicesGrid
+            entries={services.sort((a, b) => a.data.order - b.data.order)}
+          />
+          <div class="small-title text-gradient mx-auto">
+            Tools of the Trade
+          </div>
+          <div class="logo-cloud | grid-6 centered">
+            {
+              tools
+                .sort((a, b) => a.data.order - b.data.order)
+                .map((tool) => (
+                  <div class="cluster">
+                    <Image
+                      src={tool.data.logo}
+                      alt={`${tool.data.title} logo`}
+                      width={32}
+                      height={32}
+                      format="svg"
+                    />
+                    <span>{tool.data.title}</span>
+                  </div>
+                ))
+            }
+          </div>
+        </article>
+      </div>
+      <article class="content-wrapper" id="approach">
+        <SectionHeader align="center">
+          <Fragment slot="text">
+            <div class="eyebrow | small-title text-gradient mx-auto">
+              Our Approach
+            </div>
+            <h2 class="text-step-4">
+              Crafting beautiful experiences for the modern web
+            </h2>
+          </Fragment>
+        </SectionHeader>
+        <div class="grid-6">
+          <Card>
+            <Image
+              class="illustration"
+              src={illustration1}
+              alt=""
+              width={600}
+              format="webp"
+              loading="eager"
+            />
+            <h3 class="text-step-2">Heading</h3>
+            <p>
+              We understand the entire picture As a web studio in Los Angeles,
+              we bridge the re
+            </p>
+          </Card>
+          <Card>
+            <Image
+              class="illustration"
+              src={illustration2}
+              alt=""
+              width={600}
+              format="webp"
+              loading="eager"
+            />
+            <h3 class="text-step-2">Heading</h3>
+            <p>
+              We understand the entire picture As a web studio in Los Angeles,
+              we bridge the re
+            </p>
+          </Card>
+          <Card>
+            <Image
+              class="illustration"
+              src={illustration3}
+              alt=""
+              width={600}
+              format="webp"
+              loading="eager"
+            />
+            <h3 class="text-step-2">Heading</h3>
+            <p>
+              We understand the entire picture As a web studio in Los Angeles,
+              we bridge the re
+            </p>
+          </Card>
+        </div>
+        <div class="center-all">
+          <ButtonLink href="/our-approach">Our Approach</ButtonLink>
+        </div>
+      </article>
+    </div>
+    <HomeProject />
+    <article>testimonials</article>
+    <article>about me</article>
+    <article>cta</article>
+  </main>
+</Layout>
+
+<style>
+  .home-content {
+    & .content-wrapper {
+      padding-inline-start: var(--space-xl);
+    }
+  }
+
+  .bg-gradient {
+    background: linear-gradient(to bottom, transparent, var(--color-neutral-1));
+    padding-block-end: var(--space-2xl);
+  }
+
+  .logo-cloud {
+    margin-block-start: var(--space-l);
+    font-family: var(--font-heading);
+    gap: var(--space-l);
+
+    & img {
+      transition: transform 0.3s linear;
+    }
+
+    & > div {
+      &:hover {
+        & img {
+          transform: scale(1.15);
+        }
+      }
+    }
+  }
+
+  #approach {
+    margin-block: var(--section-spacer);
+  }
+</style>
