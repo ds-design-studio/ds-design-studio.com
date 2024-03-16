@@ -29,7 +29,9 @@ const { entries } = Astro.props;
           </a>
         </h3>
         <p>{entry.data.summary}</p>
-        <a href={`/services/${entry.slug}`}>Learn More</a>
+        <a href={`/services/${entry.slug}`}>
+          <strong>Learn More</strong>
+        </a>
       </Card>
     ))
   }

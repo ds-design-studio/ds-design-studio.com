@@ -1,5 +1,6 @@
 ---
 import "../styles/site.css";
+import { ViewTransitions } from "astro:transitions";
 
 import SiteHeader from "@components/SiteHeader.astro";
 import SiteFooter from "@components/SiteFooter.astro";
@@ -85,6 +86,7 @@ const path = Astro.url.pathname;
       }
     </style>
     <slot name="pageHead" />
+    <ViewTransitions />
   </head>
   <body>
     <SiteHeader theme={path === "/" ? "dark" : "normal"} />

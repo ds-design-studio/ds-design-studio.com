@@ -1,0 +1,164 @@
+---
+import ButtonLink from "@components/ButtonLink.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const testimonials = await getCollection("testimonials");
+
+import headshot from "@assets/ds-headshot-new.jpg";
+---
+
+<div id="testimonials" class="content-wrapper">
+  <h2 class="sr-only">Testimonials</h2>
+  <div class="grid-9">
+    {
+      testimonials.slice(0, 3).map((testimonial) => (
+        <article class="flow">
+          <p>{testimonial.data.body}</p>
+          <div class="attribution | cluster">
+            <Image
+              src={testimonial.data.attribution.logo}
+              alt={`${testimonial.data.attribution.organization} logo.`}
+              width={200}
+              format="webp"
+              loading="lazy"
+            />
+            <div>
+              <p class="small-title">{testimonial.data.attribution.name}</p>
+              <p>{testimonial.data.attribution.organization}</p>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+    <article class="about">
+      <div class="text | flow">
+        <header class="cluster">
+          <div class="headshot">
+            <Image
+              src={headshot}
+              alt="Daniel Saunders headshot."
+              width={600}
+              format="webp"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <h3>Who We Are</h3>
+            <p>Daniel Saunders, Principal</p>
+          </div>
+        </header>
+        <p>
+          Led by principal designer/developer Daniel Saunders, is a designer,
+          frontend developer and Lorem ipsum dolor sit amet, consectetur
+          adipiscing eli
+        </p>
+        <a href="/about">More about us</a>
+      </div>
+    </article>
+  </div>
+</div>
+
+<style>
+  .content-wrapper {
+    margin-block: var(--section-spacer);
+  }
+
+  article {
+    container: testimonial / inline-size;
+    position: relative;
+
+    &:not(.about)::before {
+      content: "“";
+      position: absolute;
+      top: -0.75rem;
+      left: -2rem;
+      z-index: -1;
+      line-height: 1;
+      opacity: 0.1;
+      font-family: var(--font-heading);
+      font-weight: var(--font-heading-weight);
+      color: var(--color-primary-5);
+      font-size: 25cqw;
+    }
+
+    &.flow {
+      --flow-space: var(--space-m);
+    }
+  }
+
+  .grid-9 {
+    row-gap: var(--space-xl);
+
+    & > :first-child {
+      grid-column: span 5;
+      font-size: var(--step-1);
+    }
+
+    & > :nth-child(2) {
+      grid-column: 7 / span 3;
+    }
+
+    & > :nth-child(3) {
+      grid-column: 7 / span 3;
+      grid-row: 2/2;
+      align-self: center;
+    }
+
+    & > :last-child {
+      order: 9;
+      grid-column: span 5;
+    }
+  }
+
+  .attribution {
+    & img {
+      width: auto;
+      height: 3rem;
+      filter: grayscale(1);
+      opacity: 0.3;
+    }
+
+    & .small-title {
+      & + p {
+        font-size: var(--step--1);
+        opacity: 0.85;
+      }
+    }
+  }
+
+  .about {
+    border-radius: var(--rounded-corners);
+    padding: var(--space-l);
+    background: linear-gradient(to right, white, var(--color-neutral-1));
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--color-neutral-2-fade);
+
+    & header {
+      &.cluster {
+        --cluster-space: 2rem;
+      }
+    }
+  }
+
+  .headshot {
+    border-radius: 999px;
+    background: linear-gradient(
+      to bottom right,
+      var(--color-secondary-5),
+      var(--color-primary-4)
+    );
+
+    & img {
+      width: 5rem;
+      height: 5rem;
+      margin: 2px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 999px;
+      filter: grayscale(1);
+      mix-blend-mode: overlay;
+      opacity: 0.85;
+    }
+  }
+</style>

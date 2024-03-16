@@ -1,0 +1,138 @@
+---
+import ButtonLink from "@components/ButtonLink.astro";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+
+const featuredProject = await getEntry("projects", "haymarket-writing-freedom");
+import bgImage from "@assets/shape-pattern-1.svg";
+---
+
+<article id="featured-project">
+  <div class="grid-9 | content-wrapper">
+    <Image
+      class="featured-img"
+      src={featuredProject.data.featuredImage.src}
+      alt={featuredProject.data.featuredImage.alt}
+      width={1200}
+      format="webp"
+      loading="lazy"
+    />
+    <div class="text | flow">
+      <header>
+        <div class="eyebrow | small-title text-gradient">Featured Project</div>
+        <h2>{featuredProject.data.title}</h2>
+      </header>
+      <p>{featuredProject.data.summary}</p>
+      <ul role="list">
+        {
+          featuredProject.data.scope.map((item: string) => (
+            <li class="cluster">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <ButtonLink href={`/work/${featuredProject.slug}`}>See More</ButtonLink>
+    </div>
+  </div>
+  <Image
+    class="bg-image"
+    src={bgImage}
+    width={900}
+    alt=""
+    format="svg"
+    loading="lazy"
+  />
+</article>
+
+<style>
+  article {
+    position: relative;
+    padding-block: calc(var(--section-spacer) * 1.5);
+    background: var(--color-darker-gradient);
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 4px;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(
+        to right,
+        var(--color-secondary-5),
+        var(--color-primary-4)
+      );
+    }
+  }
+
+  .grid-9 {
+    position: relative;
+    z-index: 2;
+    align-items: center;
+    gap: var(--space-2xl);
+  }
+
+  .text {
+    grid-column: 5/10;
+
+    &.flow {
+      --flow-space: var(--space-m);
+    }
+  }
+
+  h2 {
+    color: var(--color-neutral-1);
+  }
+
+  :is(p, ul) {
+    color: var(--color-neutral-4);
+  }
+
+  ul {
+    columns: 2;
+
+    & > * + * {
+      margin-block-start: 0.75rem;
+    }
+
+    & .cluster {
+      --cluster-space: 0.5rem;
+    }
+
+    & svg {
+      position: relative;
+      top: -2px;
+      color: var(--color-primary-4);
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  .featured-img {
+    grid-column: 1 / span 4;
+  }
+
+  .bg-image {
+    position: absolute;
+    left: -5%;
+    top: 0;
+    width: auto;
+    height: 100%;
+    opacity: 0.25;
+    mix-blend-mode: screen;
+    transform: scale(1.5);
+  }
+</style>

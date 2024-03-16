@@ -42,7 +42,7 @@ const { theme = "normal", position = "relative" } = Astro.props;
                   <div class="panel">
                     {entry.children?.map((childEntry) =>
                       childEntry.icon ? (
-                        <a class="with-icon" href={childEntry.slug}>
+                        <a class="panel-link with-icon" href={childEntry.slug}>
                           <div class="icon-wrapper">
                             <Icon
                               name={childEntry.icon as IconName}
@@ -149,7 +149,7 @@ const { theme = "normal", position = "relative" } = Astro.props;
 
     & svg {
       height: 1em;
-      color: var(--color-primary-5);
+      color: var(--color-primary-4);
     }
 
     &:hover {
@@ -181,6 +181,7 @@ const { theme = "normal", position = "relative" } = Astro.props;
     animation: 0.2s fade-up ease-in-out;
 
     & a {
+      color: inherit;
       text-decoration: none;
 
       &.with-icon {
@@ -194,7 +195,7 @@ const { theme = "normal", position = "relative" } = Astro.props;
           background: color-mix(
             in hsl,
             var(--color-neutral-2),
-            transparent 75%
+            transparent 85%
           );
 
           & :global(svg) {

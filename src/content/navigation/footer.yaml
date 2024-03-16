@@ -1,0 +1,32 @@
+title: Footer Navigation
+entries:
+  - title: Services
+    children:
+      - title: Web Design
+        slug: services/web-design
+      - title: Frontend Development
+        slug: services/frontend-development
+      - title: Digital Design
+        slug: services/digital-design
+      - title: Ongoing Support
+        slug: services/ongoing-support
+  - title: Work
+    children:
+      - title: Case Study 1
+        slug: work/case-study-1
+      - title: Case Study 2
+        slug: work/case-study-2
+  - title: About
+    children:
+      - title: Our Process
+        slug: about
+      - title: Pricing
+        slug: about
+      - title: Who We Are
+        slug: about
+  - title: More
+    children:
+      - title: Blog
+        slug: blog
+      - title: Get the Newsletter
+        slug: newsletter

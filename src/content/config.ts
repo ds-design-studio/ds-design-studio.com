@@ -7,7 +7,7 @@ const navigation = defineCollection({
     entries: z.array(
       z.object({
         title: z.string(),
-        slug: z.string(),
+        slug: z.string().optional(),
         children: z
           .array(
             z.object({
@@ -88,6 +88,19 @@ const projects = defineCollection({
     }),
 });
 
+const testimonials = defineCollection({
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      body: z.string(),
+      attribution: z.object({
+        name: z.string(),
+        organization: z.string(),
+        logo: image(),
+      }),
+    }),
+});
+
 export const collections = {
   navigation,
   features,
@@ -95,4 +108,5 @@ export const collections = {
   projects,
   tools,
   websiteTypes,
+  testimonials,
 };

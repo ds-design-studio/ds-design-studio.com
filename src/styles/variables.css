@@ -48,8 +48,32 @@
   --color-warning-border: hsl(43, 96%, 56%);
 
   /* Color Application */
+  /* Normal text */
   --color-text-body: var(--color-neutral-7);
   --color-text-heading: var(--color-neutral-8);
+  --color-text-link: inherit;
+  --color-text-link-hover: var(--color-primary-5);
+  --color-text-link-line: var(--color-primary-3);
+  --color-text-link-line-hover: var(--color-primary-5);
+
+  /* Text against dark background */
+  --color-text-body-dark: var(--color-neutral-3);
+  --color-text-heading-dark: var(--color-neutral-1);
+  --color-text-link-dark: inherit;
+  --color-text-link-hover-dark: var(--color-primary-3);
+  --color-text-link-line-dark: var(--color-neutral-7);
+  --color-text-link-line-hover-dark: var(--color-primary-4);
+
+  --color-dark-gradient: linear-gradient(
+    to bottom right,
+    var(--color-neutral-10),
+    var(--color-neutral-8)
+  );
+  --color-darker-gradient: linear-gradient(
+    to right,
+    var(--color-neutral-9),
+    var(--color-neutral-10)
+  );
 
   /* Fluid Typography */
   /* @link https://utopia.fyi/type/calculator?c=320,16,1.25,1140,18,1.25,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */

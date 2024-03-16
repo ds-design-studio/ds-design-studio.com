@@ -5,7 +5,9 @@ import ButtonLink from "@components/ButtonLink.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import ServicesGrid from "@components/page_sections/ServicesGrid.astro";
 import HomeHero from "@components/page_sections/HomeHero.astro";
-import HomeProject from "@components/page_sections/HomeProject.astro";
+import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
+import Testimonials from "@components/page_sections/Testimonials.astro";
+import CTA from "@components/page_sections/CTA.astro";
 import { Image } from "astro:assets";
 import { getEntries } from "astro:content";
 import { getCollection } from "astro:content";
@@ -47,9 +49,7 @@ import illustration3 from "@assets/illustration-3.png";
           <ServicesGrid
             entries={services.sort((a, b) => a.data.order - b.data.order)}
           />
-          <div class="small-title text-gradient mx-auto">
-            Tools of the Trade
-          </div>
+          <div class="small-title text-gradient mx-auto">Our Tools</div>
           <div class="logo-cloud | grid-6 centered">
             {
               tools
@@ -70,73 +70,72 @@ import illustration3 from "@assets/illustration-3.png";
           </div>
         </article>
       </div>
-      <article class="content-wrapper" id="approach">
-        <SectionHeader align="center">
-          <Fragment slot="text">
-            <div class="eyebrow | small-title text-gradient mx-auto">
-              Our Approach
-            </div>
-            <h2 class="text-step-4">
-              Crafting beautiful experiences for the modern web
-            </h2>
-          </Fragment>
-        </SectionHeader>
-        <div class="grid-6">
-          <Card>
-            <Image
-              class="illustration"
-              src={illustration1}
-              alt=""
-              width={600}
-              format="webp"
-              loading="eager"
-            />
-            <h3 class="text-step-2">Heading</h3>
-            <p>
-              We understand the entire picture As a web studio in Los Angeles,
-              we bridge the re
-            </p>
-          </Card>
-          <Card>
-            <Image
-              class="illustration"
-              src={illustration2}
-              alt=""
-              width={600}
-              format="webp"
-              loading="eager"
-            />
-            <h3 class="text-step-2">Heading</h3>
-            <p>
-              We understand the entire picture As a web studio in Los Angeles,
-              we bridge the re
-            </p>
-          </Card>
-          <Card>
-            <Image
-              class="illustration"
-              src={illustration3}
-              alt=""
-              width={600}
-              format="webp"
-              loading="eager"
-            />
-            <h3 class="text-step-2">Heading</h3>
-            <p>
-              We understand the entire picture As a web studio in Los Angeles,
-              we bridge the re
-            </p>
-          </Card>
-        </div>
-        <div class="center-all">
-          <ButtonLink href="/our-approach">Our Approach</ButtonLink>
-        </div>
-      </article>
     </div>
-    <HomeProject />
-    <article>testimonials</article>
-    <article>about me</article>
-    <article>cta</article>
+    <article class="content-wrapper" id="approach">
+      <SectionHeader align="center">
+        <Fragment slot="text">
+          <div class="eyebrow | small-title text-gradient mx-auto">
+            Our Approach
+          </div>
+          <h2 class="text-step-4">
+            Crafting beautiful experiences for the modern web
+          </h2>
+        </Fragment>
+      </SectionHeader>
+      <div class="grid-6">
+        <Card>
+          <Image
+            class="illustration"
+            src={illustration1}
+            alt=""
+            width={600}
+            format="webp"
+            loading="eager"
+          />
+          <h3 class="text-step-2">Heading</h3>
+          <p>
+            We understand the entire picture As a web studio in Los Angeles, we
+            bridge the re
+          </p>
+        </Card>
+        <Card>
+          <Image
+            class="illustration"
+            src={illustration2}
+            alt=""
+            width={600}
+            format="webp"
+            loading="eager"
+          />
+          <h3 class="text-step-2">Heading</h3>
+          <p>
+            We understand the entire picture As a web studio in Los Angeles, we
+            bridge the re
+          </p>
+        </Card>
+        <Card>
+          <Image
+            class="illustration"
+            src={illustration3}
+            alt=""
+            width={600}
+            format="webp"
+            loading="eager"
+          />
+          <h3 class="text-step-2">Heading</h3>
+          <p>
+            We understand the entire picture As a web studio in Los Angeles, we
+            bridge the re
+          </p>
+        </Card>
+      </div>
+      <div class="center-all">
+        <ButtonLink href="/our-approach">Our Approach</ButtonLink>
+      </div>
+    </article>
+    <FeaturedProject />
+    <Testimonials />
+    <CTA />
   </main>
 </Layout>
 

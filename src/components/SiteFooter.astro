@@ -1,1 +1,98 @@
-<footer class="site-footer">Footer</footer>
+---
+import { format } from "@formkit/tempo";
+import { getEntry } from "astro:content";
+import Logo from "@components/Logo.astro";
+import ButtonLink from "@components/ButtonLink.astro";
+
+const navigation = await getEntry("navigation", "footer");
+
+const copyright = format({
+  date: new Date(),
+  format: "YYYY",
+  tz: "America/Los_Angeles",
+});
+---
+
+<footer class="site-footer | dark">
+  <div class="grid | content-wrapper">
+    <div class="brand | flow">
+      <Logo /><p>
+        DS Design is the Los Angeles-based web design studio practice of Daniel
+        Saunders. Contact us for web design, frontend development, digital
+        marketing, and more.
+      </p>
+    </div>
+    {
+      navigation.data.entries.map((entry) => (
+        <div class="column | flow">
+          <div class="small-title">{entry.title}</div>
+          {entry.children && (
+            <ul class="flow" role="list">
+              {entry.children.map((childEntry) => (
+                <li>
+                  <a class="" href={`/${childEntry.slug}`}>
+                    {childEntry.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))
+    }
+  </div>
+  <div class="subfooter | content-wrapper cluster">
+    <div>{`© ${copyright}, Daniel Saunders`}</div>
+    <div>
+      <a class="footer-link" href="/privacy">Privacy Statement</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    color: var(--color-text-body-dark);
+    background: var(--color-darker-gradient);
+    padding-block-start: var(--section-spacer);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 2.5fr repeat(4, 1fr);
+    gap: var(--space-l);
+  }
+
+  .footer-link {
+    text-decoration-color: var(--color-neutral-7);
+
+    &:hover {
+      color: var(--color-text-link-dark);
+      text-decoration-color: var(--color-primary-4);
+    }
+  }
+
+  .column {
+    & .small-title {
+      color: var(--color-text-heading-dark);
+    }
+  }
+
+  ul {
+    font-size: var(--step--1);
+
+    &.flow {
+      --flow-space: 0.75rem;
+    }
+  }
+
+  .subfooter {
+    font-size: var(--step--1);
+    margin-block-start: var(--space-3xl);
+    padding-block: var(--space-m);
+    border-block-start: 1px solid var(--color-neutral-8);
+
+    &.cluster {
+      --cluster-justify: space-between;
+    }
+  }
+</style>

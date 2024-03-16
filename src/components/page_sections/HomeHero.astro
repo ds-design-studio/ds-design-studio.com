@@ -323,11 +323,7 @@ import ButtonLink from "@components/ButtonLink.astro";
     position: relative;
     padding-block-start: 14rem;
     padding-block-end: 12rem;
-    background: linear-gradient(
-      to bottom right,
-      var(--color-neutral-10),
-      var(--color-neutral-8)
-    );
+    background: var(--color-dark-gradient);
     overflow: hidden;
 
     & .grid-9 {
@@ -369,13 +365,13 @@ import ButtonLink from "@components/ButtonLink.astro";
     }
 
     & h1 {
-      color: var(--color-neutral-1);
+      color: var(--color-text-heading-dark);
       font-size: var(--step-6);
       text-wrap: balance;
     }
 
     & p {
-      color: var(--color-neutral-4);
+      color: var(--color-text-body-dark);
       font-size: var(--step-1);
       text-wrap: pretty;
     }
