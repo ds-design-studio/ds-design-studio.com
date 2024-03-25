@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import SectionHeader from "@components/SectionHeader.astro";
+import Card from "@components/Card.astro";
+import Tools from "./Tools.astro";
+
+import { getEntry } from "astro:content";
+const astro = await getEntry("tools", "astro");
+const statamic = await getEntry("tools", "statamic");
+---
+
+<div class="content-wrapper section-spacer">
+  <SectionHeader align="center">
+    <Fragment slot="text">
+      <div class="eyebrow | small-title text-gradient mx-auto">
+        Framework Specialties
+      </div>
+      <h2>Lorem ipsum sit dolor</h2>
+    </Fragment>
+  </SectionHeader>
+  <div class="grid-6 feature-span | content-wrapper" id="frameworks">
+    <Card>
+      <Image src={astro.data.logo} alt="Astro logo" width={50} format="svg" />
+      <h3>Astro Agency</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+        enim earum impedit ab magnam eligendi nemo quidem quia vitae soluta.
+      </p>
+    </Card>
+    <Card>
+      <Image
+        src={statamic.data.logo}
+        alt="Statamic logo"
+        width={50}
+        format="svg"
+      />
+      <h3>Statamic Agency</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+        enim earum impedit ab magnam eligendi nemo quidem quia vitae soluta.
+      </p>
+    </Card>
+  </div>
+  <Tools />
+</div>

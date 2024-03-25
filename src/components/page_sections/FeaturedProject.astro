@@ -1,31 +1,46 @@
 ---
 import ButtonLink from "@components/ButtonLink.astro";
+import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 
-const featuredProject = await getEntry("projects", "haymarket-writing-freedom");
+// const featuredProject = await getEntry("projects", "haymarket-writing-freedom");
 import bgImage from "@assets/shape-pattern-1.svg";
+
+type Props = {
+  project: CollectionEntry<"projects">;
+  serviceType?: string;
+  // | "Web Design"
+  // | "Frontend Development"
+  // | "Digital Design"
+  // | "Ongoing Support";
+};
+
+const { project, serviceType } = Astro.props;
+const { title, summary, featuredImage, scope } = project.data;
 ---
 
-<article id="featured-project">
+<article class="featured | dark" id="featured-project">
   <div class="grid-9 | content-wrapper">
     <Image
       class="featured-img"
-      src={featuredProject.data.featuredImage.src}
-      alt={featuredProject.data.featuredImage.alt}
+      src={featuredImage.src}
+      alt={featuredImage.alt}
       width={1200}
       format="webp"
       loading="lazy"
     />
     <div class="text | flow">
       <header>
-        <div class="eyebrow | small-title text-gradient">Featured Project</div>
-        <h2>{featuredProject.data.title}</h2>
+        <div class="eyebrow | small-title text-gradient">
+          {serviceType ? `Featured ${serviceType} Project` : "Featured Project"}
+        </div>
+        <h2>{title}</h2>
       </header>
-      <p>{featuredProject.data.summary}</p>
-      <ul role="list">
+      <p>{summary}</p>
+      <ul class="icon-list" role="list">
         {
-          featuredProject.data.scope.map((item: string) => (
+          scope.map((item: string) => (
             <li class="cluster">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +59,7 @@ import bgImage from "@assets/shape-pattern-1.svg";
           ))
         }
       </ul>
-      <ButtonLink href={`/work/${featuredProject.slug}`}>See More</ButtonLink>
+      <ButtonLink href={`/work/${project.slug}`}>See More</ButtonLink>
     </div>
   </div>
   <Image
@@ -93,14 +108,6 @@ import bgImage from "@assets/shape-pattern-1.svg";
     }
   }
 
-  h2 {
-    color: var(--color-neutral-1);
-  }
-
-  :is(p, ul) {
-    color: var(--color-neutral-4);
-  }
-
   ul {
     columns: 2;
 
@@ -108,7 +115,7 @@ import bgImage from "@assets/shape-pattern-1.svg";
       margin-block-start: 0.75rem;
     }
 
-    & .cluster {
+    /* & .cluster {
       --cluster-space: 0.5rem;
     }
 
@@ -118,7 +125,7 @@ import bgImage from "@assets/shape-pattern-1.svg";
       color: var(--color-primary-4);
       width: 1em;
       height: 1em;
-    }
+    } */
   }
 
   .featured-img {

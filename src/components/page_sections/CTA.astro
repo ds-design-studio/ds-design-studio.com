@@ -7,7 +7,7 @@ import bgImage from "@assets/shape-pattern-1.svg";
 <div class="cta-bg">
   <article class="content-wrapper">
     <div
-      class="cta"
+      class="cta | dark"
       x-data="{ messages: ['marketing website', 'content website', 'x website'] }"
     >
       <div
@@ -53,11 +53,7 @@ import bgImage from "@assets/shape-pattern-1.svg";
     align-items: center;
 
     &.flow {
-      --flow-space: var(--space-m);
-    }
-
-    & h2 {
-      color: var(--color-text-heading-dark);
+      --flow-space: var(--space-l);
     }
   }
 

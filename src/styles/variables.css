@@ -116,6 +116,6 @@
   --accent-line-width: 4px;
   --text-opacity-shade: 0.75;
   --presentation-image-ratio: 4/5;
-  --focus-outline-color: var(--color-primary-bright);
+  --focus-outline-color: var(--color-primary-3);
   --focus-outline-width: 2px;
 }

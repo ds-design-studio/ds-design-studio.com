@@ -1,0 +1,15 @@
+title: Business Plan
+summary: Best for growth-oriented, content-heavy sites needing regular updates.
+image:
+  src: ./support-plan-1.png
+  alt: alt
+price:
+  monthly: 500
+  annual: 100
+features:
+  - Monthly site review
+  - Regular updates
+  - Monthly site report
+  - Ongoing site feature additions
+  - "<strong>4 hours</strong> of developer time/month"
+order: 3

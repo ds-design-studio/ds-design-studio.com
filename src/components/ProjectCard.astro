@@ -1,0 +1,125 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+type Props = {
+  project: CollectionEntry<"projects">;
+};
+
+const { project } = Astro.props;
+const { title, type, client, featuredImage } = project.data;
+---
+
+<article class="project | flow">
+  <a href={`/work/${project.slug}`} class="img-wrapper">
+    <div class="overlay"><h2>{title}</h2></div>
+    <Image
+      src={featuredImage.src}
+      alt={featuredImage.alt}
+      width={1200}
+      format="webp"
+      loading="eager"
+    />
+  </a>
+  <div class="text | flow">
+    <!-- <h2>
+      <a class="color-underline" href={`/work/${project.slug}`}>{title}</a>
+    </h2> -->
+    <div class="details | cluster">
+      <span class="small-title">{type}</span><span class="divider">•</span><span
+        >{client}</span
+      >
+    </div>
+  </div>
+</article>
+
+<style>
+  .project {
+    &.flow {
+      --flow-space: 1.25rem;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    padding: var(--space-l);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(
+      to top,
+      color-mix(in hsl, var(--color-neutral-9), transparent 10%) 20%,
+      transparent
+    );
+    transition: opacity 0.2s ease-out;
+  }
+
+  .img-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--rounded-corners);
+    border: 1px solid color-mix(in hsl, var(--color-neutral-2), white 45%);
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease-out;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--color-neutral-1);
+    box-shadow: var(--shadow-none);
+
+    & img {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease-out;
+    }
+
+    &:hover {
+      border-color: var(--color-primary-4);
+      box-shadow: var(--shadow-light);
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    &:hover .overlay {
+      opacity: 1;
+    }
+
+    &:hover h2 {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  h2 {
+    color: var(--color-text-heading-dark);
+    font-size: var(--step-3);
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: all 0.3s ease-out 0.1s;
+  }
+
+  .text {
+    &.flow {
+      --flow-space: 0.75rem;
+    }
+  }
+
+  .details {
+    font-size: var(--step--1);
+
+    &.cluster {
+      --cluster-space: 0.5rem;
+    }
+  }
+
+  .divider {
+    color: var(--color-primary-5);
+  }
+</style>

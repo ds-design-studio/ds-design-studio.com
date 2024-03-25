@@ -60,6 +60,14 @@
   height: auto;
 }
 
+.section-spacer {
+  margin-block: var(--section-spacer);
+
+  &.half {
+    margin-block: calc(var(--section-spacer) * 0.5);
+  }
+}
+
 .icon {
   display: inline-block;
   fill: currentColor;

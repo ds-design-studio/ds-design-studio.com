@@ -1,0 +1,14 @@
+title: Basic Plan
+summary: Best for sites that need occasional or seasonal updates.
+image:
+  src: ./support-plan-1.png
+  alt: alt
+price:
+  monthly: 60
+  annual: 100
+features:
+  - Quarterly site review
+  - Quarterly updates
+  - Annual site report
+  - "<strong>0.5 hours</strong> of developer time/month"
+order: 1

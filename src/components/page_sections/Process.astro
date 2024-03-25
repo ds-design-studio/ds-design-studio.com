@@ -1,0 +1,404 @@
+---
+import { Image } from "astro:assets";
+import SectionHeader from "@components/SectionHeader.astro";
+import { getCollection } from "astro:content";
+
+const projectPhases = await getCollection("projectPhases");
+const projectPhasesOrdered = projectPhases.sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+import shapes1 from "@assets/shapes-1.png";
+import bgGradient from "@assets/blob-bg-2-grain.png";
+---
+
+<article class="content-wrapper">
+  <div class="intro">
+    <SectionHeader align="left">
+      <Fragment slot="text">
+        <div class="eyebrow | small-title text-gradient">How We Work</div>
+        <h2 class="text-step-4">
+          Crafting beautiful experiences, step by step
+        </h2>
+      </Fragment>
+      <Image
+        slot="image"
+        src={shapes1}
+        alt=""
+        width={600}
+        format="webp"
+        loading="eager"
+      />
+    </SectionHeader>
+  </div>
+  <div x-data x-tabs class="tabs-wrapper | grid-6 feature-span">
+    <div x-tabs:list aria-orientation="vertical" class="tab-list | flow">
+      {
+        projectPhasesOrdered.map(({ data }) => (
+          <button
+            x-tabs:tab
+            class="tab-list-item | flow"
+            x-bind:class="$tab.isSelected && 'active'"
+          >
+            <h3 class="tab-list-title">{data.title}</h3>
+            <p>{data.summary}</p>
+          </button>
+        ))
+      }
+    </div>
+    <div class="tab-panels-wrapper">
+      <div x-tabs:panels class="tab-panels">
+        {
+          projectPhasesOrdered.map(({ data }, index) => (
+            <div
+              x-tabs:panel
+              class="tab-panel"
+              x-transition:enter="transition"
+              x-transition:enter-start="transition-start"
+              x-transition:enter-end="transition-end"
+            >
+              <div class="window">
+                <div class="header-bar">
+                  <div class="cluster">
+                    <div class="circles">
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                    <span class="small-title">{`Phase ${index + 1} Outcomes`}</span>
+                  </div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <ul class="icon-list flow" role="list">
+                  {data.outcomes.map((item) => (
+                    <li>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="panels-bg">
+        <div class="grid-lines">
+          <div class="vert"></div>
+          <div class="vert"></div>
+          <div class="vert"></div>
+          <div class="vert"></div>
+          <div class="horiz"></div>
+          <div class="horiz"></div>
+          <div class="horiz"></div>
+          <div class="horiz"></div>
+        </div>
+        <Image src={bgGradient} alt="" width={900} format="webp" />
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  article {
+    --border-color: var(--color-primary-2);
+    --border-width: 2px;
+    /* margin-block: var(--section-spacer); */
+  }
+
+  .content-wrapper {
+    padding-inline-start: 0;
+    left: -1px;
+  }
+
+  :is(.intro, .tabs-wrapper) {
+    border-left: var(--border-width) solid var(--border-color);
+  }
+
+  .intro {
+    margin-block-start: 0;
+    padding-block-start: var(--space-s);
+    padding-inline-start: var(--space-m);
+  }
+
+  .tabs-wrapper {
+    margin-block-start: calc(var(--section-spacer) * -0.25);
+    padding-block-start: calc(var(--section-spacer) * 0.5);
+  }
+
+  .tab-list {
+    &.flow {
+      --flow-space: var(--space-s);
+    }
+  }
+
+  .tab-list-item {
+    position: relative;
+    padding: var(--space-m);
+    border-radius: var(--rounded-corners);
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    border: 0;
+    text-align: left;
+    color: var(--color-text-body);
+    line-height: var(--leading-normal);
+    transition: background-color 0.2s ease-in-out;
+
+    &.flow {
+      --flow-space: var(--space-xs);
+    }
+
+    &.active .tab-list-title {
+      color: var(--color-primary-5);
+
+      &::after {
+        background-color: var(--color-primary-4);
+        border: 2px solid white;
+      }
+    }
+
+    &:hover {
+      background-color: color-mix(
+        in hsl,
+        var(--color-neutral-1),
+        transparent 10%
+      );
+    }
+
+    &:is(:focus-visible) {
+      outline: 2px solid var(--color-primary-4);
+      outline-offset: 0px;
+    }
+  }
+
+  .tab-list-title {
+    position: relative;
+    transition: color 0.2s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: calc(var(--space-m) * -1 - 9px);
+      top: 0.35rem;
+      height: 1rem;
+      width: 1rem;
+      border-radius: 50%;
+      background-color: #fff;
+      border: var(--border-width) solid var(--border-color);
+      z-index: 1;
+      transition: all 0.2s ease;
+    }
+  }
+
+  .tab-panels-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .tab-panels {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  /* Tab panel / window illustration */
+
+  .tab-panel {
+    padding: var(--space-l);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &.transition {
+      transition: all 0.5s ease-out;
+    }
+
+    &.transition-start {
+      opacity: 0;
+      transform: translateX(2rem);
+    }
+
+    &.transition-end {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    & ul {
+      & li {
+        display: inline;
+
+        & svg {
+          top: 2px;
+          margin-right: 0.25rem;
+        }
+      }
+    }
+  }
+
+  .window {
+    position: relative;
+    width: 100%;
+    /* background-color: #ffffffb3; */
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--color-primary-2);
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-l);
+    padding-inline: var(--space-l);
+    border-radius: var(--rounded-corners);
+    box-shadow:
+      0 0 39px -32px #000,
+      0 0 16px -10px #de005180;
+  }
+
+  .header-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    background: linear-gradient(
+      to right,
+      var(--color-primary-4),
+      var(--color-primary-5)
+    );
+    border-radius: var(--rounded-corners) var(--rounded-corners) 0 0;
+    color: var(--color-primary-1);
+
+    & .cluster {
+      --cluster-space: var(--space-xs);
+    }
+
+    & .circles {
+      position: relative;
+      top: -1px;
+      display: flex;
+      gap: 6px;
+
+      & span {
+        display: block;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: var(--color-primary-2);
+      }
+    }
+
+    & svg {
+      position: relative;
+      top: -1px;
+      height: 1.25em;
+    }
+  }
+
+  /* Panels BG Illustration */
+  .grid-lines {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    opacity: 0.3;
+    z-index: -1;
+
+    & > * {
+      position: absolute;
+      background-color: var(--color-primary-4);
+    }
+
+    & .vert {
+      width: 1px;
+      height: 110%;
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 50%,
+        transparent 100%
+      );
+
+      &:nth-child(1) {
+        left: 20%;
+      }
+
+      &:nth-child(2) {
+        left: 40%;
+      }
+
+      &:nth-child(3) {
+        left: 60%;
+      }
+
+      &:nth-child(4) {
+        left: 80%;
+      }
+    }
+
+    & .horiz {
+      width: 105%;
+      height: 1px;
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 50%,
+        transparent 100%
+      );
+
+      &:nth-child(5) {
+        top: 12%;
+      }
+
+      &:nth-child(6) {
+        top: 37%;
+      }
+
+      &:nth-child(7) {
+        top: 62%;
+      }
+
+      &:nth-child(8) {
+        top: 88%;
+      }
+    }
+  }
+
+  .panels-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    opacity: 1;
+
+    & img {
+      opacity: 0.2;
+    }
+  }
+</style>

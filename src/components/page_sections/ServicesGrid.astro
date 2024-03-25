@@ -1,6 +1,7 @@
 ---
 import Card from "@components/Card.astro";
 import Icon from "@components/Icon.astro";
+import ButtonLink from "@components/ButtonLink.astro";
 
 import type { CollectionEntry } from "astro:content";
 import type { IconName } from "@components/Icon.astro";
@@ -45,5 +46,6 @@ const { entries } = Astro.props;
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, eaque.
     </p>
+    <ButtonLink theme="ghost" href="/contact">Get a Quote</ButtonLink>
   </Card>
 </div>

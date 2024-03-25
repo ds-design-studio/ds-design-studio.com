@@ -6,6 +6,7 @@ icon: chat-bubbles
 order: 4
 features:
   - support
+featuredProject: haymarket-writing-freedom
 ---
 
 lorem ipsum

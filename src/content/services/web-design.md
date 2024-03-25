@@ -11,6 +11,7 @@ features:
   - ui
   - ux
   - unique-design
+featuredProject: haymarket-writing-freedom
 ---
 
 lorem ipsum

@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+const tools = await getCollection("tools");
+---
+
+<div class="small-title text-gradient mx-auto">Our Tools</div>
+<div class="logo-cloud | grid-6 centered">
+  {
+    tools
+      .sort((a, b) => a.data.order - b.data.order)
+      .map((tool) => (
+        <div class="cluster">
+          <Image
+            src={tool.data.logo}
+            alt={`${tool.data.title} logo`}
+            width={32}
+            height={32}
+            format="svg"
+          />
+          <span>{tool.data.title}</span>
+        </div>
+      ))
+  }
+</div>
+
+<style>
+  .logo-cloud {
+    margin-block-start: var(--space-l);
+    font-family: var(--font-heading);
+    gap: var(--space-l);
+
+    & img {
+      transition: transform 0.3s linear;
+    }
+
+    & > div {
+      &:hover {
+        & img {
+          transform: scale(1.15);
+        }
+      }
+    }
+  }
+</style>

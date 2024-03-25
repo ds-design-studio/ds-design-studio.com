@@ -2,6 +2,7 @@
 title: Adaptable Design
 tagline: Death to pixel-perfect layouts
 summary: Responsive and resilient designs that adapt well across devices.
+icon: mobile
 order: 1
 ---
 

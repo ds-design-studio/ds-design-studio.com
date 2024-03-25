@@ -1,0 +1,100 @@
+---
+import { getCollection } from "astro:content";
+import Card from "@components/Card.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import formatPrice from "@utils/formatPrice";
+import { Image } from "astro:assets";
+
+const supportPlans = await getCollection("supportPlans");
+
+// Add monthly/annual apline switcher
+---
+
+<div class="content-wrapper section-spacer">
+  <SectionHeader align="center">
+    <Fragment slot="text">
+      <div class="eyebrow | small-title text-gradient mx-auto">
+        Developer Support Plans
+      </div>
+      <h2>Lorem ipsum sit dolor</h2>
+    </Fragment>
+  </SectionHeader>
+  <div class="plans | grid-6">
+    {
+      supportPlans
+        .sort((a, b) => a.data.order - b.data.order)
+        .map(({ data }, index) => (
+          <Card theme={index === 1 ? "dark" : "normal"}>
+            <Image
+              src={data.image.src}
+              alt={data.image.alt}
+              width={300}
+              loading="lazy"
+              format="webp"
+            />
+            <h3>{data.title}</h3>
+            <p>{data.summary}</p>
+            <div>
+              <span class="price">{formatPrice(data.price.monthly)}</span>
+              <span>/month</span>
+            </div>
+            <ul class="icon-list | flow" role="list">
+              {data.features.map((feature) => (
+                <li class="cluster">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span set:html={feature} />
+                </li>
+              ))}
+            </ul>
+            {index === 1 && <div class="tag">Best Value</div>}
+          </Card>
+        ))
+    }
+  </div>
+</div>
+
+<style>
+  .plans {
+    & h3 {
+      font-size: var(--step-1);
+    }
+
+    & img {
+      width: 4rem;
+    }
+
+    & .price {
+      font-family: var(--font-heading);
+      font-weight: var(--font-heading-weight);
+      font-size: var(--step-2);
+    }
+
+    & :global(.card[data-theme="dark"] .price) {
+      color: var(--color-text-heading-dark);
+    }
+
+    & ul {
+      font-size: var(--step--1);
+
+      &.flow {
+        --flow-space: 0.5rem;
+      }
+    }
+
+    & .tag {
+      top: 1rem;
+      right: 1rem;
+    }
+  }
+</style>

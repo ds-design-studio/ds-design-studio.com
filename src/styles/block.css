@@ -1,29 +1,22 @@
+.hero {
+  &.inner-spacing {
+    margin-block-start: 12rem;
+    margin-block-end: calc(var(--section-spacer) * 0.75);
+  }
+}
+
 .card {
   &:hover {
     & .icon-wrapper {
-      background-color: transparent;
+      background-color: rgba(255, 255, 255, 0.75);
 
       & svg {
-        color: white;
+        color: var(--color-neutral-8);
       }
     }
   }
 
   &[data-theme="dark"] {
-    & :is(h2, h3) {
-      color: var(--color-text-heading-dark);
-    }
-
-    & p {
-      color: var(--color-text-body-dark);
-    }
-
-    & a {
-      &:hover {
-        color: var(--color-text-link-dark);
-      }
-    }
-
     & .color-underline {
       text-decoration-color: transparent;
 
@@ -50,6 +43,21 @@
   }
 }
 
+/* <ul>s with custom svg markers */
+.icon-list {
+  & .cluster {
+    --cluster-space: 0.5rem;
+  }
+
+  & svg {
+    position: relative;
+    top: -2px;
+    color: var(--color-primary-4);
+    width: 1em;
+    height: 1em;
+  }
+}
+
 .icon-wrapper {
   --icon-size: 1.5rem;
   border-radius: 0.5rem;
@@ -60,9 +68,9 @@
   display: inline-flex;
   position: relative;
   border: 1px solid var(--color-neutral-2);
-  color: var(--color-neutral-8);
-  background: var(--color-neutral-1);
-  transition: all 0.4s ease-in-out;
+  color: white; /* var(--color-neutral-8) */
+  background: transparent; /* var(--color-neutral-1) */
+  transition: background-color 0.3s ease-out;
 
   &.gradient {
     &::after {
@@ -88,5 +96,19 @@
     z-index: 1;
     width: var(--icon-size);
     height: var(--icon-size);
+    transition: color 0.3s ease-out;
   }
+}
+
+.tag {
+  position: absolute;
+  z-index: 5;
+  margin: 0;
+  font-size: var(--step--1);
+  font-weight: 700;
+  background: var(--color-primary-6);
+  color: white;
+  line-height: 1;
+  padding: 0.3rem 0.5rem 0.25rem;
+  border-radius: 3px;
 }

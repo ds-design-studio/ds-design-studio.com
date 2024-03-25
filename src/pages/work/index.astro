@@ -1,0 +1,55 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import CTA from "@components/page_sections/CTA.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+---
+
+<Layout headerTheme="normal">
+  <main slot="content">
+    <article class="hero | inner-spacing | flow">
+      <h1>Our Work</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+        eligendi maiores autem doloremque quo. Est harum vero alias consequuntur
+        culpa.
+      </p>
+    </article>
+    <div id="projects" class="grid-6 | content-wrapper">
+      {
+        projects.map((project) => (
+          <div>
+            <ProjectCard project={project} />
+          </div>
+        ))
+      }
+    </div>
+    <CTA />
+  </main>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+
+    & p {
+      max-width: var(--paragraph-measure);
+      margin-inline: auto;
+    }
+  }
+
+  .grid-6 {
+    gap: var(--space-2xl);
+    margin-block-end: var(--section-spacer);
+
+    & > * {
+      grid-column: span 3;
+    }
+
+    & > :nth-child(even) {
+      margin-block-start: var(--space-2xl);
+    }
+  }
+</style>

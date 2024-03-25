@@ -1,0 +1,15 @@
+title: Plus Plan
+summary: Best for sites that need monthly updates and strategic consultation.
+image:
+  src: ./support-plan-1.png
+  alt: alt
+price:
+  monthly: 250
+  annual: 100
+features:
+  - Monthly site review
+  - Monthly updates
+  - Annual site report
+  - Strategic consultation
+  - "<strong>2 hours</strong> of developer time/month"
+order: 2

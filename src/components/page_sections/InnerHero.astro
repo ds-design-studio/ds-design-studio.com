@@ -1,0 +1,63 @@
+---
+import Breadcrumb from "@components/Breadcrumb.astro";
+
+type Props = {
+  title?: string;
+  breadcrumbs?: {
+    current?: string;
+    parents?: {
+      name: string;
+      slug: string;
+    }[];
+  };
+};
+
+const { title, breadcrumbs } = Astro.props;
+---
+
+<article class="hero | dark">
+  <div class="grid-9 | content-wrapper background-lines">
+    <header class="text | flow">
+      <Breadcrumb
+        current={breadcrumbs?.current}
+        parents={breadcrumbs?.parents}
+      />
+      <h1>{title}</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+        accusamus distinctio commodi debitis quis deserunt!
+      </p>
+    </header>
+  </div>
+  <div class="rounded-block">
+    <div class="content-wrapper"></div>
+    <div></div>
+  </div>
+</article>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block-start: 10rem;
+    padding-block-end: 8rem;
+    background: var(--color-dark-gradient);
+    overflow: hidden;
+  }
+
+  .text {
+    position: relative;
+    z-index: 2;
+    grid-column: 1/8;
+  }
+
+  header {
+    &.flow {
+      --flow-space: 1.5rem;
+    }
+
+    & p {
+      font-size: var(--step-1);
+      text-wrap: balance;
+    }
+  }
+</style>

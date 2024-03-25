@@ -1,0 +1,39 @@
+---
+const { layout = "normal" } = Astro.props;
+---
+
+<div class="flex" data-layout={layout}>
+  <div class="img-wrapper">
+    <slot name="image" />
+  </div>
+  <div class="text | flow">
+    <slot name="text" />
+  </div>
+</div>
+
+<style>
+  .flex {
+    display: flex;
+    gap: var(--space-3xl);
+    align-items: center;
+    justify-content: center;
+
+    &[data-layout="flipped"] {
+      & > .text {
+        order: -1;
+      }
+    }
+  }
+
+  .img-wrapper {
+    max-width: 25rem;
+  }
+
+  .text {
+    max-width: 35rem;
+
+    &.flow {
+      gap: var(--space-l);
+    }
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+// const path = Astro.url.pathname;
+// const pathParts = path.split("/").filter(Boolean);
+
+type Props = {
+  current?: string;
+  parents?: {
+    name: string;
+    slug: string;
+  }[];
+};
+
+const { current, parents } = Astro.props;
+---
+
+<div class="breadcrumbs | cluster">
+  {
+    parents?.map((parent) => (
+      <>
+        <a class="small-title" href={`/${parent.slug}`}>
+          {parent.name}
+        </a>
+        <span>/</span>
+      </>
+    ))
+  }
+  <p class="current small-title">{current}</p>
+</div>
+
+<style>
+  .breadcrumbs {
+    position: relative;
+
+    &.cluster {
+      --cluster-space: 0.5rem;
+    }
+  }
+
+  .current {
+    color: var(--color-text-heading-dark);
+  }
+
+  span {
+    color: var(--color-primary-4);
+  }
+</style>

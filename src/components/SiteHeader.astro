@@ -20,7 +20,11 @@ const { theme = "normal", position = "relative" } = Astro.props;
           <>
             {entry.children !== undefined ? (
               <div class="popover" x-data x-popover>
-                <button class="nav-link" x-popover:button :class=`$popover.isOpen ? 'active' : ''`>
+                <button
+                  class="nav-link"
+                  x-popover:button
+                  x-bind:class="$popover.isOpen ? 'active' : ''"
+                >
                   <span>{entry.title}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -179,6 +183,11 @@ const { theme = "normal", position = "relative" } = Astro.props;
     box-shadow: var(--shadow-light);
     min-width: 14rem;
     animation: 0.2s fade-up ease-in-out;
+
+    & .icon-wrapper {
+      place-self: center;
+      color: var(--color-neutral-8);
+    }
 
     & a {
       color: inherit;

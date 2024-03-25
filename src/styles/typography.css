@@ -49,7 +49,13 @@ a:not(.button-link, .logo, .nav-link, .panel-link) {
   }
 }
 
-.dark {
+:where(.dark, [data-theme="dark"]) {
+  color: var(--color-text-body-dark);
+
+  & :is(h1, h2, h3) {
+    color: var(--color-text-heading-dark);
+  }
+
   & a:not(.button-link, .logo, .nav-link, .panel-link) {
     --link-color: var(--color-text-link-dark);
     --link-color-hover: var(--color-text-link-hover-dark);
@@ -119,5 +125,15 @@ a.color-underline {
 
   &.eyebrow {
     margin-block-end: var(--space-s);
+  }
+}
+
+.rich-content {
+  --block-spacing: var(--space-l);
+  max-width: var(--paragraph-measure);
+  margin-inline: auto;
+
+  & > * + * {
+    margin-block-start: var(--block-spacing);
   }
 }

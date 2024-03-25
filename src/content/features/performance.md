@@ -2,6 +2,7 @@
 title: Performance
 tagline: Living on the edge
 summary: Best practices that prioritize a leaner, more user-friendly experience.
+icon: shield
 order: 3
 ---
 

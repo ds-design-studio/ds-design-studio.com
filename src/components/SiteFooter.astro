@@ -30,9 +30,7 @@ const copyright = format({
             <ul class="flow" role="list">
               {entry.children.map((childEntry) => (
                 <li>
-                  <a class="" href={`/${childEntry.slug}`}>
-                    {childEntry.title}
-                  </a>
+                  <a href={`/${childEntry.slug}`}>{childEntry.title}</a>
                 </li>
               ))}
             </ul>
@@ -44,14 +42,13 @@ const copyright = format({
   <div class="subfooter | content-wrapper cluster">
     <div>{`© ${copyright}, Daniel Saunders`}</div>
     <div>
-      <a class="footer-link" href="/privacy">Privacy Statement</a>
+      <a href="/privacy">Privacy Statement</a>
     </div>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    color: var(--color-text-body-dark);
     background: var(--color-darker-gradient);
     padding-block-start: var(--section-spacer);
   }
@@ -60,15 +57,6 @@ const copyright = format({
     display: grid;
     grid-template-columns: 2.5fr repeat(4, 1fr);
     gap: var(--space-l);
-  }
-
-  .footer-link {
-    text-decoration-color: var(--color-neutral-7);
-
-    &:hover {
-      color: var(--color-text-link-dark);
-      text-decoration-color: var(--color-primary-4);
-    }
   }
 
   .column {
@@ -89,7 +77,7 @@ const copyright = format({
     font-size: var(--step--1);
     margin-block-start: var(--space-3xl);
     padding-block: var(--space-m);
-    border-block-start: 1px solid var(--color-neutral-8);
+    border-block-start: 1px solid var(--color-neutral-9);
 
     &.cluster {
       --cluster-justify: space-between;

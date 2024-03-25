@@ -25,9 +25,9 @@ entries:
     slug: /about
     children:
       - title: Our Process
-        slug: /about
+        slug: /about/our-process
       - title: Pricing
-        slug: /about
+        slug: /about/pricing
       - title: Who We Are
         slug: /about
   - title: Blog

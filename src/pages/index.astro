@@ -4,16 +4,18 @@ import Card from "@components/Card.astro";
 import ButtonLink from "@components/ButtonLink.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import ServicesGrid from "@components/page_sections/ServicesGrid.astro";
+import Tools from "@components/page_sections/Tools.astro";
 import HomeHero from "@components/page_sections/HomeHero.astro";
 import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
 import Testimonials from "@components/page_sections/Testimonials.astro";
 import CTA from "@components/page_sections/CTA.astro";
 import { Image } from "astro:assets";
 import { getEntries } from "astro:content";
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 // const features = await getCollection("features");
 const services = await getCollection("services");
-const tools = await getCollection("tools");
+const featuredProject = await getEntry("projects", "haymarket-writing-freedom");
+// const tools = await getCollection("tools");
 // const features = await getEntries(services)
 
 import shapes1 from "@assets/shapes-1.png";
@@ -25,8 +27,8 @@ import illustration3 from "@assets/illustration-3.png";
 <Layout>
   <main slot="content">
     <HomeHero />
-    <div class="home-content">
-      <div class="bg-gradient">
+    <div class="content-offset">
+      <div class="section-bg-gradient">
         <article class="content-wrapper" id="services">
           <SectionHeader align="left">
             <Fragment slot="text">
@@ -49,7 +51,8 @@ import illustration3 from "@assets/illustration-3.png";
           <ServicesGrid
             entries={services.sort((a, b) => a.data.order - b.data.order)}
           />
-          <div class="small-title text-gradient mx-auto">Our Tools</div>
+          <Tools />
+          <!-- <div class="small-title text-gradient mx-auto">Our Tools</div>
           <div class="logo-cloud | grid-6 centered">
             {
               tools
@@ -67,11 +70,11 @@ import illustration3 from "@assets/illustration-3.png";
                   </div>
                 ))
             }
-          </div>
+          </div> -->
         </article>
       </div>
     </div>
-    <article class="content-wrapper" id="approach">
+    <article class="content-wrapper section-spacer" id="approach">
       <SectionHeader align="center">
         <Fragment slot="text">
           <div class="eyebrow | small-title text-gradient mx-auto">
@@ -133,43 +136,10 @@ import illustration3 from "@assets/illustration-3.png";
         <ButtonLink href="/our-approach">Our Approach</ButtonLink>
       </div>
     </article>
-    <FeaturedProject />
+    <FeaturedProject project={featuredProject} />
     <Testimonials />
     <CTA />
   </main>
 </Layout>
 
-<style>
-  .home-content {
-    & .content-wrapper {
-      padding-inline-start: var(--space-xl);
-    }
-  }
-
-  .bg-gradient {
-    background: linear-gradient(to bottom, transparent, var(--color-neutral-1));
-    padding-block-end: var(--space-2xl);
-  }
-
-  .logo-cloud {
-    margin-block-start: var(--space-l);
-    font-family: var(--font-heading);
-    gap: var(--space-l);
-
-    & img {
-      transition: transform 0.3s linear;
-    }
-
-    & > div {
-      &:hover {
-        & img {
-          transform: scale(1.15);
-        }
-      }
-    }
-  }
-
-  #approach {
-    margin-block: var(--section-spacer);
-  }
-</style>
+<style></style>

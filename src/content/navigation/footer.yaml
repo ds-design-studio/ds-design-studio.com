@@ -19,13 +19,15 @@ entries:
   - title: About
     children:
       - title: Our Process
-        slug: about
+        slug: about/our-process
       - title: Pricing
         slug: about
       - title: Who We Are
         slug: about
   - title: More
     children:
+      - title: Get a Quote
+        slug: contact
       - title: Blog
         slug: blog
       - title: Get the Newsletter
