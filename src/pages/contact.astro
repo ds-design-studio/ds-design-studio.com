@@ -1,0 +1,95 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import CTA from "@components/page_sections/CTA.astro";
+---
+
+<Layout headerTheme="normal">
+  <main slot="content">
+    <article class="hero | content-wrapper | inner-spacing flow">
+      <h1>Contact</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+        eligendi maiores autem doloremque quo. Est harum vero alias consequuntur
+        culpa.
+      </p>
+      <form>
+        <div class="form-item">
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Daniel Saunders"
+            autocomplete="name"
+            required
+          />
+        </div>
+        <div class="form-item">
+          <label for="email">Your Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="daniel@danielsaunders.xyz"
+            autocomplete="email"
+            required
+          />
+        </div>
+        <div class="form-item">
+          <label for="org">Your Organization</label>
+          <input type="text" name="org" id="org" placeholder="DS Design" />
+        </div>
+        <div class="checkbox-group">
+          <div>
+            <label for="services-website">Website</label>
+            <input
+              type="checkbox"
+              name="services-website"
+              id="services-website"
+              checked
+            />
+          </div>
+          <div>
+            <label for="services-cms">Content Management System</label>
+            <input type="checkbox" name="services-cms" id="services-cms" />
+          </div>
+          <div>
+            <label for="services-ongoing-support">Web Support</label>
+            <input
+              type="checkbox"
+              name="services-ongoing-support"
+              id="services-ongoing-support"
+            />
+          </div>
+          <div>
+            <label for="services-design">Other Design</label>
+            <input
+              type="checkbox"
+              name="services-design"
+              id="services-design"
+            />
+          </div>
+        </div>
+        <div class="form-item">
+          <label for="budget">Budget</label>
+          <select name="budget" id="budget" required>
+            <option value="3500-5000">$3,500 to $5,000</option>
+            <option value="6500-9000">$6,500 to $9,000</option>
+            <option value="9500-15000">$9,500 to $15,000</option>
+            <option value="15000+">More than $15,000</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <label for="message">Message</label>
+          <textarea
+            name="message"
+            id="message"
+            rows="5"
+            placeholder="Context about your project"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </article>
+  </main>
+</Layout>

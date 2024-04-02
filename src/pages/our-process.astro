@@ -1,0 +1,100 @@
+---
+import Layout from "@layouts/Layout.astro";
+import InnerHero from "@components/page_sections/InnerHero.astro";
+import Process from "@components/page_sections/Process.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import FAQs from "@components/page_sections/FAQs.astro";
+import Icon from "@components/Icon.astro";
+import Card from "@components/Card.astro";
+import { Image } from "astro:assets";
+import TextImageBlock from "@components/TextImageBlock.astro";
+import featuredImage from "@assets/computer-illustration-1.png";
+import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import type { IconName } from "@components/Icon.astro";
+
+const faqs = await getEntry("faqs", "processFaqs");
+
+const principles = await getCollection("principles");
+---
+
+<Layout headerTheme="dark">
+  <main slot="content">
+    <InnerHero title="Our Process" />
+    <Process />
+    <!-- <div class="section-bg-gradient">
+        <div class="content-wrapper">
+          <TextImageBlock layout="flipped">
+            <Fragment slot="image">
+              <Image
+                src={featuredImage}
+                alt=""
+                width={900}
+                loading="eager"
+                format="webp"
+              />
+            </Fragment>
+            <Fragment slot="text">
+              <div class="flow">
+                <h2>A Considered Approach</h2>
+                <p>
+                  Before so much as a pixel is edited, it’s important to have a
+                  blueprint. We collaborate on the content, design, and
+                  architecture of your site so that it looks and feels great for
+                  real users (including you).
+                </p>
+              </div></Fragment
+            >
+          </TextImageBlock>
+        </div>
+      </div> -->
+    <article id="values" class="section-bg-gradient">
+      <div class="content-wrapper">
+        <SectionHeader align="center">
+          <Fragment slot="text">
+            <div class="eyebrow | small-title text-gradient mx-auto">
+              Our Principles
+            </div>
+            <h2 class="text-step-4">
+              Crafting beautiful experiences for the modern web
+            </h2>
+          </Fragment>
+        </SectionHeader>
+        <div class="principles | grid-6">
+          {
+            principles
+              .sort((a, b) => a.data.order - b.data.order)
+              .map(({ data }, index) => (
+                <div class="flow">
+                  <Icon
+                    name={data.icon as IconName}
+                    color={
+                      index % 2
+                        ? "var(--color-primary-5)"
+                        : "var(--color-secondary-4)"
+                    }
+                    size="1.5em"
+                  />
+                  <h3>{data.title}</h3>
+                  <p>{data.summary}</p>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+    </article>
+    <FAQs faqs={faqs} />
+  </main>
+</Layout>
+
+<style>
+  .grid-6 {
+    row-gap: var(--space-2xl);
+  }
+
+  .principles {
+    & h3 {
+      font-size: var(--step-1);
+    }
+  }
+</style>

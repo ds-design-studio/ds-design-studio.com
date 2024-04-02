@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  faqs: CollectionEntry<"faqs">;
+};
+
+const { faqs } = Astro.props;
+---
+
+<article id="faqs">
+  <div class="content-wrapper">
+    <slot name="header"><h2>FAQs</h2></slot>
+    <div class="grid-6">
+      {
+        faqs.data.entries.map((faq) => (
+          <div class="flow">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  article {
+    margin-block: var(--section-spacer);
+  }
+
+  .grid-6 {
+    gap: var(--space-2xl);
+
+    & > * {
+      grid-column: span 3;
+    }
+  }
+
+  h3 {
+    font-size: var(--step-1);
+  }
+</style>

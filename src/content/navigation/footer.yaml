@@ -12,22 +12,24 @@ entries:
         slug: services/ongoing-support
   - title: Work
     children:
-      - title: Case Study 1
-        slug: work/case-study-1
+      - title: All Work
+        slug: work
+      - title: Haymarket Writing Freedom
+        slug: work/haymarket-writing-freedom
       - title: Case Study 2
         slug: work/case-study-2
-  - title: About
+  - title: Studio
     children:
       - title: Our Process
-        slug: about/our-process
-      - title: Pricing
-        slug: about
-      - title: Who We Are
+        slug: our-process
+      - title: About
         slug: about
   - title: More
     children:
       - title: Get a Quote
         slug: contact
+      - title: Price Estimator
+        slug: pricing
       - title: Blog
         slug: blog
       - title: Get the Newsletter

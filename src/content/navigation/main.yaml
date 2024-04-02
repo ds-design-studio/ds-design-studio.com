@@ -21,14 +21,16 @@ entries:
         tagline: Lorem ipsum sit dolor amet
   - title: Work
     slug: /work
+  - title: Our Process
+    slug: /our-process
   - title: About
     slug: /about
-    children:
-      - title: Our Process
-        slug: /about/our-process
-      - title: Pricing
-        slug: /about/pricing
-      - title: Who We Are
-        slug: /about
+    # children:
+    #   - title: Our Process
+    #     slug: /about/our-process
+    #   - title: Pricing
+    #     slug: /about/pricing
+    #   - title: Who We Are
+    #     slug: /about
   - title: Blog
     slug: /blog

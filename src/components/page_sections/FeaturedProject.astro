@@ -17,7 +17,7 @@ type Props = {
 };
 
 const { project, serviceType } = Astro.props;
-const { title, summary, featuredImage, scope } = project.data;
+const { title, summary, featuredImage, scope } = project?.data;
 ---
 
 <article class="featured | dark" id="featured-project">
@@ -59,7 +59,7 @@ const { title, summary, featuredImage, scope } = project.data;
           ))
         }
       </ul>
-      <ButtonLink href={`/work/${project.slug}`}>See More</ButtonLink>
+      <ButtonLink href={`/work/${project?.slug}`}>See More</ButtonLink>
     </div>
   </div>
   <Image

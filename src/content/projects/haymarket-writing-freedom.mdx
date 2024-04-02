@@ -1,0 +1,92 @@
+---
+title: Writing Freedom Fellowship
+summary: Elevating the voices of creative writers impacted by carceral systems.
+client: Haymarket Books
+featuredImage:
+  src: ./writing-freedom-presentation.png
+  alt: Test alt
+thumbnailImage:
+  src: ./writing-freedom-presentation.png
+  alt: Test alt
+galleryImages:
+  - src: ./writing-freedom-presentation.png
+    alt: alt
+  - src: ./writing-freedom-test.jpg
+    alt: alt
+  - src: ./whittier-featured.jpg
+    alt: alt
+type: website
+services:
+  - web-design
+  - frontend-development
+tools:
+  - figma
+  - astro
+  - sanity
+  - gsap
+scope:
+  - Responsive Web Design
+  - Prototyping
+  - Animations
+  - Static/Jamstack Development
+  - Frontend Development
+  - Sanity CMS Integration
+url: https://writing-freedom.org
+---
+
+import TextImageBlock from "../../components/TextImageBlock.astro";
+import { Image } from "astro:assets";
+import illustration from "../../assets/illustration-1.png";
+import illustration2 from "../../assets/illustration-2.png";
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur commodi molestias illo laboriosam nihil, impedit nulla quod reprehenderit molestiae dolorum. Voluptatum est fugiat labore explicabo!
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur commodi molestias illo laboriosam nihil, impedit nulla quod reprehenderit molestiae dolorum. Voluptatum est fugiat labore explicabo!
+
+<div class="feature">
+  <Image
+    class="article-img"
+    src={illustration}
+    alt=""
+    width={1200}
+    loading="eager"
+    format="webp"
+  />
+  <div class="flow">
+    <h2>Solution</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolore
+      corrupti, perferendis omnis cumque veritatis illum tenetur eligendi rem
+      est non sunt aspernatur, aliquam quas.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolore
+      corrupti, perferendis omnis cumque veritatis illum tenetur eligendi rem
+      est non sunt aspernatur, aliquam quas.
+    </p>
+  </div>
+</div>
+
+<div class="feature" data-layout="flipped">
+  <Image
+    class="article-img"
+    src={illustration2}
+    alt=""
+    width={1200}
+    loading="eager"
+    format="webp"
+  />
+  <div class="flow">
+    <h2>Heading 2</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolore
+      corrupti, perferendis omnis cumque veritatis illum tenetur eligendi rem
+      est non sunt aspernatur, aliquam quas.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolore
+      corrupti, perferendis omnis cumque veritatis illum tenetur eligendi rem
+      est non sunt aspernatur, aliquam quas.
+    </p>
+  </div>
+</div>

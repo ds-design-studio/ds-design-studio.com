@@ -110,7 +110,20 @@ a.color-underline {
     position: relative;
     top: -1px;
     height: 1em;
+    width: 1em;
     transition: all 0.2s ease-out;
+  }
+
+  &.animate-up-right:hover {
+    & svg {
+      transform: translate(0.25rem, -0.1rem);
+    }
+  }
+
+  &.animate-right:hover {
+    & svg {
+      transform: translateX(0.25rem);
+    }
   }
 }
 

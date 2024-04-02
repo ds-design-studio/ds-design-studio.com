@@ -9,7 +9,7 @@ const projects = await getCollection("projects");
 
 <Layout headerTheme="normal">
   <main slot="content">
-    <article class="hero | inner-spacing | flow">
+    <article class="hero | content-wrapper | inner-spacing flow">
       <h1>Our Work</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
@@ -33,6 +33,10 @@ const projects = await getCollection("projects");
 <style>
   .hero {
     text-align: center;
+
+    & h1 {
+      font-size: var(--step-5);
+    }
 
     & p {
       max-width: var(--paragraph-measure);

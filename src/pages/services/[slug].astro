@@ -56,35 +56,33 @@ const { Content } = await page.render();
         parents: [{ name: "Services", slug: "services" }],
       }}
     />
-    <div class="content-offset">
-      <div class="section-bg-gradient">
-        <div class="content-wrapper">
-          <!-- Intro block -->
-          <TextImageBlock>
-            <Fragment slot="image">
-              <Image
-                src={placeholder}
-                alt=""
-                width={900}
-                loading="eager"
-                format="webp"
-              />
-            </Fragment>
-            <Fragment slot="text">
-              <div class="flow">
-                <h2>{tagline}</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Delectus quaerat nisi dolor, voluptate totam aspernatur
-                  maiores minima labore nihil facilis.
-                </p>
-              </div>
-              <ButtonLink href="#">Get Quote</ButtonLink>
-            </Fragment>
-          </TextImageBlock>
-          <!-- Feature grid -->
-          {
-            page.slug !== "ongoing-support" && (
+    {
+      page.slug !== "ongoing-support" && (
+        <div class="content-offset">
+          <div class="section-bg-gradient">
+            <div class="content-wrapper">
+              <TextImageBlock>
+                <Fragment slot="image">
+                  <Image
+                    src={placeholder}
+                    alt=""
+                    width={900}
+                    loading="eager"
+                    format="webp"
+                  />
+                </Fragment>
+                <Fragment slot="text">
+                  <div class="flow">
+                    <h2>{tagline}</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Delectus quaerat nisi dolor, voluptate totam aspernatur
+                      maiores minima labore nihil facilis.
+                    </p>
+                  </div>
+                  <ButtonLink href="#">Get Quote</ButtonLink>
+                </Fragment>
+              </TextImageBlock>
               <div class="grid-6" id="features">
                 {page.features.map(({ data }) => (
                   <Card>
@@ -100,11 +98,11 @@ const { Content } = await page.render();
                   </Card>
                 ))}
               </div>
-            )
-          }
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )
+    }
     <!-- Page specific sections -->
     {page.slug === "frontend-development" && <Frameworks />}
     {page.slug === "ongoing-support" && <SupportPlans />}

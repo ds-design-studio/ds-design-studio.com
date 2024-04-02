@@ -12,7 +12,7 @@ import shapes1 from "@assets/shapes-1.png";
 import bgGradient from "@assets/blob-bg-2-grain.png";
 ---
 
-<article class="content-wrapper">
+<article id="phases" class="content-wrapper">
   <div class="intro">
     <SectionHeader align="left">
       <Fragment slot="text">
@@ -118,12 +118,17 @@ import bgGradient from "@assets/blob-bg-2-grain.png";
       </div>
     </div>
   </div>
+  <div>
+    <div class="border-divider"></div>
+    <div class="rule"></div>
+  </div>
 </article>
 
 <style>
   article {
     --border-color: var(--color-primary-2);
     --border-width: 2px;
+    margin-block-end: calc(var(--section-spacer) * 0.5);
     /* margin-block: var(--section-spacer); */
   }
 
@@ -144,9 +149,11 @@ import bgGradient from "@assets/blob-bg-2-grain.png";
 
   .tabs-wrapper {
     margin-block-start: calc(var(--section-spacer) * -0.25);
+    margin-block-end: 0;
     padding-block-start: calc(var(--section-spacer) * 0.5);
   }
 
+  /* Tab buttons */
   .tab-list {
     &.flow {
       --flow-space: var(--space-s);
@@ -212,6 +219,7 @@ import bgGradient from "@assets/blob-bg-2-grain.png";
     }
   }
 
+  /* Tab panels */
   .tab-panels-wrapper {
     position: relative;
     display: flex;
@@ -399,6 +407,33 @@ import bgGradient from "@assets/blob-bg-2-grain.png";
 
     & img {
       opacity: 0.2;
+    }
+  }
+
+  /* Divider */
+  .border-divider {
+    height: var(--section-spacer);
+    border-left: var(--border-width) solid var(--border-color);
+
+    & + .rule {
+      position: relative;
+      top: 0;
+      width: 50%;
+      height: var(--border-width);
+      background-color: var(--border-color);
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: -1rem;
+        top: -7px;
+        height: 1rem;
+        width: 1rem;
+        border-radius: 50%;
+        background-color: var(--color-primary-4);
+        border: var(--border-width) solid white;
+        z-index: 2;
+      }
     }
   }
 </style>

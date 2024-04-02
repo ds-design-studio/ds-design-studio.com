@@ -160,3 +160,24 @@
 .text-step-7 {
   font-size: var(--step-7);
 }
+
+/* Rhythm Spacing */
+.mt-s {
+  margin-block-start: var(--space-s);
+}
+
+.mt-m {
+  margin-block-start: var(--space-m);
+}
+
+.mt-l {
+  margin-block-start: var(--space-l);
+}
+
+.mt-xl {
+  margin-block-start: var(--space-xl);
+}
+
+.mt-2xl {
+  margin-block-start: var(--space-2xl);
+}

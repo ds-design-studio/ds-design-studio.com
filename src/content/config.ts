@@ -82,8 +82,22 @@ const projects = defineCollection({
         src: image(),
         alt: z.string(),
       }),
+      thumbnailImage: z.object({
+        src: image(),
+        alt: z.string(),
+      }),
+      galleryImages: z
+        .array(
+          z.object({
+            src: image(),
+            alt: z.string(),
+          })
+        )
+        .optional(),
       client: z.string(),
       type: z.string(),
+      services: z.array(reference("services")),
+      tools: z.array(reference("tools")),
       scope: z.array(z.string()),
       url: z.string().url().optional(),
     }),
@@ -131,6 +145,28 @@ const projectPhases = defineCollection({
   }),
 });
 
+const faqs = defineCollection({
+  type: "data",
+  schema: z.object({
+    entries: z.array(
+      z.object({
+        question: z.string(),
+        answer: z.string(),
+      })
+    ),
+  }),
+});
+
+const principles = defineCollection({
+  type: "data",
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    order: z.number(),
+    icon: z.string(),
+  }),
+});
+
 export const collections = {
   navigation,
   features,
@@ -141,4 +177,6 @@ export const collections = {
   testimonials,
   supportPlans,
   projectPhases,
+  faqs,
+  principles,
 };

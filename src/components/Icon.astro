@@ -1,16 +1,35 @@
 ---
 // https://heroicons.com/solid
 // prettier-ignore
-export type IconName = "computer" | "cube" | "chat-bubbles" | "swatch" | "layout" | "envelope" | "arrows-out" | "arrow-down-square" | "bolt" | "chart-pie" | "chart-bar" | "circle-stack" | "code" | "cog" | "document" | "shield" | "window" | "mobile" | "user-group";
+export type IconName = "arrow-up-right" | "computer" | "cube" | "chat-bubbles" | "swatch" | "layout" | "envelope" | "arrows-out" | "arrow-down-square" | "bolt" | "chart-pie" | "chart-bar" | "circle-stack" | "code" | "cog" | "document" | "shield" | "window" | "mobile" | "user-group";
 
 type Props = {
   name: IconName;
-  color: string;
-  size: string;
+  color?: string;
+  size?: string;
 };
 
 const { name, color = "currentColor", size = "1em" } = Astro.props;
 ---
+
+{
+  name === "arrow-up-right" && (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill={color}
+      height={size}
+      width={size}
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  )
+}
 
 {
   name === "computer" && (
