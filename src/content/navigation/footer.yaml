@@ -16,21 +16,21 @@ entries:
         slug: work
       - title: Haymarket Writing Freedom
         slug: work/haymarket-writing-freedom
-      - title: Case Study 2
-        slug: work/case-study-2
+      - title: San Marino Community Church
+        slug: work/san-marino-cc
   - title: Studio
     children:
-      - title: Our Process
-        slug: our-process
+      - title: Process
+        slug: process
       - title: About
         slug: about
   - title: More
     children:
       - title: Get a Quote
         slug: contact
-      - title: Price Estimator
-        slug: pricing
-      - title: Blog
-        slug: blog
+      # - title: Price Estimator
+      #   slug: pricing
+      # - title: Blog
+      #   slug: blog
       - title: Get the Newsletter
         slug: newsletter

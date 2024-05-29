@@ -66,7 +66,7 @@ const { Content } = await page.render();
       </header>
       <dl>
         <dt><strong>Services</strong></dt>
-        <dd class="cluster">
+        <dd class="services | cluster">
           {
             page.services.map((service) => (
               <a href={`/services/${service.slug}`}>{service.data.title}</a>
@@ -74,14 +74,20 @@ const { Content } = await page.render();
           }
         </dd>
         <dt><strong>Scope</strong></dt>
-        <dd class="cluster">
+        <dd class="scope | cluster">
           {page.data.scope.join(", ")}
         </dd>
         <dt><strong>Tools</strong></dt>
-        <dd class="cluster">
+        <dd class="tools | cluster">
           {
             page.tools.map((tool) => (
-              <span aria-label={tool.data.title}>
+              <span
+                class="relative"
+                aria-label={tool.data.title}
+                x-data="{ show: false }"
+                x-on:mouseenter="show = true"
+                x-on:mouseleave="show = false"
+              >
                 <Image
                   src={tool.data.logo}
                   alt={`${tool.data.title} logo.`}
@@ -89,6 +95,14 @@ const { Content } = await page.render();
                   height={24}
                   format="svg"
                 />
+                <p
+                  class="tooltip"
+                  x-bind:class="show && 'show'"
+                  role="alert"
+                  aria-live="polite"
+                >
+                  {tool.data.title}
+                </p>
               </span>
             ))
           }
@@ -126,10 +140,7 @@ const { Content } = await page.render();
   .grid-9 {
     row-gap: var(--space-xl);
     grid-template-columns:
-      [content-start main-start] repeat(3, 1fr) [indent-start] repeat(3, 1fr) [main-end sidebar-start] repeat(
-        3,
-        1fr
-      )
+      [content-start main-start] 1fr 1fr [center-start] 1fr [indent-start] 1fr 1fr 1fr [main-end sidebar-start] 1fr [center-end] 1fr 1fr
       [sidebar-end content-end];
   }
 
@@ -147,7 +158,7 @@ const { Content } = await page.render();
       grid-template-columns: subgrid;
       grid-column: sidebar-start / sidebar-end;
       font-size: var(--step--1);
-      margin-block-start: var(--space-xl);
+      margin-block-start: calc(var(--space-xl) + 1rem);
 
       & :is(dt, dd):not(:first-of-type) {
         margin-block-start: var(--space-m);
@@ -161,10 +172,16 @@ const { Content } = await page.render();
           column-gap: 1rem;
           row-gap: 0.5rem;
         }
+      }
+
+      & .tools {
+        &.cluster {
+          column-gap: 1.25rem;
+        }
 
         & img {
-          width: 2em;
-          height: 2em;
+          width: 1.5em;
+          height: 1.5em;
           aspect-ratio: 1;
           object-fit: contain;
         }
@@ -173,7 +190,7 @@ const { Content } = await page.render();
   }
 
   h1 {
-    margin-block-start: var(--space-m);
+    margin-block-start: var(--space-l);
   }
 
   .gallery {
@@ -215,6 +232,8 @@ const { Content } = await page.render();
   }
 
   .rich-content {
+    --block-spacing: var(--space-2xl);
+    --text-spacing: var(--space-m);
     margin-block-end: var(--section-spacer);
   }
 
@@ -226,18 +245,32 @@ const { Content } = await page.render();
     max-width: none;
   }
 
-  :global(.rich-content.subgrid p) {
+  /* :global(.rich-content.subgrid p) {
     grid-column: content-start / main-end;
+  } */
+
+  /* :global(.rich-content.subgrid img:nth-of-type(1)) {
+    grid-column: sidebar-start / sidebar-end;
+  } */
+
+  :global(.rich-content.subgrid .full-width) {
+    grid-column: content-start/content-end;
   }
 
-  :global(.rich-content.subgrid img:nth-of-type(1)) {
-    grid-column: sidebar-start / sidebar-end;
+  :global(.rich-content.subgrid .centered, .rich-content.subgrid .stats) {
+    grid-column: center-start/center-end;
+  }
+
+  :global(.rich-content.subgrid .stats) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-m);
   }
 
   :global(.rich-content.subgrid .feature) {
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 / span all;
+    grid-column: content-start/content-end;
     align-items: center;
   }
 
@@ -256,5 +289,19 @@ const { Content } = await page.render();
   :global(.rich-content.subgrid .feature[data-layout="flipped"] div) {
     order: -1;
     grid-column: content-start / 6;
+  }
+
+  /* :global(
+      .rich-content.subgrid .feature .feature-content :is(h2, h3),
+      .rich-content.subgrid .block :is(h2, h3)
+    ) {
+    margin-block-end: var(--text-spacing);
+  } */
+
+  :global(
+      .rich-content.subgrid .feature .feature-content * + *,
+      .rich-content.subgrid .block * + *
+    ) {
+    margin-block-start: var(--text-spacing);
   }
 </style>

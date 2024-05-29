@@ -3,6 +3,7 @@ import Breadcrumb from "@components/Breadcrumb.astro";
 
 type Props = {
   title?: string;
+  intro?: string;
   breadcrumbs?: {
     current?: string;
     parents?: {
@@ -12,7 +13,7 @@ type Props = {
   };
 };
 
-const { title, breadcrumbs } = Astro.props;
+const { title, intro, breadcrumbs } = Astro.props;
 ---
 
 <article class="hero | dark">
@@ -22,11 +23,8 @@ const { title, breadcrumbs } = Astro.props;
         current={breadcrumbs?.current}
         parents={breadcrumbs?.parents}
       />
-      <h1>{title}</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
-        accusamus distinctio commodi debitis quis deserunt!
-      </p>
+      <h1 set:html={title} />
+      {intro && <p>{intro}</p>}
     </header>
   </div>
   <div class="rounded-block">

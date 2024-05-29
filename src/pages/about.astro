@@ -1,19 +1,183 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
+import Stats from "@components/mdx/Stats.astro";
+import Team from "@components/page_sections/Team.astro";
+import { Image } from "astro:assets";
+import InnerHero from "@components/page_sections/InnerHero.astro";
 import CTA from "@components/page_sections/CTA.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import TextImageBlock from "@components/TextImageBlock.astro";
+import Icon from "@components/Icon.astro";
+import type { IconName } from "@components/Icon.astro";
+import { getCollection } from "astro:content";
+
+import shapes1 from "@assets/shapes-1.png";
+import calloutBgImage from "@assets/shape-pattern-1.svg";
+
+const testimonials = await getCollection("testimonials");
+
+const capabilities = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "PHP",
+  "Astro",
+  "Sanity",
+  "Laravel",
+  "Statamic",
+  "WordPress",
+  "Alpine",
+  "Svelte",
+  "HTMX",
+  "Cloudflare",
+  "Deno",
+  "Postman",
+  "Git",
+  "Accessibility",
+  "UI/UX",
+  "Typography",
+  "Visual Design",
+  "Web animation",
+];
 ---
 
-<Layout headerTheme="normal">
+<Layout headerTheme="dark">
   <main slot="content">
-    <article class="hero | content-wrapper | inner-spacing flow">
-      <h1>About</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-        eligendi maiores autem doloremque quo. Est harum vero alias consequuntur
-        culpa.
-      </p>
-    </article>
+    <InnerHero title="About" />
+    <div class="content-offset">
+      <div class="section-bg-gradient">
+        <div class="content-wrapper">
+          <Team testimonials={testimonials.slice(0, 2)} />
+          <!-- <SectionHeader align="left">
+            <Fragment slot="text">
+              <div class="eyebrow | small-title text-gradient">How We Work</div>
+              <h2 class="text-step-4">Crafting beautiful experiences</h2>
+            </Fragment>
+            <Image
+              slot="image"
+              src={shapes1}
+              alt=""
+              width={600}
+              format="webp"
+              loading="eager"
+            />
+          </SectionHeader>
+          <div class="rich-content">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
+              cupiditate reprehenderit impedit voluptatibus iure, obcaecati
+              animi officiis aspernatur at voluptatem.
+            </p>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
+              cupiditate reprehenderit impedit voluptatibus iure, obcaecati
+              animi officiis aspernatur at voluptatem.
+            </p>
+            <div class="about-stats grid-6">
+              <Stats
+                items={[
+                  { highlight: "100x", description: "lorem ipsum" },
+                  { highlight: "200", description: "lorem ipsum" },
+                  { highlight: "200", description: "lorem ipsum" },
+                ]}
+              />
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="content-wrapper">
+      <article class="callout | dark">
+        <header class="flow">
+          <h2 class="text-gradient">Capabilities</h2>
+          <p>
+            In an era of fractured specializations, I wear the badge of web
+            “generalist” with pride. I’m comfortable on all sides of the
+            technological and creative spectrums, able to move seamlessly
+            between content schemas, typographic rules, and JavaScript
+            libraries. I’m not sure if that makes me the fabled full-stack
+            unicorn or not, but it does help me guide clients intelligently
+            through every step of the process.
+          </p>
+        </header>
+        <div class="capabilities | cluster">
+          {capabilities.map((item) => <p>{item}</p>)}
+          <!-- <div class="flow">
+            <h3>Heading</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+          <div class="flow">
+            <h3>Heading</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+          <div class="flow">
+            <h3>Heading</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div> -->
+        </div>
+        <Image
+          class="bg-image"
+          src={calloutBgImage}
+          alt=""
+          width={600}
+          format="svg"
+          loading="lazy"
+        />
+      </article>
+    </div>
+    <!-- <div class="content-wrapper">
+      <Team testimonials={testimonials.slice(0, 2)} />
+    </div> -->
     <CTA />
   </main>
 </Layout>
+
+<style>
+  .section-bg-gradient {
+    padding-block-end: 8rem;
+  }
+
+  .rich-content {
+    margin-inline: 0;
+  }
+
+  :global(.about-stats .stats) {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / span all;
+  }
+
+  :global(.about-stats .stats > *) {
+    grid-column: span 2;
+  }
+
+  .callout {
+    top: -5rem;
+
+    & h3 {
+      font-size: var(--step-1);
+    }
+
+    & .grid-6 {
+      margin-block-end: 0;
+    }
+  }
+
+  .capabilities {
+    margin-block-start: var(--space-m);
+
+    & p {
+      padding: 0.5rem 0.75rem;
+      background-color: var(--color-neutral-9);
+      border: 1px solid var(--color-neutral-8);
+      border-radius: var(--rounded-corners-small);
+      line-height: var(--leading-tight);
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: var(--color-neutral-10);
+      }
+    }
+  }
+</style>

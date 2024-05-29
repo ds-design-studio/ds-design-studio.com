@@ -1,14 +1,15 @@
 ---
 import ButtonLink from "@components/ButtonLink.astro";
 import { Image } from "astro:assets";
-import bgImage from "@assets/shape-pattern-1.svg";
+
+import calloutBgImage from "@assets/shape-pattern-1.svg";
 ---
 
 <div class="cta-bg">
   <article class="content-wrapper">
     <div
-      class="cta | dark"
-      x-data="{ messages: ['marketing website', 'content website', 'x website'] }"
+      class="cta callout | dark"
+      x-data="{ messages: ['marketing website', 'content website', 'non-profit website', 'consulting website', 'personal website', 'church website', 'business website', 'media website'] }"
     >
       <div
         class="text | flow"
@@ -23,7 +24,7 @@ import bgImage from "@assets/shape-pattern-1.svg";
       </div>
       <Image
         class="bg-image"
-        src={bgImage}
+        src={calloutBgImage}
         alt=""
         width={600}
         format="svg"
@@ -31,40 +32,20 @@ import bgImage from "@assets/shape-pattern-1.svg";
       />
     </div>
   </article>
-  <!-- <Image src={bgImage} alt="" width={600} format="svg" loading="lazy" /> -->
 </div>
 
 <style>
   .cta {
-    position: relative;
     text-align: center;
-    padding: var(--space-2xl);
     margin-block: var(--section-spacer);
-    border-radius: var(--rounded-corners);
-    box-shadow: var(--shadow-regular);
-    border: 1px solid var(--color-neutral-10);
-    background: var(--color-dark-gradient);
-    overflow: hidden;
   }
 
   .text {
-    position: relative;
-    z-index: 2;
     align-items: center;
 
     &.flow {
       --flow-space: var(--space-l);
     }
-  }
-
-  .bg-image {
-    position: absolute;
-    right: 5%;
-    top: 0;
-    height: 100%;
-    width: auto;
-    opacity: 0.7;
-    transform: scale(1.5);
   }
 
   .message {

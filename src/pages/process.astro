@@ -5,13 +5,12 @@ import Process from "@components/page_sections/Process.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import FAQs from "@components/page_sections/FAQs.astro";
 import Icon from "@components/Icon.astro";
+import type { IconName } from "@components/Icon.astro";
 import Card from "@components/Card.astro";
 import { Image } from "astro:assets";
 import TextImageBlock from "@components/TextImageBlock.astro";
 import featuredImage from "@assets/computer-illustration-1.png";
-import { getEntry } from "astro:content";
-import { getCollection } from "astro:content";
-import type { IconName } from "@components/Icon.astro";
+import { getCollection, getEntry } from "astro:content";
 
 const faqs = await getEntry("faqs", "processFaqs");
 
@@ -20,7 +19,10 @@ const principles = await getCollection("principles");
 
 <Layout headerTheme="dark">
   <main slot="content">
-    <InnerHero title="Our Process" />
+    <InnerHero
+      title="Process"
+      intro="A brief overview of what it looks like to work with me."
+    />
     <Process />
     <!-- <div class="section-bg-gradient">
         <div class="content-wrapper">
@@ -53,10 +55,10 @@ const principles = await getCollection("principles");
         <SectionHeader align="center">
           <Fragment slot="text">
             <div class="eyebrow | small-title text-gradient mx-auto">
-              Our Principles
+              Principles
             </div>
             <h2 class="text-step-4">
-              Crafting beautiful experiences for the modern web
+              A credo for building a better, more human web
             </h2>
           </Fragment>
         </SectionHeader>
@@ -66,15 +68,13 @@ const principles = await getCollection("principles");
               .sort((a, b) => a.data.order - b.data.order)
               .map(({ data }, index) => (
                 <div class="flow">
-                  <Icon
-                    name={data.icon as IconName}
-                    color={
-                      index % 2
-                        ? "var(--color-primary-5)"
-                        : "var(--color-secondary-4)"
-                    }
-                    size="1.5em"
-                  />
+                  <div class="icon-wrapper gradient">
+                    <Icon
+                      name={data.icon as IconName}
+                      color={index % 2 ? "currentColor" : "currentColor"}
+                      size="1.5em"
+                    />
+                  </div>
                   <h3>{data.title}</h3>
                   <p>{data.summary}</p>
                 </div>
@@ -93,6 +93,8 @@ const principles = await getCollection("principles");
   }
 
   .principles {
+    margin-block-start: calc(var(--section-spacer) * 0.75);
+
     & h3 {
       font-size: var(--step-1);
     }

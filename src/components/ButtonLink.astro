@@ -1,9 +1,10 @@
 ---
 type Props = {
-  href: string;
+  href?: string;
   target?: "_self" | "_blank";
   theme?: keyof typeof themes;
   classes?: string[];
+  [x: string]: any;
 };
 
 const themes = {
@@ -12,6 +13,8 @@ const themes = {
   ghost: "ghost-white",
   ghostPrimary: "ghost-primary",
 };
+
+const buttonStyles = "button-styles";
 
 const {
   href,
@@ -26,10 +29,21 @@ const classList = [
   "button-link",
   themes[theme as keyof typeof themes],
   classes,
+  !href && buttonStyles,
 ];
 ---
 
-<a class:list={classList} href={href} target={target} {...props}><slot /></a>
+{
+  href ? (
+    <a class:list={classList} href={href} target={target} {...props}>
+      <slot />
+    </a>
+  ) : (
+    <button class:list={classList} {...props}>
+      <slot />
+    </button>
+  )
+}
 
 <style>
   .button-link {
@@ -67,6 +81,10 @@ const classList = [
       --link-bg-hover: var(--color-primary-light);
       --link-border: var(--color-primary-light);
       --link-border-hover: var(--color-accent-base);
+    }
+
+    &.button-styles {
+      cursor: pointer;
     }
   }
 </style>

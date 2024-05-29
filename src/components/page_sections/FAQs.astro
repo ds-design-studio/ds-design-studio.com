@@ -2,21 +2,22 @@
 import type { CollectionEntry } from "astro:content";
 
 type Props = {
+  heading?: string;
   faqs: CollectionEntry<"faqs">;
 };
 
-const { faqs } = Astro.props;
+const { heading = "FAQs", faqs } = Astro.props;
 ---
 
 <article id="faqs">
   <div class="content-wrapper">
-    <slot name="header"><h2>FAQs</h2></slot>
+    <slot name="header"><h2>{heading}</h2></slot>
     <div class="grid-6">
       {
         faqs.data.entries.map((faq) => (
           <div class="flow">
             <h3>{faq.question}</h3>
-            <p>{faq.answer}</p>
+            <p set:html={faq.answer} />
           </div>
         ))
       }

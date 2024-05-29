@@ -1,6 +1,6 @@
 ---
-title: San Marino Community Church
-summary: Elevating the voices of creative writers impacted by carceral systems.
+title: Content Website
+summary: Expanding the image and online capabilities of a large and growing church.
 client: San Marino Community Church
 featuredImage:
   src: ./smcc-featured.jpg
@@ -34,4 +34,65 @@ scope:
 url: https://writing-freedom.org
 ---
 
-lorem
+import TextBlock from "../../components/mdx/TextBlock.astro";
+import TextImageBlock from "../../components/mdx/TextImageBlock.astro";
+import ImageBlock from "../../components/mdx/ImageBlock.astro";
+import Stats from "../../components/mdx/Stats.astro";
+import { Image } from "astro:assets";
+import illustration from "../../assets/illustration-1.png";
+import illustration2 from "../../assets/illustration-2.png";
+import featuredImage1 from "./writing-freedom-presentation.png";
+
+<TextBlock
+  heading="Overview"
+  content={[
+    "San Marino Community Church (SMCC) is a large, multi-generational church with many programs and events happening every week. When they reached out to me for a website redesign, they felt that their then-current platform—a template-based website builder tied to a private, proprietary backend owned by a large company—did not meet their needs for custom content management or meaningful design.",
+    "I took on this project not just to refresh the visual design of the website, but to help SMCC deeply rethink how the site’s content itself could be restructured to fit the needs of this growing community.",
+  ]}
+  centered
+/>
+<Stats
+  items={[
+    { highlight: "200+", description: "Total Number of Pages" },
+    { highlight: "7", description: "Custom Content Schemas" },
+    { highlight: "99%", description: "Average Lighthouse Score (Desktop)" },
+  ]}
+/>
+<TextImageBlock
+  heading="Building a Fully Customized Content Management Experience"
+  content={[
+    "Enter Sanity Studio, an open-source, headless content management system (CMS) designed for “composable” content creation. Through many content planning sessions with SMCC, we identified the crucial building blocks of content that were most important for the site—recurring groups like events, services, ministries, resources, and people—and developed custom re-usable schema types for each group.",
+    "Unlike a more traditional CMS such as WordPress, which forces all content to be conceived as pages or posts, these composable “atoms” of content gave us much greater freedom in structuring and reusing elements across the site.",
+    ,
+  ]}
+  image={illustration}
+/>
+<TextImageBlock
+  content={[
+    "Most importantly, the editing experience became much more approachable and productive for members of SMCC’s team. Sanity’s “headless” nature means that all of the custom content schemas live separately from the frontend of the site built in Astro. Editors no longer have to worry about breaking design elements on the site but can focus on content management through a beautiful, multi-player user interface finely tuned for their needs.",
+  ]}
+  image={illustration}
+  layout="flipped"
+/>
+<TextBlock
+  content={[
+    "In the end, we solved one of SMCC’s major pain points by moving from a rigid, expensive backend system to a flexible, extensible, open-source, and low-cost alternative.",
+  ]}
+  centered
+/>
+<ImageBlock image={featuredImage1} span="full-width" />
+<TextImageBlock
+  heading="Making Static Feel Dynamic"
+  content={[
+    "For the frontend of the site, I chose to utilize the Astro and Svelte frameworks to build an extremely fast, lightweight, performant, and interactive site. Astro was the perfect tool to generate a content-focused website containing over 100 pages and many more images, optimizing for speed, security, accessibility, and SEO at the same time.",
+  ]}
+  image={illustration2}
+/>
+<TextImageBlock
+  content={[
+    "Astro pre-builds every page each time the site is deployed, ensuring a fast and SEO-friendly end-user experience. But this <a href='/services/frontend-development'>“static-first” approach</a> doesn’t mean a lack of dynamic features. Numerous interface components add elements of browser-based interactivity, enabling a more engaging user experience.",
+    "One notable example is the “Worship Live” page, which utilizes an interactive tab component to switch between multiple service types. Daily site builds ensure this page is always up to date with the latest services, and the tab component allows easy switching between them.",
+  ]}
+  image={illustration2}
+  layout="flipped"
+/>

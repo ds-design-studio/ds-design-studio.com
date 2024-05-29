@@ -27,8 +27,7 @@ const features = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    summary: z.string(),
-    tagline: z.string().optional(),
+    summary: z.string().optional(),
     order: z.number().optional(),
     icon: z.string().optional(),
     image: z
@@ -42,15 +41,25 @@ const features = defineCollection({
 
 const services = defineCollection({
   type: "content",
-  schema: z.object({
-    title: z.string(),
-    summary: z.string(),
-    tagline: z.string().optional(),
-    features: z.array(reference("features")),
-    featuredProject: reference("projects"),
-    order: z.number(),
-    icon: z.string().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      tagline: z.string(),
+      taglinePlain: z.string().optional(),
+      preview: z.object({
+        title: z.string(),
+        summary: z.string(),
+      }),
+      featuredImage: z.object({
+        src: image(),
+        alt: z.string(),
+      }),
+      features: z.array(reference("features")),
+      featuredProject: reference("projects").optional().nullable(),
+      prologue: z.string().optional(),
+      order: z.number(),
+      icon: z.string().optional(),
+    }),
 });
 
 const tools = defineCollection({

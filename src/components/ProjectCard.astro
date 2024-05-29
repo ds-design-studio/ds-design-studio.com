@@ -7,12 +7,12 @@ type Props = {
 };
 
 const { project } = Astro.props;
-const { title, type, client, thumbnailImage } = project.data;
+const { title, summary, type, client, thumbnailImage } = project.data;
 ---
 
 <article class="project | flow">
   <a href={`/work/${project.slug}`} class="img-wrapper">
-    <div class="overlay"><h2>{title}</h2></div>
+    <div class="overlay"><h2>{summary}</h2></div>
     <Image
       src={thumbnailImage.src}
       alt={thumbnailImage.alt}
@@ -22,14 +22,13 @@ const { title, type, client, thumbnailImage } = project.data;
     />
   </a>
   <div class="text | flow">
-    <!-- <h2>
-      <a class="color-underline" href={`/work/${project.slug}`}>{title}</a>
-    </h2> -->
-    <div class="details | cluster">
-      <span class="small-title">{type}</span><span class="divider">•</span><span
+    <p class="details | cluster">
+      <!-- <span class="small-title">{type}</span><span class="divider">•</span><span
         >{client}</span
-      >
-    </div>
+      > -->
+      <span class="small-title">{client}</span><span class="divider">•</span
+      ><span>{title}</span>
+    </p>
   </div>
 </article>
 

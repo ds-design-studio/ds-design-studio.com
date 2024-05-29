@@ -34,59 +34,57 @@ scope:
 url: https://writing-freedom.org
 ---
 
-import TextImageBlock from "../../components/TextImageBlock.astro";
+import TextBlock from "../../components/mdx/TextBlock.astro";
+import TextImageBlock from "../../components/mdx/TextImageBlock.astro";
+import ImageBlock from "../../components/mdx/ImageBlock.astro";
+import Stats from "../../components/mdx/Stats.astro";
 import { Image } from "astro:assets";
 import illustration from "../../assets/illustration-1.png";
 import illustration2 from "../../assets/illustration-2.png";
+import featuredImage1 from "./writing-freedom-presentation.png";
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur commodi molestias illo laboriosam nihil, impedit nulla quod reprehenderit molestiae dolorum. Voluptatum est fugiat labore explicabo!
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur commodi molestias illo laboriosam nihil, impedit nulla quod reprehenderit molestiae dolorum. Voluptatum est fugiat labore explicabo!
-
-<div class="feature">
-  <Image
-    class="article-img"
-    src={illustration}
-    alt=""
-    width={1200}
-    loading="eager"
-    format="webp"
-  />
-  <div class="flow">
-    <h2>Solution</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolore
-      corrupti, perferendis omnis cumque veritatis illum tenetur eligendi rem
-      est non sunt aspernatur, aliquam quas.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolore
-      corrupti, perferendis omnis cumque veritatis illum tenetur eligendi rem
-      est non sunt aspernatur, aliquam quas.
-    </p>
-  </div>
-</div>
-
-<div class="feature" data-layout="flipped">
-  <Image
-    class="article-img"
-    src={illustration2}
-    alt=""
-    width={1200}
-    loading="eager"
-    format="webp"
-  />
-  <div class="flow">
-    <h2>Heading 2</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolore
-      corrupti, perferendis omnis cumque veritatis illum tenetur eligendi rem
-      est non sunt aspernatur, aliquam quas.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolore
-      corrupti, perferendis omnis cumque veritatis illum tenetur eligendi rem
-      est non sunt aspernatur, aliquam quas.
-    </p>
-  </div>
-</div>
+<TextBlock
+  heading="Overview"
+  content={[
+    "Haymarket Books is a radical, independent publisher based in Chicago that features the work of socially- and politically-engaged writers such as Howard Zinn, Angela Y. Davis, and Keeanga-Yamahtta Taylor.",
+    "The Writing Freedom Fellowship is a new Haymarket initiative (in partnership with the Mellon Foundation and the Arts for Justice Fund) that highlights poets, fiction writers, and non-fiction writers impacted by carceral systems. I was honored to design and build the accompanying standalone website for this important program.",
+  ]}
+  centered
+/>
+<Stats
+  items={[
+    { highlight: "100", description: "Avg. Lighthouse Score" },
+    { highlight: "30%", description: "Increase in Traffic" },
+    { highlight: "5", description: "Lorem ipsum dolor" },
+  ]}
+/>
+<TextImageBlock
+  heading="Centering the Fellows"
+  content={[
+    "The most important objective of this site was to showcase the 20 individuals awarded the fellowship each year. To encourage exploration of the fellows’ stories and facilitate sharing them across platforms, the site’s user navigation path was designed to end up on individual fellow pages, where users can read fellow biographies and hear audio clips of fellows reading from their works.",
+    "A simple UI component, utilizing native operating system functionality, enables easy, platform-agnostic sharing.",
+    ,
+  ]}
+  image={illustration}
+/>
+<TextImageBlock
+  content={[
+    "On the content management backend in a fully customized Sanity Studio, organizing and editing fellow data is as easy as working with documents in a file system. Importantly, I developed flexible schemas that will help retain the same ease of management as the program continues to grow with more fellows each year.",
+  ]}
+  image={illustration}
+  layout="flipped"
+/>
+<ImageBlock image={featuredImage1} span="full-width" />
+<TextImageBlock
+  heading="Aligning Form & Function"
+  content={[
+    "With the art direction of the site, I sought to capture something of the vibrancy, depth, and hopefulness of the program’s activist and social justice influences. The bold Termina typeface lends a sense of significance and excitement to the message, while the pastel colors and winged imagery evoke the possibility of transformation.",
+  ]}
+  image={illustration2}
+/>
+<TextBlock
+  content={[
+    "The site build utilizes the Astro framework to deliver a minimal, lightweight end product, with just a dash of animation added in to make for a more pleasant user experience. Prioritizing simplicity means virtually no maintenance or time spent fixing plugins or bugs, just a focus on the site’s message itself.",
+  ]}
+  centered
+/>

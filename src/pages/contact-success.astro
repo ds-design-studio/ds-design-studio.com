@@ -1,0 +1,47 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ButtonLink from "@components/ButtonLink.astro";
+import InnerHero from "@components/page_sections/InnerHero.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import CTA from "@components/page_sections/CTA.astro";
+---
+
+<Layout headerTheme="dark">
+  <main slot="content">
+    <InnerHero title="Contact"
+      >Reach out for a complimentary website assessment and quote. Let’s discuss
+      how we can help with your next project.
+    </InnerHero>
+    <div class="content-offset">
+      <div class="content-wrapper">
+        <article class="form-wrapper | grid-9">
+          <h2>Thank you!</h2>
+          <p>
+            We've received your submission and will be in touch shortly to
+            discuss next steps.
+          </p>
+        </article>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .form-wrapper {
+    margin-block-start: calc(var(--section-spacer) * 0.5);
+    padding-block-end: var(--section-spacer);
+  }
+
+  .grid-9 {
+    gap: var(--space-xl);
+    align-items: center;
+
+    & > :first-child {
+      grid-column: 1 / span 3;
+    }
+
+    & > :last-child {
+      grid-column: span 6;
+    }
+  }
+</style>

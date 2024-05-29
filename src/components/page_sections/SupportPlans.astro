@@ -1,13 +1,15 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import Card from "@components/Card.astro";
 import SectionHeader from "@components/SectionHeader.astro";
+import FAQs from "@components/page_sections/FAQs.astro";
 import formatPrice from "@utils/formatPrice";
 import { Image } from "astro:assets";
 
+const faqs = await getEntry("faqs", "supportFaqs");
 const supportPlans = await getCollection("supportPlans");
 
-// Add monthly/annual apline switcher
+//// TODO: Add monthly/annual apline switcher
 ---
 
 <div class="content-wrapper section-spacer">
@@ -16,7 +18,7 @@ const supportPlans = await getCollection("supportPlans");
       <div class="eyebrow | small-title text-gradient mx-auto">
         Developer Support Plans
       </div>
-      <h2>Lorem ipsum sit dolor</h2>
+      <h2>No-contract plans to support your site’s growth and success</h2>
     </Fragment>
   </SectionHeader>
   <div class="plans | grid-6">
@@ -57,11 +59,12 @@ const supportPlans = await getCollection("supportPlans");
                 </li>
               ))}
             </ul>
-            {index === 1 && <div class="tag">Best Value</div>}
+            {index === 1 && <div class="tag">Recommended</div>}
           </Card>
         ))
     }
   </div>
+  <FAQs heading="Support Plan FAQs" faqs={faqs} />
 </div>
 
 <style>
@@ -90,6 +93,7 @@ const supportPlans = await getCollection("supportPlans");
 
     & ul {
       font-size: var(--step--1);
+      padding-block-end: var(--space-l);
 
       &.flow {
         --flow-space: 0.5rem;

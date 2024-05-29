@@ -15,17 +15,14 @@ const statamic = await getEntry("tools", "statamic");
       <div class="eyebrow | small-title text-gradient mx-auto">
         Framework Specialties
       </div>
-      <h2>Lorem ipsum sit dolor</h2>
+      <h2>Leveraging the modern ecosystem</h2>
     </Fragment>
   </SectionHeader>
   <div class="grid-6 feature-span | content-wrapper" id="frameworks">
     <Card>
       <Image src={astro.data.logo} alt="Astro logo" width={50} format="svg" />
-      <h3>Astro Agency</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-        enim earum impedit ab magnam eligendi nemo quidem quia vitae soluta.
-      </p>
+      <h3>{astro.data.title} Agency</h3>
+      <p set:html={astro.data.summary} />
     </Card>
     <Card>
       <Image
@@ -34,11 +31,8 @@ const statamic = await getEntry("tools", "statamic");
         width={50}
         format="svg"
       />
-      <h3>Statamic Agency</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-        enim earum impedit ab magnam eligendi nemo quidem quia vitae soluta.
-      </p>
+      <h3>{statamic.data.title} Agency</h3>
+      <p set:html={statamic.data.summary} />
     </Card>
   </div>
   <Tools />

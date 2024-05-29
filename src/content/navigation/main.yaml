@@ -2,6 +2,7 @@ title: Main Navigation
 entries:
   - title: Services
     slug: /services
+    ## Replaced children with services collection data
     children:
       - title: Web Design
         slug: /services/web-design
@@ -21,16 +22,9 @@ entries:
         tagline: Lorem ipsum sit dolor amet
   - title: Work
     slug: /work
-  - title: Our Process
-    slug: /our-process
+  - title: Process
+    slug: /process
   - title: About
     slug: /about
-    # children:
-    #   - title: Our Process
-    #     slug: /about/our-process
-    #   - title: Pricing
-    #     slug: /about/pricing
-    #   - title: Who We Are
-    #     slug: /about
-  - title: Blog
-    slug: /blog
+  # - title: Blog
+  #   slug: /blog

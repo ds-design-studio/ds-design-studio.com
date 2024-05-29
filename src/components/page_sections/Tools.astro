@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 const tools = await getCollection("tools");
 ---
 
-<div class="small-title text-gradient mx-auto">Our Tools</div>
+<div class="small-title text-gradient mx-auto">Favorite Tools</div>
 <div class="logo-cloud | grid-6 centered">
   {
     tools
@@ -31,6 +31,9 @@ const tools = await getCollection("tools");
     gap: var(--space-l);
 
     & img {
+      height: 2rem;
+      width: 2rem;
+      object-fit: contain;
       transition: transform 0.3s linear;
     }
 

@@ -1,0 +1,14 @@
+---
+type Props = {
+  content: string[];
+  heading?: string;
+  centered?: boolean;
+};
+
+const { content, heading, centered = false } = Astro.props;
+---
+
+<div class:list={["block", centered && "centered"]}>
+  {heading && <h2>{heading}</h2>}
+  {content.map((paragraph) => <p set:html={paragraph} />)}
+</div>

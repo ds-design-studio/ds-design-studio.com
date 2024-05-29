@@ -7,13 +7,16 @@ import ServicesGrid from "@components/page_sections/ServicesGrid.astro";
 import Tools from "@components/page_sections/Tools.astro";
 import HomeHero from "@components/page_sections/HomeHero.astro";
 import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
-import Testimonials from "@components/page_sections/Testimonials.astro";
+import Testimonials from "@components/page_sections/HomeTestimonials.astro";
 import CTA from "@components/page_sections/CTA.astro";
 import { Image } from "astro:assets";
 import { getEntries } from "astro:content";
 import { getCollection, getEntry } from "astro:content";
 // const features = await getCollection("features");
 const services = await getCollection("services");
+const principle1 = await getEntry("principles", "design");
+const principle2 = await getEntry("principles", "consider");
+const principle3 = await getEntry("principles", "build");
 const featuredProject = await getEntry("projects", "haymarket-writing-freedom");
 // const tools = await getCollection("tools");
 // const features = await getEntries(services)
@@ -32,9 +35,7 @@ import illustration3 from "@assets/illustration-3.png";
         <article class="content-wrapper" id="services">
           <SectionHeader align="left">
             <Fragment slot="text">
-              <div class="eyebrow | small-title text-gradient">
-                Our Services
-              </div>
+              <div class="eyebrow | small-title text-gradient">Services</div>
               <h2 class="text-step-4">
                 Bridging the realms of design & development
               </h2>
@@ -59,10 +60,10 @@ import illustration3 from "@assets/illustration-3.png";
       <SectionHeader align="center">
         <Fragment slot="text">
           <div class="eyebrow | small-title text-gradient mx-auto">
-            Our Approach
+            Approach
           </div>
           <h2 class="text-step-4">
-            Crafting beautiful experiences for the modern web
+            Crafting beautiful & more human experiences for the modern web
           </h2>
         </Fragment>
       </SectionHeader>
@@ -76,11 +77,8 @@ import illustration3 from "@assets/illustration-3.png";
             format="webp"
             loading="eager"
           />
-          <h3 class="text-step-2">Heading</h3>
-          <p>
-            We understand the entire picture As a web studio in Los Angeles, we
-            bridge the re
-          </p>
+          <h3 class="text-step-1">{principle1.data.title}</h3>
+          <p>{principle1.data.summary}</p>
         </Card>
         <Card>
           <Image
@@ -91,11 +89,8 @@ import illustration3 from "@assets/illustration-3.png";
             format="webp"
             loading="eager"
           />
-          <h3 class="text-step-2">Heading</h3>
-          <p>
-            We understand the entire picture As a web studio in Los Angeles, we
-            bridge the re
-          </p>
+          <h3 class="text-step-1">{principle2.data.title}</h3>
+          <p>{principle2.data.summary}</p>
         </Card>
         <Card>
           <Image
@@ -106,15 +101,12 @@ import illustration3 from "@assets/illustration-3.png";
             format="webp"
             loading="eager"
           />
-          <h3 class="text-step-2">Heading</h3>
-          <p>
-            We understand the entire picture As a web studio in Los Angeles, we
-            bridge the re
-          </p>
+          <h3 class="text-step-1">{principle3.data.title}</h3>
+          <p>{principle3.data.summary}</p>
         </Card>
       </div>
       <div class="center-all">
-        <ButtonLink href="/our-process">Our Approach</ButtonLink>
+        <ButtonLink href="/process">Working Together</ButtonLink>
       </div>
     </article>
     <FeaturedProject project={featuredProject} />
@@ -122,5 +114,3 @@ import illustration3 from "@assets/illustration-3.png";
     <CTA />
   </main>
 </Layout>
-
-<style></style>

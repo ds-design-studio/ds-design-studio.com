@@ -1,0 +1,151 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ButtonLink from "@components/ButtonLink.astro";
+import InnerHero from "@components/page_sections/InnerHero.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import CTA from "@components/page_sections/CTA.astro";
+---
+
+<Layout headerTheme="dark">
+  <main slot="content">
+    <InnerHero title="Newsletter">Sign up for our newsletter </InnerHero>
+    <div class="content-offset">
+      <div class="content-wrapper">
+        <article class="form-wrapper | grid-9">
+          <div class="text | flow">
+            <h2>Tips & Insights</h2>
+            <p>
+              Submit a form with your project details and we’ll get back to you
+              with a complimentary assessment and quote.
+            </p>
+          </div>
+          <form>
+            <div class="form-item | col-3">
+              <label for="name">Your Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Daniel Saunders"
+                autocomplete="name"
+              />
+            </div>
+            <div class="form-item | col-3">
+              <label for="email">Your Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="daniel@danielsaunders.xyz"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <ButtonLink classes={["col-3"]} type="submit">Sign up</ButtonLink>
+          </form>
+        </article>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .form-wrapper {
+    margin-block-start: calc(var(--section-spacer) * 0.5);
+  }
+
+  .grid-9 {
+    gap: var(--space-xl);
+
+    & .text {
+      grid-column: 1 / span 3;
+    }
+
+    & form {
+      grid-column: span 6;
+    }
+  }
+
+  form {
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: var(--space-s);
+    row-gap: var(--space-l);
+    padding: var(--space-xl);
+    border-radius: var(--rounded-corners);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--color-neutral-1);
+
+    & .col-2 {
+      grid-column: span 2;
+    }
+
+    & .col-3 {
+      grid-column: span 3;
+    }
+
+    & .col-4 {
+      grid-column: span 4;
+    }
+
+    & .col-6 {
+      grid-column: span 6;
+    }
+  }
+
+  .form-item {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--space-3xs);
+
+    &:not(.checkbox-group) label {
+      font-weight: 700;
+    }
+  }
+
+  .form-item:has(:is(input[required], textarea[required], select[required]))
+    label::after,
+  .form-item legend::after {
+    content: "*";
+    position: relative;
+    color: var(--color-primary-4);
+    left: 0.25rem;
+  }
+
+  :is(input, textarea, select, fieldset) {
+    color: var(--color-text-body);
+    padding: 0.75rem 1rem;
+    border-radius: var(--rounded-corners-small);
+    border: 1px solid var(--color-neutral-2);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-neutral-4);
+    opacity: 0.85;
+  }
+
+  .content-offset {
+    padding-block-end: var(--section-spacer);
+    background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0)),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23cfd7e2' fill-opacity='0.25'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+</style>
+
+<script>
+  const checkboxGroup = document.querySelector("form fieldset");
+  const values = [...checkboxGroup?.querySelectorAll("input")!];
+
+  values.forEach((value) =>
+    value.addEventListener("change", () => {
+      if (!values.some((value) => value.checked)) {
+        checkboxGroup
+          ?.querySelector("input")
+          ?.setCustomValidity("Please select at least one service.");
+      } else {
+        checkboxGroup?.querySelector("input")?.setCustomValidity("");
+      }
+    })
+  );
+</script>

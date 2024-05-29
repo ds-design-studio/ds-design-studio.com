@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, getCollection } from "astro:content";
 import Logo from "@components/Logo.astro";
 import ButtonLink from "@components/ButtonLink.astro";
 import Icon from "@components/Icon.astro";
@@ -7,6 +7,7 @@ import Icon from "@components/Icon.astro";
 import type { IconName } from "@components/Icon.astro";
 
 const navigation = await getEntry("navigation", "main");
+const services = await getCollection("services");
 
 const { theme = "normal", position = "relative" } = Astro.props;
 ---
@@ -43,27 +44,55 @@ const { theme = "normal", position = "relative" } = Astro.props;
                   x-popover:panel
                   x-anchor="$refs.button"
                 >
-                  <div class="panel">
-                    {entry.children?.map((childEntry) =>
-                      childEntry.icon ? (
-                        <a class="panel-link with-icon" href={childEntry.slug}>
-                          <div class="icon-wrapper">
-                            <Icon
-                              name={childEntry.icon as IconName}
-                              color="currentColor"
-                              size="1em"
-                            />
-                          </div>
-                          <div>
-                            <span>{childEntry.title}</span>
-                            <p>{childEntry.tagline}</p>
-                          </div>
-                        </a>
-                      ) : (
-                        <a href={childEntry.slug}>{childEntry.title}</a>
-                      )
-                    )}
-                  </div>
+                  {entry.title === "Services" ? (
+                    <div class="panel">
+                      {services
+                        .sort((a, b) => a.data.order - b.data.order)
+                        .map((service) => (
+                          <a
+                            class="panel-link with-icon"
+                            href={`/services/${service.slug}`}
+                          >
+                            <div class="icon-wrapper">
+                              <Icon
+                                name={service.data.icon as IconName}
+                                color="currentColor"
+                                size="1em"
+                              />
+                            </div>
+                            <div>
+                              <span>{service.data.title}</span>
+                              <p>{service.data.taglinePlain}</p>
+                            </div>
+                          </a>
+                        ))}
+                    </div>
+                  ) : (
+                    <div class="panel">
+                      {entry.children?.map((childEntry) =>
+                        childEntry.icon ? (
+                          <a
+                            class="panel-link with-icon"
+                            href={childEntry.slug}
+                          >
+                            <div class="icon-wrapper">
+                              <Icon
+                                name={childEntry.icon as IconName}
+                                color="currentColor"
+                                size="1em"
+                              />
+                            </div>
+                            <div>
+                              <span>{childEntry.title}</span>
+                              <p>{childEntry.tagline}</p>
+                            </div>
+                          </a>
+                        ) : (
+                          <a href={childEntry.slug}>{childEntry.title}</a>
+                        )
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (

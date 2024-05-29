@@ -1,4 +1,4 @@
 title: Astro
-summary: The web framework for content-driven sites.
+summary: <a href="https://astro.build/" target="_blank">Astro</a> is a modern, minimal framework for building content-driven websites. Its “bring-you-own-tools” approach integrates well with virtually any existing UI library, third-party API, or headless CMS. Astro is my go-to choice for building bespoke, small- to medium-sized marketing and content sites.
 logo: ./astro-logo.svg
 order: 1

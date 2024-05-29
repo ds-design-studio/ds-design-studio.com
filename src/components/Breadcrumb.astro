@@ -20,27 +20,34 @@ const { current, parents } = Astro.props;
         <a class="small-title" href={`/${parent.slug}`}>
           {parent.name}
         </a>
-        <span>/</span>
+        <span>•</span>
       </>
     ))
   }
-  <p class="current small-title">{current}</p>
+  <p class="current">{current}</p>
 </div>
 
 <style>
   .breadcrumbs {
+    --current-color: var(--color-text-body);
+    --divider-color: var(--color-text-link-hover);
     position: relative;
 
     &.cluster {
       --cluster-space: 0.5rem;
     }
+
+    & .current {
+      color: var(--current-color);
+    }
+
+    & span {
+      color: var(--divider-color);
+    }
   }
 
-  .current {
-    color: var(--color-text-heading-dark);
-  }
-
-  span {
-    color: var(--color-primary-4);
+  :global(.dark) .breadcrumbs {
+    --current-color: var(--color-text-heading-dark);
+    --divider-color: var(--color-text-link-hover-dark);
   }
 </style>

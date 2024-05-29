@@ -1,9 +1,13 @@
 entries:
-  - question: How much does a new website cost?
-    answer: This a bit like asking “how much does a car or house cost?” The answer will depend on the features and overall scope that best fit your goals, and how much you are able to invest to realize those goals. That said, we normally work with budgets in the $6,000 to $25,000 range. We also offer discounts for individuals or start-ups needing small portfolio sites or landing pages. Take a look at our pricing estimates to learn more.
+  - question: How much does a website redesign cost?
+    answer: Every project is different, and costs will depend on the size of the scope and length of the timeline. Often it is appropriate to engage in a preliminary Discovery Phase to set a scope for larger projects. That said, ~$4,000 is a useful starting point for a smaller, low functionality site; $10,000 for a larger, content- and feature-rich site. <a href="/contact"><strong>Reach out</strong> to get a custom quote</a> for your website project.
+  - question: How long does a website redesign take?
+    answer: Again, this will depend on the project scope and on the readiness of content and imagery upon commencement; but 6–8 weeks is typical for a faster project; 4–6 months for a longer project.
   - question: Will I be able to make changes to the website on my own after it launches?
-    answer: Most websites will come with a content management system (CMS) that will make updating your site easy and intuitive. Some of our favorite, modern CMS solutiuons include Sanity and Statamic.
-  - question: Who runs the web studio?
-    answer: The studio is led by principal designer and developer Daniel Saunders, who has over 10 years of professional creative experience. Most projects are solo flights, but sometimes our trusted collaborators come on board for as-needed support.
-  - question: Are you taking on new projects?
-    answer: We are currently taking on projects for 2024. Get in touch to request availability. We give special consideration to projects and organizations that value community and positive social change.
+    answer: Yes, if this is something we determine your site needs during the planning phase, I’ll make a suggestion for a content management system (CMS) that non-technical users can use to make ongoing changes to the site (some of my recommended solutions include Statamic and Sanity).
+  - question: Do you offer hosting?
+    answer: As a freelance web design studio, I don’t offer support for website hosting, email, or other technical services. In most cases, I will recommend a provider and ask you to set up an account to manage your website through that provider.
+  - question: Do you offer maintenance and support plans?
+    answer: Once your site is launched, it is important to me that you own the site in its entirety and that you are free to take it wherever you want to do whatever you want with it; ultimately the updates, management, and security of the site are up to you. However, I also offer <a href="/services/ongoing-support">no-contract developer support plans</a> to give you ongoing professional assistance as your site grows and changes.
+  - question: Are there other aspects of a website redesign not included in your process that I should be aware of?
+    answer: Yes, there are a few other services and costs that you’ll want to consider as part of a website redesign which are not included in what I offer. Some examples include copywriting and copyediting of text content, sourcing graphics and photography, and setting up website analytics. For some of these, I can offer my recommendations and help you integrate them with the site, but they fall under your responsibility.

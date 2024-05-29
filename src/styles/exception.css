@@ -69,3 +69,26 @@
     transform: rotate(36deg);
   }
 }
+
+.tooltip {
+  background: var(--color-neutral-9);
+  color: var(--color-neutral-1);
+  font-size: var(--step--1);
+  line-height: 1;
+  text-align: center;
+  border-radius: var(--rounded-corners-small);
+  padding: 5px 6px 3px;
+  transition: all 0.2s ease;
+  position: absolute;
+  bottom: calc(100% + 0.25rem);
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%);
+  width: fit-content;
+
+  &.show {
+    opacity: 1;
+    bottom: calc(100% + 0.5rem);
+    /* transform: translate(-50%, 0rem); */
+  }
+}

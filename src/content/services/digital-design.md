@@ -1,14 +1,18 @@
 ---
 title: Digital Design
-tagline: Striking Visual Design
-summary: Our modern approach to web design
+tagline: Visually communicating <span class="text-gradient">brand identities</span>
+taglinePlain: Visually communicating brand identities
+preview:
+  title: Striking Visual Design
+  summary: I have an eye for both the detailed parts and the organic whole. Finding harmony between the two is what generates impactful designs.
+featuredImage:
+  src: ../../assets/isometric-desktop.png
+  alt: Test alt
 icon: swatch
 order: 3
 features:
-  - typography
-  - minimal-design
-  - unique-design
-featuredProject: headington-institute
+  - flexible-typography
+  - solid-principles
+  - unique-look-and-feel
+prologue: I have an eye for both the detailed parts and the organic whole. Finding harmony between the two is what generates impactful designs. Whether it is laying out a marketing presentation, designing a logo, or crafting a reusable social template, I find ways to visually communicate your brand identity.
 ---
-
-lorem ipsum
