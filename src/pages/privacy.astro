@@ -1,12 +1,22 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import InnerHero from "@components/page_sections/InnerHero.astro";
+
+const title = "Privacy Statement";
+const description = "Lorem";
 ---
 
-<Layout headerTheme="normal">
+<Layout
+  headerTheme="normal"
+  meta={{
+    seo: {
+      title: title,
+      description: description,
+    },
+  }}
+>
   <main slot="content">
     <div class="content-wrapper">
-      <h1>Privacy Statement</h1>
+      <h1>{title}</h1>
       <div class="rich-content">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos

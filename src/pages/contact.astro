@@ -2,16 +2,23 @@
 import Layout from "@layouts/Layout.astro";
 import ButtonLink from "@components/ButtonLink.astro";
 import InnerHero from "@components/page_sections/InnerHero.astro";
-import ProjectCard from "@components/ProjectCard.astro";
-import CTA from "@components/page_sections/CTA.astro";
+
+const title = "Contact";
+const description =
+  "Reach out for a complimentary website assessment and quote. Let’s discuss how we can help with your next project.";
 ---
 
-<Layout headerTheme="dark">
+<Layout
+  headerTheme="dark"
+  meta={{
+    seo: {
+      title: title,
+      description: description,
+    },
+  }}
+>
   <main slot="content">
-    <InnerHero title="Contact"
-      >Reach out for a complimentary website assessment and quote. Let’s discuss
-      how we can help with your next project.
-    </InnerHero>
+    <InnerHero title={title}>{description} </InnerHero>
     <div class="content-offset">
       <div class="content-wrapper">
         <article class="form-wrapper | grid-9">

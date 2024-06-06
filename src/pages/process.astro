@@ -1,55 +1,38 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import InnerHero from "@components/page_sections/InnerHero.astro";
-import Process from "@components/page_sections/Process.astro";
+import ProjectPhases from "@components/page_sections/ProjectPhases.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import FAQs from "@components/page_sections/FAQs.astro";
 import Icon from "@components/Icon.astro";
 import type { IconName } from "@components/Icon.astro";
-import Card from "@components/Card.astro";
-import { Image } from "astro:assets";
-import TextImageBlock from "@components/TextImageBlock.astro";
-import featuredImage from "@assets/computer-illustration-1.png";
 import { getCollection, getEntry } from "astro:content";
 
 const faqs = await getEntry("faqs", "processFaqs");
-
 const principles = await getCollection("principles");
+
+const title = "Process";
 ---
 
-<Layout headerTheme="dark">
+<Layout
+  headerTheme="dark"
+  meta={{
+    seo: {
+      title: title,
+      description:
+        "A brief overview of what it looks like to work with Daniel Saunders.",
+    },
+    openGraph: {
+      title: "Crafting beautiful experiences, step by step",
+    },
+  }}
+>
   <main slot="content">
     <InnerHero
-      title="Process"
+      title={title}
       intro="A brief overview of what it looks like to work with me."
     />
-    <Process />
-    <!-- <div class="section-bg-gradient">
-        <div class="content-wrapper">
-          <TextImageBlock layout="flipped">
-            <Fragment slot="image">
-              <Image
-                src={featuredImage}
-                alt=""
-                width={900}
-                loading="eager"
-                format="webp"
-              />
-            </Fragment>
-            <Fragment slot="text">
-              <div class="flow">
-                <h2>A Considered Approach</h2>
-                <p>
-                  Before so much as a pixel is edited, it’s important to have a
-                  blueprint. We collaborate on the content, design, and
-                  architecture of your site so that it looks and feels great for
-                  real users (including you).
-                </p>
-              </div></Fragment
-            >
-          </TextImageBlock>
-        </div>
-      </div> -->
+    <ProjectPhases />
     <article id="values" class="section-bg-gradient">
       <div class="content-wrapper">
         <SectionHeader align="center">

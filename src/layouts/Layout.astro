@@ -1,13 +1,31 @@
 ---
 import "../styles/site.css";
 import { ViewTransitions } from "astro:transitions";
+import { SEO } from "astro-seo";
+import { getImage } from "astro:assets";
+import type { PageMetadata } from "../types";
+import fallbackOgImage from "@assets/isometric-laptop.png";
 
+import site from "@data/site.json";
 import SiteHeader from "@components/SiteHeader.astro";
 import SiteFooter from "@components/SiteFooter.astro";
 
-const path = Astro.url.pathname;
+type Props = {
+  meta?: PageMetadata;
+  headerTheme?: "normal" | "dark";
+};
 
-const { headerTheme } = Astro.props;
+const { meta, headerTheme = "dark" } = Astro.props;
+
+const path = Astro.url.pathname;
+const canonicalUrl = new URL(path, Astro.site);
+const ogImage = await getImage({
+  src: meta?.openGraph?.image || fallbackOgImage, // include fallback source
+  format: "jpeg",
+  width: 1200,
+  height: 630,
+  alt: meta?.openGraph?.imageAlt || "test alt",
+});
 ---
 
 <!doctype html>
@@ -17,7 +35,45 @@ const { headerTheme } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/svg/web-logo.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Document</title>
+    <SEO
+      title={meta?.seo?.title}
+      titleTemplate={`%s • ${site.siteTitle}`}
+      titleDefault={site.siteTitle}
+      description={meta?.seo?.description || site.siteDescription}
+      canonical={canonicalUrl}
+      openGraph={{
+        basic: {
+          title: meta?.openGraph?.title || meta?.seo?.title || site.siteTitle,
+          type: "website",
+          image: ogImage.src,
+          url: canonicalUrl,
+        },
+        image: {
+          alt: ogImage.attributes.alt,
+          type: "image/jpeg",
+          width: 1200,
+          height: 630,
+        },
+        optional: {
+          description:
+            meta?.openGraph?.description ||
+            meta?.seo?.description ||
+            site.siteDescription,
+        },
+      }}
+      twitter={{
+        card: "summary",
+        site: "@dothedan",
+        title: meta?.openGraph?.title || meta?.seo?.title || site.siteTitle,
+        image: ogImage.src,
+        imageAlt: ogImage.attributes.alt,
+        description:
+          meta?.openGraph?.description ||
+          meta?.seo?.description ||
+          site.siteDescription,
+      }}
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link
       rel="preload"
       href="/fonts/Body-Grotesque-Fit-Extrabold.woff2"
@@ -102,7 +158,7 @@ const { headerTheme } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
-    <SiteHeader theme={headerTheme || "dark"} />
+    <SiteHeader theme={headerTheme} />
     <slot name="content" />
     <SiteFooter />
   </body>

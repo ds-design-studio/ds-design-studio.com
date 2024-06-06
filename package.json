@@ -11,8 +11,14 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^2.2.2",
+    "@astrojs/sitemap": "^3.1.5",
     "@formkit/tempo": "^0.0.16",
     "astro": "^4.5.1",
+    "astro-seo": "^0.8.4",
+    "gsap": "^3.12.5",
     "lightningcss": "^1.24.0"
+  },
+  "devDependencies": {
+    "browserslist": "^4.23.0"
   }
 }

@@ -35,6 +35,7 @@ const { page } = Astro.props;
 const {
   title,
   summary,
+  meta,
   featuredImage,
   galleryImages,
   type,
@@ -46,7 +47,19 @@ const {
 const { Content } = await page.render();
 ---
 
-<Layout headerTheme="normal">
+<Layout
+  headerTheme="normal"
+  meta={{
+    seo: {
+      title: title,
+      description: meta.description as string,
+    },
+    openGraph: {
+      title: summary,
+      description: meta.description as string,
+    },
+  }}
+>
   <main slot="content">
     <article class="grid-9 content-wrapper section-spacer">
       <header class="hero">

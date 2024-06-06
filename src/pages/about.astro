@@ -1,22 +1,17 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import ProjectCard from "@components/ProjectCard.astro";
-import Stats from "@components/mdx/Stats.astro";
 import Team from "@components/page_sections/Team.astro";
 import { Image } from "astro:assets";
 import InnerHero from "@components/page_sections/InnerHero.astro";
 import CTA from "@components/page_sections/CTA.astro";
-import SectionHeader from "@components/SectionHeader.astro";
-import TextImageBlock from "@components/TextImageBlock.astro";
-import Icon from "@components/Icon.astro";
-import type { IconName } from "@components/Icon.astro";
 import { getCollection } from "astro:content";
+import site from "@data/site.json";
 
-import shapes1 from "@assets/shapes-1.png";
 import calloutBgImage from "@assets/shape-pattern-1.svg";
 
 const testimonials = await getCollection("testimonials");
 
+const title = "About";
 const capabilities = [
   "HTML",
   "CSS",
@@ -44,48 +39,24 @@ const capabilities = [
 ];
 ---
 
-<Layout headerTheme="dark">
+<Layout
+  headerTheme="dark"
+  meta={{
+    seo: {
+      title: title,
+      description: site.about,
+    },
+    openGraph: {
+      title: "About Daniel Saunders",
+    },
+  }}
+>
   <main slot="content">
-    <InnerHero title="About" />
+    <InnerHero title={title} />
     <div class="content-offset">
       <div class="section-bg-gradient">
         <div class="content-wrapper">
           <Team testimonials={testimonials.slice(0, 2)} />
-          <!-- <SectionHeader align="left">
-            <Fragment slot="text">
-              <div class="eyebrow | small-title text-gradient">How We Work</div>
-              <h2 class="text-step-4">Crafting beautiful experiences</h2>
-            </Fragment>
-            <Image
-              slot="image"
-              src={shapes1}
-              alt=""
-              width={600}
-              format="webp"
-              loading="eager"
-            />
-          </SectionHeader>
-          <div class="rich-content">
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
-              cupiditate reprehenderit impedit voluptatibus iure, obcaecati
-              animi officiis aspernatur at voluptatem.
-            </p>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
-              cupiditate reprehenderit impedit voluptatibus iure, obcaecati
-              animi officiis aspernatur at voluptatem.
-            </p>
-            <div class="about-stats grid-6">
-              <Stats
-                items={[
-                  { highlight: "100x", description: "lorem ipsum" },
-                  { highlight: "200", description: "lorem ipsum" },
-                  { highlight: "200", description: "lorem ipsum" },
-                ]}
-              />
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
@@ -105,18 +76,6 @@ const capabilities = [
         </header>
         <div class="capabilities | cluster">
           {capabilities.map((item) => <p>{item}</p>)}
-          <!-- <div class="flow">
-            <h3>Heading</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div>
-          <div class="flow">
-            <h3>Heading</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div>
-          <div class="flow">
-            <h3>Heading</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div> -->
         </div>
         <Image
           class="bg-image"
@@ -128,9 +87,6 @@ const capabilities = [
         />
       </article>
     </div>
-    <!-- <div class="content-wrapper">
-      <Team testimonials={testimonials.slice(0, 2)} />
-    </div> -->
     <CTA />
   </main>
 </Layout>

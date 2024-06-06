@@ -3,20 +3,15 @@ import Layout from "@layouts/Layout.astro";
 import InnerHero from "@components/page_sections/InnerHero.astro";
 import TextImageBlock from "@components/TextImageBlock.astro";
 import Card from "@components/Card.astro";
-import ButtonLink from "@components/ButtonLink.astro";
 import Frameworks from "@components/page_sections/Frameworks.astro";
 import SupportPlans from "@components/page_sections/SupportPlans.astro";
 import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
 import Gallery from "@components/page_sections/Gallery.astro";
-// import SectionHeader from "@components/SectionHeader.astro";
-// import Tools from "@components/page_sections/Tools.astro";
 import CTA from "@components/page_sections/CTA.astro";
 import { Image } from "astro:assets";
 import { getEntry, getEntries, getCollection } from "astro:content";
 import Icon from "@components/Icon.astro";
 import type { IconName } from "@components/Icon.astro";
-
-import placeholder from "../../assets/isometric-laptop.png";
 
 export async function getStaticPaths() {
   const services = await getCollection("services");
@@ -45,13 +40,32 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props;
-const { title, tagline, prologue, features, featuredImage, featuredProject } =
-  page.data;
+const {
+  title,
+  tagline,
+  taglinePlain,
+  preview,
+  prologue,
+  features,
+  featuredImage,
+  featuredProject,
+} = page.data;
 
 const { Content } = await page.render();
 ---
 
-<Layout>
+<Layout
+  meta={{
+    seo: {
+      title: title,
+      description: preview.summary,
+    },
+    openGraph: {
+      title: taglinePlain,
+      description: preview.summary,
+    },
+  }}
+>
   <main slot="content">
     <InnerHero
       title={tagline}

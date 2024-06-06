@@ -5,17 +5,29 @@ import CTA from "@components/page_sections/CTA.astro";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
+
+const title = "Selected Work";
+const description =
+  "A selection of recent work showcasing the principles that I bring to all of my web design projects.";
 ---
 
-<Layout headerTheme="normal">
+<Layout
+  headerTheme="normal"
+  meta={{
+    seo: {
+      title: title,
+      description: description,
+    },
+    openGraph: {
+      title: "Selected Web Design Work by Daniel Saunders",
+      description: description,
+    },
+  }}
+>
   <main slot="content">
     <article class="hero | content-wrapper | inner-spacing flow">
-      <h1>Selected Work</h1>
-      <p>
-        A selection of recent work showcasing <a href="/process"
-          >the principles</a
-        > that I bring to all of my web design projects.
-      </p>
+      <h1>{title}</h1>
+      <p>{description}</p>
     </article>
     <div id="projects" class="grid-6 | content-wrapper">
       {

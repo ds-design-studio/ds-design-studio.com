@@ -87,6 +87,11 @@ const projects = defineCollection({
     z.object({
       title: z.string(),
       summary: z.string(),
+      meta: z.object({
+        description: z.string().optional().nullable(),
+        image: z.string().optional().nullable(),
+        imageAlt: z.string().optional().nullable(),
+      }),
       featuredImage: z.object({
         src: image(),
         alt: z.string(),
