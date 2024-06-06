@@ -91,6 +91,10 @@
   margin-inline: auto;
 }
 
+.rounded-corners {
+  border-radius: var(--rounded-corners);
+}
+
 /* Text */
 
 .text-center {

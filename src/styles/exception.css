@@ -45,7 +45,7 @@
 }
 
 .background-lines {
-  --rule-color: color-mix(in hsl, var(--color-neutral-8), transparent 50%);
+  --rule-color: color-mix(in hsl, var(--color-neutral-8), transparent 20%);
 
   &::before {
     content: "";

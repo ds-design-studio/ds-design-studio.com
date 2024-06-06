@@ -10,16 +10,18 @@ entries:
         slug: services/digital-design
       - title: Ongoing Support
         slug: services/ongoing-support
-  - title: Work
-    children:
-      - title: All Work
-        slug: work
-      - title: Haymarket Writing Freedom
-        slug: work/haymarket-writing-freedom
-      - title: San Marino Community Church
-        slug: work/san-marino-cc
+  # - title: Work
+  #   children:
+  #     - title: All Work
+  #       slug: work
+  #     - title: Haymarket Writing Freedom
+  #       slug: work/haymarket-writing-freedom
+  #     - title: San Marino Community Church
+  #       slug: work/san-marino-cc
   - title: Studio
     children:
+      - title: Work
+        slug: work
       - title: Process
         slug: process
       - title: About
@@ -28,9 +30,11 @@ entries:
     children:
       - title: Get a Quote
         slug: contact
+      - title: Sample Agreement
+        slug: agreement
       # - title: Price Estimator
       #   slug: pricing
       # - title: Blog
       #   slug: blog
-      - title: Get the Newsletter
-        slug: newsletter
+      # - title: Get the Newsletter
+      #   slug: newsletter

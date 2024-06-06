@@ -7,6 +7,7 @@ import ButtonLink from "@components/ButtonLink.astro";
 import Frameworks from "@components/page_sections/Frameworks.astro";
 import SupportPlans from "@components/page_sections/SupportPlans.astro";
 import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
+import Gallery from "@components/page_sections/Gallery.astro";
 // import SectionHeader from "@components/SectionHeader.astro";
 // import Tools from "@components/page_sections/Tools.astro";
 import CTA from "@components/page_sections/CTA.astro";
@@ -106,6 +107,7 @@ const { Content } = await page.render();
     }
     <!-- Page specific sections -->
     {page.slug === "frontend-development" && <Frameworks />}
+    {page.slug === "digital-design" && <Gallery />}
     {page.slug === "ongoing-support" && <SupportPlans />}
     {
       page.featuredProject && (

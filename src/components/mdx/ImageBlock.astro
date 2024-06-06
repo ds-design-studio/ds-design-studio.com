@@ -12,7 +12,7 @@ const { image, imageAlt = "", span = "centered" } = Astro.props;
 ---
 
 <Image
-  class:list={["block-image", span]}
+  class:list={["block-image", "rounded-corners", span]}
   src={image}
   alt={imageAlt}
   width={1600}

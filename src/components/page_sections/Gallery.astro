@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import SectionHeader from "@components/SectionHeader.astro";
+
+import gallery1 from "@assets/gallery-1.jpg";
+import gallery2 from "@assets/gallery-2.jpg";
+import gallery3 from "@assets/gallery-3.jpg";
+import gallery4 from "@assets/gallery-4.jpg";
+import gallery5 from "@assets/gallery-5.jpg";
+import gallery6 from "@assets/gallery-6.jpg";
+import gallery7 from "@assets/gallery-7.jpg";
+import gallery8 from "@assets/gallery-8.jpg";
+
+const galleryImages = [
+  gallery1,
+  gallery2,
+  gallery3,
+  gallery4,
+  gallery5,
+  gallery6,
+  gallery7,
+  gallery8,
+];
+---
+
+<div class="section-spacer content-wrapper">
+  <SectionHeader align="left">
+    <h2 slot="text">Design Gallery</h2>
+  </SectionHeader>
+  <div class="gallery">
+    {
+      galleryImages.map((image) => (
+        <Image
+          src={image}
+          width={1200}
+          height={900}
+          alt=""
+          loading="lazy"
+          format="webp"
+          style={`--aspect-ratio: ${image.width / image.height}em`}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+
+    & img {
+      flex: 1 1 var(--aspect-ratio, 1);
+      border-radius: var(--rounded-corners-small);
+      object-fit: cover;
+      width: fit-content;
+      max-height: 17rem;
+      outline: 0px solid transparent;
+      outline-offset: -1px;
+      border: 1px solid var(--color-neutral-1);
+      transition: all 0.2s ease;
+
+      &:hover {
+        outline-width: 3px;
+        outline-color: var(--color-primary-4);
+      }
+    }
+  }
+</style>

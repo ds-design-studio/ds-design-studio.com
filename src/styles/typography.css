@@ -89,7 +89,7 @@ a.color-underline {
   gap: 0.5rem;
   width: fit-content;
   line-height: var(--leading-tight);
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1rem 0.65rem;
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: 0.9em;

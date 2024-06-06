@@ -1,19 +1,19 @@
 ---
-title: Content Website
+title: Church Content Website
 summary: Expanding the image and online capabilities of a large and growing church.
 client: San Marino Community Church
 featuredImage:
-  src: ./smcc-featured.jpg
+  src: ./smcc-feature-1.jpg
   alt: Test alt
 thumbnailImage:
-  src: ./smcc-featured.jpg
+  src: ./smcc-body-5.jpg
   alt: Test alt
 galleryImages:
-  - src: ./smcc-featured.jpg
+  - src: ./smcc-feature-1.jpg
     alt: alt
-  - src: ./smcc-nav.jpg
+  - src: ./smcc-feature-3.jpg
     alt: alt
-  - src: ./smcc-screens.jpg
+  - src: ./smcc-feature-2.jpg
     alt: alt
 type: website
 services:
@@ -26,10 +26,10 @@ tools:
   - svelte
 scope:
   - Responsive Web Design
-  - Prototyping
-  - Animations
+  - Content Strategy
   - Static/Jamstack Development
   - Frontend Development
+  - Calendar & Donation Integrations
   - Sanity CMS Integration
 url: https://writing-freedom.org
 ---
@@ -38,10 +38,14 @@ import TextBlock from "../../components/mdx/TextBlock.astro";
 import TextImageBlock from "../../components/mdx/TextImageBlock.astro";
 import ImageBlock from "../../components/mdx/ImageBlock.astro";
 import Stats from "../../components/mdx/Stats.astro";
+
 import { Image } from "astro:assets";
-import illustration from "../../assets/illustration-1.png";
-import illustration2 from "../../assets/illustration-2.png";
-import featuredImage1 from "./writing-freedom-presentation.png";
+import image1 from "./smcc-body-1.jpg";
+import image2 from "./smcc-body-2.jpg";
+import image3 from "./smcc-body-3.jpg";
+import image4 from "./smcc-body-4.jpg";
+import image5 from "./smcc-body-5.jpg";
+import image6 from "./smcc-body-6.jpg";
 
 <TextBlock
   heading="Overview"
@@ -65,13 +69,13 @@ import featuredImage1 from "./writing-freedom-presentation.png";
     "Unlike a more traditional CMS such as WordPress, which forces all content to be conceived as pages or posts, these composable “atoms” of content gave us much greater freedom in structuring and reusing elements across the site.",
     ,
   ]}
-  image={illustration}
+  image={image2}
 />
 <TextImageBlock
   content={[
     "Most importantly, the editing experience became much more approachable and productive for members of SMCC’s team. Sanity’s “headless” nature means that all of the custom content schemas live separately from the frontend of the site built in Astro. Editors no longer have to worry about breaking design elements on the site but can focus on content management through a beautiful, multi-player user interface finely tuned for their needs.",
   ]}
-  image={illustration}
+  image={image3}
   layout="flipped"
 />
 <TextBlock
@@ -80,19 +84,19 @@ import featuredImage1 from "./writing-freedom-presentation.png";
   ]}
   centered
 />
-<ImageBlock image={featuredImage1} span="full-width" />
+<ImageBlock image={image5} span="full-width" />
 <TextImageBlock
   heading="Making Static Feel Dynamic"
   content={[
     "For the frontend of the site, I chose to utilize the Astro and Svelte frameworks to build an extremely fast, lightweight, performant, and interactive site. Astro was the perfect tool to generate a content-focused website containing over 100 pages and many more images, optimizing for speed, security, accessibility, and SEO at the same time.",
   ]}
-  image={illustration2}
+  image={image1}
 />
 <TextImageBlock
   content={[
     "Astro pre-builds every page each time the site is deployed, ensuring a fast and SEO-friendly end-user experience. But this <a href='/services/frontend-development'>“static-first” approach</a> doesn’t mean a lack of dynamic features. Numerous interface components add elements of browser-based interactivity, enabling a more engaging user experience.",
     "One notable example is the “Worship Live” page, which utilizes an interactive tab component to switch between multiple service types. Daily site builds ensure this page is always up to date with the latest services, and the tab component allows easy switching between them.",
   ]}
-  image={illustration2}
+  image={image6}
   layout="flipped"
 />

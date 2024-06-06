@@ -23,7 +23,7 @@ const { title, summary, featuredImage, scope } = project?.data;
 <article class="featured | dark" id="featured-project">
   <div class="grid-9 | content-wrapper">
     <Image
-      class="featured-img"
+      class="featured-img rounded-corners"
       src={featuredImage.src}
       alt={featuredImage.alt}
       width={1200}
@@ -59,7 +59,7 @@ const { title, summary, featuredImage, scope } = project?.data;
           ))
         }
       </ul>
-      <ButtonLink href={`/work/${project?.slug}`}>See More</ButtonLink>
+      <ButtonLink href={`/work/${project?.slug}`}>Go to Case Study</ButtonLink>
     </div>
   </div>
   <Image

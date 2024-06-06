@@ -3,17 +3,17 @@ title: Writing Freedom Fellowship
 summary: Elevating the voices of creative writers impacted by carceral systems.
 client: Haymarket Books
 featuredImage:
-  src: ./writing-freedom-presentation.png
+  src: ./writing-freedom-feature-1.jpg
   alt: Test alt
 thumbnailImage:
-  src: ./writing-freedom-presentation.png
+  src: ./writing-freedom-body-3.jpg
   alt: Test alt
 galleryImages:
-  - src: ./writing-freedom-presentation.png
+  - src: ./writing-freedom-feature-1.jpg
     alt: alt
-  - src: ./writing-freedom-test.jpg
+  - src: ./writing-freedom-feature-2.jpg
     alt: alt
-  - src: ./whittier-featured.jpg
+  - src: ./writing-freedom-feature-3.jpg
     alt: alt
 type: website
 services:
@@ -26,8 +26,7 @@ tools:
   - gsap
 scope:
   - Responsive Web Design
-  - Prototyping
-  - Animations
+  - GSAP Animations
   - Static/Jamstack Development
   - Frontend Development
   - Sanity CMS Integration
@@ -38,10 +37,12 @@ import TextBlock from "../../components/mdx/TextBlock.astro";
 import TextImageBlock from "../../components/mdx/TextImageBlock.astro";
 import ImageBlock from "../../components/mdx/ImageBlock.astro";
 import Stats from "../../components/mdx/Stats.astro";
+
 import { Image } from "astro:assets";
-import illustration from "../../assets/illustration-1.png";
-import illustration2 from "../../assets/illustration-2.png";
-import featuredImage1 from "./writing-freedom-presentation.png";
+import image1 from "./writing-freedom-body-1.jpg";
+import image2 from "./writing-freedom-body-2.jpg";
+import image3 from "./writing-freedom-body-3.jpg";
+import image4 from "./writing-freedom-body-4.jpg";
 
 <TextBlock
   heading="Overview"
@@ -51,13 +52,13 @@ import featuredImage1 from "./writing-freedom-presentation.png";
   ]}
   centered
 />
-<Stats
+{/* <Stats
   items={[
     { highlight: "100", description: "Avg. Lighthouse Score" },
     { highlight: "30%", description: "Increase in Traffic" },
     { highlight: "5", description: "Lorem ipsum dolor" },
   ]}
-/>
+/> */}
 <TextImageBlock
   heading="Centering the Fellows"
   content={[
@@ -65,22 +66,22 @@ import featuredImage1 from "./writing-freedom-presentation.png";
     "A simple UI component, utilizing native operating system functionality, enables easy, platform-agnostic sharing.",
     ,
   ]}
-  image={illustration}
+  image={image2}
 />
 <TextImageBlock
   content={[
     "On the content management backend in a fully customized Sanity Studio, organizing and editing fellow data is as easy as working with documents in a file system. Importantly, I developed flexible schemas that will help retain the same ease of management as the program continues to grow with more fellows each year.",
   ]}
-  image={illustration}
+  image={image1}
   layout="flipped"
 />
-<ImageBlock image={featuredImage1} span="full-width" />
+<ImageBlock image={image3} span="full-width" />
 <TextImageBlock
   heading="Aligning Form & Function"
   content={[
     "With the art direction of the site, I sought to capture something of the vibrancy, depth, and hopefulness of the program’s activist and social justice influences. The bold Termina typeface lends a sense of significance and excitement to the message, while the pastel colors and winged imagery evoke the possibility of transformation.",
   ]}
-  image={illustration2}
+  image={image4}
 />
 <TextBlock
   content={[
