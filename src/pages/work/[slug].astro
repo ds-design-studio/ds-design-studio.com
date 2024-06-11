@@ -70,7 +70,11 @@ const { Content } = await page.render();
         <h1>{summary}</h1>
         {
           url && (
-            <ButtonLink classes={["mt-l", "animate-up-right"]} href={url}>
+            <ButtonLink
+              classes={["mt-l", "animate-up-right"]}
+              href={url}
+              target="_blank"
+            >
               <span>Live Site</span>
               <Icon name="arrow-up-right" />
             </ButtonLink>
@@ -140,6 +144,16 @@ const { Content } = await page.render();
       <article class="rich-content | subgrid">
         <Content />
       </article>
+    </div>
+    <div class="center-all">
+      <ButtonLink
+        classes={["mt-l", "animate-up-right"]}
+        href={url}
+        target="_blank"
+      >
+        <span>View Live Site</span>
+        <Icon name="arrow-up-right" />
+      </ButtonLink>
     </div>
     <CTA />
   </main>
@@ -244,6 +258,10 @@ const { Content } = await page.render();
     }
   }
 
+  .center-all {
+    margin-block-end: var(--section-spacer);
+  }
+
   .rich-content {
     --block-spacing: var(--space-3xl);
     --text-spacing: var(--space-m);
@@ -308,6 +326,22 @@ const { Content } = await page.render();
     order: -1;
     grid-column: content-start / 6;
     padding-inline-end: var(--space-xl);
+  }
+
+  :global(.rich-content.subgrid .text-callout blockquote) {
+    position: relative;
+    font-family: var(--font-heading);
+    font-size: var(--step-2);
+    line-height: var(--leading-tight);
+  }
+
+  :global(.rich-content.subgrid .text-callout blockquote::before) {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    left: calc(var(--space-xl) * -1);
+    background-color: var(--color-primary-3);
   }
 
   /* :global(

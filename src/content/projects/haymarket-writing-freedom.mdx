@@ -39,6 +39,7 @@ url: https://writing-freedom.org
 
 import TextBlock from "../../components/mdx/TextBlock.astro";
 import TextImageBlock from "../../components/mdx/TextImageBlock.astro";
+import TextCallout from "../../components/mdx/TextCallout.astro";
 import ImageBlock from "../../components/mdx/ImageBlock.astro";
 import Stats from "../../components/mdx/Stats.astro";
 
@@ -79,6 +80,10 @@ import image4 from "./writing-freedom-body-4.jpg";
   image={image1}
   layout="flipped"
 />
+<TextCallout
+  content="The live site not only makes it easy to discover and share fellow profiles, but it also delivers a seamless editing experience for site editors."
+  centered
+/>
 <ImageBlock image={image3} span="full-width" />
 <TextImageBlock
   heading="Aligning Form & Function"
@@ -89,7 +94,7 @@ import image4 from "./writing-freedom-body-4.jpg";
 />
 <TextBlock
   content={[
-    "The site build utilizes the Astro framework to deliver a minimal, lightweight end product, with just a dash of animation added in to make for a more pleasant user experience. Prioritizing simplicity means virtually no maintenance or time spent fixing plugins or bugs, just a focus on the site’s message itself.",
+    "The site was built with the Astro framework to deliver a minimal, lightweight end product, with just a dash of animation added in to make for a more pleasant user experience. Prioritizing simplicity means virtually no maintenance or time spent fixing plugins or bugs, just a focus on the site’s message itself.",
   ]}
   centered
 />

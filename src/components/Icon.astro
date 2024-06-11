@@ -1,7 +1,7 @@
 ---
 // https://heroicons.com/solid
 // prettier-ignore
-export type IconName = "arrow-up-right" | "bars-3-bottom-left" | "computer" | "cube" | "chat-bubbles" | "swatch" | "layout" | "envelope" | "arrows-out" | "arrow-down-square" | "bolt" | "chart-pie" | "chart-bar" | "circle-stack" | "code" | "cog" | "document" | "globe-americas" | "shield" | "window" | "mobile" | "user-group";
+export type IconName = "arrow-up-right" | "arrow-right" | "bars-3-bottom-left" | "chevron-down" | "chevron-right" | "check-circle" | "computer" | "cube" | "chat-bubbles" | "swatch" | "layout" | "envelope" | "arrows-out" | "arrow-down-square" | "bolt" | "chart-pie" | "chart-bar" | "circle-stack" | "code" | "cog" | "document" | "globe-americas" | "shield" | "window" | "mobile" | "user-group";
 
 type Props = {
   name: IconName;
@@ -25,6 +25,82 @@ const { name, color = "currentColor", size = "1em" } = Astro.props;
       <path
         fill-rule="evenodd"
         d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  )
+}
+
+{
+  name === "arrow-right" && (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill={color}
+      height={size}
+      width={size}
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  )
+}
+
+{
+  name === "chevron-down" && (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill={color}
+      height={size}
+      width={size}
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  )
+}
+
+{
+  name === "chevron-right" && (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill={color}
+      height={size}
+      width={size}
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  )
+}
+
+{
+  name === "check-circle" && (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill={color}
+      height={size}
+      width={size}
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
         clip-rule="evenodd"
       />
     </svg>

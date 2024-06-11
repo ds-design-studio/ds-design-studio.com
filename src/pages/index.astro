@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Card from "@components/Card.astro";
 import ButtonLink from "@components/ButtonLink.astro";
+import Icon from "@components/Icon.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import ServicesGrid from "@components/page_sections/ServicesGrid.astro";
 import Tools from "@components/page_sections/Tools.astro";
@@ -106,7 +107,10 @@ import illustration3 from "@assets/illustration-3.png";
         </Card>
       </div>
       <div class="center-all">
-        <ButtonLink href="/process">Working Together</ButtonLink>
+        <ButtonLink href="/process">
+          <span>Working Together</span>
+          <Icon name="arrow-right" />
+        </ButtonLink>
       </div>
     </article>
     <FeaturedProject project={featuredProject} />

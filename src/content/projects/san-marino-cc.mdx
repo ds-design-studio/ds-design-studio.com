@@ -40,6 +40,7 @@ url: https://writing-freedom.org
 
 import TextBlock from "../../components/mdx/TextBlock.astro";
 import TextImageBlock from "../../components/mdx/TextImageBlock.astro";
+import TextCallout from "../../components/mdx/TextCallout.astro";
 import ImageBlock from "../../components/mdx/ImageBlock.astro";
 import Stats from "../../components/mdx/Stats.astro";
 
@@ -82,10 +83,8 @@ import image6 from "./smcc-body-6.jpg";
   image={image3}
   layout="flipped"
 />
-<TextBlock
-  content={[
-    "In the end, we solved one of SMCC’s major pain points by moving from a rigid, expensive backend system to a flexible, extensible, open-source, and low-cost alternative.",
-  ]}
+<TextCallout
+  content="In the end, we solved one of SMCC’s major pain points by moving from a rigid, expensive backend system to a flexible, extensible, open-source, and low-cost alternative."
   centered
 />
 <ImageBlock image={image5} span="full-width" />
