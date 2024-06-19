@@ -13,6 +13,9 @@ import { getEntry, getEntries, getCollection } from "astro:content";
 import Icon from "@components/Icon.astro";
 import type { IconName } from "@components/Icon.astro";
 
+import supplementaryImage1 from "@assets/isometric-screen.png";
+import supplementaryImage2 from "@assets/isometric-phone.png";
+
 export async function getStaticPaths() {
   const services = await getCollection("services");
 
@@ -79,7 +82,7 @@ const { Content } = await page.render();
         <div class="content-offset">
           <div class="section-bg-gradient">
             <div class="content-wrapper">
-              <div>
+              <div id="intro">
                 <TextImageBlock>
                   <Fragment slot="image">
                     <Image
@@ -99,7 +102,7 @@ const { Content } = await page.render();
                   </Fragment>
                 </TextImageBlock>
               </div>
-              <div class="grid-6" id="features">
+              <div id="features" class="grid-6">
                 {page.features.map(({ data }) => (
                   <Card>
                     <div class="icon-wrapper gradient">
@@ -132,6 +135,30 @@ const { Content } = await page.render();
     <div class="content-wrapper section-spacer">
       <div class="rich-content">
         <Content />
+        {
+          page.slug === "web-design" && (
+            <Image
+              class="image-finale"
+              src={supplementaryImage1}
+              alt=""
+              width={900}
+              loading="lazy"
+              format="webp"
+            />
+          )
+        }
+        {
+          page.slug === "frontend-development" && (
+            <Image
+              class="image-finale"
+              src={supplementaryImage2}
+              alt=""
+              width={900}
+              loading="lazy"
+              format="webp"
+            />
+          )
+        }
       </div>
     </div>
     <CTA />
@@ -148,5 +175,10 @@ const { Content } = await page.render();
     & .grid-6 {
       margin-block: var(--space-2xl);
     }
+  }
+
+  .image-finale {
+    max-width: 28rem;
+    margin-inline: auto;
   }
 </style>

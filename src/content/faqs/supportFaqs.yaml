@@ -1,7 +1,7 @@
 entries:
-  - question: How does the support plan work?
-    answer: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-  - question: Can I cancel any time?
-    answer: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-  - question: Question?
-    answer: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+  - question: How do support plans work?
+    answer: Support plans are completely optional, no-contract subscriptions that allow me to assist you with your site after it launches. They are perfect for smaller teams that might not have the human resources, time, or capabilities to the manage site as it grows and changes. I only offer support plans for sites I have built. I have limited space to take on such engagements, so if this is something you are interested in discussing, be sure to <a href="/contact">let me know</a> in your project inquiry.
+  - question: What can I use a support plan for?
+    answer: Pretty much anything you want, as long as it is related to the site and fits within the constraints of the plan. I am able to make content updates for you, switch up a layout or image, troubleshoot issues, or add new pages and features (on the Business Plan). Think of it as on-call assistance from an expert in all aspects of your site. The plans can’t be used for other types of design or marketing work, like updating a logo or designing a business card.
+  - question: How is a support plan different from website maintenance and hosting?
+    answer: As a freelance web design studio, I don’t offer support for website hosting, email, or other technical/IT services, and ultimately where and how the site lives on the internet is your responsibility. While I will give recommendations for hosting and help you set up accounts, I am not in a position to offer 24-7 hosting support for your site.

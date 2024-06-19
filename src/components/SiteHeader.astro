@@ -3,18 +3,24 @@ import { getEntry, getCollection } from "astro:content";
 import Logo from "@components/Logo.astro";
 import ButtonLink from "@components/ButtonLink.astro";
 import Icon from "@components/Icon.astro";
+import type { Theme } from "../types";
 
 import type { IconName } from "@components/Icon.astro";
 
 const navigation = await getEntry("navigation", "main");
 const services = await getCollection("services");
 
-const { theme = "normal", position = "relative" } = Astro.props;
+type Props = {
+  theme?: Theme;
+  position?: "relative" | "absolute";
+};
+
+const { theme = "dark", position = "relative" } = Astro.props;
 ---
 
 <header class="site-header" data-theme={theme} data-position={position}>
   <div class="content-wrapper | cluster">
-    <Logo />
+    <Logo theme={theme} />
     <nav class="cluster">
       {
         navigation.data.entries.map((entry) => (

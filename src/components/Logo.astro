@@ -1,4 +1,14 @@
-<a class="logo" href="/"
+---
+import type { Theme } from "../types";
+
+type Props = {
+  theme?: Theme;
+};
+
+const { theme = "dark" } = Astro.props;
+---
+
+<a class="logo" data-theme={theme} href="/"
   ><div class="logo-wrapper">
     <span class="sr-only">DS Design</span><svg
       id="Layer_10"
@@ -29,7 +39,12 @@
   .logo {
     display: block;
     text-decoration: none;
-    transition: all 0.2s ease;
+    width: fit-content;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.06);
+    }
 
     & svg {
       height: 3rem;
@@ -41,6 +56,12 @@
 
     & .logo-fill-2 {
       fill: var(--color-primary-5);
+    }
+
+    &[data-theme="dark"] {
+      & .logo-fill-1 {
+        fill: var(--color-secondary-6);
+      }
     }
   }
 </style>

@@ -1,5 +1,5 @@
 ---
-import ButtonLink from "@components/ButtonLink.astro";
+import Icon from "@components/Icon.astro";
 import Testimonial from "@components/Testimonial.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
@@ -41,7 +41,10 @@ import headshot from "@assets/ds-pro-avatar.jpg";
           creating visually captivating, successful websites for individuals,
           organizations, churches, and businesses.
         </p>
-        <a href="/about"><strong>About Me</strong></a>
+        <a class="cluster" style="--cluster-space: 0.5rem" href="/about">
+          <strong>About Me</strong>
+          <Icon name="chevron-right" size="0.875em" />
+        </a>
       </div>
     </article>
   </div>

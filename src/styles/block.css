@@ -145,3 +145,65 @@
   padding: 0.3rem 0.5rem 0.25rem;
   border-radius: 3px;
 }
+
+.image-hover-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid color-mix(in hsl, var(--color-neutral-2), white 45%);
+  border-radius: var(--rounded-corners);
+  aspect-ratio: var(--aspect-ratio, 4/3);
+  box-shadow: var(--shadow-none);
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+
+  & img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-out;
+  }
+
+  & :is(h2, h3, p) {
+    color: var(--color-text-heading-dark);
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: all 0.3s ease-out 0.1s;
+  }
+
+  & .overlay {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    padding: var(--space-l);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(
+      to top,
+      color-mix(in hsl, var(--color-neutral-9), transparent 10%) 20%,
+      transparent
+    );
+    transition: opacity 0.2s ease-out;
+  }
+
+  &:hover {
+    border-color: var(--color-primary-4);
+    box-shadow: var(--shadow-light);
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  &:hover .overlay {
+    opacity: 1;
+  }
+
+  &:hover :is(h2, h3, p) {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

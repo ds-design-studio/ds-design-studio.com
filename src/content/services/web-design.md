@@ -26,5 +26,3 @@ When we work together, the design process will be highly dialectical and iterati
 Of course, this process goes both ways—I expect a pretty high level of engagement from clients when we're just starting out. Having consistent interaction and feedback during the content planning and design phases is what ensures a final product that meets expectations and achieves goals.
 
 In most circumstances, I'll prefer to use live development sites to show dynamic design work in the context of the browser. Static visuals can be useful for high-level, broad-brush stroke ideas, but nothing compares to seeing and interacting with the design in its live setting.
-
-Image

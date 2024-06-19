@@ -81,6 +81,19 @@ const websiteTypes = defineCollection({
   }),
 });
 
+const designGallery = defineCollection({
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      featuredImage: z.object({
+        src: image(),
+        alt: z.string(),
+      }),
+      order: z.number().optional(),
+    }),
+});
+
 const projects = defineCollection({
   type: "content",
   schema: ({ image }) =>
@@ -188,6 +201,7 @@ export const collections = {
   projects,
   tools,
   websiteTypes,
+  designGallery,
   testimonials,
   supportPlans,
   projectPhases,

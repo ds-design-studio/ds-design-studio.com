@@ -30,8 +30,8 @@ entries:
     children:
       - title: Get a Quote
         slug: contact
-      - title: Sample Agreement
-        slug: agreement
+      # - title: Sample Agreement
+      #   slug: agreement
       # - title: Price Estimator
       #   slug: pricing
       # - title: Blog

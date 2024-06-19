@@ -31,7 +31,11 @@ const { entries } = Astro.props;
         </h3>
         <p>{entry.data.preview.summary}</p>
         <footer>
-          <a href={`/services/${entry.slug}`}>
+          <a
+            class="cluster"
+            style="--cluster-space: 0.5rem"
+            href={`/services/${entry.slug}`}
+          >
             <strong>{entry.data.title} Services</strong>
             <Icon name="chevron-right" size="1em" />
           </a>
@@ -50,6 +54,9 @@ const { entries } = Astro.props;
       Whether you’re an organization, agency, or individual, reach out to see
       how I can help level-up your online presence..
     </p>
-    <ButtonLink theme="ghost" href="/contact">Get a Quote</ButtonLink>
+    <ButtonLink theme="ghost" href="/contact">
+      <span>Get a Quote</span>
+      <Icon name="arrow-right" />
+    </ButtonLink>
   </Card>
 </div>

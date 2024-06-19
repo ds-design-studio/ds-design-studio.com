@@ -12,3 +12,5 @@ export type PageMetadata = {
     description?: string;
   };
 };
+
+export type Theme = "normal" | "dark";

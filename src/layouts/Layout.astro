@@ -3,7 +3,7 @@ import "../styles/site.css";
 import { ViewTransitions } from "astro:transitions";
 import { SEO } from "astro-seo";
 import { getImage } from "astro:assets";
-import type { PageMetadata } from "../types";
+import type { PageMetadata, Theme } from "../types";
 import fallbackOgImage from "@assets/isometric-laptop.png";
 
 import site from "@data/site.json";
@@ -12,7 +12,7 @@ import SiteFooter from "@components/SiteFooter.astro";
 
 type Props = {
   meta?: PageMetadata;
-  headerTheme?: "normal" | "dark";
+  headerTheme?: Theme;
 };
 
 const { meta, headerTheme = "dark" } = Astro.props;
