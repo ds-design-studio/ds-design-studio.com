@@ -19,10 +19,12 @@ export default defineConfig({
       cssMinify: "lightningcss",
     },
   },
-  // redirects: {
-  //   "/services": "/#services",
-  // },
-  // integrations: [react(), markdoc(), keystatic()],
+  redirects: {
+    "/services": "/#services",
+    "/our-approach": "/process",
+    "/site-benefits": "/services/frontend-development",
+    "/about-us": "/about",
+  },
   // output: "hybrid",
   integrations: [mdx(), sitemap()],
 });
