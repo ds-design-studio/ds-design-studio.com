@@ -6,9 +6,9 @@ export const config = {
 };
 
 export async function GET() {
-  const fontData = await fetch(
-    "https://ds-design-studio.com/fonts/Body-Grotesque-Fit-Extrabold.ttf"
-  ).then((res) => res.arrayBuffer());
+  // const fontData = await fetch(
+  //   "https://ds-design-studio.com/fonts/Body-Grotesque-Fit-Extrabold.ttf"
+  // ).then((res) => res.arrayBuffer());
   // Astro doesn't support tsx endpoints so usign React-element objects
   const html = {
     type: "div",
@@ -54,13 +54,13 @@ export async function GET() {
   return new ImageResponse(html, {
     width: 1200,
     height: 630,
-    fonts: [
-      {
-        name: "Body Grotesque Fit",
-        data: fontData,
-        style: "normal",
-        weight: 800,
-      },
-    ],
+    // fonts: [
+    //   {
+    //     name: "Body Grotesque Fit",
+    //     data: fontData,
+    //     style: "normal",
+    //     weight: 800,
+    //   },
+    // ],
   });
 }
