@@ -53,7 +53,11 @@ const pricing = [
               with a complimentary assessment and quote.
             </p>
           </div>
-          <form>
+          <form
+            id="project-inquiry"
+            action="https://formspree.io/f/xpwaaane"
+            method="POST"
+          >
             <div class="form-item | col-3">
               <label for="name">Your Name</label>
               <input
@@ -137,6 +141,7 @@ const pricing = [
                 required></textarea>
             </div>
             <ButtonLink type="submit">Submit</ButtonLink>
+            <p id="form-status"></p>
           </form>
         </article>
       </div>
@@ -226,11 +231,20 @@ const pricing = [
     background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0)),
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23cfd7e2' fill-opacity='0.25'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
+
+  #form-status {
+    grid-column: span 3;
+    font-weight: 700;
+    align-self: center;
+  }
 </style>
 
 <script>
+  const form = document.querySelector("form") as HTMLFormElement;
   const checkboxGroup = document.querySelector("form fieldset");
   const values = [...checkboxGroup?.querySelectorAll("input")!];
+  const errorMessage =
+    "Sorry, there was a problem submitting your form. Please try again in a moment.";
 
   values.forEach((value) =>
     value.addEventListener("change", () => {
@@ -243,4 +257,41 @@ const pricing = [
       }
     })
   );
+
+  // AJAX form submit to Formspree
+  async function handleFormSubmit(event: Event) {
+    event?.preventDefault();
+    const target = event.target as HTMLFormElement;
+
+    const status = document.querySelector("#form-status") as Element;
+    const formData = new FormData(target);
+
+    try {
+      const res = await fetch(target.action, {
+        method: target.method,
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (res.ok) {
+        status.innerHTML = "Thanks for your submission!";
+        form.reset();
+      } else {
+        const data = await res.json();
+        if (Object.hasOwn(data, "errors")) {
+          status.innerHTML = data["errors"]
+            .map((err: any) => err["message"])
+            .join(", ");
+        } else {
+          status.innerHTML = errorMessage;
+        }
+      }
+    } catch (error) {
+      status.innerHTML = errorMessage;
+    }
+  }
+
+  form.addEventListener("submit", handleFormSubmit);
 </script>
