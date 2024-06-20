@@ -33,6 +33,14 @@ const pricing = [
     value: "50k+",
   },
 ];
+
+const ogParams = new URLSearchParams([
+  ["title", "Get a Quote"],
+  [
+    "subtitle",
+    "Submit a form with your project details to receive a custom quote",
+  ],
+]);
 ---
 
 <Layout
@@ -41,6 +49,9 @@ const pricing = [
     seo: {
       title: title,
       description: description,
+    },
+    openGraph: {
+      image: `/api/og?${ogParams.toString()}`,
     },
   }}
 >

@@ -19,12 +19,12 @@ const { meta, headerTheme = "dark" } = Astro.props;
 
 const path = Astro.url.pathname;
 const canonicalUrl = new URL(path, Astro.site);
-const ogImage = await getImage({
-  src: meta?.openGraph?.image || fallbackOgImage, // include fallback source
+const defaultOgImage = await getImage({
+  src: fallbackOgImage, //  meta?.openGraph?.image || fallbackOgImage, // include fallback source
   format: "jpeg",
   width: 1200,
   height: 630,
-  alt: meta?.openGraph?.imageAlt || "test alt",
+  alt: "", // meta?.openGraph?.imageAlt || "",
 });
 ---
 
@@ -45,11 +45,11 @@ const ogImage = await getImage({
         basic: {
           title: meta?.openGraph?.title || meta?.seo?.title || site.siteTitle,
           type: "website",
-          image: ogImage.src,
+          image: (meta?.openGraph?.image as string) || defaultOgImage.src,
           url: canonicalUrl,
         },
         image: {
-          alt: ogImage.attributes.alt,
+          // alt: ogImage.attributes.alt,
           type: "image/jpeg",
           width: 1200,
           height: 630,
@@ -65,8 +65,8 @@ const ogImage = await getImage({
         card: "summary",
         site: "@dothedan",
         title: meta?.openGraph?.title || meta?.seo?.title || site.siteTitle,
-        image: ogImage.src,
-        imageAlt: ogImage.attributes.alt,
+        image: (meta?.openGraph?.image as string) || defaultOgImage.src,
+        // imageAlt: ogImage.attributes.alt,
         description:
           meta?.openGraph?.description ||
           meta?.seo?.description ||

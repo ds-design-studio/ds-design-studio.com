@@ -9,6 +9,11 @@ const projects = await getCollection("projects");
 const title = "Selected Work";
 const description =
   "A selection of recent work showcasing the principles that I bring to all of my web design projects.";
+
+const ogParams = new URLSearchParams([
+  ["title", "Selected Work"],
+  ["subtitle", "Selected web design work by Daniel Saunders"],
+]);
 ---
 
 <Layout
@@ -21,6 +26,7 @@ const description =
     openGraph: {
       title: "Selected Web Design Work by Daniel Saunders",
       description: description,
+      image: `/api/og?${ogParams.toString()}`,
     },
   }}
 >

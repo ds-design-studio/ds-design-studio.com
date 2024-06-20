@@ -28,7 +28,13 @@ import illustration2 from "@assets/illustration-2.png";
 import illustration3 from "@assets/illustration-3.png";
 ---
 
-<Layout>
+<Layout
+  meta={{
+    openGraph: {
+      image: "/api/og",
+    },
+  }}
+>
   <main slot="content">
     <HomeHero />
     <div class="content-offset">

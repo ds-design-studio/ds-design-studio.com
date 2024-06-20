@@ -45,6 +45,11 @@ const {
 } = page.data;
 
 const { Content } = await page.render();
+
+const ogParams = new URLSearchParams([
+  ["title", title],
+  ["subtitle", meta.description as string],
+]);
 ---
 
 <Layout
@@ -57,6 +62,7 @@ const { Content } = await page.render();
     openGraph: {
       title: summary,
       description: meta.description as string,
+      image: `/api/og?${ogParams.toString()}`,
     },
   }}
 >

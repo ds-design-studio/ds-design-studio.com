@@ -37,6 +37,14 @@ const capabilities = [
   "Visual Design",
   "Web Animation",
 ];
+
+const ogParams = new URLSearchParams([
+  ["title", "About Daniel Saunders"],
+  [
+    "subtitle",
+    "Freelance web designer and developer with over 8 years of experience",
+  ],
+]);
 ---
 
 <Layout
@@ -48,6 +56,7 @@ const capabilities = [
     },
     openGraph: {
       title: "About Daniel Saunders",
+      image: `/api/og?${ogParams.toString()}`,
     },
   }}
 >

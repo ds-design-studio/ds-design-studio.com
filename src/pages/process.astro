@@ -12,6 +12,14 @@ const faqs = await getEntry("faqs", "processFaqs");
 const principles = await getCollection("principles");
 
 const title = "Process";
+
+const ogParams = new URLSearchParams([
+  ["title", "Process"],
+  [
+    "subtitle",
+    "A brief overview of what it looks like to work with Daniel Saunders",
+  ],
+]);
 ---
 
 <Layout
@@ -24,6 +32,7 @@ const title = "Process";
     },
     openGraph: {
       title: "Crafting beautiful experiences, step by step",
+      image: `/api/og?${ogParams.toString()}`,
     },
   }}
 >
