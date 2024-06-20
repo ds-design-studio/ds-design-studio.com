@@ -3,8 +3,11 @@ import type { APIRoute } from "astro";
 const robotsTxt = `
 User-agent: *
 Allow: /
+Allow: /api/og/*
+
 User-agent: GPTBot
 Disallow: /
+
 User-agent: ChatGPT-User
 Disallow: /
 
