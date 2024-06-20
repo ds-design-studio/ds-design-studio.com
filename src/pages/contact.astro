@@ -1,7 +1,10 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import Icon from "@components/Icon.astro";
 import ButtonLink from "@components/ButtonLink.astro";
 import InnerHero from "@components/page_sections/InnerHero.astro";
+import { Image } from "astro:assets";
+import illustration from "@assets/isometric-desktop-2.png";
 
 const title = "Contact";
 const description =
@@ -47,6 +50,13 @@ const pricing = [
       <div class="content-wrapper">
         <article class="form-wrapper | grid-9">
           <div class="text | flow">
+            <Image
+              class="illustration"
+              src={illustration}
+              width={300}
+              alt=""
+              loading="eager"
+            />
             <h2>Project Inquiry</h2>
             <p>
               Submit a form with your project details and we’ll get back to you
@@ -64,14 +74,13 @@ const pricing = [
                 type="text"
                 name="name"
                 id="name"
-                placeholder="Daniel Saunders"
                 autocomplete="name"
                 required
               />
             </div>
             <div class="form-item | col-3">
-              <label for="org">Your Organization</label>
-              <input type="text" name="org" id="org" placeholder="DS Design" />
+              <label for="org">Your Organization (Optional)</label>
+              <input type="text" name="org" id="org" />
             </div>
             <div class="form-item | col-4">
               <label for="email">Your Email</label>
@@ -79,7 +88,6 @@ const pricing = [
                 type="email"
                 name="email"
                 id="email"
-                placeholder="daniel@danielsaunders.xyz"
                 autocomplete="email"
                 required
               />
@@ -140,8 +148,41 @@ const pricing = [
                 placeholder="Please provide some additional context about your project."
                 required></textarea>
             </div>
-            <ButtonLink type="submit">Submit</ButtonLink>
-            <p id="form-status"></p>
+            <ButtonLink type="submit">
+              <span class="button-text">Submit</span>
+              <img class="loading-spinner" src="/svg/oval.svg" />
+            </ButtonLink>
+            <p class="form-status | cluster">
+              <svg
+                class="success-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                height="1em"
+                width="1em"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <svg
+                class="error-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                height="1em"
+                width="1em"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <span class="message"></span>
+            </p>
           </form>
         </article>
       </div>
@@ -150,6 +191,10 @@ const pricing = [
 </Layout>
 
 <style>
+  .illustration {
+    max-width: 12rem;
+  }
+
   .form-wrapper {
     margin-block-start: calc(var(--section-spacer) * 0.5);
   }
@@ -215,7 +260,7 @@ const pricing = [
 
   :is(input, textarea, select, fieldset) {
     color: var(--color-text-body);
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1rem 0.75rem;
     border-radius: var(--rounded-corners-small);
     border: 1px solid var(--color-neutral-2);
   }
@@ -232,10 +277,37 @@ const pricing = [
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23cfd7e2' fill-opacity='0.25'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
-  #form-status {
-    grid-column: span 3;
+  .form-status {
+    --cluster-space: 0.5rem;
+    grid-column: span 5;
     font-weight: 700;
     align-self: center;
+    padding: 0.85rem 1rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--rounded-corners-small);
+    color: var(--text-color);
+    background-color: var(--background-color);
+
+    &.success {
+      --border-color: var(--color-secondary-2);
+      --text-color: var(--color-secondary-6);
+      --background-color: var(--color-secondary-1);
+    }
+
+    &.error {
+      --border-color: var(--color-warning-border);
+      --text-color: var(--color-warning-dark);
+      --background-color: var(--color-warning-light);
+    }
+
+    & .message {
+      position: relative;
+      top: 1px;
+    }
+
+    & :is(.success-icon, .error-icon) {
+      display: none;
+    }
   }
 </style>
 
@@ -243,7 +315,7 @@ const pricing = [
   const form = document.querySelector("form") as HTMLFormElement;
   const checkboxGroup = document.querySelector("form fieldset");
   const values = [...checkboxGroup?.querySelectorAll("input")!];
-  const errorMessage =
+  const defaultErrorMessage =
     "Sorry, there was a problem submitting your form. Please try again in a moment.";
 
   values.forEach((value) =>
@@ -260,13 +332,29 @@ const pricing = [
 
   // AJAX form submit to Formspree
   async function handleFormSubmit(event: Event) {
+    // Prevent form behavior
     event?.preventDefault();
     const target = event.target as HTMLFormElement;
 
-    const status = document.querySelector("#form-status") as Element;
+    // Get elements
+    const submitButton = form.querySelector("button") as HTMLElement;
+    const loadingSpinner = form.querySelector(
+      ".loading-spinner"
+    ) as HTMLElement;
+    const status = document.querySelector(".form-status") as HTMLElement;
+    const successIcon = status.querySelector(".success-icon") as SVGElement;
+    const errorIcon = status.querySelector(".error-icon") as SVGElement;
+    const statusMessage = status.querySelector(".message") as HTMLElement;
+
+    // Compile form data
     const formData = new FormData(target);
 
+    // Try submitting to Formspree endpoint
     try {
+      // Disable button and add loading spinner
+      submitButton?.setAttribute("disabled", "");
+      loadingSpinner.style.display = "block";
+
       const res = await fetch(target.action, {
         method: target.method,
         body: formData,
@@ -276,20 +364,38 @@ const pricing = [
       });
 
       if (res.ok) {
-        status.innerHTML = "Thanks for your submission!";
+        // On success, reset form but remove button to encourage one submission
         form.reset();
+        submitButton.style.display = "none";
+        // Add success elements and message
+        status.classList.add("success");
+        successIcon.style.display = "block";
+        statusMessage.innerHTML = "Thanks for your submission!";
       } else {
+        // On fail, make button available again and remove spinner
+        submitButton.removeAttribute("disabled");
+        loadingSpinner.style.display = "none";
+        // If there was a json response, capture it
         const data = await res.json();
+        // Add error elements and message
+        status.classList.add("error");
+        errorIcon.style.display = "block";
+        // Display error repsonse from server if exists
         if (Object.hasOwn(data, "errors")) {
-          status.innerHTML = data["errors"]
+          statusMessage.innerHTML = data["errors"]
             .map((err: any) => err["message"])
             .join(", ");
         } else {
-          status.innerHTML = errorMessage;
+          statusMessage.innerHTML = defaultErrorMessage;
         }
       }
     } catch (error) {
-      status.innerHTML = errorMessage;
+      // On general fail, make button available and show error
+      submitButton.removeAttribute("disabled");
+      loadingSpinner.style.display = "none";
+      status.classList.add("error");
+      errorIcon.style.display = "block";
+      statusMessage.innerHTML = defaultErrorMessage;
     }
   }
 

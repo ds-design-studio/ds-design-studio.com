@@ -23,3 +23,12 @@
     filter: blur(0px);
   }
 }
+
+.loading-spinner {
+  position: relative;
+  display: none;
+  width: auto;
+  height: 1em;
+  top: -1px;
+  padding-inline-end: 1rem;
+}
