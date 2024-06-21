@@ -12,13 +12,14 @@ import headshot from "@assets/ds-pro-avatar.jpg";
 <div id="testimonials" class="content-wrapper">
   <h2 class="sr-only">Testimonials</h2>
   <div class="grid-9">
-    {
+    <!-- TODO: Get new testimonials -->
+    <!-- {
       testimonials.slice(0, 3).map((testimonial) => (
         <div class="testimonial-wrapper">
           <Testimonial content={testimonial} />
         </div>
       ))
-    }
+    } -->
     <article class="about">
       <div class="text | flow">
         <header class="cluster">
@@ -74,7 +75,7 @@ import headshot from "@assets/ds-pro-avatar.jpg";
 
     & > :last-child {
       order: 9;
-      grid-column: span 5;
+      grid-column: 3 / span 5; /* when add testimonials change back to -span 5- */
     }
   }
 
