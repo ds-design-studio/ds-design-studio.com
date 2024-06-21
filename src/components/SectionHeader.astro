@@ -56,7 +56,31 @@ const { align = "left" } = Astro.props;
     }
   }
 
-  h2 {
-    font-size: var(--step-4);
+  @container contentWrapper (max-width: 768px) {
+    header {
+      &[data-align="center"] {
+        & .text {
+          grid-column: 1 / span all;
+        }
+      }
+    }
+  }
+
+  @container contentWrapper (max-width: 640px) {
+    header {
+      row-gap: var(--space-xl);
+
+      &[data-align="left"] {
+        & .text {
+          grid-column: 1 / span all;
+        }
+
+        & .image {
+          justify-self: start;
+          grid-column: span 4;
+          order: -1;
+        }
+      }
+    }
   }
 </style>

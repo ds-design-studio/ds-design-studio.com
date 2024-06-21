@@ -135,4 +135,29 @@ const { title, summary, featuredImage, scope } = project?.data;
     mix-blend-mode: screen;
     transform: scale(1.5);
   }
+
+  @container contentWrapper (max-width: 999px) {
+    .text {
+      grid-column: span 9;
+    }
+
+    .featured-img {
+      grid-column: span 9;
+    }
+  }
+
+  @media (max-width: 640px) {
+    article {
+      padding-block: var(--space-3xl);
+    }
+
+    .grid-9 {
+      row-gap: var(--space-l);
+      column-gap: 0;
+    }
+
+    ul {
+      columns: 1;
+    }
+  }
 </style>

@@ -62,4 +62,23 @@ const { title, intro, breadcrumbs } = Astro.props;
       text-wrap: balance;
     }
   }
+
+  @container contentWrapper (max-width: 640px) {
+    header {
+      & h1 {
+        font-size: var(--step-4);
+      }
+    }
+
+    .text {
+      grid-column: 1 / span all;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding-block-start: 8rem;
+      padding-block-end: 6rem;
+    }
+  }
 </style>

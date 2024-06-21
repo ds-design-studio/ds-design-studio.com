@@ -119,3 +119,9 @@
   --focus-outline-color: var(--color-primary-3);
   --focus-outline-width: 2px;
 }
+
+@media (max-width: 640px) {
+  :root {
+    --section-spacer: var(--space-xl);
+  }
+}

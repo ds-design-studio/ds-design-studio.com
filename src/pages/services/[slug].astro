@@ -52,6 +52,7 @@ const {
   features,
   featuredImage,
   featuredProject,
+  showContent,
 } = page.data;
 
 const { Content } = await page.render();
@@ -108,7 +109,7 @@ const ogParams = new URLSearchParams([
                   </Fragment>
                 </TextImageBlock>
               </div>
-              <div id="features" class="grid-6">
+              <div id="features" class="features | grid-6">
                 {page.features.map(({ data }) => (
                   <Card>
                     <div class="icon-wrapper gradient">
@@ -138,35 +139,35 @@ const ogParams = new URLSearchParams([
       )
     }
     <!-- Long text -->
-    <div class="content-wrapper section-spacer">
-      <div class="rich-content">
-        <Content />
-        {
-          page.slug === "web-design" && (
-            <Image
-              class="image-finale"
-              src={supplementaryImage1}
-              alt=""
-              width={900}
-              loading="lazy"
-              format="webp"
-            />
-          )
-        }
-        {
-          page.slug === "frontend-development" && (
-            <Image
-              class="image-finale"
-              src={supplementaryImage2}
-              alt=""
-              width={900}
-              loading="lazy"
-              format="webp"
-            />
-          )
-        }
-      </div>
-    </div>
+    {
+      showContent && (
+        <div class="content-wrapper section-spacer">
+          <div class="rich-content">
+            <Content />
+            {page.slug === "web-design" && (
+              <Image
+                class="image-finale"
+                src={supplementaryImage1}
+                alt=""
+                width={900}
+                loading="lazy"
+                format="webp"
+              />
+            )}
+            {page.slug === "frontend-development" && (
+              <Image
+                class="image-finale"
+                src={supplementaryImage2}
+                alt=""
+                width={900}
+                loading="lazy"
+                format="webp"
+              />
+            )}
+          </div>
+        </div>
+      )
+    }
     <CTA />
   </main>
 </Layout>
@@ -177,14 +178,26 @@ const ogParams = new URLSearchParams([
       margin-block-start: var(--space-xl);
       margin-block-end: var(--space-3xl);
     }
+  }
 
-    & .grid-6 {
-      margin-block: var(--space-2xl);
-    }
+  .grid-6 {
+    margin-block: var(--space-2xl);
   }
 
   .image-finale {
     max-width: 28rem;
     margin-inline: auto;
+  }
+
+  @container contentWrapper (max-width: 640px) {
+    .image-finale {
+      max-width: 100%;
+    }
+
+    .content-wrapper {
+      & > :nth-child(1) {
+        margin-block-end: var(--space-l);
+      }
+    }
   }
 </style>

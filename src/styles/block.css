@@ -207,3 +207,13 @@
     opacity: 1;
   }
 }
+
+/* @container contentWrapper (max-width: 768px) {
+
+} */
+
+@container contentWrapper (max-width: 640px) {
+  .callout {
+    padding: var(--space-xl);
+  }
+}

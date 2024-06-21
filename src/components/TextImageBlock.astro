@@ -36,4 +36,11 @@ const { layout = "normal" } = Astro.props;
       --flow-space: var(--space-m);
     }
   }
+
+  @container contentWrapper (max-width: 768px) {
+    .flex {
+      flex-direction: column;
+      gap: var(--space-l);
+    }
+  }
 </style>

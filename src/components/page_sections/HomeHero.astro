@@ -42,6 +42,10 @@ import ButtonLink from "@components/ButtonLink.astro";
     overflow: hidden;
   }
 
+  .grid-9 {
+    z-index: 2;
+  }
+
   .text {
     position: relative;
     z-index: 2;
@@ -72,4 +76,29 @@ import ButtonLink from "@components/ButtonLink.astro";
     top: 50%;
     transform: translateY(-50%);
   } */
+
+  @media (max-width: 999px) {
+    .text {
+      grid-column: 1/9;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-block-start: 11rem;
+      padding-block-end: 8rem;
+    }
+
+    h1 {
+      font-size: var(--step-5);
+    }
+
+    .grid-9 {
+      grid-template-columns: 1fr;
+
+      & > * {
+        grid-column: 1 / 2;
+      }
+    }
+  }
 </style>

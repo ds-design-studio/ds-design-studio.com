@@ -55,7 +55,7 @@ const copyright = format({
 
   .grid {
     display: grid;
-    grid-template-columns: 2.5fr repeat(4, 1fr);
+    grid-template-columns: 2.5fr repeat(3, 1fr);
     gap: var(--space-l);
   }
 
@@ -81,6 +81,29 @@ const copyright = format({
 
     &.cluster {
       --cluster-justify: space-between;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .brand {
+      grid-column: span 3;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid {
+      & > * {
+        grid-column: span 3;
+      }
+
+      & .flow {
+        align-items: center;
+        text-align: center;
+      }
     }
   }
 </style>

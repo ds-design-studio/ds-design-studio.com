@@ -19,6 +19,7 @@ features:
   - unique-look-and-feel
 prologue: My approach to web design focuses on designing <em>for</em> the medium, which means embracing the fluidity of the web and its unlimited viewport sizes. It also means leveraging time-honored design principles, typographic best practices, and smart UI/UX decisions to deliver a seamless and enjoyable user experience.
 featuredProject: haymarket-writing-freedom
+showContent: true
 ---
 
 When we work together, the design process will be highly dialectical and iterative. That is, there is usually a lot of back and forth between us, a lot of refining, before we settle on a design that works for everyone. It's rare that a solution is discovered right off the bat with no further adjustments (rare, but not impossible!).

@@ -92,3 +92,21 @@
     /* transform: translate(-50%, 0rem); */
   }
 }
+
+@media (max-width: 1099px) {
+  .content-offset {
+    & .content-wrapper {
+      padding-inline-start: var(--gutter);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    & .rounded-block {
+      & > * {
+        height: 3rem;
+      }
+    }
+  }
+}

@@ -113,4 +113,12 @@ import headshot from "@assets/ds-pro-avatar.jpg";
       opacity: 0.85;
     }
   }
+
+  @container contentWrapper (max-width: 768px) {
+    .grid-9 {
+      & > :last-child {
+        grid-column: 1 / span all;
+      }
+    }
+  }
 </style>

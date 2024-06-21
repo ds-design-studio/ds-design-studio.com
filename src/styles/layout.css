@@ -1,4 +1,5 @@
 .content-wrapper {
+  container: contentWrapper / inline-size;
   position: relative;
   max-width: clamp(16rem, var(--wrapper-max-width, 100vw), 90rem);
   padding-inline: var(--gutter, 1rem);
@@ -72,4 +73,26 @@
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: var(--space-s);
+}
+
+@container contentWrapper (max-width: 999px) {
+  .grid-6 {
+    & > * {
+      grid-column: span 3;
+    }
+  }
+}
+
+@container contentWrapper (max-width: 768px) {
+  .grid-6 {
+    & > * {
+      grid-column: span 6;
+    }
+
+    &.feature-span {
+      & > :is(:nth-child(1), :nth-child(2)) {
+        grid-column: span 6;
+      }
+    }
+  }
 }

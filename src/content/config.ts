@@ -59,6 +59,7 @@ const services = defineCollection({
       prologue: z.string().optional(),
       order: z.number(),
       icon: z.string().optional(),
+      showContent: z.boolean().optional(),
     }),
 });
 

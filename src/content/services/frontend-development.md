@@ -19,6 +19,7 @@ features:
   - ongoing-support
 prologue: Building a site doesn’t have to be overly complicated. I favor modern tools that prioritize speed, simplicity, and a fantastic experience for the end user. But rather than simply chasing the latest fads, I believe that betting on the web platform itself can produce sites that save time, money, and headaches in the long run.
 featuredProject: san-marino-cc
+showContent: true
 ---
 
 In all things web development, [my philosophy](/process#principles) is to stay simple until you need to get complex. But even when complexity is called for, I try to approach it in the simplest way possible.
