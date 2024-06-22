@@ -57,4 +57,14 @@ const { title, summary, type, client, thumbnailImage } = project.data;
   .divider {
     color: var(--color-primary-5);
   }
+
+  @container contentWrapper (max-width: 768px) {
+    h2 {
+      font-size: var(--step-2);
+    }
+
+    .overlay {
+      padding: var(--space-m);
+    }
+  }
 </style>

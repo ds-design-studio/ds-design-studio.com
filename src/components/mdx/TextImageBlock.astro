@@ -4,7 +4,7 @@ import type { ImageMetadata } from "astro";
 import illustration from "../../assets/illustration-1.png";
 
 type Props = {
-  heading: string;
+  heading?: string;
   content: string[];
   image: ImageMetadata;
   imageAlt?: string;
@@ -30,7 +30,7 @@ const {
     format="webp"
   />
   <div class="feature-content">
-    <h2>{heading}</h2>
+    {heading && <h2>{heading}</h2>}
     {content.map((paragraph) => <p set:html={paragraph} />)}
   </div>
 </div>
