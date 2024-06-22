@@ -2,11 +2,18 @@
 import { getEntry } from "astro:content";
 import Icon from "@components/Icon.astro";
 import ButtonLink from "@components/ButtonLink.astro";
+import type { Theme } from "../types";
 
 const navigation = await getEntry("navigation", "main");
+
+type Props = {
+  theme?: Theme;
+};
+
+const { theme = "dark" } = Astro.props;
 ---
 
-<div class="mobile-nav | popover" x-data x-popover>
+<div class="mobile-nav | popover" x-data x-popover data-theme={theme}>
   <button class="menu-button open" x-popover:button>
     <span class="sr-only">Open Navigation</span>
     <Icon name="bars-2" size="1.75rem" />
@@ -49,6 +56,16 @@ const navigation = await getEntry("navigation", "main");
 </div>
 
 <style>
+  .mobile-nav {
+    --button-icon-color: var(--color-neutral-9);
+    --panel-border: var(--color-neutral-2);
+
+    &[data-theme="dark"] {
+      --button-icon-color: var(--color-neutral-1);
+      --panel-border: var(--color-neutral-1);
+    }
+  }
+
   .menu-button {
     border-radius: 5px;
     border: 0;
@@ -57,9 +74,9 @@ const navigation = await getEntry("navigation", "main");
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--color-neutral-1);
 
     &.open {
+      color: var(--button-icon-color);
     }
 
     &.close {
@@ -79,7 +96,7 @@ const navigation = await getEntry("navigation", "main");
 
   .panel {
     background: white;
-    border: 1px solid var(--color-neutral-1);
+    border: 1px solid var(--panel-border);
     padding: var(--space-m);
     border-radius: var(--rounded-corners-small);
     display: flex;

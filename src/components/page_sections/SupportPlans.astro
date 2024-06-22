@@ -70,6 +70,7 @@ const supportPlans = await getCollection("supportPlans");
 <style>
   .section-spacer {
     margin-block-start: calc(var(--section-spacer) * 0.5);
+    margin-block-end: 0;
   }
 
   .plans {
@@ -103,6 +104,12 @@ const supportPlans = await getCollection("supportPlans");
     & .tag {
       top: 1rem;
       right: 1rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .section-spacer {
+      margin-block-start: var(--space-2xs);
     }
   }
 </style>

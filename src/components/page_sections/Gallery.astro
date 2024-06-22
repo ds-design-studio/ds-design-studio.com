@@ -13,7 +13,7 @@ const gallery = await getCollection("designGallery");
   <div class="gallery | grid-6">
     {
       gallery
-        .sort((a, b) => a.data.order - b.data.order)
+        .sort((a, b) => a.data.order! - b.data.order!)
         .map(({ data }) => (
           <div class="image-hover-wrapper">
             <div class="overlay">
@@ -52,5 +52,29 @@ const gallery = await getCollection("designGallery");
 
   h3 {
     font-size: var(--step-1);
+  }
+
+  @container contentWrapper (max-width: 999px) {
+    .grid-6 {
+      & > :nth-child(4) {
+        --aspect-ratio: 1.399;
+      }
+
+      & > :nth-child(5) {
+        --aspect-ratio: 1.399;
+      }
+    }
+  }
+
+  @container contentWrapper (max-width: 768px) {
+    .grid-6 {
+      & > :nth-child(4) {
+        grid-column: span 6;
+      }
+
+      & > :nth-child(5) {
+        grid-column: span 6;
+      }
+    }
   }
 </style>

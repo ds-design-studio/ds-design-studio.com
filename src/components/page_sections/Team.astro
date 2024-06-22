@@ -169,4 +169,48 @@ const { testimonials } = Astro.props;
   :global(.icon-wrapper:has(+ .info-text:hover)) {
     border-color: var(--color-primary-2);
   }
+
+  @container contentWrapper (max-width: 768px) {
+    article {
+      margin-block-end: var(--space-m);
+    }
+
+    .grid-6 {
+      margin-block-start: var(--space-m);
+      max-width: none;
+      column-gap: 0;
+      row-gap: var(--space-l);
+    }
+
+    .text {
+      padding-inline-end: 0;
+      grid-column: span 6;
+    }
+
+    .headshot {
+      max-width: 20rem;
+    }
+
+    .info {
+      row-gap: var(--space-m);
+
+      & > * {
+        grid-column: span 2;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .headshot {
+      max-width: 100%;
+    }
+
+    .info {
+      row-gap: var(--space-l);
+
+      & > * {
+        grid-column: span 4;
+      }
+    }
+  }
 </style>

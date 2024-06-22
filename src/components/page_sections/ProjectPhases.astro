@@ -12,7 +12,7 @@ import shapes1 from "@assets/shapes-1.png";
 import bgGradient from "@assets/blob-bg-2-grain.png";
 ---
 
-<article id="phases" class="content-wrapper">
+<article id="phases" class="phases | content-wrapper">
   <div class="intro">
     <SectionHeader align="left">
       <Fragment slot="text">
@@ -434,6 +434,21 @@ import bgGradient from "@assets/blob-bg-2-grain.png";
         border: var(--border-width) solid white;
         z-index: 2;
       }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .phases {
+      padding-inline-start: calc(var(--gutter) * 0.75);
+    }
+
+    .tab-panel {
+      padding-inline-start: var(--space-s);
+      padding-inline-end: 0;
+    }
+
+    .window {
+      padding-inline: var(--space-s);
     }
   }
 </style>

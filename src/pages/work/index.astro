@@ -74,4 +74,22 @@ const ogParams = new URLSearchParams([
       margin-block-start: var(--space-2xl);
     }
   }
+
+  @media (max-width: 768px) {
+    .hero {
+      &.inner-spacing {
+        margin-block-start: 10rem;
+      }
+    }
+
+    .grid-6 {
+      & > * {
+        grid-column: span 6;
+      }
+
+      & > :nth-child(even) {
+        margin-block-start: 0;
+      }
+    }
+  }
 </style>

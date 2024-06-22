@@ -91,4 +91,17 @@ const ogParams = new URLSearchParams([
       font-size: var(--step-1);
     }
   }
+
+  @container contentWrapper (max-width: 640px) {
+    .principles {
+      & > * {
+        text-align: center;
+        justify-content: center;
+      }
+
+      & .icon-wrapper {
+        align-self: center;
+      }
+    }
+  }
 </style>

@@ -325,6 +325,48 @@ const ogParams = new URLSearchParams([
       display: none;
     }
   }
+
+  @container contentWrapper (max-width: 1150px) {
+    form {
+      & .col-3 {
+        grid-column: span 6;
+      }
+
+      & .col-4 {
+        grid-column: span 6;
+      }
+    }
+  }
+
+  @container contentWrapper (max-width: 899px) {
+    .form-wrapper {
+      margin-block-start: var(--space-s);
+    }
+
+    .grid-9 {
+      column-gap: var(--space-s);
+
+      & .text {
+        grid-column: span 9;
+      }
+
+      & form {
+        grid-column: span 9;
+      }
+    }
+  }
+
+  @container contentWrapper (max-width: 768px) {
+    form {
+      padding: var(--space-l);
+    }
+  }
+
+  @container contentWrapper (max-width: 480px) {
+    form {
+      padding: var(--space-m);
+    }
+  }
 </style>
 
 <script>
