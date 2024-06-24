@@ -7,7 +7,7 @@ preview:
   summary: I have an eye for both the detailed parts and the organic whole. Finding harmony between the two is what generates impactful designs.
 featuredImage:
   src: ../../assets/isometric-desktop.png
-  alt: Test alt
+  alt: ""
 icon: swatch
 order: 3
 features:

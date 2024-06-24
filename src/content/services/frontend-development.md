@@ -7,7 +7,7 @@ preview:
   summary: Building a site doesn’t have to be overly complicated. I favor modern tools that prioritize speed, simplicity, and a fantastic experience for the end user.
 featuredImage:
   src: ../../assets/isometric-laptop.png
-  alt: Test alt
+  alt: ""
 icon: code
 order: 2
 features:

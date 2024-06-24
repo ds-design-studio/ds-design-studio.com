@@ -7,7 +7,7 @@ preview:
   summary: My approach to web design focuses on designing for the medium, which means embracing the fluidity of the web and its unlimited viewport sizes.
 featuredImage:
   src: ../../assets/isometric-desktop-2.png
-  alt: Test alt
+  alt: ""
 icon: layout
 order: 1
 features:

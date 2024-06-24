@@ -7,7 +7,7 @@ preview:
   summary: Websites are living documents that are constantly evolving. My goal is to set you up for future success with ongoing assistance if you require it.
 featuredImage:
   src: ../../assets/isometric-phone.png
-  alt: Test alt
+  alt: ""
 icon: chat-bubbles
 order: 4
 features:
