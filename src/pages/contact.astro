@@ -5,6 +5,7 @@ import ButtonLink from "@components/ButtonLink.astro";
 import InnerHero from "@components/page_sections/InnerHero.astro";
 import { Image } from "astro:assets";
 import illustration from "@assets/isometric-desktop-2.png";
+import site from "@data/site.json";
 
 const title = "Contact";
 const description =
@@ -74,9 +75,7 @@ const ogParams = new URLSearchParams([
               with a complimentary assessment and quote.
             </p>
             <p>
-              <a href="mailto:hello@ds-design-studio.com"
-                >hello@ds-design-studio.com</a
-              >
+              <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
             </p>
           </div>
           <form

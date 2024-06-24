@@ -3,6 +3,7 @@ import { format } from "@formkit/tempo";
 import { getEntry } from "astro:content";
 import Logo from "@components/Logo.astro";
 import ButtonLink from "@components/ButtonLink.astro";
+import site from "@data/site.json";
 
 const navigation = await getEntry("navigation", "footer");
 
@@ -20,6 +21,9 @@ const copyright = format({
         DS Design is the Los Angeles-based web design studio practice of Daniel
         Saunders. Contact us for web design, frontend development, digital
         marketing, and more.
+      </p>
+      <p>
+        <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
       </p>
     </div>
     {

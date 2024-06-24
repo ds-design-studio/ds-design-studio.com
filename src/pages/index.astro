@@ -1,31 +1,19 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Card from "@components/Card.astro";
-import ButtonLink from "@components/ButtonLink.astro";
-import Icon from "@components/Icon.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import ServicesGrid from "@components/page_sections/ServicesGrid.astro";
-import Tools from "@components/page_sections/Tools.astro";
 import HomeHero from "@components/page_sections/HomeHero.astro";
+import HomeApproach from "@components/page_sections/HomeApproach.astro";
 import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
 import Testimonials from "@components/page_sections/HomeTestimonials.astro";
 import CTA from "@components/page_sections/CTA.astro";
 import { Image } from "astro:assets";
-import { getEntries } from "astro:content";
 import { getCollection, getEntry } from "astro:content";
-// const features = await getCollection("features");
+
 const services = await getCollection("services");
-const principle1 = await getEntry("principles", "design");
-const principle2 = await getEntry("principles", "consider");
-const principle3 = await getEntry("principles", "build");
 const featuredProject = await getEntry("projects", "haymarket-writing-freedom");
-// const tools = await getCollection("tools");
-// const features = await getEntries(services)
 
 import shapes1 from "@assets/shapes-1.png";
-import illustration1 from "@assets/illustration-1.png";
-import illustration2 from "@assets/illustration-2.png";
-import illustration3 from "@assets/illustration-3.png";
 ---
 
 <Layout
@@ -59,66 +47,10 @@ import illustration3 from "@assets/illustration-3.png";
           <ServicesGrid
             entries={services.sort((a, b) => a.data.order - b.data.order)}
           />
-          <!-- <Tools /> -->
         </article>
       </div>
     </div>
-    <article class="content-wrapper section-spacer" id="approach">
-      <SectionHeader align="center">
-        <Fragment slot="text">
-          <div class="eyebrow | small-title text-gradient mx-auto">
-            Approach
-          </div>
-          <h2 class="text-step-4">
-            Crafting beautiful & more human experiences for the modern web
-          </h2>
-        </Fragment>
-      </SectionHeader>
-      <div class="grid-6">
-        <Card>
-          <Image
-            class="illustration"
-            src={illustration2}
-            alt=""
-            width={300}
-            format="webp"
-            loading="eager"
-          />
-          <h3 class="text-step-1">{principle1.data.title}</h3>
-          <p>{principle1.data.summary}</p>
-        </Card>
-        <Card>
-          <Image
-            class="illustration"
-            src={illustration3}
-            alt=""
-            width={300}
-            format="webp"
-            loading="eager"
-          />
-          <h3 class="text-step-1">{principle2.data.title}</h3>
-          <p>{principle2.data.summary}</p>
-        </Card>
-        <Card>
-          <Image
-            class="illustration"
-            src={illustration1}
-            alt=""
-            width={300}
-            format="webp"
-            loading="eager"
-          />
-          <h3 class="text-step-1">{principle3.data.title}</h3>
-          <p>{principle3.data.summary}</p>
-        </Card>
-      </div>
-      <div class="center-all">
-        <ButtonLink href="/process">
-          <span>Working Together</span>
-          <Icon name="arrow-right" />
-        </ButtonLink>
-      </div>
-    </article>
+    <HomeApproach />
     <FeaturedProject project={featuredProject} />
     <Testimonials />
     <CTA />

@@ -5,6 +5,7 @@ import TextImageBlock from "@components/TextImageBlock.astro";
 import Card from "@components/Card.astro";
 import Frameworks from "@components/page_sections/Frameworks.astro";
 import SupportPlans from "@components/page_sections/SupportPlans.astro";
+import HomeApproach from "@components/page_sections/HomeApproach.astro";
 import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
 import Gallery from "@components/page_sections/Gallery.astro";
 import CTA from "@components/page_sections/CTA.astro";
@@ -53,6 +54,7 @@ const {
   featuredImage,
   featuredProject,
   showContent,
+  showApproach,
 } = page.data;
 
 const { Content } = await page.render();
@@ -89,7 +91,7 @@ const ogParams = new URLSearchParams([
         <div class="content-offset">
           <div class="section-bg-gradient">
             <div class="content-wrapper">
-              <div id="intro">
+              <div id="intro" class="intro">
                 <TextImageBlock>
                   <Fragment slot="image">
                     <Image
@@ -168,16 +170,15 @@ const ogParams = new URLSearchParams([
         </div>
       )
     }
+    {showApproach && <HomeApproach bgColor="filled" margin={false} padding />}
     <CTA />
   </main>
 </Layout>
 
 <style>
-  .content-wrapper {
-    & > :nth-child(1) {
-      margin-block-start: var(--space-xl);
-      margin-block-end: var(--space-3xl);
-    }
+  .intro {
+    margin-block-start: var(--space-xl);
+    margin-block-end: var(--space-3xl);
   }
 
   .grid-6 {
@@ -194,11 +195,9 @@ const ogParams = new URLSearchParams([
       max-width: 100%;
     }
 
-    .content-wrapper {
-      & > :nth-child(1) {
-        margin-block-start: var(--space-s);
-        margin-block-end: var(--space-l);
-      }
+    .intro {
+      margin-block-start: var(--space-s);
+      margin-block-end: var(--space-l);
     }
   }
 </style>
