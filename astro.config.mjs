@@ -7,7 +7,7 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://ds-design-studio.vercel.app",
+  site: "https://ds-design-studio.com",
   vite: {
     css: {
       transformer: "lightningcss",
