@@ -15,7 +15,7 @@ const { entries } = Astro.props;
 
 <div class="grid-6 feature-span">
   {
-    entries.map((entry) => (
+    entries.map((entry, index) => (
       <Card>
         <div class="icon-wrapper gradient">
           <Icon
@@ -40,6 +40,13 @@ const { entries } = Astro.props;
             <Icon name="chevron-right" size="1em" />
           </a>
         </footer>
+        {[0, 1].includes(index) && (
+          <img
+            slot="after-content"
+            src={`/svg/${index === 0 ? "web-design-illustration" : "frontend-dev-illustration"}.svg`}
+            width="600"
+          />
+        )}
       </Card>
     ))
   }
