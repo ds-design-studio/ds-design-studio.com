@@ -43,6 +43,7 @@ const { entries } = Astro.props;
         {[0, 1].includes(index) && (
           <img
             slot="after-content"
+            class="after-content-image"
             src={`/svg/${index === 0 ? "web-design-illustration" : "frontend-dev-illustration"}.svg`}
             width="600"
             alt=""
@@ -69,3 +70,13 @@ const { entries } = Astro.props;
     </ButtonLink>
   </Card>
 </div>
+
+<style>
+  :global(.card .after-content-image) {
+    transition: transform 0.3s ease-out;
+  }
+
+  :global(.card:hover .after-content-image) {
+    transform: scale(1.04);
+  }
+</style>
