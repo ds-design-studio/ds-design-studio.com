@@ -1,6 +1,8 @@
 ---
 import Card from "@components/Card.astro";
 import Icon from "@components/Icon.astro";
+import WebDesignIllustration from "@components/page_sections/WebDesignIllustration.astro";
+import FrontendDevIllustration from "@components/page_sections/FrontendDevIllustration.astro";
 import ButtonLink from "@components/ButtonLink.astro";
 
 import type { CollectionEntry } from "astro:content";
@@ -40,7 +42,10 @@ const { entries } = Astro.props;
             <Icon name="chevron-right" size="1em" />
           </a>
         </footer>
-        {[0, 1].includes(index) && (
+        {/* {[0].includes(index) && <WebDesignIllustration slot="after-content" />} */}
+        {index === 0 && <WebDesignIllustration slot="after-content" />}
+        {index === 1 && <FrontendDevIllustration slot="after-content" />}
+        {/* {[0, 1].includes(index) && (
           <img
             slot="after-content"
             class="after-content-image"
@@ -49,7 +54,7 @@ const { entries } = Astro.props;
             alt=""
             loading="eager"
           />
-        )}
+        )} */}
       </Card>
     ))
   }
@@ -72,11 +77,58 @@ const { entries } = Astro.props;
 </div>
 
 <style>
-  :global(.card .after-content-image) {
+  /* :global(.card .after-content-image) {
     transition: transform 0.3s ease-out;
   }
 
   :global(.card:hover .after-content-image) {
     transform: scale(1.04);
+  } */
+
+  :global(.card:hover .service-illustration .background-shapes) {
+    transform: scale(1.06);
   }
 </style>
+
+<script>
+  import { gsap } from "gsap";
+  import { Flip } from "gsap/Flip";
+
+  gsap.registerPlugin(Flip);
+
+  const webDesignCard = document.querySelector("#services .card:nth-child(1)");
+  const webDesignIllustration = document.querySelector(
+    ".service-illustration.web-design"
+  );
+  const row = webDesignIllustration?.querySelector(".row.animate");
+  const screen = webDesignIllustration?.querySelector(".screen");
+  // const panes = webDesignIllustration?.querySelectorAll(".pane");
+
+  webDesignCard?.addEventListener("mouseenter", () => {
+    const state = Flip.getState(".pane, .screen");
+    console.log(state);
+
+    screen?.classList.toggle("slim");
+    row?.classList.toggle("reorder");
+
+    Flip.from(state, {
+      absolute: true,
+      duration: 0.4,
+      ease: "power1.out",
+    });
+  });
+
+  webDesignCard?.addEventListener("mouseleave", () => {
+    const state = Flip.getState(".pane, .screen");
+    console.log(state);
+
+    screen?.classList.toggle("slim");
+    row?.classList.toggle("reorder");
+
+    Flip.from(state, {
+      absolute: true,
+      duration: 0.3,
+      ease: "power1.out",
+    });
+  });
+</script>

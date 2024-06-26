@@ -93,6 +93,23 @@
   }
 }
 
+/* Home page card service illustrations */
+.service-illustration {
+  position: relative;
+
+  & > svg {
+    position: relative;
+    top: 12px;
+    width: 100%;
+    height: auto;
+
+    & .background-shapes {
+      transform-origin: center;
+      transition: transform 0.4s ease-out;
+    }
+  }
+}
+
 @media (max-width: 1099px) {
   .content-offset {
     & .content-wrapper {
