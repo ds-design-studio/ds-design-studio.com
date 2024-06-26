@@ -5,6 +5,8 @@
   --font-heading: "Body Grotesque Fit", system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-heading-weight: 800;
+  --font-code: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, Liberation Mono, Courier New, monospace;
   --leading-normal: 1.6;
   --leading-tight: 1.15;
   --caps-letter-spacing: 0.15em;
