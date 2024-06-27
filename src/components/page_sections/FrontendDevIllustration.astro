@@ -232,4 +232,34 @@ import Icon from "@components/Icon.astro";
     color: var(--color-secondary-5);
     background-color: var(--color-secondary-1);
   }
+
+  @media (max-width: 480px) {
+    .screen {
+      width: calc(100% - 2rem);
+      height: calc(100% - 2rem);
+      margin-inline: 1rem;
+    }
+
+    .controls,
+    .text-wrapper {
+      margin: 0.75rem;
+    }
+
+    .text-wrapper {
+      margin-block-start: 1rem;
+    }
+
+    .file-name {
+      right: 1rem;
+    }
+
+    .fake-card {
+      display: none;
+    }
+
+    .element-heading {
+      opacity: 1;
+      mix-blend-mode: normal;
+    }
+  }
 </style>

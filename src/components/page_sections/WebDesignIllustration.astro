@@ -207,4 +207,25 @@
     object-fit: cover;
     mix-blend-mode: multiply;
   }
+
+  @media (max-width: 480px) {
+    .screen {
+      width: calc(100% - 2rem);
+      height: calc(100% - 2rem);
+    }
+
+    .controls,
+    .rows {
+      margin: 0.75rem;
+    }
+
+    .rows {
+      margin-block-start: 1rem;
+    }
+
+    .rows,
+    .row {
+      gap: 0.75rem;
+    }
+  }
 </style>
