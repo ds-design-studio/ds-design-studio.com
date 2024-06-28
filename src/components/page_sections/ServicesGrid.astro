@@ -94,41 +94,45 @@ const { entries } = Astro.props;
   import { gsap } from "gsap";
   import { Flip } from "gsap/Flip";
 
-  gsap.registerPlugin(Flip);
+  document.addEventListener("astro:page-load", () => {
+    gsap.registerPlugin(Flip);
 
-  const webDesignCard = document.querySelector("#services .card:nth-child(1)");
-  const webDesignIllustration = document.querySelector(
-    ".service-illustration.web-design"
-  );
-  const row = webDesignIllustration?.querySelector(".row.animate");
-  const screen = webDesignIllustration?.querySelector(".screen");
-  // const panes = webDesignIllustration?.querySelectorAll(".pane");
+    const webDesignCard = document.querySelector(
+      "#services .card:nth-child(1)"
+    );
+    const webDesignIllustration = document.querySelector(
+      ".service-illustration.web-design"
+    );
+    const row = webDesignIllustration?.querySelector(".row.animate");
+    const screen = webDesignIllustration?.querySelector(".screen");
+    // const panes = webDesignIllustration?.querySelectorAll(".pane");
 
-  webDesignCard?.addEventListener("mouseenter", () => {
-    const state = Flip.getState(".pane, .screen");
-    console.log(state);
+    webDesignCard?.addEventListener("mouseenter", () => {
+      const state = Flip.getState(".pane, .screen");
+      console.log(state);
 
-    screen?.classList.toggle("slim");
-    row?.classList.toggle("reorder");
+      screen?.classList.toggle("slim");
+      row?.classList.toggle("reorder");
 
-    Flip.from(state, {
-      absolute: true,
-      duration: 0.4,
-      ease: "power1.out",
+      Flip.from(state, {
+        absolute: true,
+        duration: 0.4,
+        ease: "power1.out",
+      });
     });
-  });
 
-  webDesignCard?.addEventListener("mouseleave", () => {
-    const state = Flip.getState(".pane, .screen");
-    console.log(state);
+    webDesignCard?.addEventListener("mouseleave", () => {
+      const state = Flip.getState(".pane, .screen");
+      console.log(state);
 
-    screen?.classList.toggle("slim");
-    row?.classList.toggle("reorder");
+      screen?.classList.toggle("slim");
+      row?.classList.toggle("reorder");
 
-    Flip.from(state, {
-      absolute: true,
-      duration: 0.3,
-      ease: "power1.out",
+      Flip.from(state, {
+        absolute: true,
+        duration: 0.3,
+        ease: "power1.out",
+      });
     });
   });
 </script>
