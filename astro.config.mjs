@@ -3,8 +3,6 @@ import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-// import vercel from "@astrojs/vercel/serverless";
-
 import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
