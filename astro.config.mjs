@@ -3,7 +3,7 @@ import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import netlify from "@astrojs/netlify";
+// import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,6 +26,6 @@ export default defineConfig({
     "/about-us": "/about",
   },
   integrations: [mdx(), sitemap()],
-  output: "hybrid",
-  adapter: netlify(),
+  // output: "hybrid",
+  // adapter: netlify(),
 });
