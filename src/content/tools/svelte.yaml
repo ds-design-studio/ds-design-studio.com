@@ -1,3 +1,5 @@
 title: Svelte
 logo: ./svelte-logo.svg
-order: 8
+order: 4
+link: https://svelte.dev/
+draft: false

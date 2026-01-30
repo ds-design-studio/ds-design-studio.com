@@ -1,3 +1,5 @@
-title: 11ty
+title: Eleventy
 logo: ./11ty-logo.svg
-order: 5
+order: 10
+link: https://www.11ty.dev/
+draft: false

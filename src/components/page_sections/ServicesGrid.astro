@@ -92,7 +92,8 @@ const { entries } = Astro.props;
 </style>
 
 <script>
-    // import { Flip } from "gsap/Flip";
+    // @ts-ignore
+    import { Flip } from "gsap/Flip";
     import { gsap } from "gsap";
 
     document.addEventListener("astro:page-load", () => {

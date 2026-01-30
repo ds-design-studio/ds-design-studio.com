@@ -5,11 +5,12 @@ import { getCollection } from "astro:content";
 const tools = await getCollection("tools");
 ---
 
-<div class="small-title text-gradient mx-auto">Favorite Tools</div>
+<div class="small-title text-gradient mx-auto">Modern Tech Stack</div>
 <div class="logo-cloud | grid-6 centered">
     {
         tools
             .sort((a, b) => a.data.order - b.data.order)
+            .filter((tool) => !tool.data.draft)
             .map((tool) => (
                 <div class="cluster">
                     <Image
@@ -19,7 +20,13 @@ const tools = await getCollection("tools");
                         src={tool.data.logo}
                         width={32}
                     />
-                    <span>{tool.data.title}</span>
+                    {tool.data.link ? (
+                        <a href={tool.data.link} target="_blank">
+                            {tool.data.title}
+                        </a>
+                    ) : (
+                        <span>{tool.data.title}</span>
+                    )}
                 </div>
             ))
     }

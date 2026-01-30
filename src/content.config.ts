@@ -73,6 +73,8 @@ const tools = defineCollection({
             summary: z.string().optional(),
             logo: image(),
             order: z.number(),
+            link: z.string().optional(),
+            draft: z.boolean(),
         }),
 });
 
