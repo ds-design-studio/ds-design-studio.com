@@ -1,14 +1,14 @@
 ---
+import { getCollection, getEntry } from "astro:content";
+import CTA from "@components/page_sections/CTA.astro";
+import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
+import HomeApproach from "@components/page_sections/HomeApproach.astro";
+import HomeHero from "@components/page_sections/HomeHero.astro";
+import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import ServicesGrid from "@components/page_sections/ServicesGrid.astro";
-import HomeHero from "@components/page_sections/HomeHero.astro";
-import HomeApproach from "@components/page_sections/HomeApproach.astro";
-import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
 import Testimonials from "@components/page_sections/HomeTestimonials.astro";
-import CTA from "@components/page_sections/CTA.astro";
-import { Image } from "astro:assets";
-import { getCollection, getEntry } from "astro:content";
 
 const services = await getCollection("services");
 const featuredProject = await getEntry("projects", "haymarket-writing-freedom");
@@ -17,50 +17,54 @@ import shapes1 from "@assets/shapes-1.png";
 ---
 
 <Layout
-  meta={{
-    openGraph: {
-      image: "/api/og",
-    },
-  }}
+    meta={{
+        openGraph: {
+            image: "/api/og",
+        },
+    }}
 >
-  <main slot="content">
-    <HomeHero />
-    <div class="content-offset">
-      <div class="section-bg-gradient">
-        <article class="content-wrapper" id="services">
-          <SectionHeader align="left">
-            <Fragment slot="text">
-              <div class="eyebrow | small-title text-gradient">Services</div>
-              <h2 class="text-step-4">
-                Bridging the realms of design & development
-              </h2>
-            </Fragment>
-            <Image
-              slot="image"
-              src={shapes1}
-              alt=""
-              width={600}
-              format="webp"
-              loading="eager"
-            />
-          </SectionHeader>
-          <ServicesGrid
-            entries={services.sort((a, b) => a.data.order - b.data.order)}
-          />
-        </article>
-      </div>
-    </div>
-    <HomeApproach />
-    <FeaturedProject project={featuredProject!} />
-    <Testimonials />
-    <CTA />
-  </main>
+    <main slot="content">
+        <HomeHero />
+        <div class="content-offset">
+            <div class="section-bg-gradient">
+                <article class="content-wrapper" id="services">
+                    <SectionHeader align="left">
+                        <Fragment slot="text">
+                            <div class="eyebrow | small-title text-gradient">
+                                Services
+                            </div>
+                            <h2 class="text-step-4">
+                                Bridging the realms of design & development
+                            </h2>
+                        </Fragment>
+                        <Image
+                            alt=""
+                            format="webp"
+                            loading="eager"
+                            slot="image"
+                            src={shapes1}
+                            width={600}
+                        />
+                    </SectionHeader>
+                    <ServicesGrid
+                        entries={services.sort(
+                            (a, b) => a.data.order - b.data.order,
+                        )}
+                    />
+                </article>
+            </div>
+        </div>
+        <HomeApproach />
+        <FeaturedProject project={featuredProject!} />
+        <Testimonials />
+        <CTA />
+    </main>
 </Layout>
 
 <style>
-  @container contentWrapper (max-width: 768px) {
-    .text-step-4 {
-      font-size: var(--step-3);
+    @container contentWrapper (max-width: 768px) {
+        .text-step-4 {
+            font-size: var(--step-3);
+        }
     }
-  }
 </style>

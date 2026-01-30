@@ -1,129 +1,132 @@
 :root {
-  /* Fonts */
-  --font-primary: "Body Text Fit", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  --font-heading: "Body Grotesque Fit", system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-heading-weight: 800;
-  --font-code: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, Liberation Mono, Courier New, monospace;
-  --leading-normal: 1.6;
-  --leading-tight: 1.15;
-  --caps-letter-spacing: 0.15em;
+    /* Fonts */
+    --font-primary:
+        "Body Text Fit", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    --font-heading:
+        "Body Grotesque Fit", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    --font-heading-weight: 800;
+    --font-code:
+        "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        Liberation Mono, Courier New, monospace;
+    --leading-normal: 1.6;
+    --leading-tight: 1.15;
+    --caps-letter-spacing: 0.15em;
 
-  /* Colors */
-  --color-neutral-10: hsl(215, 25%, 5%);
-  --color-neutral-9: hsl(215, 25%, 15%);
-  --color-neutral-8: hsl(215, 25%, 25%); /* Base */
-  --color-neutral-7: hsl(215, 25%, 35%); /* Text */
-  --color-neutral-6: hsl(215, 25%, 45%);
-  --color-neutral-5: hsl(215, 25%, 55%);
-  --color-neutral-4: hsl(215, 25%, 65%);
-  --color-neutral-3: hsl(215, 25%, 75%);
-  --color-neutral-2-fade: hsla(215, 25%, 85%, 0.35);
-  --color-neutral-2: hsl(215, 25%, 85%);
-  --color-neutral-1-fade: hsla(215, 25%, 97%, 0.5);
-  --color-neutral-1: hsl(215, 25%, 97%);
-  --color-primary-10: hsl(347, 100%, 5%);
-  --color-primary-9: hsl(347, 100%, 15%);
-  --color-primary-8: hsl(347, 100%, 25%);
-  --color-primary-7: hsl(347, 100%, 35%);
-  --color-primary-6: hsl(347, 100%, 44%);
-  --color-primary-5: hsl(347, 100%, 55%);
-  --color-primary-4: hsl(347, 100%, 63%); /* Base */
-  --color-primary-3: hsl(347, 100%, 75%);
-  --color-primary-2: hsl(347, 100%, 85%);
-  --color-primary-1: hsl(347, 100%, 95%);
-  --color-primary-0: hsl(347, 100%, 99%);
-  --color-secondary-10: hsl(187, 68%, 5%);
-  --color-secondary-9: hsl(187, 68%, 10%);
-  --color-secondary-8: hsl(187, 68%, 20%);
-  --color-secondary-7: hsl(187, 68%, 30%);
-  --color-secondary-6: hsl(187, 68%, 40%);
-  --color-secondary-5: hsl(187, 68%, 51%); /* Base */
-  --color-secondary-4: hsl(187, 68%, 60%);
-  --color-secondary-3: hsl(187, 68%, 70%);
-  --color-secondary-2: hsl(187, 68%, 80%);
-  --color-secondary-1: hsl(187, 68%, 90%);
-  --color-warning-dark: hsl(26, 90%, 38%);
-  --color-warning-light: hsl(48, 100%, 96%);
-  --color-warning-border: hsl(43, 96%, 56%);
+    /* Colors */
+    --color-neutral-10: hsl(215, 25%, 5%);
+    --color-neutral-9: hsl(215, 25%, 15%);
+    --color-neutral-8: hsl(215, 25%, 25%); /* Base */
+    --color-neutral-7: hsl(215, 25%, 35%); /* Text */
+    --color-neutral-6: hsl(215, 25%, 45%);
+    --color-neutral-5: hsl(215, 25%, 55%);
+    --color-neutral-4: hsl(215, 25%, 65%);
+    --color-neutral-3: hsl(215, 25%, 75%);
+    --color-neutral-2-fade: hsla(215, 25%, 85%, 0.35);
+    --color-neutral-2: hsl(215, 25%, 85%);
+    --color-neutral-1-fade: hsla(215, 25%, 97%, 0.5);
+    --color-neutral-1: hsl(215, 25%, 97%);
+    --color-primary-10: hsl(347, 100%, 5%);
+    --color-primary-9: hsl(347, 100%, 15%);
+    --color-primary-8: hsl(347, 100%, 25%);
+    --color-primary-7: hsl(347, 100%, 35%);
+    --color-primary-6: hsl(347, 100%, 44%);
+    --color-primary-5: hsl(347, 100%, 55%);
+    --color-primary-4: hsl(347, 100%, 63%); /* Base */
+    --color-primary-3: hsl(347, 100%, 75%);
+    --color-primary-2: hsl(347, 100%, 85%);
+    --color-primary-1: hsl(347, 100%, 95%);
+    --color-primary-0: hsl(347, 100%, 99%);
+    --color-secondary-10: hsl(187, 68%, 5%);
+    --color-secondary-9: hsl(187, 68%, 10%);
+    --color-secondary-8: hsl(187, 68%, 20%);
+    --color-secondary-7: hsl(187, 68%, 30%);
+    --color-secondary-6: hsl(187, 68%, 40%);
+    --color-secondary-5: hsl(187, 68%, 51%); /* Base */
+    --color-secondary-4: hsl(187, 68%, 60%);
+    --color-secondary-3: hsl(187, 68%, 70%);
+    --color-secondary-2: hsl(187, 68%, 80%);
+    --color-secondary-1: hsl(187, 68%, 90%);
+    --color-warning-dark: hsl(26, 90%, 38%);
+    --color-warning-light: hsl(48, 100%, 96%);
+    --color-warning-border: hsl(43, 96%, 56%);
 
-  /* Color Application */
-  /* Normal text */
-  --color-text-body: var(--color-neutral-7);
-  --color-text-heading: var(--color-neutral-8);
-  --color-text-link: inherit;
-  --color-text-link-hover: var(--color-primary-5);
-  --color-text-link-line: var(--color-primary-3);
-  --color-text-link-line-hover: var(--color-primary-5);
+    /* Color Application */
+    /* Normal text */
+    --color-text-body: var(--color-neutral-7);
+    --color-text-heading: var(--color-neutral-8);
+    --color-text-link: inherit;
+    --color-text-link-hover: var(--color-primary-5);
+    --color-text-link-line: var(--color-primary-3);
+    --color-text-link-line-hover: var(--color-primary-5);
 
-  /* Text against dark background */
-  --color-text-body-dark: var(--color-neutral-3);
-  --color-text-heading-dark: var(--color-neutral-1);
-  --color-text-link-dark: inherit;
-  --color-text-link-hover-dark: var(--color-primary-3);
-  --color-text-link-line-dark: var(--color-neutral-7);
-  --color-text-link-line-hover-dark: var(--color-primary-4);
+    /* Text against dark background */
+    --color-text-body-dark: var(--color-neutral-3);
+    --color-text-heading-dark: var(--color-neutral-1);
+    --color-text-link-dark: inherit;
+    --color-text-link-hover-dark: var(--color-primary-3);
+    --color-text-link-line-dark: var(--color-neutral-7);
+    --color-text-link-line-hover-dark: var(--color-primary-4);
 
-  --color-dark-gradient: linear-gradient(
-    to bottom right,
-    var(--color-neutral-10),
-    var(--color-neutral-8)
-  );
-  --color-darker-gradient: linear-gradient(
-    to right,
-    var(--color-neutral-9),
-    var(--color-neutral-10)
-  );
+    --color-dark-gradient: linear-gradient(
+        to bottom right,
+        var(--color-neutral-10),
+        var(--color-neutral-8)
+    );
+    --color-darker-gradient: linear-gradient(
+        to right,
+        var(--color-neutral-9),
+        var(--color-neutral-10)
+    );
 
-  /* Fluid Typography */
-  /* @link https://utopia.fyi/type/calculator?c=320,16,1.25,1140,18,1.25,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
-  --step--2: clamp(0.64rem, calc(0.61rem + 0.16vw), 0.72rem);
-  --step--1: clamp(0.8rem, calc(0.76rem + 0.2vw), 0.9rem);
-  --step-0: clamp(1rem, calc(0.95rem + 0.24vw), 1.13rem);
-  --step-1: clamp(1.25rem, calc(1.19rem + 0.3vw), 1.41rem);
-  --step-2: clamp(1.56rem, calc(1.49rem + 0.38vw), 1.76rem);
-  --step-3: clamp(1.95rem, calc(1.86rem + 0.48vw), 2.2rem);
-  --step-4: clamp(2.44rem, calc(2.32rem + 0.6vw), 2.75rem);
-  --step-5: clamp(3.05rem, calc(2.9rem + 0.74vw), 3.43rem);
-  --step-6: clamp(3.82rem, calc(3.63rem + 0.93vw), 4.29rem);
-  --step-7: clamp(4.77rem, calc(4.54rem + 1.16vw), 5.36rem);
+    /* Fluid Typography */
+    /* @link https://utopia.fyi/type/calculator?c=320,16,1.25,1140,18,1.25,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+    --step--2: clamp(0.64rem, calc(0.61rem + 0.16vw), 0.72rem);
+    --step--1: clamp(0.8rem, calc(0.76rem + 0.2vw), 0.9rem);
+    --step-0: clamp(1rem, calc(0.95rem + 0.24vw), 1.13rem);
+    --step-1: clamp(1.25rem, calc(1.19rem + 0.3vw), 1.41rem);
+    --step-2: clamp(1.56rem, calc(1.49rem + 0.38vw), 1.76rem);
+    --step-3: clamp(1.95rem, calc(1.86rem + 0.48vw), 2.2rem);
+    --step-4: clamp(2.44rem, calc(2.32rem + 0.6vw), 2.75rem);
+    --step-5: clamp(3.05rem, calc(2.9rem + 0.74vw), 3.43rem);
+    --step-6: clamp(3.82rem, calc(3.63rem + 0.93vw), 4.29rem);
+    --step-7: clamp(4.77rem, calc(4.54rem + 1.16vw), 5.36rem);
 
-  /* Fluid Spacing */
-  /* @link https://utopia.fyi/space/calculator?c=320,16,1.25,1140,18,1.25,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
-  --space-3xs: clamp(0.25rem, calc(0.23rem + 0.12vw), 0.31rem);
-  --space-2xs: clamp(0.5rem, calc(0.48rem + 0.12vw), 0.56rem);
-  --space-xs: clamp(0.75rem, calc(0.7rem + 0.24vw), 0.88rem);
-  --space-s: clamp(1rem, calc(0.95rem + 0.24vw), 1.13rem);
-  --space-m: clamp(1.5rem, calc(1.43rem + 0.37vw), 1.69rem);
-  --space-l: clamp(2rem, calc(1.9rem + 0.49vw), 2.25rem);
-  --space-xl: clamp(3rem, calc(2.85rem + 0.73vw), 3.38rem);
-  --space-2xl: clamp(4rem, calc(3.8rem + 0.98vw), 4.5rem);
-  --space-3xl: clamp(6rem, calc(5.71rem + 1.46vw), 6.75rem);
+    /* Fluid Spacing */
+    /* @link https://utopia.fyi/space/calculator?c=320,16,1.25,1140,18,1.25,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+    --space-3xs: clamp(0.25rem, calc(0.23rem + 0.12vw), 0.31rem);
+    --space-2xs: clamp(0.5rem, calc(0.48rem + 0.12vw), 0.56rem);
+    --space-xs: clamp(0.75rem, calc(0.7rem + 0.24vw), 0.88rem);
+    --space-s: clamp(1rem, calc(0.95rem + 0.24vw), 1.13rem);
+    --space-m: clamp(1.5rem, calc(1.43rem + 0.37vw), 1.69rem);
+    --space-l: clamp(2rem, calc(1.9rem + 0.49vw), 2.25rem);
+    --space-xl: clamp(3rem, calc(2.85rem + 0.73vw), 3.38rem);
+    --space-2xl: clamp(4rem, calc(3.8rem + 0.98vw), 4.5rem);
+    --space-3xl: clamp(6rem, calc(5.71rem + 1.46vw), 6.75rem);
 
-  /* Layouts */
-  --gutter: var(--space-xs-s, 1rem);
-  --wrapper-max-width: 1280px;
-  --section-spacer: var(--space-3xl);
-  --main-top-spacer: 10rem;
+    /* Layouts */
+    --gutter: var(--space-xs-s, 1rem);
+    --wrapper-max-width: 1280px;
+    --section-spacer: var(--space-3xl);
+    --main-top-spacer: 10rem;
 
-  /* Other */
-  --rounded-corners: 0.5rem;
-  --rounded-corners-small: 0.25rem;
-  --paragraph-measure: 62ch;
-  --paragraph-measure-shorter: 55ch;
-  --shadow-regular: 0 0 32px 0 rgba(36, 41, 43, 0.15);
-  --shadow-light: 0 -3px 28px -3px rgb(43 0 43 / 8%);
-  --accent-line-width: 4px;
-  --text-opacity-shade: 0.75;
-  --presentation-image-ratio: 4/5;
-  --focus-outline-color: var(--color-primary-3);
-  --focus-outline-width: 2px;
+    /* Other */
+    --rounded-corners: 0.5rem;
+    --rounded-corners-small: 0.25rem;
+    --paragraph-measure: 62ch;
+    --paragraph-measure-shorter: 55ch;
+    --shadow-regular: 0 0 32px 0 rgba(36, 41, 43, 0.15);
+    --shadow-light: 0 -3px 28px -3px rgb(43 0 43 / 8%);
+    --accent-line-width: 4px;
+    --text-opacity-shade: 0.75;
+    --presentation-image-ratio: 4/5;
+    --focus-outline-color: var(--color-primary-3);
+    --focus-outline-width: 2px;
 }
 
 @media (max-width: 640px) {
-  :root {
-    --section-spacer: var(--space-xl);
-  }
+    :root {
+        --section-spacer: var(--space-xl);
+    }
 }

@@ -1,18 +1,17 @@
 ---
 import "@styles/site.css";
+import type { PageMetadata, Theme } from "../types";
 import { ClientRouter } from "astro:transitions";
 import { SEO } from "astro-seo";
-import { getImage } from "astro:assets";
-import type { PageMetadata, Theme } from "../types";
-import fallbackOgImage from "@assets/isometric-laptop.png";
-
-import site from "@data/site.json";
-import SiteHeader from "@components/SiteHeader.astro";
 import SiteFooter from "@components/SiteFooter.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import fallbackOgImage from "@assets/isometric-laptop.png";
+import { getImage } from "astro:assets";
+import site from "@data/site.json";
 
 type Props = {
-  meta?: PageMetadata;
-  headerTheme?: Theme;
+    meta?: PageMetadata;
+    headerTheme?: Theme;
 };
 
 const { meta, headerTheme = "dark" } = Astro.props;
@@ -20,169 +19,180 @@ const { meta, headerTheme = "dark" } = Astro.props;
 const path = Astro.url.pathname;
 const canonicalUrl = new URL(path, Astro.site);
 const defaultOgImage = await getImage({
-  src: fallbackOgImage, //  meta?.openGraph?.image || fallbackOgImage, // include fallback source
-  format: "jpeg",
-  width: 1200,
-  height: 630,
-  alt: "", // meta?.openGraph?.imageAlt || "",
+    src: fallbackOgImage, //  meta?.openGraph?.image || fallbackOgImage, // include fallback source
+    format: "jpeg",
+    width: 1200,
+    height: 630,
+    alt: "", // meta?.openGraph?.imageAlt || "",
 });
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/svg/web-logo.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <SEO
-      title={meta?.seo?.title}
-      titleTemplate={`%s • ${site.siteTitle}`}
-      titleDefault={site.siteTitle}
-      description={meta?.seo?.description || site.siteDescription}
-      canonical={canonicalUrl}
-      openGraph={{
-        basic: {
-          title: meta?.openGraph?.title || meta?.seo?.title || site.siteTitle,
-          type: "website",
-          image: (meta?.openGraph?.image as string) || defaultOgImage.src,
-          url: canonicalUrl,
-        },
-        image: {
-          // alt: ogImage.attributes.alt,
-          type: "image/jpeg",
-          width: 1200,
-          height: 630,
-        },
-        optional: {
-          description:
-            meta?.openGraph?.description ||
-            meta?.seo?.description ||
-            site.siteDescription,
-        },
-      }}
-      twitter={{
-        card: "summary",
-        site: "@dothedan",
-        title: meta?.openGraph?.title || meta?.seo?.title || site.siteTitle,
-        image: (meta?.openGraph?.image as string) || defaultOgImage.src,
-        // imageAlt: ogImage.attributes.alt,
-        description:
-          meta?.openGraph?.description ||
-          meta?.seo?.description ||
-          site.siteDescription,
-      }}
-    />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link
-      rel="preload"
-      href="/fonts/Body-Grotesque-Fit-Extrabold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="true"
-    />
-    <link
-      rel="preload"
-      href="/fonts/Body-Text-Fit-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="true"
-    />
-    <link
-      rel="preload"
-      href="/fonts/Body-Text-Fit-Italic.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="true"
-    />
-    <link
-      rel="preload"
-      href="/fonts/Body-Text-Fit-Bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="true"
-    />
-    <!-- Alpine Plugins -->
-    <script
-      defer
-      is:inline
-      src="https://unpkg.com/@alpinejs/ui@3.15.5/dist/cdn.min.js"></script>
-    <script
-      defer
-      is:inline
-      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.15.5/dist/cdn.min.js"
-    ></script>
-    <script
-      defer
-      is:inline
-      src="https://cdn.jsdelivr.net/npm/@alpinejs/anchor@3.15.5/dist/cdn.min.js"
-    ></script>
-    <script
-      defer
-      is:inline
-      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.15.5/dist/cdn.min.js"
-    ></script>
-    <script
-      defer
-      is:inline
-      src="https://unpkg.com/@alpinejs/focus@3.15.5/dist/cdn.min.js"></script>
-    <!-- Alpine Core -->
-    <script
-      defer
-      is:inline
-      src="https://unpkg.com/alpinejs@3.15.5/dist/cdn.min.js"></script>
-    <!-- Fathom Analytics -->
-    <script
-      is:inline
-      src="https://cdn.usefathom.com/script.js"
-      data-site="IIFOIXEE"
-      defer></script>
-    <style is:inline>
-      @font-face {
-        font-family: "Body Grotesque Fit";
-        src: url("/fonts/Body-Grotesque-Fit-Extrabold.woff2") format("woff2");
-        font-weight: 800;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "Body Text Fit";
-        src: url("/fonts/Body-Text-Fit-Regular.woff2") format("woff2");
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "Body Text Fit";
-        src: url("/fonts/Body-Text-Fit-Italic.woff2") format("woff2");
-        font-weight: 400;
-        font-style: italic;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "Body Text Fit";
-        src: url("/fonts/Body-Text-Fit-Bold.woff2") format("woff2");
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "Fira Code";
-        src: url("/fonts/FiraCode-Regular.woff2") format("woff2");
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-      [x-cloak] {
-        display: none;
-      }
-    </style>
-    <slot name="pageHead" />
-    <ClientRouter />
-  </head>
-  <body>
-    <SiteHeader theme={headerTheme} />
-    <slot name="content" />
-    <SiteFooter />
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <link href="/svg/web-logo.svg" rel="icon" type="image/svg+xml" />
+        <meta content={Astro.generator} name="generator" />
+        <SEO
+            canonical={canonicalUrl}
+            description={meta?.seo?.description || site.siteDescription}
+            openGraph={{
+                basic: {
+                    title:
+                        meta?.openGraph?.title ||
+                        meta?.seo?.title ||
+                        site.siteTitle,
+                    type: "website",
+                    image:
+                        (meta?.openGraph?.image as string) ||
+                        defaultOgImage.src,
+                    url: canonicalUrl,
+                },
+                image: {
+                    // alt: ogImage.attributes.alt,
+                    type: "image/jpeg",
+                    width: 1200,
+                    height: 630,
+                },
+                optional: {
+                    description:
+                        meta?.openGraph?.description ||
+                        meta?.seo?.description ||
+                        site.siteDescription,
+                },
+            }}
+            title={meta?.seo?.title}
+            titleDefault={site.siteTitle}
+            titleTemplate={`%s • ${site.siteTitle}`}
+            twitter={{
+                card: "summary",
+                site: "@dothedan",
+                title:
+                    meta?.openGraph?.title ||
+                    meta?.seo?.title ||
+                    site.siteTitle,
+                image: (meta?.openGraph?.image as string) || defaultOgImage.src,
+                // imageAlt: ogImage.attributes.alt,
+                description:
+                    meta?.openGraph?.description ||
+                    meta?.seo?.description ||
+                    site.siteDescription,
+            }}
+        />
+        <link href="/sitemap-index.xml" rel="sitemap" />
+        <link
+            as="font"
+            crossorigin="true"
+            href="/fonts/Body-Grotesque-Fit-Extrabold.woff2"
+            rel="preload"
+            type="font/woff2"
+        />
+        <link
+            as="font"
+            crossorigin="true"
+            href="/fonts/Body-Text-Fit-Regular.woff2"
+            rel="preload"
+            type="font/woff2"
+        />
+        <link
+            as="font"
+            crossorigin="true"
+            href="/fonts/Body-Text-Fit-Italic.woff2"
+            rel="preload"
+            type="font/woff2"
+        />
+        <link
+            as="font"
+            crossorigin="true"
+            href="/fonts/Body-Text-Fit-Bold.woff2"
+            rel="preload"
+            type="font/woff2"
+        />
+        <!-- Alpine Plugins -->
+        <script
+            defer
+            is:inline
+            src="https://unpkg.com/@alpinejs/ui@3.15.5/dist/cdn.min.js"
+        ></script>
+        <script
+            defer
+            is:inline
+            src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.15.5/dist/cdn.min.js"
+        ></script>
+        <script
+            defer
+            is:inline
+            src="https://cdn.jsdelivr.net/npm/@alpinejs/anchor@3.15.5/dist/cdn.min.js"
+        ></script>
+        <script
+            defer
+            is:inline
+            src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.15.5/dist/cdn.min.js"
+        ></script>
+        <script
+            defer
+            is:inline
+            src="https://unpkg.com/@alpinejs/focus@3.15.5/dist/cdn.min.js"
+        ></script>
+        <!-- Alpine Core -->
+        <script
+            defer
+            is:inline
+            src="https://unpkg.com/alpinejs@3.15.5/dist/cdn.min.js"></script>
+        <!-- Fathom Analytics -->
+        <script
+            data-site="IIFOIXEE"
+            defer
+            is:inline
+            src="https://cdn.usefathom.com/script.js"></script>
+        <style is:inline>
+            @font-face {
+                font-family: "Body Grotesque Fit";
+                src: url("/fonts/Body-Grotesque-Fit-Extrabold.woff2")
+                    format("woff2");
+                font-weight: 800;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: "Body Text Fit";
+                src: url("/fonts/Body-Text-Fit-Regular.woff2") format("woff2");
+                font-weight: 400;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: "Body Text Fit";
+                src: url("/fonts/Body-Text-Fit-Italic.woff2") format("woff2");
+                font-weight: 400;
+                font-style: italic;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: "Body Text Fit";
+                src: url("/fonts/Body-Text-Fit-Bold.woff2") format("woff2");
+                font-weight: 700;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: "Fira Code";
+                src: url("/fonts/FiraCode-Regular.woff2") format("woff2");
+                font-weight: 400;
+                font-style: normal;
+                font-display: swap;
+            }
+            [x-cloak] {
+                display: none;
+            }
+        </style>
+        <slot name="pageHead" />
+        <ClientRouter />
+    </head>
+    <body>
+        <SiteHeader theme={headerTheme} />
+        <slot name="content" />
+        <SiteFooter />
+    </body>
 </html>

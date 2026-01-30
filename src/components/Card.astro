@@ -1,92 +1,96 @@
 ---
 import { Image } from "astro:assets";
 import bgImage from "@assets/blob-bg.png";
-import featureImage from "@assets/shapes-bg.png";
+// import featureImage from "@assets/shapes-bg.png";
 
 const { theme = "normal" } = Astro.props;
 ---
 
 <article class="card" data-theme={theme}>
-  <!-- <div class="img-wrapper">
+    <!-- <div class="img-wrapper">
     <Image src={featureImage} alt="" width={900} format="webp" />
   </div> -->
-  <div class="content flow">
-    <slot />
-  </div>
-  <Image
-    class="bg-image"
-    src={bgImage}
-    alt=""
-    width={600}
-    format="webp"
-    loading="eager"
-  />
-  <slot name="after-content" />
+    <div class="content flow">
+        <slot />
+    </div>
+    <Image
+        alt=""
+        class="bg-image"
+        format="webp"
+        loading="eager"
+        src={bgImage}
+        width={600}
+    />
+    <slot name="after-content" />
 </article>
 
 <style>
-  article {
-    position: relative;
-    border-radius: var(--rounded-corners);
-    border: 1px solid color-mix(in hsl, var(--color-neutral-2), white 45%);
-    box-shadow: var(--shadow-light);
-    overflow: hidden;
-    transition: all 0.3s ease;
+    article {
+        position: relative;
+        border-radius: var(--rounded-corners);
+        border: 1px solid color-mix(in hsl, var(--color-neutral-2), white 45%);
+        box-shadow: var(--shadow-light);
+        overflow: hidden;
+        transition: all 0.3s ease;
 
-    &:hover {
-      background: color-mix(in hsl, var(--color-neutral-1), transparent 60%);
-      box-shadow: 0 -3px 32px -3px rgb(43 0 43 / 16%);
+        &:hover {
+            background: color-mix(
+                in hsl,
+                var(--color-neutral-1),
+                transparent 60%
+            );
+            box-shadow: 0 -3px 32px -3px rgb(43 0 43 / 16%);
 
-      & .bg-image {
-        transform: scale(1.4);
-      }
+            & .bg-image {
+                transform: scale(1.4);
+            }
+        }
+
+        & .img-wrapper {
+            position: relative;
+            height: 9rem;
+            background: var(--color-neutral-9);
+            overflow: hidden;
+
+            & img {
+                object-fit: cover;
+                width: 100%;
+                opacity: 0.7;
+            }
+        }
+
+        & .content {
+            position: relative;
+            z-index: 2;
+            padding: var(--space-l);
+
+            &.flow {
+                --flow-space: var(--space-s);
+            }
+        }
+
+        & .bg-image {
+            position: absolute;
+            z-index: 1;
+            margin: 0;
+            top: -4rem;
+            right: -3rem;
+            width: 80%;
+            opacity: 0.2;
+            transform: scale(1);
+            transition: all 0.4s ease-in-out;
+        }
+
+        &[data-theme="dark"] {
+            background: linear-gradient(
+                to bottom right,
+                var(--color-neutral-9),
+                var(--color-neutral-8)
+            );
+
+            & .bg-image {
+                opacity: 0.35;
+            }
+        }
     }
-
-    & .img-wrapper {
-      position: relative;
-      height: 9rem;
-      background: var(--color-neutral-9);
-      overflow: hidden;
-
-      & img {
-        object-fit: cover;
-        width: 100%;
-        opacity: 0.7;
-      }
-    }
-
-    & .content {
-      position: relative;
-      z-index: 2;
-      padding: var(--space-l);
-
-      &.flow {
-        --flow-space: var(--space-s);
-      }
-    }
-
-    & .bg-image {
-      position: absolute;
-      z-index: 1;
-      margin: 0;
-      top: -4rem;
-      right: -3rem;
-      width: 80%;
-      opacity: 0.2;
-      transform: scale(1);
-      transition: all 0.4s ease-in-out;
-    }
-
-    &[data-theme="dark"] {
-      background: linear-gradient(
-        to bottom right,
-        var(--color-neutral-9),
-        var(--color-neutral-8)
-      );
-
-      & .bg-image {
-        opacity: 0.35;
-      }
-    }
-  }
 </style>

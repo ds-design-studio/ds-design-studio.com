@@ -1,94 +1,98 @@
 ---
 type Props = {
-  href?: string;
-  target?: "_self" | "_blank";
-  theme?: keyof typeof themes;
-  classes?: string[];
-  [x: string]: any;
+    href?: string;
+    target?: "_self" | "_blank";
+    theme?: keyof typeof themes;
+    classes?: string[];
+    [x: string]: any;
 };
 
 const themes = {
-  primary: "primary",
-  white: "white",
-  ghost: "ghost-white",
-  ghostPrimary: "ghost-primary",
+    primary: "primary",
+    white: "white",
+    ghost: "ghost-white",
+    ghostPrimary: "ghost-primary",
 };
 
 const buttonStyles = "button-styles";
 
 const {
-  href,
-  target = "_self",
-  theme = "primary",
-  classes,
-  //   withArrow = false,
-  ...props
+    href,
+    target = "_self",
+    theme = "primary",
+    classes,
+    //   withArrow = false,
+    ...props
 } = Astro.props;
 
 const classList = [
-  "button-link",
-  themes[theme as keyof typeof themes],
-  classes,
-  !href && buttonStyles,
+    "button-link",
+    themes[theme as keyof typeof themes],
+    classes,
+    !href && buttonStyles,
 ];
 ---
 
 {
-  href ? (
-    <a class:list={classList} href={href} target={target} {...props}>
-      <slot />
-    </a>
-  ) : (
-    <button class:list={classList} {...props}>
-      <slot />
-    </button>
-  )
+    href ? (
+        <a class:list={classList} href={href} target={target} {...props}>
+            <slot />
+        </a>
+    ) : (
+        <button class:list={classList} {...props}>
+            <slot />
+        </button>
+    )
 }
 
 <style>
-  .button-link {
-    &.primary {
-      --link-color: var(--color-primary-0);
-      --link-color-hover: var(--color-primary-0);
-      --link-bg: var(--color-primary-6);
-      --link-bg-hover: color-mix(in hsl, var(--color-primary-6) 82%, white);
-      --link-border: transparent;
-      --link-border-hover: transparent;
-    }
+    .button-link {
+        &.primary {
+            --link-color: var(--color-primary-0);
+            --link-color-hover: var(--color-primary-0);
+            --link-bg: var(--color-primary-6);
+            --link-bg-hover: color-mix(
+                in hsl,
+                var(--color-primary-6) 82%,
+                white
+            );
+            --link-border: transparent;
+            --link-border-hover: transparent;
+        }
 
-    &.white {
-      --link-color: var(--color-text-heading);
-      --link-color-hover: var(--color-text-heading);
-      --link-bg: var(--color-white);
-      --link-bg-hover: color-mix(in srgb, var(--color-white) 90%, black);
-      --link-border: transparent;
-      --link-border-hover: transparent;
-    }
+        &.white {
+            --link-color: var(--color-text-heading);
+            --link-color-hover: var(--color-text-heading);
+            --link-bg: var(--color-white);
+            --link-bg-hover: color-mix(in srgb, var(--color-white) 90%, black);
+            --link-border: transparent;
+            --link-border-hover: transparent;
+        }
 
-    &.ghost-white {
-      --link-color: var(--color-neutral-1);
-      --link-color-hover: var(--color-neutral-7);
-      --link-bg: transparent;
-      --link-bg-hover: var(--color-neutral-1);
-      --link-border: var(--color-neutral-1);
-      --link-border-hover: transparent;
-    }
+        &.ghost-white {
+            --link-color: var(--color-neutral-1);
+            --link-color-hover: var(--color-neutral-7);
+            --link-bg: transparent;
+            --link-bg-hover: var(--color-neutral-1);
+            --link-border: var(--color-neutral-1);
+            --link-border-hover: transparent;
+        }
 
-    &.ghost-primary {
-      --link-color: var(--color-primary-base);
-      --link-color-hover: var(--color-primary-base);
-      --link-bg: var(--color-primary-light-background);
-      --link-bg-hover: var(--color-primary-light);
-      --link-border: var(--color-primary-light);
-      --link-border-hover: var(--color-accent-base);
-    }
+        &.ghost-primary {
+            --link-color: var(--color-primary-base);
+            --link-color-hover: var(--color-primary-base);
+            --link-bg: var(--color-primary-light-background);
+            --link-bg-hover: var(--color-primary-light);
+            --link-border: var(--color-primary-light);
+            --link-border-hover: var(--color-accent-base);
+        }
 
-    &.button-styles {
-      cursor: pointer;
-    }
+        &.button-styles {
+            cursor: pointer;
+        }
 
-    &:disabled {
-      cursor: not-allowed;
+        &:disabled {
+            cursor: not-allowed;
+        }
     }
-  }
 </style>

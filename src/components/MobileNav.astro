@@ -1,120 +1,122 @@
 ---
-import { getEntry } from "astro:content";
-import Icon from "@components/Icon.astro";
 import ButtonLink from "@components/ButtonLink.astro";
+import Icon from "@components/Icon.astro";
 import type { Theme } from "../types";
+import { getEntry } from "astro:content";
 
 const navigation = await getEntry("navigation", "main");
 
 type Props = {
-  theme?: Theme;
+    theme?: Theme;
 };
 
 const { theme = "dark" } = Astro.props;
 ---
 
-<div class="mobile-nav | popover" x-data x-popover data-theme={theme}>
-  <button class="menu-button open" x-popover:button>
-    <span class="sr-only">Open Navigation</span>
-    <Icon name="bars-2" size="1.75rem" />
-  </button>
-  <nav class="panel-wrapper" x-popover:panel>
-    <div class="panel">
-      <button class="menu-button close" x-on:click="$popover.close()">
-        <span class="sr-only">Close Navigation</span>
-        <Icon name="x-mark" size="1.5rem" />
-      </button>
-      {
-        navigation?.data.entries.map((entry) => (
-          <Fragment>
-            {entry.children !== undefined && (
-              <div class="flow | with-children">
-                <div class="small-title">{entry.title}</div>
-                {entry.children.map((childEntry) => (
-                  <a href={childEntry.slug}>{childEntry.title}</a>
-                ))}
-              </div>
-            )}
-          </Fragment>
-        ))
-      }
-      <div class="flow | with-children">
-        <div class="small-title">Studio</div>
-        {
-          navigation?.data.entries.map((entry) => (
-            <Fragment>
-              {entry.children === undefined && (
-                <a href={entry.slug}>{entry.title}</a>
-              )}
-            </Fragment>
-          ))
-        }
-      </div>
-      <ButtonLink href="/contact">Get a Quote</ButtonLink>
-    </div>
-  </nav>
+<div class="mobile-nav | popover" data-theme={theme} x-data x-popover>
+    <button class="menu-button open" x-popover:button>
+        <span class="sr-only">Open Navigation</span>
+        <Icon name="bars-2" size="1.75rem" />
+    </button>
+    <nav class="panel-wrapper" x-popover:panel>
+        <div class="panel">
+            <button class="menu-button close" x-on:click="$popover.close()">
+                <span class="sr-only">Close Navigation</span>
+                <Icon name="x-mark" size="1.5rem" />
+            </button>
+            {
+                navigation?.data.entries.map((entry) => (
+                    <Fragment>
+                        {entry.children !== undefined && (
+                            <div class="flow | with-children">
+                                <div class="small-title">{entry.title}</div>
+                                {entry.children.map((childEntry) => (
+                                    <a href={childEntry.slug}>
+                                        {childEntry.title}
+                                    </a>
+                                ))}
+                            </div>
+                        )}
+                    </Fragment>
+                ))
+            }
+            <div class="flow | with-children">
+                <div class="small-title">Studio</div>
+                {
+                    navigation?.data.entries.map((entry) => (
+                        <Fragment>
+                            {entry.children === undefined && (
+                                <a href={entry.slug}>{entry.title}</a>
+                            )}
+                        </Fragment>
+                    ))
+                }
+            </div>
+            <ButtonLink href="/contact">Get a Quote</ButtonLink>
+        </div>
+    </nav>
 </div>
 
 <style>
-  .mobile-nav {
-    --button-icon-color: var(--color-neutral-9);
-    --panel-border: var(--color-neutral-2);
-
-    &[data-theme="dark"] {
-      --button-icon-color: var(--color-neutral-1);
-      --panel-border: var(--color-neutral-1);
-    }
-  }
-
-  .menu-button {
-    border-radius: 5px;
-    border: 0;
-    background: transparent;
-    padding: 0.65rem 0.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &.open {
-      color: var(--button-icon-color);
-    }
-
-    &.close {
-      position: absolute;
-      top: 0.25rem;
-      right: 0.25rem;
-      color: var(--color-neutral-5);
-    }
-  }
-
-  .panel-wrapper {
-    position: absolute;
-    top: 0;
-    right: 0.75rem;
-    z-index: 60;
-  }
-
-  .panel {
-    background: white;
-    border: 1px solid var(--panel-border);
-    padding: var(--space-m);
-    border-radius: var(--rounded-corners-small);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-l);
-    color: var(--color-neutral-9);
-    box-shadow: var(--shadow-light);
-    min-width: 20rem;
-    animation: 0.2s fade-up ease-in-out;
-  }
-
-  .flow.with-children {
-    --flow-space: var(--space-xs);
-  }
-
-  @media (min-width: 640px) {
     .mobile-nav {
-      display: none;
+        --button-icon-color: var(--color-neutral-9);
+        --panel-border: var(--color-neutral-2);
+
+        &[data-theme="dark"] {
+            --button-icon-color: var(--color-neutral-1);
+            --panel-border: var(--color-neutral-1);
+        }
     }
-  }
+
+    .menu-button {
+        border-radius: 5px;
+        border: 0;
+        background: transparent;
+        padding: 0.65rem 0.75rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.open {
+            color: var(--button-icon-color);
+        }
+
+        &.close {
+            position: absolute;
+            top: 0.25rem;
+            right: 0.25rem;
+            color: var(--color-neutral-5);
+        }
+    }
+
+    .panel-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0.75rem;
+        z-index: 60;
+    }
+
+    .panel {
+        background: white;
+        border: 1px solid var(--panel-border);
+        padding: var(--space-m);
+        border-radius: var(--rounded-corners-small);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-l);
+        color: var(--color-neutral-9);
+        box-shadow: var(--shadow-light);
+        min-width: 20rem;
+        animation: 0.2s fade-up ease-in-out;
+    }
+
+    .flow.with-children {
+        --flow-space: var(--space-xs);
+    }
+
+    @media (min-width: 640px) {
+        .mobile-nav {
+            display: none;
+        }
+    }
 </style>

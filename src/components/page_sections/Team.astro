@@ -1,89 +1,89 @@
 ---
-import { Image } from "astro:assets";
-import Icon from "@components/Icon.astro";
-import Testimonial from "@components/Testimonial.astro";
-
-import headshot from "@assets/ds-pro-headshot.jpg";
 import type { CollectionEntry } from "astro:content";
+import Icon from "@components/Icon.astro";
+import { Image } from "astro:assets";
+// import Testimonial from "@components/Testimonial.astro";
+import headshot from "@assets/ds-pro-headshot.jpg";
 
 type Props = {
-  testimonials?: CollectionEntry<"testimonials">[];
+    testimonials?: CollectionEntry<"testimonials">[];
 };
 
 const { testimonials } = Astro.props;
 ---
 
 <article class="grid-6">
-  <div class="text | flow">
-    <header>
-      <div class="eyebrow | small-title text-gradient">
-        Principal Designer/Developer
-      </div>
-      <h2>Daniel Saunders</h2>
-      <!-- <p>Principal Designer/Developer</p> -->
-    </header>
-    <p>
-      Hello! My name is <a href="https://daniel-saunders.com" target="_blank"
-        >Daniel Saunders</a
-      >. I’m a freelance web designer and developer with over 8 years of
-      experience creating visually captivating, successful websites for
-      individuals, organizations, churches, and businesses.
-    </p>
-    <p>
-      In addition to the creative and technical sides, I am a strategic partner,
-      helping my clients achieve their goals through a deep understanding of the
-      web.
-    </p>
-  </div>
-  <Image
-    class="headshot"
-    src={headshot}
-    alt="My headshot: a white man with short hair, glasses, and a friendly smile."
-    width={640}
-    height={900}
-    loading="eager"
-    format="webp"
-  />
-  <div class="info">
-    <div class="cluster">
-      <div class="icon-wrapper">
-        <Icon name="globe-americas" />
-      </div>
-      <div class="info-text">
-        <p class="info-heading">Los Angeles</p>
-        <p>Location</p>
-      </div>
+    <div class="text | flow">
+        <header>
+            <div class="eyebrow | small-title text-gradient">
+                Principal Designer/Developer
+            </div>
+            <h2>Daniel Saunders</h2>
+            <!-- <p>Principal Designer/Developer</p> -->
+        </header>
+        <p>
+            Hello! My name is <a
+                href="https://daniel-saunders.com"
+                target="_blank">Daniel Saunders</a
+            >. I’m a freelance web designer and developer with over 8 years of
+            experience creating visually captivating, successful websites for
+            individuals, organizations, churches, and businesses.
+        </p>
+        <p>
+            In addition to the creative and technical sides, I am a strategic
+            partner, helping my clients achieve their goals through a deep
+            understanding of the web.
+        </p>
     </div>
-    <div class="cluster">
-      <div class="icon-wrapper">
-        <Icon name="bars-3-bottom-left" />
-      </div>
-      <div class="info-text">
-        <p class="info-heading">Brix Sans</p>
-        <p>Favorite Font</p>
-      </div>
+    <Image
+        alt="My headshot: a white man with short hair, glasses, and a friendly smile."
+        class="headshot"
+        format="webp"
+        height={900}
+        loading="eager"
+        src={headshot}
+        width={640}
+    />
+    <div class="info">
+        <div class="cluster">
+            <div class="icon-wrapper">
+                <Icon name="globe-americas" />
+            </div>
+            <div class="info-text">
+                <p class="info-heading">Los Angeles</p>
+                <p>Location</p>
+            </div>
+        </div>
+        <div class="cluster">
+            <div class="icon-wrapper">
+                <Icon name="bars-3-bottom-left" />
+            </div>
+            <div class="info-text">
+                <p class="info-heading">Brix Sans</p>
+                <p>Favorite Font</p>
+            </div>
+        </div>
+        <div class="cluster">
+            <div class="icon-wrapper">
+                <Icon name="swatch" />
+            </div>
+            <div class="info-text">
+                <p class="info-heading">#ff426b</p>
+                <p>Favorite Color</p>
+            </div>
+        </div>
+        <div class="cluster">
+            <div class="icon-wrapper">
+                <Icon name="code" />
+            </div>
+            <div class="info-text">
+                <p class="info-heading">CSS</p>
+                <p>Favorite Coding Language</p>
+            </div>
+        </div>
     </div>
-    <div class="cluster">
-      <div class="icon-wrapper">
-        <Icon name="swatch" />
-      </div>
-      <div class="info-text">
-        <p class="info-heading">#ff426b</p>
-        <p>Favorite Color</p>
-      </div>
-    </div>
-    <div class="cluster">
-      <div class="icon-wrapper">
-        <Icon name="code" />
-      </div>
-      <div class="info-text">
-        <p class="info-heading">CSS</p>
-        <p>Favorite Coding Language</p>
-      </div>
-    </div>
-  </div>
-  <!-- TODO: Get new testimonials -->
-  <!-- {
+    <!-- TODO: Get new testimonials -->
+    <!-- {
     testimonials?.length !== 0 &&
       testimonials?.map((testimonial) => (
         <div class="testimonial-wrapper">
@@ -94,124 +94,124 @@ const { testimonials } = Astro.props;
 </article>
 
 <style>
-  article {
-    margin-block-end: var(--section-spacer);
-  }
-
-  .eyebrow {
-    margin-block-end: var(--space-xs);
-  }
-
-  header {
-    & h2 {
-      font-size: var(--step-4);
-    }
-
-    & p {
-      font-size: var(--step-1);
-      margin-block-start: var(--space-3xs);
-    }
-  }
-
-  .grid-6 {
-    column-gap: var(--space-l);
-    row-gap: var(--space-2xl);
-    max-width: 85%;
-    margin-inline: auto;
-  }
-
-  .text {
-    grid-column: 1 / span 4;
-    place-self: center;
-    padding-inline-end: var(--space-xl);
-
-    &.flow {
-      --flow-space: var(--space-l);
-    }
-  }
-
-  .headshot {
-    aspect-ratio: 5/7;
-    object-fit: cover;
-    border-radius: var(--rounded-corners);
-  }
-
-  .info {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column: 1 / span all;
-    border-block: 1px solid
-      color-mix(in hsl, var(--color-neutral-2), transparent 50%);
-    padding-block: var(--space-m);
-  }
-
-  .icon-wrapper {
-    align-self: center;
-  }
-
-  .info-heading {
-    font-family: var(--font-heading);
-    font-weight: var(--font-heading-weight);
-
-    & + p {
-      margin-block-start: -4px;
-      font-size: var(--step--1);
-    }
-  }
-
-  .testimonial-wrapper {
-    grid-column: span 3;
-  }
-
-  :global(.icon-wrapper:has(+ .info-text:hover) svg) {
-    color: var(--color-primary-4);
-  }
-
-  :global(.icon-wrapper:has(+ .info-text:hover)) {
-    border-color: var(--color-primary-2);
-  }
-
-  @container contentWrapper (max-width: 768px) {
     article {
-      margin-block-end: var(--space-m);
+        margin-block-end: var(--section-spacer);
+    }
+
+    .eyebrow {
+        margin-block-end: var(--space-xs);
+    }
+
+    header {
+        & h2 {
+            font-size: var(--step-4);
+        }
+
+        & p {
+            font-size: var(--step-1);
+            margin-block-start: var(--space-3xs);
+        }
     }
 
     .grid-6 {
-      margin-block-start: var(--space-m);
-      max-width: none;
-      column-gap: 0;
-      row-gap: var(--space-l);
+        column-gap: var(--space-l);
+        row-gap: var(--space-2xl);
+        max-width: 85%;
+        margin-inline: auto;
     }
 
     .text {
-      padding-inline-end: 0;
-      grid-column: span 6;
+        grid-column: 1 / span 4;
+        place-self: center;
+        padding-inline-end: var(--space-xl);
+
+        &.flow {
+            --flow-space: var(--space-l);
+        }
     }
 
     .headshot {
-      max-width: 20rem;
+        aspect-ratio: 5/7;
+        object-fit: cover;
+        border-radius: var(--rounded-corners);
     }
 
     .info {
-      row-gap: var(--space-m);
-
-      & > * {
-        grid-column: span 2;
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    .headshot {
-      max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column: 1 / span all;
+        border-block: 1px solid
+            color-mix(in hsl, var(--color-neutral-2), transparent 50%);
+        padding-block: var(--space-m);
     }
 
-    .info {
-      row-gap: var(--space-l);
-
-      & > * {
-        grid-column: span 4;
-      }
+    .icon-wrapper {
+        align-self: center;
     }
-  }
+
+    .info-heading {
+        font-family: var(--font-heading);
+        font-weight: var(--font-heading-weight);
+
+        & + p {
+            margin-block-start: -4px;
+            font-size: var(--step--1);
+        }
+    }
+
+    .testimonial-wrapper {
+        grid-column: span 3;
+    }
+
+    :global(.icon-wrapper:has(+ .info-text:hover) svg) {
+        color: var(--color-primary-4);
+    }
+
+    :global(.icon-wrapper:has(+ .info-text:hover)) {
+        border-color: var(--color-primary-2);
+    }
+
+    @container contentWrapper (max-width: 768px) {
+        article {
+            margin-block-end: var(--space-m);
+        }
+
+        .grid-6 {
+            margin-block-start: var(--space-m);
+            max-width: none;
+            column-gap: 0;
+            row-gap: var(--space-l);
+        }
+
+        .text {
+            padding-inline-end: 0;
+            grid-column: span 6;
+        }
+
+        .headshot {
+            max-width: 20rem;
+        }
+
+        .info {
+            row-gap: var(--space-m);
+
+            & > * {
+                grid-column: span 2;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .headshot {
+            max-width: 100%;
+        }
+
+        .info {
+            row-gap: var(--space-l);
+
+            & > * {
+                grid-column: span 4;
+            }
+        }
+    }
 </style>

@@ -1,51 +1,52 @@
 ---
-import Card from "@components/Card.astro";
-import Icon from "@components/Icon.astro";
-import WebDesignIllustration from "@components/page_sections/WebDesignIllustration.astro";
-import FrontendDevIllustration from "@components/page_sections/FrontendDevIllustration.astro";
 import ButtonLink from "@components/ButtonLink.astro";
-
+import Card from "@components/Card.astro";
 import type { CollectionEntry } from "astro:content";
+import FrontendDevIllustration from "@components/page_sections/FrontendDevIllustration.astro";
+import Icon from "@components/Icon.astro";
 import type { IconName } from "@components/Icon.astro";
+import WebDesignIllustration from "@components/page_sections/WebDesignIllustration.astro";
 
 type Props = {
-  entries: CollectionEntry<"services">[];
+    entries: CollectionEntry<"services">[];
 };
 
 const { entries } = Astro.props;
 ---
 
 <div class="grid-6 feature-span">
-  {
-    entries.map((entry, index) => (
-      <Card>
-        <div class="icon-wrapper gradient">
-          <Icon
-            name={entry.data.icon as IconName}
-            color="currentColor"
-            size="1em"
-          />
-        </div>
-        <h3 class="text-step-1">
-          <a class="color-underline" href={`/services/${entry.id}`}>
-            {entry.data.preview.title}
-          </a>
-        </h3>
-        <p>{entry.data.preview.summary}</p>
-        <footer>
-          <a
-            class="cluster"
-            style="--cluster-space: 0.5rem"
-            href={`/services/${entry.id}`}
-          >
-            <strong>{entry.data.title} Services</strong>
-            <Icon name="chevron-right" size="1em" />
-          </a>
-        </footer>
-        {/* {[0].includes(index) && <WebDesignIllustration slot="after-content" />} */}
-        {index === 0 && <WebDesignIllustration slot="after-content" />}
-        {index === 1 && <FrontendDevIllustration slot="after-content" />}
-        {/* {[0, 1].includes(index) && (
+    {
+        entries.map((entry, index) => (
+            <Card>
+                <div class="icon-wrapper gradient">
+                    <Icon
+                        color="currentColor"
+                        name={entry.data.icon as IconName}
+                        size="1em"
+                    />
+                </div>
+                <h3 class="text-step-1">
+                    <a class="color-underline" href={`/services/${entry.id}`}>
+                        {entry.data.preview.title}
+                    </a>
+                </h3>
+                <p>{entry.data.preview.summary}</p>
+                <footer>
+                    <a
+                        class="cluster"
+                        href={`/services/${entry.id}`}
+                        style="--cluster-space: 0.5rem"
+                    >
+                        <strong>{entry.data.title} Services</strong>
+                        <Icon name="chevron-right" size="1em" />
+                    </a>
+                </footer>
+                {/* {[0].includes(index) && <WebDesignIllustration slot="after-content" />} */}
+                {index === 0 && <WebDesignIllustration slot="after-content" />}
+                {index === 1 && (
+                    <FrontendDevIllustration slot="after-content" />
+                )}
+                {/* {[0, 1].includes(index) && (
           <img
             slot="after-content"
             class="after-content-image"
@@ -55,29 +56,29 @@ const { entries } = Astro.props;
             loading="eager"
           />
         )} */}
-      </Card>
-    ))
-  }
-  <Card theme="dark">
-    <div class="icon-wrapper gradient">
-      <Icon name="envelope" color="currentColor" size="1em" />
-    </div>
-    <h3 class="text-step-1">
-      <a class="color-underline" href={`/contact`}>Get in Touch</a>
-    </h3>
-    <p>
-      Whether you’re an organization, agency, or individual, reach out to see
-      how I can help level-up your online presence..
-    </p>
-    <ButtonLink theme="ghost" href="/contact">
-      <span>Get a Quote</span>
-      <Icon name="arrow-right" />
-    </ButtonLink>
-  </Card>
+            </Card>
+        ))
+    }
+    <Card theme="dark">
+        <div class="icon-wrapper gradient">
+            <Icon color="currentColor" name="envelope" size="1em" />
+        </div>
+        <h3 class="text-step-1">
+            <a class="color-underline" href={`/contact`}>Get in Touch</a>
+        </h3>
+        <p>
+            Whether you’re an organization, agency, or individual, reach out to
+            see how I can help level-up your online presence..
+        </p>
+        <ButtonLink href="/contact" theme="ghost">
+            <span>Get a Quote</span>
+            <Icon name="arrow-right" />
+        </ButtonLink>
+    </Card>
 </div>
 
 <style>
-  /* :global(.card .after-content-image) {
+    /* :global(.card .after-content-image) {
     transition: transform 0.3s ease-out;
   }
 
@@ -85,54 +86,54 @@ const { entries } = Astro.props;
     transform: scale(1.04);
   } */
 
-  :global(.card:hover .service-illustration .background-shapes) {
-    transform: scale(1.06);
-  }
+    :global(.card:hover .service-illustration .background-shapes) {
+        transform: scale(1.06);
+    }
 </style>
 
 <script>
-  import { gsap } from "gsap";
-  import { Flip } from "gsap/Flip";
+    // import { Flip } from "gsap/Flip";
+    import { gsap } from "gsap";
 
-  document.addEventListener("astro:page-load", () => {
-    gsap.registerPlugin(Flip);
+    document.addEventListener("astro:page-load", () => {
+        gsap.registerPlugin(Flip);
 
-    const webDesignCard = document.querySelector(
-      "#services .card:nth-child(1)",
-    );
-    const webDesignIllustration = document.querySelector(
-      ".service-illustration.web-design",
-    );
-    const row = webDesignIllustration?.querySelector(".row.animate");
-    const screen = webDesignIllustration?.querySelector(".screen");
-    // const panes = webDesignIllustration?.querySelectorAll(".pane");
+        const webDesignCard = document.querySelector(
+            "#services .card:nth-child(1)",
+        );
+        const webDesignIllustration = document.querySelector(
+            ".service-illustration.web-design",
+        );
+        const row = webDesignIllustration?.querySelector(".row.animate");
+        const screen = webDesignIllustration?.querySelector(".screen");
+        // const panes = webDesignIllustration?.querySelectorAll(".pane");
 
-    webDesignCard?.addEventListener("mouseenter", () => {
-      const state = Flip.getState(".pane, .screen");
-      console.log(state);
+        webDesignCard?.addEventListener("mouseenter", () => {
+            const state = Flip.getState(".pane, .screen");
+            console.log(state);
 
-      screen?.classList.toggle("slim");
-      row?.classList.toggle("reorder");
+            screen?.classList.toggle("slim");
+            row?.classList.toggle("reorder");
 
-      Flip.from(state, {
-        absolute: true,
-        duration: 0.4,
-        ease: "power1.out",
-      });
+            Flip.from(state, {
+                absolute: true,
+                duration: 0.4,
+                ease: "power1.out",
+            });
+        });
+
+        webDesignCard?.addEventListener("mouseleave", () => {
+            const state = Flip.getState(".pane, .screen");
+            console.log(state);
+
+            screen?.classList.toggle("slim");
+            row?.classList.toggle("reorder");
+
+            Flip.from(state, {
+                absolute: true,
+                duration: 0.3,
+                ease: "power1.out",
+            });
+        });
     });
-
-    webDesignCard?.addEventListener("mouseleave", () => {
-      const state = Flip.getState(".pane, .screen");
-      console.log(state);
-
-      screen?.classList.toggle("slim");
-      row?.classList.toggle("reorder");
-
-      Flip.from(state, {
-        absolute: true,
-        duration: 0.3,
-        ease: "power1.out",
-      });
-    });
-  });
 </script>

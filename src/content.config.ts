@@ -2,78 +2,78 @@ import { z, defineCollection, reference } from "astro:content";
 import { glob } from "astro/loaders";
 
 const navigation = defineCollection({
-  loader: glob({ pattern: "**/*.yaml", base: "./src/content/navigation" }),
-  schema: z.object({
-    title: z.string(),
-    entries: z.array(
-      z.object({
+    loader: glob({ pattern: "**/*.yaml", base: "./src/content/navigation" }),
+    schema: z.object({
         title: z.string(),
-        slug: z.string().optional(),
-        children: z
-          .array(
+        entries: z.array(
             z.object({
-              title: z.string(),
-              slug: z.string(),
-              icon: z.string().optional(),
-              tagline: z.string().optional(),
-            })
-          )
-          .optional(),
-      })
-    ),
-  }),
+                title: z.string(),
+                slug: z.string().optional(),
+                children: z
+                    .array(
+                        z.object({
+                            title: z.string(),
+                            slug: z.string(),
+                            icon: z.string().optional(),
+                            tagline: z.string().optional(),
+                        }),
+                    )
+                    .optional(),
+            }),
+        ),
+    }),
 });
 
 const features = defineCollection({
-  loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/features" }),
-  schema: z.object({
-    title: z.string(),
-    summary: z.string().optional(),
-    order: z.number().optional(),
-    icon: z.string().optional(),
-    image: z
-      .object({
-        src: z.string(),
-        alt: z.string(),
-      })
-      .optional(),
-  }),
+    loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/features" }),
+    schema: z.object({
+        title: z.string(),
+        summary: z.string().optional(),
+        order: z.number().optional(),
+        icon: z.string().optional(),
+        image: z
+            .object({
+                src: z.string(),
+                alt: z.string(),
+            })
+            .optional(),
+    }),
 });
 
 const services = defineCollection({
-  loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/services" }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      tagline: z.string(),
-      taglinePlain: z.string().optional(),
-      preview: z.object({
-        title: z.string(),
-        summary: z.string(),
-      }),
-      featuredImage: z.object({
-        src: image(),
-        alt: z.string(),
-      }),
-      features: z.array(reference("features")),
-      featuredProject: reference("projects").optional().nullable(),
-      prologue: z.string().optional(),
-      order: z.number(),
-      icon: z.string().optional(),
-      showContent: z.boolean().optional(),
-      showApproach: z.boolean().optional(),
-    }),
+    loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/services" }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            tagline: z.string(),
+            taglinePlain: z.string().optional(),
+            preview: z.object({
+                title: z.string(),
+                summary: z.string(),
+            }),
+            featuredImage: z.object({
+                src: image(),
+                alt: z.string(),
+            }),
+            features: z.array(reference("features")),
+            featuredProject: reference("projects").optional().nullable(),
+            prologue: z.string().optional(),
+            order: z.number(),
+            icon: z.string().optional(),
+            showContent: z.boolean().optional(),
+            showApproach: z.boolean().optional(),
+        }),
 });
 
 const tools = defineCollection({
-  loader: glob({ pattern: "**/*.yaml", base: "./src/content/tools" }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      summary: z.string().optional(),
-      logo: image(),
-      order: z.number(),
-    }),
+    loader: glob({ pattern: "**/*.yaml", base: "./src/content/tools" }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            summary: z.string().optional(),
+            logo: image(),
+            order: z.number(),
+        }),
 });
 
 // const websiteTypes = defineCollection({
@@ -85,129 +85,129 @@ const tools = defineCollection({
 // });
 
 const designGallery = defineCollection({
-  loader: glob({ pattern: "**/*.yaml", base: "./src/content/designGallery" }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      featuredImage: z.object({
-        src: image(),
-        alt: z.string(),
-      }),
-      order: z.number().optional(),
-    }),
+    loader: glob({ pattern: "**/*.yaml", base: "./src/content/designGallery" }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            featuredImage: z.object({
+                src: image(),
+                alt: z.string(),
+            }),
+            order: z.number().optional(),
+        }),
 });
 
 const projects = defineCollection({
-  loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/projects" }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      summary: z.string(),
-      meta: z.object({
-        description: z.string().optional().nullable(),
-        image: z.string().optional().nullable(),
-        imageAlt: z.string().optional().nullable(),
-      }),
-      featuredImage: z.object({
-        src: image(),
-        alt: z.string(),
-      }),
-      thumbnailImage: z.object({
-        src: image(),
-        alt: z.string(),
-      }),
-      galleryImages: z
-        .array(
-          z.object({
-            src: image(),
-            alt: z.string(),
-          })
-        )
-        .optional(),
-      client: z.string(),
-      type: z.string(),
-      services: z.array(reference("services")),
-      tools: z.array(reference("tools")),
-      scope: z.array(z.string()),
-      url: z.string().url().optional(),
-    }),
+    loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/projects" }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            summary: z.string(),
+            meta: z.object({
+                description: z.string().optional().nullable(),
+                image: z.string().optional().nullable(),
+                imageAlt: z.string().optional().nullable(),
+            }),
+            featuredImage: z.object({
+                src: image(),
+                alt: z.string(),
+            }),
+            thumbnailImage: z.object({
+                src: image(),
+                alt: z.string(),
+            }),
+            galleryImages: z
+                .array(
+                    z.object({
+                        src: image(),
+                        alt: z.string(),
+                    }),
+                )
+                .optional(),
+            client: z.string(),
+            type: z.string(),
+            services: z.array(reference("services")),
+            tools: z.array(reference("tools")),
+            scope: z.array(z.string()),
+            url: z.string().url().optional(),
+        }),
 });
 
 const supportPlans = defineCollection({
-  loader: glob({ pattern: "**/*.yaml", base: "./src/content/supportPlans" }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      summary: z.string(),
-      image: z.object({
-        src: image(),
-        alt: z.string(),
-      }),
-      price: z.object({
-        monthly: z.number(),
-        annual: z.number(),
-      }),
-      features: z.array(z.string()),
-      order: z.number(),
-    }),
+    loader: glob({ pattern: "**/*.yaml", base: "./src/content/supportPlans" }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            summary: z.string(),
+            image: z.object({
+                src: image(),
+                alt: z.string(),
+            }),
+            price: z.object({
+                monthly: z.number(),
+                annual: z.number(),
+            }),
+            features: z.array(z.string()),
+            order: z.number(),
+        }),
 });
 
 const testimonials = defineCollection({
-  loader: glob({ pattern: "**/*.yaml", base: "./src/content/testimonials" }),
-  schema: ({ image }) =>
-    z.object({
-      body: z.string(),
-      attribution: z.object({
-        name: z.string(),
-        organization: z.string(),
-        logo: image(),
-      }),
-    }),
+    loader: glob({ pattern: "**/*.yaml", base: "./src/content/testimonials" }),
+    schema: ({ image }) =>
+        z.object({
+            body: z.string(),
+            attribution: z.object({
+                name: z.string(),
+                organization: z.string(),
+                logo: image(),
+            }),
+        }),
 });
 
 const projectPhases = defineCollection({
-  loader: glob({ pattern: "**/*.yaml", base: "./src/content/projectPhases" }),
-  schema: z.object({
-    title: z.string(),
-    summary: z.string(),
-    outcomes: z.array(z.string()),
-    order: z.number(),
-  }),
+    loader: glob({ pattern: "**/*.yaml", base: "./src/content/projectPhases" }),
+    schema: z.object({
+        title: z.string(),
+        summary: z.string(),
+        outcomes: z.array(z.string()),
+        order: z.number(),
+    }),
 });
 
 const faqs = defineCollection({
-  loader: glob({ pattern: "**/*.yaml", base: "./src/content/faqs" }),
-  schema: z.object({
-    entries: z.array(
-      z.object({
-        question: z.string(),
-        answer: z.string(),
-      })
-    ),
-  }),
+    loader: glob({ pattern: "**/*.yaml", base: "./src/content/faqs" }),
+    schema: z.object({
+        entries: z.array(
+            z.object({
+                question: z.string(),
+                answer: z.string(),
+            }),
+        ),
+    }),
 });
 
 const principles = defineCollection({
-  loader: glob({ pattern: "**/*.yaml", base: "./src/content/principles" }),
-  schema: z.object({
-    title: z.string(),
-    summary: z.string(),
-    order: z.number(),
-    icon: z.string(),
-  }),
+    loader: glob({ pattern: "**/*.yaml", base: "./src/content/principles" }),
+    schema: z.object({
+        title: z.string(),
+        summary: z.string(),
+        order: z.number(),
+        icon: z.string(),
+    }),
 });
 
 export const collections = {
-  navigation,
-  features,
-  services,
-  projects,
-  tools,
-  // websiteTypes,
-  designGallery,
-  testimonials,
-  supportPlans,
-  projectPhases,
-  faqs,
-  principles,
+    navigation,
+    features,
+    services,
+    projects,
+    tools,
+    // websiteTypes,
+    designGallery,
+    testimonials,
+    supportPlans,
+    projectPhases,
+    faqs,
+    principles,
 };

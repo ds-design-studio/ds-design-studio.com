@@ -4,33 +4,33 @@ import type { ImageMetadata } from "astro";
 // import illustration from "../../assets/illustration-1.png";
 
 type Props = {
-  heading?: string;
-  content: string[];
-  image: ImageMetadata;
-  imageAlt?: string;
-  layout?: "normal" | "flipped";
+    heading?: string;
+    content: string[];
+    image: ImageMetadata;
+    imageAlt?: string;
+    layout?: "normal" | "flipped";
 };
 
 const {
-  heading,
-  content,
-  image,
-  imageAlt = "",
-  layout = "normal",
+    heading,
+    content,
+    image,
+    imageAlt = "",
+    layout = "normal",
 } = Astro.props;
 ---
 
 <div class="feature" data-layout={layout}>
-  <Image
-    class="feature-image rounded-corners"
-    src={image}
-    alt={imageAlt}
-    width={1200}
-    loading="eager"
-    format="webp"
-  />
-  <div class="feature-content">
-    {heading && <h2>{heading}</h2>}
-    {content.map((paragraph) => <p set:html={paragraph} />)}
-  </div>
+    <Image
+        alt={imageAlt}
+        class="feature-image rounded-corners"
+        format="webp"
+        loading="eager"
+        src={image}
+        width={1200}
+    />
+    <div class="feature-content">
+        {heading && <h2>{heading}</h2>}
+        {content.map((paragraph) => <p set:html={paragraph} />)}
+    </div>
 </div>

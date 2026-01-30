@@ -1,12 +1,12 @@
 ---
 type Props = {
-  content: string;
-  centered?: boolean;
+    content: string;
+    centered?: boolean;
 };
 
 const { content, centered = false } = Astro.props;
 ---
 
 <div class:list={["text-callout", centered && "centered"]}>
-  <blockquote set:html={content} />
+    <blockquote set:html={content} />
 </div>

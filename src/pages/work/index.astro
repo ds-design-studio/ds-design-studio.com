@@ -1,95 +1,95 @@
 ---
+import CTA from "@components/page_sections/CTA.astro";
 import Layout from "@layouts/Layout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
-import CTA from "@components/page_sections/CTA.astro";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
 
 const title = "Selected Work";
 const description =
-  "A selection of recent work showcasing the principles that I bring to all of my web design projects.";
+    "A selection of recent work showcasing the principles that I bring to all of my web design projects.";
 
 const ogParams = new URLSearchParams([
-  ["title", "Selected Work"],
-  ["subtitle", "Selected web design work by Daniel Saunders"],
+    ["title", "Selected Work"],
+    ["subtitle", "Selected web design work by Daniel Saunders"],
 ]);
 ---
 
 <Layout
-  headerTheme="normal"
-  meta={{
-    seo: {
-      title: title,
-      description: description,
-    },
-    openGraph: {
-      title: "Selected Web Design Work by Daniel Saunders",
-      description: description,
-      image: `/api/og?${ogParams.toString()}`,
-    },
-  }}
+    headerTheme="normal"
+    meta={{
+        seo: {
+            title: title,
+            description: description,
+        },
+        openGraph: {
+            title: "Selected Web Design Work by Daniel Saunders",
+            description: description,
+            image: `/api/og?${ogParams.toString()}`,
+        },
+    }}
 >
-  <main slot="content">
-    <article class="hero | content-wrapper | inner-spacing flow">
-      <h1>{title}</h1>
-      <p>{description}</p>
-    </article>
-    <div id="projects" class="grid-6 | content-wrapper">
-      {
-        projects.map((project) => (
-          <div>
-            <ProjectCard project={project} />
-          </div>
-        ))
-      }
-    </div>
-    <CTA />
-  </main>
+    <main slot="content">
+        <article class="hero | content-wrapper | inner-spacing flow">
+            <h1>{title}</h1>
+            <p>{description}</p>
+        </article>
+        <div class="grid-6 | content-wrapper" id="projects">
+            {
+                projects.map((project) => (
+                    <div>
+                        <ProjectCard project={project} />
+                    </div>
+                ))
+            }
+        </div>
+        <CTA />
+    </main>
 </Layout>
 
 <style>
-  .hero {
-    text-align: center;
-
-    & h1 {
-      font-size: var(--step-5);
-    }
-
-    & p {
-      max-width: calc(var(--paragraph-measure) * 0.8);
-      margin-inline: auto;
-    }
-  }
-
-  .grid-6 {
-    gap: var(--space-2xl);
-    margin-block-end: var(--section-spacer);
-
-    & > * {
-      grid-column: span 3;
-    }
-
-    & > :nth-child(even) {
-      margin-block-start: var(--space-2xl);
-    }
-  }
-
-  @media (max-width: 768px) {
     .hero {
-      &.inner-spacing {
-        margin-block-start: 10rem;
-      }
+        text-align: center;
+
+        & h1 {
+            font-size: var(--step-5);
+        }
+
+        & p {
+            max-width: calc(var(--paragraph-measure) * 0.8);
+            margin-inline: auto;
+        }
     }
 
     .grid-6 {
-      & > * {
-        grid-column: span 6;
-      }
+        gap: var(--space-2xl);
+        margin-block-end: var(--section-spacer);
 
-      & > :nth-child(even) {
-        margin-block-start: 0;
-      }
+        & > * {
+            grid-column: span 3;
+        }
+
+        & > :nth-child(even) {
+            margin-block-start: var(--space-2xl);
+        }
     }
-  }
+
+    @media (max-width: 768px) {
+        .hero {
+            &.inner-spacing {
+                margin-block-start: 10rem;
+            }
+        }
+
+        .grid-6 {
+            & > * {
+                grid-column: span 6;
+            }
+
+            & > :nth-child(even) {
+                margin-block-start: 0;
+            }
+        }
+    }
 </style>

@@ -9,452 +9,471 @@ import site from "@data/site.json";
 
 const title = "Contact";
 const description =
-  "Reach out for a complimentary website assessment and quote. Let’s discuss how we can help with your next project.";
+    "Reach out for a complimentary website assessment and quote. Let’s discuss how we can help with your next project.";
 
 const pricing = [
-  {
-    name: "Under $5,000",
-    value: "5k",
-  },
-  {
-    name: "$5,000 to $10,000",
-    value: "5k-10k",
-    default: true,
-  },
-  {
-    name: "$10,000 to $20,000",
-    value: "10k-20k",
-  },
-  {
-    name: "$20,000 to $50,000",
-    value: "20k-50k",
-  },
-  {
-    name: "More than $50,000",
-    value: "50k+",
-  },
+    {
+        name: "Under $5,000",
+        value: "5k",
+    },
+    {
+        name: "$5,000 to $10,000",
+        value: "5k-10k",
+        default: true,
+    },
+    {
+        name: "$10,000 to $20,000",
+        value: "10k-20k",
+    },
+    {
+        name: "$20,000 to $50,000",
+        value: "20k-50k",
+    },
+    {
+        name: "More than $50,000",
+        value: "50k+",
+    },
 ];
 
 const ogParams = new URLSearchParams([
-  ["title", "Get a Quote"],
-  [
-    "subtitle",
-    "Submit a form with your project details to receive a custom quote",
-  ],
+    ["title", "Get a Quote"],
+    [
+        "subtitle",
+        "Submit a form with your project details to receive a custom quote",
+    ],
 ]);
 ---
 
 <Layout
-  headerTheme="dark"
-  meta={{
-    seo: {
-      title: title,
-      description: description,
-    },
-    openGraph: {
-      image: `/api/og?${ogParams.toString()}`,
-    },
-  }}
+    headerTheme="dark"
+    meta={{
+        seo: {
+            title: title,
+            description: description,
+        },
+        openGraph: {
+            image: `/api/og?${ogParams.toString()}`,
+        },
+    }}
 >
-  <main slot="content">
-    <InnerHero title={title}>{description} </InnerHero>
-    <div class="content-offset">
-      <div class="content-wrapper">
-        <article class="form-wrapper | grid-9">
-          <div class="text | flow">
-            <Image
-              class="illustration"
-              src={illustration}
-              width={300}
-              alt=""
-              loading="eager"
-            />
-            <h2>Project Inquiry</h2>
-            <p>
-              Submit a form with your project details and I’ll get back to you
-              with a complimentary assessment and quote.
-            </p>
-            <p>
-              <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
-            </p>
-          </div>
-          <form
-            id="project-inquiry"
-            action="https://formspree.io/f/xpwaaane"
-            method="POST"
-          >
-            <div class="form-item | col-3">
-              <label for="name">Your Name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                autocomplete="name"
-                required
-              />
-            </div>
-            <div class="form-item | col-3">
-              <label for="org">Your Organization (Optional)</label>
-              <input type="text" name="org" id="org" />
-            </div>
-            <div class="form-item | col-4">
-              <label for="email">Your Email</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                autocomplete="email"
-                required
-              />
-            </div>
-            <fieldset class="form-item checkbox-group | col-4">
-              <legend><strong>Select any number of services:</strong></legend>
-              <div>
-                <label for="services-website">Website</label>
-                <input
-                  type="checkbox"
-                  name="services-website"
-                  id="services-website"
-                  checked
-                />
-              </div>
-              <div>
-                <label for="services-cms">Content Management System</label>
-                <input type="checkbox" name="services-cms" id="services-cms" />
-              </div>
-              <div>
-                <label for="services-ongoing-support">Web Support Plan</label>
-                <input
-                  type="checkbox"
-                  name="services-ongoing-support"
-                  id="services-ongoing-support"
-                />
-              </div>
-              <div>
-                <label for="services-design">Other Design</label>
-                <input
-                  type="checkbox"
-                  name="services-design"
-                  id="services-design"
-                />
-              </div>
-            </fieldset>
-            <div class="form-item | col-3">
-              <label for="budget">Budget</label>
-              <select name="budget" id="budget" required>
-                {
-                  pricing.map((item) => (
-                    <option
-                      selected={item.default ? true : false}
-                      value={item.value}
+    <main slot="content">
+        <InnerHero title={title}>{description} </InnerHero>
+        <div class="content-offset">
+            <div class="content-wrapper">
+                <article class="form-wrapper | grid-9">
+                    <div class="text | flow">
+                        <Image
+                            class="illustration"
+                            src={illustration}
+                            width={300}
+                            alt=""
+                            loading="eager"
+                        />
+                        <h2>Project Inquiry</h2>
+                        <p>
+                            Submit a form with your project details and I’ll get
+                            back to you with a complimentary assessment and
+                            quote.
+                        </p>
+                        <p>
+                            <a href={`mailto:${site.contactEmail}`}
+                                >{site.contactEmail}</a
+                            >
+                        </p>
+                    </div>
+                    <form
+                        id="project-inquiry"
+                        action="https://formspree.io/f/xpwaaane"
+                        method="POST"
                     >
-                      {item.name}
-                    </option>
-                  ))
-                }
-              </select>
+                        <div class="form-item | col-3">
+                            <label for="name">Your Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                autocomplete="name"
+                                required
+                            />
+                        </div>
+                        <div class="form-item | col-3">
+                            <label for="org">Your Organization (Optional)</label
+                            >
+                            <input type="text" name="org" id="org" />
+                        </div>
+                        <div class="form-item | col-4">
+                            <label for="email">Your Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                autocomplete="email"
+                                required
+                            />
+                        </div>
+                        <fieldset class="form-item checkbox-group | col-4">
+                            <legend
+                                ><strong>Select any number of services:</strong
+                                ></legend
+                            >
+                            <div>
+                                <label for="services-website">Website</label>
+                                <input
+                                    type="checkbox"
+                                    name="services-website"
+                                    id="services-website"
+                                    checked
+                                />
+                            </div>
+                            <div>
+                                <label for="services-cms"
+                                    >Content Management System</label
+                                >
+                                <input
+                                    type="checkbox"
+                                    name="services-cms"
+                                    id="services-cms"
+                                />
+                            </div>
+                            <div>
+                                <label for="services-ongoing-support"
+                                    >Web Support Plan</label
+                                >
+                                <input
+                                    type="checkbox"
+                                    name="services-ongoing-support"
+                                    id="services-ongoing-support"
+                                />
+                            </div>
+                            <div>
+                                <label for="services-design">Other Design</label
+                                >
+                                <input
+                                    type="checkbox"
+                                    name="services-design"
+                                    id="services-design"
+                                />
+                            </div>
+                        </fieldset>
+                        <div class="form-item | col-3">
+                            <label for="budget">Budget</label>
+                            <select name="budget" id="budget" required>
+                                {
+                                    pricing.map((item) => (
+                                        <option
+                                            selected={
+                                                item.default ? true : false
+                                            }
+                                            value={item.value}
+                                        >
+                                            {item.name}
+                                        </option>
+                                    ))
+                                }
+                            </select>
+                        </div>
+                        <div class="form-item | col-6">
+                            <label for="message">Message</label>
+                            <textarea
+                                name="message"
+                                id="message"
+                                rows="6"
+                                placeholder="Please provide some additional context about your project."
+                                required></textarea>
+                        </div>
+                        <ButtonLink type="submit">
+                            <span class="button-text">Submit</span>
+                            <img class="loading-spinner" src="/svg/oval.svg" />
+                        </ButtonLink>
+                        <p class="form-status | cluster">
+                            <svg
+                                class="success-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                height="1em"
+                                width="1em"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <svg
+                                class="error-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                height="1em"
+                                width="1em"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="message"></span>
+                        </p>
+                    </form>
+                </article>
             </div>
-            <div class="form-item | col-6">
-              <label for="message">Message</label>
-              <textarea
-                name="message"
-                id="message"
-                rows="6"
-                placeholder="Please provide some additional context about your project."
-                required></textarea>
-            </div>
-            <ButtonLink type="submit">
-              <span class="button-text">Submit</span>
-              <img class="loading-spinner" src="/svg/oval.svg" />
-            </ButtonLink>
-            <p class="form-status | cluster">
-              <svg
-                class="success-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                height="1em"
-                width="1em"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                  clip-rule="evenodd"></path>
-              </svg>
-              <svg
-                class="error-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                height="1em"
-                width="1em"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                  clip-rule="evenodd"></path>
-              </svg>
-              <span class="message"></span>
-            </p>
-          </form>
-        </article>
-      </div>
-    </div>
-  </main>
+        </div>
+    </main>
 </Layout>
 
 <style>
-  .illustration {
-    max-width: 12rem;
-  }
-
-  .form-wrapper {
-    margin-block-start: calc(var(--section-spacer) * 0.5);
-  }
-
-  .grid-9 {
-    gap: var(--space-xl);
-
-    & .text {
-      grid-column: 1 / span 3;
+    .illustration {
+        max-width: 12rem;
     }
 
-    & form {
-      grid-column: span 6;
-    }
-  }
-
-  form {
-    background-color: white;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: var(--space-s);
-    row-gap: var(--space-l);
-    padding: var(--space-xl);
-    border-radius: var(--rounded-corners);
-    box-shadow: var(--shadow-light);
-    border: 1px solid var(--color-neutral-1);
-
-    & .col-2 {
-      grid-column: span 2;
-    }
-
-    & .col-3 {
-      grid-column: span 3;
-    }
-
-    & .col-4 {
-      grid-column: span 4;
-    }
-
-    & .col-6 {
-      grid-column: span 6;
-    }
-  }
-
-  .form-item {
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--space-3xs);
-
-    &:not(.checkbox-group) label {
-      font-weight: 700;
-    }
-  }
-
-  .form-item:has(:is(input[required], textarea[required], select[required]))
-    label::after,
-  .form-item legend::after {
-    content: "*";
-    position: relative;
-    color: var(--color-primary-4);
-    left: 0.25rem;
-  }
-
-  :is(input, textarea, select, fieldset) {
-    color: var(--color-text-body);
-    padding: 0.85rem 1rem 0.75rem;
-    border-radius: var(--rounded-corners-small);
-    border: 1px solid var(--color-neutral-2);
-  }
-
-  input::placeholder,
-  textarea::placeholder {
-    color: var(--color-neutral-4);
-    opacity: 0.85;
-  }
-
-  .content-offset {
-    padding-block-end: var(--section-spacer);
-    background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0)),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23cfd7e2' fill-opacity='0.25'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  .form-status {
-    --cluster-space: 0.5rem;
-    grid-column: span 5;
-    font-weight: 700;
-    align-self: center;
-    padding: 0.85rem 1rem 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--rounded-corners-small);
-    color: var(--text-color);
-    background-color: var(--background-color);
-
-    &.success {
-      --border-color: var(--color-secondary-2);
-      --text-color: var(--color-secondary-6);
-      --background-color: var(--color-secondary-1);
-    }
-
-    &.error {
-      --border-color: var(--color-warning-border);
-      --text-color: var(--color-warning-dark);
-      --background-color: var(--color-warning-light);
-    }
-
-    & .message {
-      position: relative;
-      top: 1px;
-    }
-
-    & :is(.success-icon, .error-icon) {
-      display: none;
-    }
-  }
-
-  @container contentWrapper (max-width: 1150px) {
-    form {
-      & .col-3 {
-        grid-column: span 6;
-      }
-
-      & .col-4 {
-        grid-column: span 6;
-      }
-    }
-  }
-
-  @container contentWrapper (max-width: 899px) {
     .form-wrapper {
-      margin-block-start: var(--space-s);
+        margin-block-start: calc(var(--section-spacer) * 0.5);
     }
 
     .grid-9 {
-      column-gap: var(--space-s);
+        gap: var(--space-xl);
 
-      & .text {
-        grid-column: span 9;
-      }
+        & .text {
+            grid-column: 1 / span 3;
+        }
 
-      & form {
-        grid-column: span 9;
-      }
+        & form {
+            grid-column: span 6;
+        }
     }
-  }
 
-  @container contentWrapper (max-width: 768px) {
     form {
-      padding: var(--space-l);
-    }
-  }
+        background-color: white;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: var(--space-s);
+        row-gap: var(--space-l);
+        padding: var(--space-xl);
+        border-radius: var(--rounded-corners);
+        box-shadow: var(--shadow-light);
+        border: 1px solid var(--color-neutral-1);
 
-  @container contentWrapper (max-width: 480px) {
-    form {
-      padding: var(--space-m);
+        & .col-2 {
+            grid-column: span 2;
+        }
+
+        & .col-3 {
+            grid-column: span 3;
+        }
+
+        & .col-4 {
+            grid-column: span 4;
+        }
+
+        & .col-6 {
+            grid-column: span 6;
+        }
     }
-  }
+
+    .form-item {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--space-3xs);
+
+        &:not(.checkbox-group) label {
+            font-weight: 700;
+        }
+    }
+
+    .form-item:has(:is(input[required], textarea[required], select[required]))
+        label::after,
+    .form-item legend::after {
+        content: "*";
+        position: relative;
+        color: var(--color-primary-4);
+        left: 0.25rem;
+    }
+
+    :is(input, textarea, select, fieldset) {
+        color: var(--color-text-body);
+        padding: 0.85rem 1rem 0.75rem;
+        border-radius: var(--rounded-corners-small);
+        border: 1px solid var(--color-neutral-2);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: var(--color-neutral-4);
+        opacity: 0.85;
+    }
+
+    .content-offset {
+        padding-block-end: var(--section-spacer);
+        background:
+            linear-gradient(to bottom, white, rgba(255, 255, 255, 0)),
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23cfd7e2' fill-opacity='0.25'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .form-status {
+        --cluster-space: 0.5rem;
+        grid-column: span 5;
+        font-weight: 700;
+        align-self: center;
+        padding: 0.85rem 1rem 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--rounded-corners-small);
+        color: var(--text-color);
+        background-color: var(--background-color);
+
+        &.success {
+            --border-color: var(--color-secondary-2);
+            --text-color: var(--color-secondary-6);
+            --background-color: var(--color-secondary-1);
+        }
+
+        &.error {
+            --border-color: var(--color-warning-border);
+            --text-color: var(--color-warning-dark);
+            --background-color: var(--color-warning-light);
+        }
+
+        & .message {
+            position: relative;
+            top: 1px;
+        }
+
+        & :is(.success-icon, .error-icon) {
+            display: none;
+        }
+    }
+
+    @container contentWrapper (max-width: 1150px) {
+        form {
+            & .col-3 {
+                grid-column: span 6;
+            }
+
+            & .col-4 {
+                grid-column: span 6;
+            }
+        }
+    }
+
+    @container contentWrapper (max-width: 899px) {
+        .form-wrapper {
+            margin-block-start: var(--space-s);
+        }
+
+        .grid-9 {
+            column-gap: var(--space-s);
+
+            & .text {
+                grid-column: span 9;
+            }
+
+            & form {
+                grid-column: span 9;
+            }
+        }
+    }
+
+    @container contentWrapper (max-width: 768px) {
+        form {
+            padding: var(--space-l);
+        }
+    }
+
+    @container contentWrapper (max-width: 480px) {
+        form {
+            padding: var(--space-m);
+        }
+    }
 </style>
 
 <script>
-  const form = document.querySelector("form") as HTMLFormElement;
-  const checkboxGroup = document.querySelector("form fieldset");
-  const values = [...checkboxGroup?.querySelectorAll("input")!];
-  const defaultErrorMessage =
-    "Sorry, there was a problem submitting your form. Please try again in a moment.";
+    const form = document.querySelector("form") as HTMLFormElement;
+    const checkboxGroup = document.querySelector("form fieldset");
+    const values = [...checkboxGroup?.querySelectorAll("input")!];
+    const defaultErrorMessage =
+        "Sorry, there was a problem submitting your form. Please try again in a moment.";
 
-  values.forEach((value) =>
-    value.addEventListener("change", () => {
-      if (!values.some((value) => value.checked)) {
-        checkboxGroup
-          ?.querySelector("input")
-          ?.setCustomValidity("Please select at least one service.");
-      } else {
-        checkboxGroup?.querySelector("input")?.setCustomValidity("");
-      }
-    })
-  );
+    values.forEach((value) =>
+        value.addEventListener("change", () => {
+            if (!values.some((value) => value.checked)) {
+                checkboxGroup
+                    ?.querySelector("input")
+                    ?.setCustomValidity("Please select at least one service.");
+            } else {
+                checkboxGroup?.querySelector("input")?.setCustomValidity("");
+            }
+        }),
+    );
 
-  // AJAX form submit to Formspree
-  async function handleFormSubmit(event: Event) {
-    // Prevent form behavior
-    event?.preventDefault();
-    const target = event.target as HTMLFormElement;
+    // AJAX form submit to Formspree
+    async function handleFormSubmit(event: Event) {
+        // Prevent form behavior
+        event?.preventDefault();
+        const target = event.target as HTMLFormElement;
 
-    // Get elements
-    const submitButton = form.querySelector("button") as HTMLElement;
-    const loadingSpinner = form.querySelector(
-      ".loading-spinner"
-    ) as HTMLElement;
-    const status = document.querySelector(".form-status") as HTMLElement;
-    const successIcon = status.querySelector(".success-icon") as SVGElement;
-    const errorIcon = status.querySelector(".error-icon") as SVGElement;
-    const statusMessage = status.querySelector(".message") as HTMLElement;
+        // Get elements
+        const submitButton = form.querySelector("button") as HTMLElement;
+        const loadingSpinner = form.querySelector(
+            ".loading-spinner",
+        ) as HTMLElement;
+        const status = document.querySelector(".form-status") as HTMLElement;
+        const successIcon = status.querySelector(".success-icon") as SVGElement;
+        const errorIcon = status.querySelector(".error-icon") as SVGElement;
+        const statusMessage = status.querySelector(".message") as HTMLElement;
 
-    // Compile form data
-    const formData = new FormData(target);
+        // Compile form data
+        const formData = new FormData(target);
 
-    // Try submitting to Formspree endpoint
-    try {
-      // Disable button and add loading spinner
-      submitButton?.setAttribute("disabled", "");
-      loadingSpinner.style.display = "block";
+        // Try submitting to Formspree endpoint
+        try {
+            // Disable button and add loading spinner
+            submitButton?.setAttribute("disabled", "");
+            loadingSpinner.style.display = "block";
 
-      const res = await fetch(target.action, {
-        method: target.method,
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
+            const res = await fetch(target.action, {
+                method: target.method,
+                body: formData,
+                headers: {
+                    Accept: "application/json",
+                },
+            });
 
-      if (res.ok) {
-        // On success, reset form but remove button to encourage one submission
-        form.reset();
-        submitButton.style.display = "none";
-        // Add success elements and message
-        status.classList.add("success");
-        successIcon.style.display = "block";
-        statusMessage.innerHTML = "Thanks for your submission!";
-      } else {
-        // On fail, make button available again and remove spinner
-        submitButton.removeAttribute("disabled");
-        loadingSpinner.style.display = "none";
-        // If there was a json response, capture it
-        const data = await res.json();
-        // Add error elements and message
-        status.classList.add("error");
-        errorIcon.style.display = "block";
-        // Display error repsonse from server if exists
-        if (Object.hasOwn(data, "errors")) {
-          statusMessage.innerHTML = data["errors"]
-            .map((err: any) => err["message"])
-            .join(", ");
-        } else {
-          statusMessage.innerHTML = defaultErrorMessage;
+            if (res.ok) {
+                // On success, reset form but remove button to encourage one submission
+                form.reset();
+                submitButton.style.display = "none";
+                // Add success elements and message
+                status.classList.add("success");
+                successIcon.style.display = "block";
+                statusMessage.innerHTML = "Thanks for your submission!";
+            } else {
+                // On fail, make button available again and remove spinner
+                submitButton.removeAttribute("disabled");
+                loadingSpinner.style.display = "none";
+                // If there was a json response, capture it
+                const data = await res.json();
+                // Add error elements and message
+                status.classList.add("error");
+                errorIcon.style.display = "block";
+                // Display error repsonse from server if exists
+                if (Object.hasOwn(data, "errors")) {
+                    statusMessage.innerHTML = data["errors"]
+                        .map((err: any) => err["message"])
+                        .join(", ");
+                } else {
+                    statusMessage.innerHTML = defaultErrorMessage;
+                }
+            }
+        } catch (error) {
+            // On general fail, make button available and show error
+            submitButton.removeAttribute("disabled");
+            loadingSpinner.style.display = "none";
+            status.classList.add("error");
+            errorIcon.style.display = "block";
+            statusMessage.innerHTML = defaultErrorMessage;
         }
-      }
-    } catch (error) {
-      // On general fail, make button available and show error
-      submitButton.removeAttribute("disabled");
-      loadingSpinner.style.display = "none";
-      status.classList.add("error");
-      errorIcon.style.display = "block";
-      statusMessage.innerHTML = defaultErrorMessage;
     }
-  }
 
-  form.addEventListener("submit", handleFormSubmit);
+    form.addEventListener("submit", handleFormSubmit);
 </script>

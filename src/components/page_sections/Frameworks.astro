@@ -1,52 +1,52 @@
 ---
+import Card from "@components/Card.astro";
 import { Image } from "astro:assets";
 import SectionHeader from "@components/SectionHeader.astro";
-import Card from "@components/Card.astro";
 import Tools from "./Tools.astro";
-
 import { getEntry } from "astro:content";
+
 const astro = await getEntry("tools", "astro");
 const statamic = await getEntry("tools", "statamic");
 ---
 
-<div id="frameworks" class="content-wrapper section-spacer">
-  <SectionHeader align="center">
-    <Fragment slot="text">
-      <div class="eyebrow | small-title text-gradient mx-auto">
-        Framework Specialties
-      </div>
-      <h2>Leveraging the modern ecosystem</h2>
-    </Fragment>
-  </SectionHeader>
-  <div class="grid-6 feature-span | content-wrapper" id="frameworks">
-    <Card>
-      <Image
-        src={astro?.data.logo!}
-        alt="Astro logo"
-        height={40}
-        format="svg"
-      />
-      <h3>{astro?.data.title} Agency</h3>
-      <p set:html={astro?.data.summary} />
-    </Card>
-    <Card>
-      <Image
-        src={statamic?.data.logo!}
-        alt="Statamic logo"
-        height={40}
-        format="svg"
-      />
-      <h3>{statamic?.data.title} Agency</h3>
-      <p set:html={statamic?.data.summary} />
-    </Card>
-  </div>
-  <Tools />
+<div class="content-wrapper section-spacer" id="frameworks">
+    <SectionHeader align="center">
+        <Fragment slot="text">
+            <div class="eyebrow | small-title text-gradient mx-auto">
+                Framework Specialties
+            </div>
+            <h2>Leveraging the modern ecosystem</h2>
+        </Fragment>
+    </SectionHeader>
+    <div class="grid-6 feature-span | content-wrapper" id="frameworks">
+        <Card>
+            <Image
+                alt="Astro logo"
+                format="svg"
+                height={40}
+                src={astro?.data.logo!}
+            />
+            <h3>{astro?.data.title} Agency</h3>
+            <p set:html={astro?.data.summary} />
+        </Card>
+        <Card>
+            <Image
+                alt="Statamic logo"
+                format="svg"
+                height={40}
+                src={statamic?.data.logo!}
+            />
+            <h3>{statamic?.data.title} Agency</h3>
+            <p set:html={statamic?.data.summary} />
+        </Card>
+    </div>
+    <Tools />
 </div>
 
 <style>
-  @media (max-width: 768px) {
-    .grid-6 {
-      padding-inline: 0;
+    @media (max-width: 768px) {
+        .grid-6 {
+            padding-inline: 0;
+        }
     }
-  }
 </style>

@@ -1,80 +1,80 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
 import SectionHeader from "@components/SectionHeader.astro";
+import { getCollection } from "astro:content";
 
 const gallery = await getCollection("designGallery");
 ---
 
-<div id="design-gallery" class="section-spacer content-wrapper">
-  <SectionHeader align="left">
-    <h2 slot="text">Design Gallery</h2>
-  </SectionHeader>
-  <div class="gallery | grid-6">
-    {
-      gallery
-        .sort((a, b) => a.data.order! - b.data.order!)
-        .map(({ data }) => (
-          <div class="image-hover-wrapper">
-            <div class="overlay">
-              <h3>{data.title}</h3>
-            </div>
-            <Image
-              src={data.featuredImage.src}
-              width={900}
-              height={645}
-              alt={data.featuredImage.alt}
-              loading="lazy"
-              format="webp"
-            />
-          </div>
-        ))
-    }
-  </div>
+<div class="section-spacer content-wrapper" id="design-gallery">
+    <SectionHeader align="left">
+        <h2 slot="text">Design Gallery</h2>
+    </SectionHeader>
+    <div class="gallery | grid-6">
+        {
+            gallery
+                .sort((a, b) => a.data.order! - b.data.order!)
+                .map(({ data }) => (
+                    <div class="image-hover-wrapper">
+                        <div class="overlay">
+                            <h3>{data.title}</h3>
+                        </div>
+                        <Image
+                            alt={data.featuredImage.alt}
+                            format="webp"
+                            height={645}
+                            loading="lazy"
+                            src={data.featuredImage.src}
+                            width={900}
+                        />
+                    </div>
+                ))
+        }
+    </div>
 </div>
 
 <style>
-  .image-hover-wrapper {
-    --aspect-ratio: 1.399;
-  }
-
-  .grid-6 {
-    & > :nth-child(4) {
-      --aspect-ratio: 1.778;
-      grid-column: span 3;
-    }
-
-    & > :nth-child(5) {
-      --aspect-ratio: 1.778;
-      grid-column: span 3;
-    }
-  }
-
-  h3 {
-    font-size: var(--step-1);
-  }
-
-  @container contentWrapper (max-width: 999px) {
-    .grid-6 {
-      & > :nth-child(4) {
+    .image-hover-wrapper {
         --aspect-ratio: 1.399;
-      }
-
-      & > :nth-child(5) {
-        --aspect-ratio: 1.399;
-      }
     }
-  }
 
-  @container contentWrapper (max-width: 768px) {
     .grid-6 {
-      & > :nth-child(4) {
-        grid-column: span 6;
-      }
+        & > :nth-child(4) {
+            --aspect-ratio: 1.778;
+            grid-column: span 3;
+        }
 
-      & > :nth-child(5) {
-        grid-column: span 6;
-      }
+        & > :nth-child(5) {
+            --aspect-ratio: 1.778;
+            grid-column: span 3;
+        }
     }
-  }
+
+    h3 {
+        font-size: var(--step-1);
+    }
+
+    @container contentWrapper (max-width: 999px) {
+        .grid-6 {
+            & > :nth-child(4) {
+                --aspect-ratio: 1.399;
+            }
+
+            & > :nth-child(5) {
+                --aspect-ratio: 1.399;
+            }
+        }
+    }
+
+    @container contentWrapper (max-width: 768px) {
+        .grid-6 {
+            & > :nth-child(4) {
+                grid-column: span 6;
+            }
+
+            & > :nth-child(5) {
+                grid-column: span 6;
+            }
+        }
+    }
 </style>

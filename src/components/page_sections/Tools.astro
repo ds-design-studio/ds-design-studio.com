@@ -1,68 +1,69 @@
 ---
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
 const tools = await getCollection("tools");
 ---
 
 <div class="small-title text-gradient mx-auto">Favorite Tools</div>
 <div class="logo-cloud | grid-6 centered">
-  {
-    tools
-      .sort((a, b) => a.data.order - b.data.order)
-      .map((tool) => (
-        <div class="cluster">
-          <Image
-            src={tool.data.logo}
-            alt={`${tool.data.title} logo`}
-            width={32}
-            height={32}
-            format="svg"
-          />
-          <span>{tool.data.title}</span>
-        </div>
-      ))
-  }
+    {
+        tools
+            .sort((a, b) => a.data.order - b.data.order)
+            .map((tool) => (
+                <div class="cluster">
+                    <Image
+                        alt={`${tool.data.title} logo`}
+                        format="svg"
+                        height={32}
+                        src={tool.data.logo}
+                        width={32}
+                    />
+                    <span>{tool.data.title}</span>
+                </div>
+            ))
+    }
 </div>
 
 <style>
-  .logo-cloud {
-    margin-block-start: var(--space-l);
-    font-family: var(--font-heading);
-    gap: var(--space-l);
+    .logo-cloud {
+        margin-block-start: var(--space-l);
+        font-family: var(--font-heading);
+        gap: var(--space-l);
 
-    & img {
-      height: 2rem;
-      width: 2rem;
-      object-fit: contain;
-      transition: transform 0.3s linear;
-    }
-
-    & > div {
-      &:hover {
         & img {
-          transform: scale(1.15);
+            height: 2rem;
+            width: 2rem;
+            object-fit: contain;
+            transition: transform 0.3s linear;
         }
-      }
-    }
-  }
 
-  @container contentWrapper (max-width: 999px) {
-    .grid-6 {
-      & > * {
-        grid-column: span 2;
-      }
-    }
-  }
-
-  @container contentWrapper (max-width: 640px) {
-    .grid-6 {
-      & > * {
-        grid-column: span 3;
-      }
+        & > div {
+            &:hover {
+                & img {
+                    transform: scale(1.15);
+                }
+            }
+        }
     }
 
-    .small-title {
-      text-align: center;
+    @container contentWrapper (max-width: 999px) {
+        .grid-6 {
+            & > * {
+                grid-column: span 2;
+            }
+        }
     }
-  }
+
+    @container contentWrapper (max-width: 640px) {
+        .grid-6 {
+            & > * {
+                grid-column: span 3;
+            }
+        }
+
+        .small-title {
+            text-align: center;
+        }
+    }
 </style>

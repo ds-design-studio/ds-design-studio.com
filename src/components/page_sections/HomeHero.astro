@@ -1,104 +1,106 @@
 ---
-import FeatureIllustration from "@components/page_sections/HomeIllustration.astro";
 import ButtonLink from "@components/ButtonLink.astro";
+import FeatureIllustration from "@components/page_sections/HomeIllustration.astro";
 ---
 
 <article class="hero | dark">
-  <div class="grid-9 | content-wrapper background-lines">
-    <div class="text | flow">
-      <header class="flow">
-        <h1>
-          Freelance studio hand-crafting <span class="text-gradient"
-            >beautiful, resilient</span
-          > websites
-        </h1>
-        <p>
-          DS Design is the independent studio of web designer and developer
-          Daniel Saunders, focusing on crafting stunning, user-friendly, and
-          future-proofed sites.
-        </p>
-      </header>
-      <div class="cluster">
-        <ButtonLink href="/contact">Get a Quote</ButtonLink>
-        <ButtonLink href="#services" theme="ghost">View Services</ButtonLink>
-      </div>
+    <div class="grid-9 | content-wrapper background-lines">
+        <div class="text | flow">
+            <header class="flow">
+                <h1>
+                    Freelance studio hand-crafting <span class="text-gradient"
+                        >beautiful, resilient</span
+                    > websites
+                </h1>
+                <p>
+                    DS Design is the independent studio of web designer and
+                    developer Daniel Saunders, focusing on crafting stunning,
+                    user-friendly, and future-proofed sites.
+                </p>
+            </header>
+            <div class="cluster">
+                <ButtonLink href="/contact">Get a Quote</ButtonLink>
+                <ButtonLink href="#services" theme="ghost"
+                    >View Services</ButtonLink
+                >
+            </div>
+        </div>
     </div>
-  </div>
-  <FeatureIllustration />
-  <div class="rounded-block">
-    <div class="content-wrapper"></div>
-    <div></div>
-  </div>
-  <!-- <div class="block | content-wrapper"></div>
+    <FeatureIllustration />
+    <div class="rounded-block">
+        <div class="content-wrapper"></div>
+        <div></div>
+    </div>
+    <!-- <div class="block | content-wrapper"></div>
   <div class="block-2"></div> -->
 </article>
 
 <style>
-  .hero {
-    position: relative;
-    padding-block-start: 14rem;
-    padding-block-end: 12rem;
-    background: var(--color-dark-gradient);
-    overflow: hidden;
-  }
-
-  .grid-9 {
-    z-index: 2;
-  }
-
-  .text {
-    position: relative;
-    z-index: 2;
-    grid-column: 1/8;
-
-    &.flow {
-      --flow-space: var(--space-xl);
+    .hero {
+        position: relative;
+        padding-block-start: 14rem;
+        padding-block-end: 12rem;
+        background: var(--color-dark-gradient);
+        overflow: hidden;
     }
 
-    & > .flow {
-      --flow-space: var(--space-m);
+    .grid-9 {
+        z-index: 2;
     }
-  }
 
-  h1 {
-    font-size: var(--step-6);
-    text-wrap: balance;
-  }
+    .text {
+        position: relative;
+        z-index: 2;
+        grid-column: 1/8;
 
-  p {
-    font-size: var(--step-1);
-    text-wrap: pretty;
-  }
+        &.flow {
+            --flow-space: var(--space-xl);
+        }
 
-  /* .feature-illustration {
+        & > .flow {
+            --flow-space: var(--space-m);
+        }
+    }
+
+    h1 {
+        font-size: var(--step-6);
+        text-wrap: balance;
+    }
+
+    p {
+        font-size: var(--step-1);
+        text-wrap: pretty;
+    }
+
+    /* .feature-illustration {
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
   } */
 
-  @media (max-width: 999px) {
-    .text {
-      grid-column: 1/9;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .hero {
-      padding-block-start: 11rem;
-      padding-block-end: 8rem;
+    @media (max-width: 999px) {
+        .text {
+            grid-column: 1/9;
+        }
     }
 
-    h1 {
-      font-size: var(--step-5);
-    }
+    @media (max-width: 768px) {
+        .hero {
+            padding-block-start: 11rem;
+            padding-block-end: 8rem;
+        }
 
-    .grid-9 {
-      grid-template-columns: 1fr;
+        h1 {
+            font-size: var(--step-5);
+        }
 
-      & > * {
-        grid-column: 1 / 2;
-      }
+        .grid-9 {
+            grid-template-columns: 1fr;
+
+            & > * {
+                grid-column: 1 / 2;
+            }
+        }
     }
-  }
 </style>

@@ -1,34 +1,34 @@
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(1rem);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fade-up-long {
-  from {
-    opacity: 0;
-    transform: translateY(2rem);
-    filter: blur(4px);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(2rem);
+        filter: blur(4px);
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0px);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0px);
+    }
 }
 
 .loading-spinner {
-  position: relative;
-  display: none;
-  width: auto;
-  height: 1em;
-  top: -1px;
-  padding-inline-end: 1rem;
+    position: relative;
+    display: none;
+    width: auto;
+    height: 1em;
+    top: -1px;
+    padding-inline-end: 1rem;
 }

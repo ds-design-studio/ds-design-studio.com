@@ -1,257 +1,295 @@
 ---
-import { getEntry, getCollection } from "astro:content";
-import Logo from "@components/Logo.astro";
+import { getCollection, getEntry } from "astro:content";
 import ButtonLink from "@components/ButtonLink.astro";
 import Icon from "@components/Icon.astro";
+import type { IconName } from "@components/Icon.astro";
+import Logo from "@components/Logo.astro";
 import MobileNav from "@components/MobileNav.astro";
 import type { Theme } from "../types";
-
-import type { IconName } from "@components/Icon.astro";
 
 const navigation = await getEntry("navigation", "main");
 const services = await getCollection("services");
 
 type Props = {
-  theme?: Theme;
-  position?: "relative" | "absolute";
+    theme?: Theme;
+    position?: "relative" | "absolute";
 };
 
 const { theme = "dark", position = "relative" } = Astro.props;
 ---
 
-<header class="site-header" data-theme={theme} data-position={position}>
-  <div class="content-wrapper | cluster">
-    <Logo theme={theme} />
-    <nav class="desktop-nav | cluster">
-      {
-        navigation?.data.entries.map((entry) => (
-          <Fragment>
-            {entry.children !== undefined ? (
-              <div class="popover" x-data x-popover>
-                <button
-                  class="nav-link"
-                  x-popover:button
-                  x-bind:class="$popover.isOpen ? 'active' : ''"
-                >
-                  <span>{entry.title}</span>
-                  <Icon name="chevron-down" color="currentColor" />
-                </button>
-                <div
-                  class="panel-wrapper"
-                  x-popover:panel
-                  x-anchor="$refs.button"
-                  x-cloak
-                >
-                  {entry.title === "Services" ? (
-                    <div class="panel">
-                      {services
-                        .sort((a, b) => a.data.order - b.data.order)
-                        .map((service) => (
-                          <a
-                            class="panel-link with-icon"
-                            href={`/services/${service.id}`}
-                          >
-                            <div class="icon-wrapper">
-                              <Icon
-                                name={service.data.icon as IconName}
-                                color="currentColor"
-                                size="1em"
-                              />
+<header class="site-header" data-position={position} data-theme={theme}>
+    <div class="content-wrapper | cluster">
+        <Logo theme={theme} />
+        <nav class="desktop-nav | cluster">
+            {
+                navigation?.data.entries.map((entry) => (
+                    <Fragment>
+                        {entry.children !== undefined ? (
+                            <div class="popover" x-data x-popover>
+                                <button
+                                    class="nav-link"
+                                    x-bind:class="$popover.isOpen ? 'active' : ''"
+                                    x-popover:button
+                                >
+                                    <span>{entry.title}</span>
+                                    <Icon
+                                        color="currentColor"
+                                        name="chevron-down"
+                                    />
+                                </button>
+                                <div
+                                    class="panel-wrapper"
+                                    x-anchor="$refs.button"
+                                    x-cloak
+                                    x-popover:panel
+                                >
+                                    {entry.title === "Services" ? (
+                                        <div class="panel">
+                                            {services
+                                                .sort(
+                                                    (a, b) =>
+                                                        a.data.order -
+                                                        b.data.order,
+                                                )
+                                                .map((service) => (
+                                                    <a
+                                                        class="panel-link with-icon"
+                                                        href={`/services/${service.id}`}
+                                                    >
+                                                        <div class="icon-wrapper">
+                                                            <Icon
+                                                                color="currentColor"
+                                                                name={
+                                                                    service.data
+                                                                        .icon as IconName
+                                                                }
+                                                                size="1em"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <span>
+                                                                {
+                                                                    service.data
+                                                                        .title
+                                                                }
+                                                            </span>
+                                                            <p>
+                                                                {
+                                                                    service.data
+                                                                        .taglinePlain
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                ))}
+                                        </div>
+                                    ) : (
+                                        <div class="panel">
+                                            {entry.children?.map(
+                                                (childEntry) =>
+                                                    childEntry.icon ? (
+                                                        <a
+                                                            class="panel-link with-icon"
+                                                            href={
+                                                                childEntry.slug
+                                                            }
+                                                        >
+                                                            <div class="icon-wrapper">
+                                                                <Icon
+                                                                    color="currentColor"
+                                                                    name={
+                                                                        childEntry.icon as IconName
+                                                                    }
+                                                                    size="1em"
+                                                                />
+                                                            </div>
+                                                            <div>
+                                                                <span>
+                                                                    {
+                                                                        childEntry.title
+                                                                    }
+                                                                </span>
+                                                                <p>
+                                                                    {
+                                                                        childEntry.tagline
+                                                                    }
+                                                                </p>
+                                                            </div>
+                                                        </a>
+                                                    ) : (
+                                                        <a
+                                                            href={
+                                                                childEntry.slug
+                                                            }
+                                                        >
+                                                            {childEntry.title}
+                                                        </a>
+                                                    ),
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
-                            <div>
-                              <span>{service.data.title}</span>
-                              <p>{service.data.taglinePlain}</p>
-                            </div>
-                          </a>
-                        ))}
-                    </div>
-                  ) : (
-                    <div class="panel">
-                      {entry.children?.map((childEntry) =>
-                        childEntry.icon ? (
-                          <a
-                            class="panel-link with-icon"
-                            href={childEntry.slug}
-                          >
-                            <div class="icon-wrapper">
-                              <Icon
-                                name={childEntry.icon as IconName}
-                                color="currentColor"
-                                size="1em"
-                              />
-                            </div>
-                            <div>
-                              <span>{childEntry.title}</span>
-                              <p>{childEntry.tagline}</p>
-                            </div>
-                          </a>
                         ) : (
-                          <a href={childEntry.slug}>{childEntry.title}</a>
-                        ),
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ) : (
-              <a class="nav-link" href={entry.slug}>
-                {entry.title}
-              </a>
-            )}
-          </Fragment>
-        ))
-      }
-      <ButtonLink href="/contact">
-        <span>Get a Quote</span>
-        <Icon name="envelope" />
-      </ButtonLink>
-    </nav>
-    <MobileNav theme={theme} />
-  </div>
+                            <a class="nav-link" href={entry.slug}>
+                                {entry.title}
+                            </a>
+                        )}
+                    </Fragment>
+                ))
+            }
+            <ButtonLink href="/contact">
+                <span>Get a Quote</span>
+                <Icon name="envelope" />
+            </ButtonLink>
+        </nav>
+        <MobileNav theme={theme} />
+    </div>
 </header>
 
 <style>
-  .site-header {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    z-index: 50;
-    backdrop-filter: blur(0.5rem);
-    background: color-mix(in hsl, white, transparent 30%);
-    padding-block: 0.75rem;
-    border-bottom: 1px solid var(--color-neutral-1);
-    box-shadow: 0px 0px 6px 0px #1d25301c;
+    .site-header {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(0.5rem);
+        background: color-mix(in hsl, white, transparent 30%);
+        padding-block: 0.75rem;
+        border-bottom: 1px solid var(--color-neutral-1);
+        box-shadow: 0px 0px 6px 0px #1d25301c;
 
-    & .content-wrapper {
-      &.cluster {
-        --cluster-justify: space-between;
-      }
-    }
-
-    & nav {
-      &.cluster {
-        --cluster-space: 0.25rem;
-      }
-
-      & > :last-child {
-        margin-inline-start: 1.5rem;
-      }
-    }
-
-    &[data-theme="dark"] {
-      background: transparent;
-      backdrop-filter: blur(1px);
-      box-shadow: 0 0 16px #700c2f52;
-      border-bottom-color: var(--color-neutral-8);
-      color: var(--color-neutral-1);
-
-      & .nav-link {
-        &:hover {
-          color: var(--color-text-link-hover-dark);
+        & .content-wrapper {
+            &.cluster {
+                --cluster-justify: space-between;
+            }
         }
-      }
+
+        & nav {
+            &.cluster {
+                --cluster-space: 0.25rem;
+            }
+
+            & > :last-child {
+                margin-inline-start: 1.5rem;
+            }
+        }
+
+        &[data-theme="dark"] {
+            background: transparent;
+            backdrop-filter: blur(1px);
+            box-shadow: 0 0 16px #700c2f52;
+            border-bottom-color: var(--color-neutral-8);
+            color: var(--color-neutral-1);
+
+            & .nav-link {
+                &:hover {
+                    color: var(--color-text-link-hover-dark);
+                }
+            }
+        }
     }
-  }
 
-  .nav-link {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    color: inherit;
-    line-height: var(--leading-tight);
-    border-radius: var(--rounded-corners-small);
-    border: 0;
-    /* outline: 0; */
-    cursor: pointer;
-    font-weight: 400;
-    background: none;
-    transition: color 0.3s ease;
+    .nav-link {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        color: inherit;
+        line-height: var(--leading-tight);
+        border-radius: var(--rounded-corners-small);
+        border: 0;
+        /* outline: 0; */
+        cursor: pointer;
+        font-weight: 400;
+        background: none;
+        transition: color 0.3s ease;
 
-    & svg {
-      height: 1em;
-      color: var(--color-primary-4);
-    }
+        & svg {
+            height: 1em;
+            color: var(--color-primary-4);
+        }
 
-    &:hover {
-      color: var(--color-primary-5);
-      /* background-color: color-mix(
+        &:hover {
+            color: var(--color-primary-5);
+            /* background-color: color-mix(
         in hsl,
         var(--color-primary-1),
         transparent 60%
       ); */
-    }
-  }
-
-  .panel-wrapper {
-    position: absolute;
-    margin-block-start: 0.5rem;
-  }
-
-  .panel {
-    background: white;
-    border: 1px solid var(--color-neutral-1);
-    padding: var(--space-s);
-    border-radius: var(--rounded-corners-small);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    color: var(--color-neutral-9);
-    box-shadow: var(--shadow-light);
-    min-width: 14rem;
-    animation: 0.2s fade-up ease-in-out;
-
-    & .icon-wrapper {
-      place-self: center;
-      color: var(--color-neutral-8);
+        }
     }
 
-    & a {
-      color: inherit;
-      text-decoration: none;
+    .panel-wrapper {
+        position: absolute;
+        margin-block-start: 0.5rem;
+    }
 
-      &.with-icon {
-        display: flex;
-        gap: 1rem;
-        text-decoration: none;
+    .panel {
+        background: white;
+        border: 1px solid var(--color-neutral-1);
+        padding: var(--space-s);
         border-radius: var(--rounded-corners-small);
-        padding: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        color: var(--color-neutral-9);
+        box-shadow: var(--shadow-light);
+        min-width: 14rem;
+        animation: 0.2s fade-up ease-in-out;
 
-        &:hover {
-          background: color-mix(
-            in hsl,
-            var(--color-neutral-2),
-            transparent 85%
-          );
-
-          & :global(svg) {
-            color: var(--color-primary-5);
-          }
+        & .icon-wrapper {
+            place-self: center;
+            color: var(--color-neutral-8);
         }
 
-        & svg {
-          height: 1.5rem;
-          width: 1.5rem;
-        }
+        & a {
+            color: inherit;
+            text-decoration: none;
 
-        & > div {
-          & span {
-            font-family: var(--font-heading);
-          }
+            &.with-icon {
+                display: flex;
+                gap: 1rem;
+                text-decoration: none;
+                border-radius: var(--rounded-corners-small);
+                padding: 0.75rem;
 
-          & p {
-            font-size: var(--step--1);
-            color: var(--color-text-body);
-          }
+                &:hover {
+                    background: color-mix(
+                        in hsl,
+                        var(--color-neutral-2),
+                        transparent 85%
+                    );
+
+                    & :global(svg) {
+                        color: var(--color-primary-5);
+                    }
+                }
+
+                & svg {
+                    height: 1.5rem;
+                    width: 1.5rem;
+                }
+
+                & > div {
+                    & span {
+                        font-family: var(--font-heading);
+                    }
+
+                    & p {
+                        font-size: var(--step--1);
+                        color: var(--color-text-body);
+                    }
+                }
+            }
         }
-      }
     }
-  }
 
-  @media (max-width: 640px) {
-    .desktop-nav {
-      display: none;
+    @media (max-width: 640px) {
+        .desktop-nav {
+            display: none;
+        }
     }
-  }
 </style>

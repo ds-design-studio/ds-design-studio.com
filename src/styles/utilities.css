@@ -1,187 +1,187 @@
 /* Display and position */
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
 .relative {
-  position: relative;
+    position: relative;
 }
 
 .absolute {
-  position: absolute;
+    position: absolute;
 }
 
 .sticky {
-  position: sticky;
-  top: 0;
+    position: sticky;
+    top: 0;
 }
 
 .inline-block {
-  display: inline-block;
+    display: inline-block;
 }
 
 .inline-flex {
-  display: inline-flex;
+    display: inline-flex;
 }
 
 .center-all {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .leading-normal {
-  line-height: var(--leading-normal);
+    line-height: var(--leading-normal);
 }
 
 .leading-tight {
-  line-height: var(--leading-tight);
+    line-height: var(--leading-tight);
 }
 
 .w-fit {
-  width: fit-content;
+    width: fit-content;
 }
 
 .w-full {
-  width: 100%;
+    width: 100%;
 }
 
 .h-auto {
-  height: auto;
+    height: auto;
 }
 
 .section-spacer {
-  margin-block: var(--section-spacer);
+    margin-block: var(--section-spacer);
 
-  &.half {
-    margin-block: calc(var(--section-spacer) * 0.5);
-  }
+    &.half {
+        margin-block: calc(var(--section-spacer) * 0.5);
+    }
 }
 
 .icon {
-  display: inline-block;
-  fill: currentColor;
-  height: 1em;
-  width: auto;
+    display: inline-block;
+    fill: currentColor;
+    height: 1em;
+    width: auto;
 
-  &.small {
-    font-size: 0.75em;
-  }
+    &.small {
+        font-size: 0.75em;
+    }
 
-  &.large {
-    font-size: 1.5em;
-  }
+    &.large {
+        font-size: 1.5em;
+    }
 
-  &.x-large {
-    font-size: 2em;
-  }
+    &.x-large {
+        font-size: 2em;
+    }
 }
 
 .mx-auto {
-  margin-inline: auto;
+    margin-inline: auto;
 }
 
 .rounded-corners {
-  border-radius: var(--rounded-corners);
+    border-radius: var(--rounded-corners);
 }
 
 /* Text */
 
 .text-center {
-  text-align: center;
+    text-align: center;
 }
 
 .text-lowercase {
-  text-transform: lowercase;
+    text-transform: lowercase;
 }
 
 .text-balanced {
-  text-wrap: balance;
+    text-wrap: balance;
 }
 
 .text-pretty {
-  text-wrap: pretty;
+    text-wrap: pretty;
 }
 
 .text-italic {
-  font-style: italic;
+    font-style: italic;
 }
 
 .text-bold {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .text-faded {
-  color: color-mix(in srgb, currentColor 75%, transparent);
+    color: color-mix(in srgb, currentColor 75%, transparent);
 }
 
 .text-step--2 {
-  font-size: var(--step--2);
+    font-size: var(--step--2);
 }
 
 .text-step--1 {
-  font-size: var(--step--1);
+    font-size: var(--step--1);
 }
 
 .text-step-0 {
-  font-size: var(--step-0);
+    font-size: var(--step-0);
 }
 
 .text-step-1 {
-  font-size: var(--step-1);
+    font-size: var(--step-1);
 }
 
 .text-step-2 {
-  font-size: var(--step-2);
+    font-size: var(--step-2);
 }
 
 .text-step-3 {
-  font-size: var(--step-3);
+    font-size: var(--step-3);
 }
 
 .text-step-4 {
-  font-size: var(--step-4);
+    font-size: var(--step-4);
 }
 
 .text-step-5 {
-  font-size: var(--step-5);
+    font-size: var(--step-5);
 }
 
 .text-step-6 {
-  font-size: var(--step-6);
+    font-size: var(--step-6);
 }
 
 .text-step-7 {
-  font-size: var(--step-7);
+    font-size: var(--step-7);
 }
 
 /* Rhythm Spacing */
 .mt-s {
-  margin-block-start: var(--space-s);
+    margin-block-start: var(--space-s);
 }
 
 .mt-m {
-  margin-block-start: var(--space-m);
+    margin-block-start: var(--space-m);
 }
 
 .mt-l {
-  margin-block-start: var(--space-l);
+    margin-block-start: var(--space-l);
 }
 
 .mt-xl {
-  margin-block-start: var(--space-xl);
+    margin-block-start: var(--space-xl);
 }
 
 .mt-2xl {
-  margin-block-start: var(--space-2xl);
+    margin-block-start: var(--space-2xl);
 }

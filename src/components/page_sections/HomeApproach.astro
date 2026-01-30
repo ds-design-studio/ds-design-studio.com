@@ -1,10 +1,10 @@
 ---
-import { Image } from "astro:assets";
-import { getEntry } from "astro:content";
-import SectionHeader from "@components/SectionHeader.astro";
 import ButtonLink from "@components/ButtonLink.astro";
-import Icon from "@components/Icon.astro";
 import Card from "@components/Card.astro";
+import Icon from "@components/Icon.astro";
+import { Image } from "astro:assets";
+import SectionHeader from "@components/SectionHeader.astro";
+import { getEntry } from "astro:content";
 
 import illustration1 from "@assets/illustration-1.png";
 import illustration2 from "@assets/illustration-2.png";
@@ -15,89 +15,94 @@ const principle2 = await getEntry("principles", "consider");
 const principle3 = await getEntry("principles", "build");
 
 type Props = {
-  bgColor?: "transparent" | "filled";
-  margin?: boolean;
-  padding?: boolean;
+    bgColor?: "transparent" | "filled";
+    margin?: boolean;
+    padding?: boolean;
 };
 
 const { bgColor = "transparent", margin = true, padding = false } = Astro.props;
 ---
 
 <article
-  data-bg-color={bgColor}
-  class:list={[margin && "section-spacer", padding && "section-padding"]}
-  id="approach"
+    class:list={[margin && "section-spacer", padding && "section-padding"]}
+    data-bg-color={bgColor}
+    id="approach"
 >
-  <div class="content-wrapper">
-    <SectionHeader align="center">
-      <Fragment slot="text">
-        <div class="eyebrow | small-title text-gradient mx-auto">
-          My Approach
+    <div class="content-wrapper">
+        <SectionHeader align="center">
+            <Fragment slot="text">
+                <div class="eyebrow | small-title text-gradient mx-auto">
+                    My Approach
+                </div>
+                <h2 class="text-step-4">
+                    Crafting beautiful & more human experiences for the modern
+                    web
+                </h2>
+            </Fragment>
+        </SectionHeader>
+        <div class="grid-6">
+            <Card>
+                <Image
+                    alt=""
+                    class="illustration"
+                    format="webp"
+                    loading="eager"
+                    src={illustration2}
+                    width={300}
+                />
+                <h3 class="text-step-1">{principle1?.data.title}</h3>
+                <p>{principle1?.data.summary}</p>
+            </Card>
+            <Card>
+                <Image
+                    alt=""
+                    class="illustration"
+                    format="webp"
+                    loading="eager"
+                    src={illustration3}
+                    width={300}
+                />
+                <h3 class="text-step-1">{principle2?.data.title}</h3>
+                <p>{principle2?.data.summary}</p>
+            </Card>
+            <Card>
+                <Image
+                    alt=""
+                    class="illustration"
+                    format="webp"
+                    loading="eager"
+                    src={illustration1}
+                    width={300}
+                />
+                <h3 class="text-step-1">{principle3?.data.title}</h3>
+                <p>{principle3?.data.summary}</p>
+            </Card>
         </div>
-        <h2 class="text-step-4">
-          Crafting beautiful & more human experiences for the modern web
-        </h2>
-      </Fragment>
-    </SectionHeader>
-    <div class="grid-6">
-      <Card>
-        <Image
-          class="illustration"
-          src={illustration2}
-          alt=""
-          width={300}
-          format="webp"
-          loading="eager"
-        />
-        <h3 class="text-step-1">{principle1?.data.title}</h3>
-        <p>{principle1?.data.summary}</p>
-      </Card>
-      <Card>
-        <Image
-          class="illustration"
-          src={illustration3}
-          alt=""
-          width={300}
-          format="webp"
-          loading="eager"
-        />
-        <h3 class="text-step-1">{principle2?.data.title}</h3>
-        <p>{principle2?.data.summary}</p>
-      </Card>
-      <Card>
-        <Image
-          class="illustration"
-          src={illustration1}
-          alt=""
-          width={300}
-          format="webp"
-          loading="eager"
-        />
-        <h3 class="text-step-1">{principle3?.data.title}</h3>
-        <p>{principle3?.data.summary}</p>
-      </Card>
+        <div class="center-all">
+            <ButtonLink href="/process">
+                <span>Working Together</span>
+                <Icon name="arrow-right" />
+            </ButtonLink>
+        </div>
     </div>
-    <div class="center-all">
-      <ButtonLink href="/process">
-        <span>Working Together</span>
-        <Icon name="arrow-right" />
-      </ButtonLink>
-    </div>
-  </div>
 </article>
 
 <style>
-  article[data-bg-color="filled"] {
-    background: linear-gradient(to bottom, var(--color-neutral-1), transparent);
-  }
-
-  .section-padding .content-wrapper {
-    padding-block: var(--space-2xl);
-  }
-
-  @container contentWrapper (max-width: 768px) {
-    .text-step-4 {
-      font-size: var(--step-3);
+    article[data-bg-color="filled"] {
+        background: linear-gradient(
+            to bottom,
+            var(--color-neutral-1),
+            transparent
+        );
     }
-  }
+
+    .section-padding .content-wrapper {
+        padding-block: var(--space-2xl);
+    }
+
+    @container contentWrapper (max-width: 768px) {
+        .text-step-4 {
+            font-size: var(--step-3);
+        }
+    }
 </style>

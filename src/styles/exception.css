@@ -1,129 +1,129 @@
 .text-gradient {
-  background: linear-gradient(
-    to right,
-    var(--color-primary-4),
-    var(--color-secondary-5) 80%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  width: fit-content;
+    background: linear-gradient(
+        to right,
+        var(--color-primary-4),
+        var(--color-secondary-5) 80%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    width: fit-content;
 }
 
 .hero {
-  & .rounded-block {
-    & > * {
-      background: #fff;
-      height: 4rem;
-      position: absolute;
-      bottom: 0;
-    }
+    & .rounded-block {
+        & > * {
+            background: #fff;
+            height: 4rem;
+            position: absolute;
+            bottom: 0;
+        }
 
-    & > :first-child {
-      border-top-left-radius: 2rem;
-      width: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+        & > :first-child {
+            border-top-left-radius: 2rem;
+            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    & > :last-child {
-      width: 50%;
-      right: 0;
+        & > :last-child {
+            width: 50%;
+            right: 0;
+        }
     }
-  }
 }
 
 .content-offset {
-  & .content-wrapper {
-    padding-inline-start: var(--space-xl);
-  }
+    & .content-wrapper {
+        padding-inline-start: var(--space-xl);
+    }
 }
 
 .section-bg-gradient {
-  background: linear-gradient(to bottom, transparent, var(--color-neutral-1));
-  padding-block-end: var(--space-2xl);
+    background: linear-gradient(to bottom, transparent, var(--color-neutral-1));
+    padding-block-end: var(--space-2xl);
 }
 
 .background-lines {
-  --rule-color: color-mix(in hsl, var(--color-neutral-8), transparent 20%);
+    --rule-color: color-mix(in hsl, var(--color-neutral-8), transparent 20%);
 
-  &::before {
-    content: "";
-    position: absolute;
-    width: 1px;
-    background: var(--rule-color);
-    height: 150vh;
-    top: -50vh;
-    /* transform: translateY(50%); */
-    left: -1rem;
-  }
+    &::before {
+        content: "";
+        position: absolute;
+        width: 1px;
+        background: var(--rule-color);
+        height: 150vh;
+        top: -50vh;
+        /* transform: translateY(50%); */
+        left: -1rem;
+    }
 
-  &::after {
-    content: "";
-    position: absolute;
-    width: 1px;
-    background: var(--rule-color);
-    height: 150vh;
-    top: -50vh;
-    left: -2rem;
-    transform: rotate(36deg);
-  }
+    &::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        background: var(--rule-color);
+        height: 150vh;
+        top: -50vh;
+        left: -2rem;
+        transform: rotate(36deg);
+    }
 }
 
 .tooltip {
-  background: var(--color-neutral-9);
-  color: var(--color-neutral-1);
-  font-size: var(--step--1);
-  line-height: 1;
-  text-align: center;
-  border-radius: var(--rounded-corners-small);
-  padding: 5px 6px 3px;
-  transition: all 0.2s ease;
-  position: absolute;
-  bottom: calc(100% + 0.25rem);
-  left: 50%;
-  opacity: 0;
-  transform: translateX(-50%);
-  width: fit-content;
+    background: var(--color-neutral-9);
+    color: var(--color-neutral-1);
+    font-size: var(--step--1);
+    line-height: 1;
+    text-align: center;
+    border-radius: var(--rounded-corners-small);
+    padding: 5px 6px 3px;
+    transition: all 0.2s ease;
+    position: absolute;
+    bottom: calc(100% + 0.25rem);
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%);
+    width: fit-content;
 
-  &.show {
-    opacity: 1;
-    bottom: calc(100% + 0.5rem);
-    /* transform: translate(-50%, 0rem); */
-  }
+    &.show {
+        opacity: 1;
+        bottom: calc(100% + 0.5rem);
+        /* transform: translate(-50%, 0rem); */
+    }
 }
 
 /* Home page card service illustrations */
 .service-illustration {
-  position: relative;
-
-  & > svg {
     position: relative;
-    top: 12px;
-    width: 100%;
-    height: auto;
 
-    & .background-shapes {
-      transform-origin: center;
-      transition: transform 0.4s ease-out;
+    & > svg {
+        position: relative;
+        top: 12px;
+        width: 100%;
+        height: auto;
+
+        & .background-shapes {
+            transform-origin: center;
+            transition: transform 0.4s ease-out;
+        }
     }
-  }
 }
 
 @media (max-width: 1099px) {
-  .content-offset {
-    & .content-wrapper {
-      padding-inline-start: var(--gutter);
+    .content-offset {
+        & .content-wrapper {
+            padding-inline-start: var(--gutter);
+        }
     }
-  }
 }
 
 @media (max-width: 640px) {
-  .hero {
-    & .rounded-block {
-      & > * {
-        height: 3rem;
-      }
+    .hero {
+        & .rounded-block {
+            & > * {
+                height: 3rem;
+            }
+        }
     }
-  }
 }

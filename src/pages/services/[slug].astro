@@ -1,203 +1,212 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import InnerHero from "@components/page_sections/InnerHero.astro";
-import TextImageBlock from "@components/TextImageBlock.astro";
-import Card from "@components/Card.astro";
-import Frameworks from "@components/page_sections/Frameworks.astro";
-import SupportPlans from "@components/page_sections/SupportPlans.astro";
-import HomeApproach from "@components/page_sections/HomeApproach.astro";
-import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
-import Gallery from "@components/page_sections/Gallery.astro";
+import { getCollection, getEntries, getEntry, render } from "astro:content";
 import CTA from "@components/page_sections/CTA.astro";
-import { Image } from "astro:assets";
-import { getEntry, getEntries, getCollection, render } from "astro:content";
+import Card from "@components/Card.astro";
+import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
+import Frameworks from "@components/page_sections/Frameworks.astro";
+import Gallery from "@components/page_sections/Gallery.astro";
+import HomeApproach from "@components/page_sections/HomeApproach.astro";
 import Icon from "@components/Icon.astro";
 import type { IconName } from "@components/Icon.astro";
+import { Image } from "astro:assets";
+import InnerHero from "@components/page_sections/InnerHero.astro";
+import Layout from "@layouts/Layout.astro";
+import SupportPlans from "@components/page_sections/SupportPlans.astro";
+import TextImageBlock from "@components/TextImageBlock.astro";
 
 import supplementaryImage1 from "@assets/isometric-screen.png";
 import supplementaryImage2 from "@assets/isometric-phone.png";
 
 export async function getStaticPaths() {
-  const services = await getCollection("services");
+    const services = await getCollection("services");
 
-  const addReferences = services.map(async (service) => {
-    const features = await getEntries(service.data.features);
-    const featuredProject = service.data.featuredProject
-      ? await getEntry(service.data.featuredProject)
-      : undefined;
+    const addReferences = services.map(async (service) => {
+        const features = await getEntries(service.data.features);
+        const featuredProject = service.data.featuredProject
+            ? await getEntry(service.data.featuredProject)
+            : undefined;
 
-    return {
-      features,
-      featuredProject,
-      ...service,
-    };
-  });
+        return {
+            features,
+            featuredProject,
+            ...service,
+        };
+    });
 
-  const pages = await Promise.all(addReferences);
+    const pages = await Promise.all(addReferences);
 
-  return pages.map((page) => {
-    return {
-      params: { slug: page.id },
-      props: { page },
-    };
-  });
+    return pages.map((page) => {
+        return {
+            params: { slug: page.id },
+            props: { page },
+        };
+    });
 }
 
 const { page } = Astro.props;
 const {
-  title,
-  tagline,
-  taglinePlain,
-  preview,
-  prologue,
-  features,
-  featuredImage,
-  featuredProject,
-  showContent,
-  showApproach,
+    title,
+    tagline,
+    taglinePlain,
+    preview,
+    prologue,
+    features,
+    featuredImage,
+    featuredProject,
+    showContent,
+    showApproach,
 } = page.data;
 
 const { Content } = await render(page);
 
 const ogParams = new URLSearchParams([
-  ["title", title],
-  ["subtitle", taglinePlain as string],
+    ["title", title],
+    ["subtitle", taglinePlain as string],
 ]);
 ---
 
 <Layout
-  meta={{
-    seo: {
-      title: title,
-      description: preview.summary,
-    },
-    openGraph: {
-      title: taglinePlain,
-      description: preview.summary,
-      image: `/api/og?${ogParams.toString()}`,
-    },
-  }}
+    meta={{
+        seo: {
+            title: title,
+            description: preview.summary,
+        },
+        openGraph: {
+            title: taglinePlain,
+            description: preview.summary,
+            image: `/api/og?${ogParams.toString()}`,
+        },
+    }}
 >
-  <main slot="content">
-    <InnerHero
-      title={tagline}
-      breadcrumbs={{
-        current: title,
-        parents: [{ name: "Services", slug: "services" }],
-      }}
-    />
-    {
-      page.id !== "ongoing-support" && (
-        <div class="content-offset">
-          <div class="section-bg-gradient">
-            <div class="content-wrapper">
-              <div id="intro" class="intro">
-                <TextImageBlock>
-                  <Fragment slot="image">
-                    <Image
-                      src={featuredImage.src}
-                      alt={featuredImage.alt}
-                      width={900}
-                      loading="eager"
-                      format="webp"
-                    />
-                  </Fragment>
-                  <Fragment slot="text">
-                    <div class="flow">
-                      <h2>{title} Features</h2>
-                      <p set:html={prologue} />
+    <main slot="content">
+        <InnerHero
+            breadcrumbs={{
+                current: title,
+                parents: [{ name: "Services", slug: "services" }],
+            }}
+            title={tagline}
+        />
+        {
+            page.id !== "ongoing-support" && (
+                <div class="content-offset">
+                    <div class="section-bg-gradient">
+                        <div class="content-wrapper">
+                            <div class="intro" id="intro">
+                                <TextImageBlock>
+                                    <Fragment slot="image">
+                                        <Image
+                                            alt={featuredImage.alt}
+                                            format="webp"
+                                            loading="eager"
+                                            src={featuredImage.src}
+                                            width={900}
+                                        />
+                                    </Fragment>
+                                    <Fragment slot="text">
+                                        <div class="flow">
+                                            <h2>{title} Features</h2>
+                                            <p set:html={prologue} />
+                                        </div>
+                                        {/* <ButtonLink href="#">Get Quote</ButtonLink> */}
+                                    </Fragment>
+                                </TextImageBlock>
+                            </div>
+                            <div class="features | grid-6" id="features">
+                                {page.features.map(({ data }) => (
+                                    <Card>
+                                        <div class="icon-wrapper gradient">
+                                            <Icon
+                                                color="currentColor"
+                                                name={data.icon as IconName}
+                                                size="1em"
+                                            />
+                                        </div>
+                                        <h3 class="text-step-1">
+                                            {data.title}
+                                        </h3>
+                                        <p set:html={data.summary} />
+                                    </Card>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    {/* <ButtonLink href="#">Get Quote</ButtonLink> */}
-                  </Fragment>
-                </TextImageBlock>
-              </div>
-              <div id="features" class="features | grid-6">
-                {page.features.map(({ data }) => (
-                  <Card>
-                    <div class="icon-wrapper gradient">
-                      <Icon
-                        name={data.icon as IconName}
-                        color="currentColor"
-                        size="1em"
-                      />
+                </div>
+            )
+        }
+        <!-- Page specific sections -->
+        {page.id === "frontend-development" && <Frameworks />}
+        {page.id === "digital-design" && <Gallery />}
+        {page.id === "ongoing-support" && <SupportPlans />}
+        {
+            page.featuredProject && (
+                <FeaturedProject
+                    project={page.featuredProject}
+                    serviceType={title}
+                />
+            )
+        }
+        <!-- Long text -->
+        {
+            showContent && (
+                <div class="content-wrapper section-spacer">
+                    <div class="rich-content">
+                        <Content />
+                        {page.id === "web-design" && (
+                            <Image
+                                alt=""
+                                class="image-finale"
+                                format="webp"
+                                loading="lazy"
+                                src={supplementaryImage1}
+                                width={900}
+                            />
+                        )}
+                        {page.id === "frontend-development" && (
+                            <Image
+                                alt=""
+                                class="image-finale"
+                                format="webp"
+                                loading="lazy"
+                                src={supplementaryImage2}
+                                width={900}
+                            />
+                        )}
                     </div>
-                    <h3 class="text-step-1">{data.title}</h3>
-                    <p set:html={data.summary} />
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )
-    }
-    <!-- Page specific sections -->
-    {page.id === "frontend-development" && <Frameworks />}
-    {page.id === "digital-design" && <Gallery />}
-    {page.id === "ongoing-support" && <SupportPlans />}
-    {
-      page.featuredProject && (
-        <FeaturedProject project={page.featuredProject} serviceType={title} />
-      )
-    }
-    <!-- Long text -->
-    {
-      showContent && (
-        <div class="content-wrapper section-spacer">
-          <div class="rich-content">
-            <Content />
-            {page.id === "web-design" && (
-              <Image
-                class="image-finale"
-                src={supplementaryImage1}
-                alt=""
-                width={900}
-                loading="lazy"
-                format="webp"
-              />
-            )}
-            {page.id === "frontend-development" && (
-              <Image
-                class="image-finale"
-                src={supplementaryImage2}
-                alt=""
-                width={900}
-                loading="lazy"
-                format="webp"
-              />
-            )}
-          </div>
-        </div>
-      )
-    }
-    {showApproach && <HomeApproach bgColor="filled" margin={false} padding />}
-    <CTA />
-  </main>
+                </div>
+            )
+        }
+        {
+            showApproach && (
+                <HomeApproach bgColor="filled" margin={false} padding />
+            )
+        }
+        <CTA />
+    </main>
 </Layout>
 
 <style>
-  .intro {
-    margin-block-start: var(--space-xl);
-    margin-block-end: var(--space-3xl);
-  }
-
-  .grid-6 {
-    margin-block: var(--space-2xl);
-  }
-
-  .image-finale {
-    max-width: 28rem;
-    margin-inline: auto;
-  }
-
-  @container contentWrapper (max-width: 640px) {
-    .image-finale {
-      max-width: 100%;
-    }
-
     .intro {
-      margin-block-start: var(--space-s);
-      margin-block-end: var(--space-l);
+        margin-block-start: var(--space-xl);
+        margin-block-end: var(--space-3xl);
     }
-  }
+
+    .grid-6 {
+        margin-block: var(--space-2xl);
+    }
+
+    .image-finale {
+        max-width: 28rem;
+        margin-inline: auto;
+    }
+
+    @container contentWrapper (max-width: 640px) {
+        .image-finale {
+            max-width: 100%;
+        }
+
+        .intro {
+            margin-block-start: var(--space-s);
+            margin-block-end: var(--space-l);
+        }
+    }
 </style>

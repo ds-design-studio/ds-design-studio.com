@@ -3,64 +3,64 @@ import { Image } from "astro:assets";
 import shapes from "@assets/shapes-1.png";
 
 type Props = {
-  items: {
-    highlight: string;
-    description: string;
-  }[];
+    items: {
+        highlight: string;
+        description: string;
+    }[];
 };
 
 const { items } = Astro.props;
 ---
 
 <div class="stats">
-  {
-    items.map((item) => (
-      <div>
-        <p class="highlight">{item.highlight}</p>
-        <p>{item.description}</p>
-      </div>
-    ))
-  }
-  <Image
-    class="bg-image"
-    src={shapes}
-    alt=""
-    width={900}
-    loading="eager"
-    format="webp"
-  />
+    {
+        items.map((item) => (
+            <div>
+                <p class="highlight">{item.highlight}</p>
+                <p>{item.description}</p>
+            </div>
+        ))
+    }
+    <Image
+        alt=""
+        class="bg-image"
+        format="webp"
+        loading="eager"
+        src={shapes}
+        width={900}
+    />
 </div>
 
 <style>
-  .stats {
-    position: relative;
-    padding-block: var(--space-l);
-    border-block: 1px solid var(--color-primary-1);
-  }
-
-  .flow {
-    --flow-space: 0.5rem;
-  }
-
-  .highlight {
-    font-family: var(--font-heading);
-    font-weight: var(--font-heading-weight);
-    font-size: var(--step-4);
-    color: var(--color-primary-4);
-    line-height: var(--leading-tight);
-
-    & + p {
-      font-size: var(--step--1);
+    .stats {
+        position: relative;
+        padding-block: var(--space-l);
+        border-block: 1px solid var(--color-primary-1);
     }
-  }
 
-  .bg-image {
-    position: absolute;
-    z-index: -1;
-    height: 100%;
-    width: auto;
-    opacity: 0.1;
-    right: 0;
-    transform: scaleX(-1);
-  }
+    .flow {
+        --flow-space: 0.5rem;
+    }
+
+    .highlight {
+        font-family: var(--font-heading);
+        font-weight: var(--font-heading-weight);
+        font-size: var(--step-4);
+        color: var(--color-primary-4);
+        line-height: var(--leading-tight);
+
+        & + p {
+            font-size: var(--step--1);
+        }
+    }
+
+    .bg-image {
+        position: absolute;
+        z-index: -1;
+        height: 100%;
+        width: auto;
+        opacity: 0.1;
+        right: 0;
+        transform: scaleX(-1);
+    }
 </style>

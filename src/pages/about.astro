@@ -13,144 +13,145 @@ const testimonials = await getCollection("testimonials");
 
 const title = "About";
 const capabilities = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "PHP",
-  "Astro",
-  "Sanity",
-  "Laravel",
-  "Livewire",
-  "Statamic",
-  "WordPress",
-  "Alpine",
-  "Svelte",
-  "HTMX",
-  "Cloudflare",
-  "Deno",
-  "Postman",
-  "Netlify",
-  "Git",
-  "Accessibility",
-  "UI/UX",
-  "Typography",
-  "Visual Design",
-  "Web Animation",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "PHP",
+    "Astro",
+    "Sanity",
+    "Laravel",
+    "Livewire",
+    "Statamic",
+    "WordPress",
+    "Alpine",
+    "Svelte",
+    "HTMX",
+    "Cloudflare",
+    "Deno",
+    "Postman",
+    "Netlify",
+    "Git",
+    "Accessibility",
+    "UI/UX",
+    "Typography",
+    "Visual Design",
+    "Web Animation",
 ];
 
 const ogParams = new URLSearchParams([
-  ["title", "About Daniel Saunders"],
-  [
-    "subtitle",
-    "Freelance web designer and developer with over 8 years of experience",
-  ],
+    ["title", "About Daniel Saunders"],
+    [
+        "subtitle",
+        "Freelance web designer and developer with over 8 years of experience",
+    ],
 ]);
 ---
 
 <Layout
-  headerTheme="dark"
-  meta={{
-    seo: {
-      title: title,
-      description: site.about,
-    },
-    openGraph: {
-      title: "About Daniel Saunders",
-      image: `/api/og?${ogParams.toString()}`,
-    },
-  }}
+    headerTheme="dark"
+    meta={{
+        seo: {
+            title: title,
+            description: site.about,
+        },
+        openGraph: {
+            title: "About Daniel Saunders",
+            image: `/api/og?${ogParams.toString()}`,
+        },
+    }}
 >
-  <main slot="content">
-    <InnerHero title={title} />
-    <div class="content-offset">
-      <div class="section-bg-gradient">
+    <main slot="content">
+        <InnerHero title={title} />
+        <div class="content-offset">
+            <div class="section-bg-gradient">
+                <div class="content-wrapper">
+                    <Team testimonials={testimonials.slice(0, 2)} />
+                </div>
+            </div>
+        </div>
         <div class="content-wrapper">
-          <Team testimonials={testimonials.slice(0, 2)} />
+            <article class="callout | dark">
+                <header class="flow">
+                    <h2 class="text-gradient">Capabilities</h2>
+                    <p>
+                        In an era of fractured specializations, I wear the badge
+                        of web “generalist” with pride. I’m comfortable on all
+                        sides of the technological and creative spectrums, able
+                        to move seamlessly between content schemas, typographic
+                        rules, and JavaScript libraries. I’m not sure if that
+                        makes me the fabled full-stack unicorn or not, but it
+                        does help me guide clients intelligently through every
+                        step of the process.
+                    </p>
+                </header>
+                <div class="capabilities | cluster">
+                    {capabilities.map((item) => <p>{item}</p>)}
+                </div>
+                <Image
+                    class="bg-image"
+                    src={calloutBgImage}
+                    alt=""
+                    width={600}
+                    format="svg"
+                    loading="lazy"
+                />
+            </article>
         </div>
-      </div>
-    </div>
-    <div class="content-wrapper">
-      <article class="callout | dark">
-        <header class="flow">
-          <h2 class="text-gradient">Capabilities</h2>
-          <p>
-            In an era of fractured specializations, I wear the badge of web
-            “generalist” with pride. I’m comfortable on all sides of the
-            technological and creative spectrums, able to move seamlessly
-            between content schemas, typographic rules, and JavaScript
-            libraries. I’m not sure if that makes me the fabled full-stack
-            unicorn or not, but it does help me guide clients intelligently
-            through every step of the process.
-          </p>
-        </header>
-        <div class="capabilities | cluster">
-          {capabilities.map((item) => <p>{item}</p>)}
-        </div>
-        <Image
-          class="bg-image"
-          src={calloutBgImage}
-          alt=""
-          width={600}
-          format="svg"
-          loading="lazy"
-        />
-      </article>
-    </div>
-    <CTA />
-  </main>
+        <CTA />
+    </main>
 </Layout>
 
 <style>
-  .section-bg-gradient {
-    padding-block-end: 8rem;
-  }
-
-  .rich-content {
-    margin-inline: 0;
-  }
-
-  :global(.about-stats .stats) {
-    display: grid;
-    grid-template-columns: subgrid;
-    grid-column: 1 / span all;
-  }
-
-  :global(.about-stats .stats > *) {
-    grid-column: span 2;
-  }
-
-  .callout {
-    top: -5rem;
-
-    & h3 {
-      font-size: var(--step-1);
+    .section-bg-gradient {
+        padding-block-end: 8rem;
     }
 
-    & .grid-6 {
-      margin-block-end: 0;
+    .rich-content {
+        margin-inline: 0;
     }
-  }
 
-  .capabilities {
-    margin-block-start: var(--space-m);
-
-    & p {
-      padding: 0.5rem 0.75rem 0.45rem;
-      background-color: var(--color-neutral-9);
-      border: 1px solid var(--color-neutral-8);
-      border-radius: var(--rounded-corners-small);
-      line-height: 1.05;
-      transition: background-color 0.2s ease;
-
-      &:hover {
-        background-color: var(--color-neutral-10);
-      }
+    :global(.about-stats .stats) {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-column: 1 / span all;
     }
-  }
 
-  @media (max-width: 480px) {
+    :global(.about-stats .stats > *) {
+        grid-column: span 2;
+    }
+
     .callout {
-      padding: var(--space-l);
+        top: -5rem;
+
+        & h3 {
+            font-size: var(--step-1);
+        }
+
+        & .grid-6 {
+            margin-block-end: 0;
+        }
     }
-  }
+
+    .capabilities {
+        margin-block-start: var(--space-m);
+
+        & p {
+            padding: 0.5rem 0.75rem 0.45rem;
+            background-color: var(--color-neutral-9);
+            border: 1px solid var(--color-neutral-8);
+            border-radius: var(--rounded-corners-small);
+            line-height: 1.05;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+                background-color: var(--color-neutral-10);
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .callout {
+            padding: var(--space-l);
+        }
+    }
 </style>

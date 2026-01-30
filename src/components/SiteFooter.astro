@@ -1,113 +1,115 @@
 ---
+// import ButtonLink from "@components/ButtonLink.astro";
+import Logo from "@components/Logo.astro";
 import { format } from "@formkit/tempo";
 import { getEntry } from "astro:content";
-import Logo from "@components/Logo.astro";
-import ButtonLink from "@components/ButtonLink.astro";
 import site from "@data/site.json";
 
 const navigation = await getEntry("navigation", "footer");
 
 const copyright = format({
-  date: new Date(),
-  format: "YYYY",
-  tz: "America/Los_Angeles",
+    date: new Date(),
+    format: "YYYY",
+    tz: "America/Los_Angeles",
 });
 ---
 
 <footer class="site-footer | dark">
-  <div class="grid | content-wrapper">
-    <div class="brand | flow">
-      <Logo /><p>
-        DS Design is the Los Angeles-based web design studio practice of Daniel
-        Saunders. Contact us for web design, frontend development, digital
-        marketing, and more.
-      </p>
-      <p>
-        <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
-      </p>
-    </div>
-    {
-      navigation?.data.entries.map((entry) => (
-        <div class="column | flow">
-          <div class="small-title">{entry.title}</div>
-          {entry.children && (
-            <ul class="flow" role="list">
-              {entry.children.map((childEntry) => (
-                <li>
-                  <a href={`/${childEntry.slug}`}>{childEntry.title}</a>
-                </li>
-              ))}
-            </ul>
-          )}
+    <div class="grid | content-wrapper">
+        <div class="brand | flow">
+            <Logo /><p>
+                DS Design is the Los Angeles-based web design studio practice of
+                Daniel Saunders. Contact us for web design, frontend
+                development, digital marketing, and more.
+            </p>
+            <p>
+                <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+            </p>
         </div>
-      ))
-    }
-  </div>
-  <div class="subfooter | content-wrapper cluster">
-    <div>{`© ${copyright}, Daniel Saunders`}</div>
-    <div>
-      <a href="/privacy">Privacy Statement</a>
+        {
+            navigation?.data.entries.map((entry) => (
+                <div class="column | flow">
+                    <div class="small-title">{entry.title}</div>
+                    {entry.children && (
+                        <ul class="flow">
+                            {entry.children.map((childEntry) => (
+                                <li>
+                                    <a href={`/${childEntry.slug}`}>
+                                        {childEntry.title}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            ))
+        }
     </div>
-  </div>
+    <div class="subfooter | content-wrapper cluster">
+        <div>{`© ${copyright}, Daniel Saunders`}</div>
+        <div>
+            <a href="/privacy">Privacy Statement</a>
+        </div>
+    </div>
 </footer>
 
 <style>
-  .site-footer {
-    background: var(--color-darker-gradient);
-    padding-block-start: var(--section-spacer);
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 2.5fr repeat(3, 1fr);
-    gap: var(--space-l);
-  }
-
-  .column {
-    & .small-title {
-      color: var(--color-text-heading-dark);
+    .site-footer {
+        background: var(--color-darker-gradient);
+        padding-block-start: var(--section-spacer);
     }
-  }
 
-  ul {
-    font-size: var(--step--1);
-
-    &.flow {
-      --flow-space: 0.75rem;
-    }
-  }
-
-  .subfooter {
-    font-size: var(--step--1);
-    margin-block-start: var(--space-3xl);
-    padding-block: var(--space-m);
-    border-block-start: 1px solid var(--color-neutral-9);
-
-    &.cluster {
-      --cluster-justify: space-between;
-    }
-  }
-
-  @media (max-width: 768px) {
     .grid {
-      grid-template-columns: repeat(3, 1fr);
+        display: grid;
+        grid-template-columns: 2.5fr repeat(3, 1fr);
+        gap: var(--space-l);
     }
 
-    .brand {
-      grid-column: span 3;
+    .column {
+        & .small-title {
+            color: var(--color-text-heading-dark);
+        }
     }
-  }
 
-  @media (max-width: 480px) {
-    .grid {
-      & > * {
-        grid-column: span 3;
-      }
+    ul {
+        font-size: var(--step--1);
 
-      & .flow {
-        align-items: center;
-        text-align: center;
-      }
+        &.flow {
+            --flow-space: 0.75rem;
+        }
     }
-  }
+
+    .subfooter {
+        font-size: var(--step--1);
+        margin-block-start: var(--space-3xl);
+        padding-block: var(--space-m);
+        border-block-start: 1px solid var(--color-neutral-9);
+
+        &.cluster {
+            --cluster-justify: space-between;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .brand {
+            grid-column: span 3;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .grid {
+            & > * {
+                grid-column: span 3;
+            }
+
+            & .flow {
+                align-items: center;
+                text-align: center;
+            }
+        }
+    }
 </style>

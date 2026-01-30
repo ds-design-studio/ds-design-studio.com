@@ -1,7 +1,7 @@
 ---
 import Icon from "@components/Icon.astro";
-import Testimonial from "@components/Testimonial.astro";
 import { Image } from "astro:assets";
+// import Testimonial from "@components/Testimonial.astro";
 import { getCollection } from "astro:content";
 
 const testimonials = await getCollection("testimonials");
@@ -9,116 +9,121 @@ const testimonials = await getCollection("testimonials");
 import headshot from "@assets/ds-pro-avatar.jpg";
 ---
 
-<div id="testimonials" class="content-wrapper">
-  <h2 class="sr-only">Testimonials</h2>
-  <div class="grid-9">
-    <!-- TODO: Get new testimonials -->
-    <!-- {
+<div class="content-wrapper" id="testimonials">
+    <h2 class="sr-only">Testimonials</h2>
+    <div class="grid-9">
+        <!-- TODO: Get new testimonials -->
+        <!-- {
       testimonials.slice(0, 3).map((testimonial) => (
         <div class="testimonial-wrapper">
           <Testimonial content={testimonial} />
         </div>
       ))
     } -->
-    <article class="about">
-      <div class="text | flow">
-        <header class="cluster">
-          <div class="headshot">
-            <Image
-              src={headshot}
-              alt="My headshot: a white man with short hair, glasses, and a friendly smile."
-              width={600}
-              format="webp"
-              loading="lazy"
-            />
-          </div>
-          <div>
-            <h3>About</h3>
-            <p>Daniel Saunders, Principal</p>
-          </div>
-        </header>
-        <p>
-          Freelance web designer and developer with over 8 years of experience
-          creating visually captivating, successful websites for individuals,
-          organizations, churches, and businesses.
-        </p>
-        <a class="cluster" style="--cluster-space: 0.5rem" href="/about">
-          <strong>About Me</strong>
-          <Icon name="chevron-right" size="0.875em" />
-        </a>
-      </div>
-    </article>
-  </div>
+        <article class="about">
+            <div class="text | flow">
+                <header class="cluster">
+                    <div class="headshot">
+                        <Image
+                            alt="My headshot: a white man with short hair, glasses, and a friendly smile."
+                            format="webp"
+                            loading="lazy"
+                            src={headshot}
+                            width={600}
+                        />
+                    </div>
+                    <div>
+                        <h3>About</h3>
+                        <p>Daniel Saunders, Principal</p>
+                    </div>
+                </header>
+                <p>
+                    Freelance web designer and developer with over 8 years of
+                    experience creating visually captivating, successful
+                    websites for individuals, organizations, churches, and
+                    businesses.
+                </p>
+                <a
+                    class="cluster"
+                    href="/about"
+                    style="--cluster-space: 0.5rem"
+                >
+                    <strong>About Me</strong>
+                    <Icon name="chevron-right" size="0.875em" />
+                </a>
+            </div>
+        </article>
+    </div>
 </div>
 
 <style>
-  .content-wrapper {
-    margin-block: var(--section-spacer);
-  }
-
-  .grid-9 {
-    row-gap: var(--space-xl);
-
-    & > :first-child {
-      grid-column: span 5;
+    .content-wrapper {
+        margin-block: var(--section-spacer);
     }
 
-    & > :nth-child(2) {
-      grid-column: 7 / span 3;
-    }
-
-    & > :nth-child(3) {
-      grid-column: 7 / span 3;
-      grid-row: 2/2;
-      align-self: center;
-    }
-
-    & > :last-child {
-      order: 9;
-      grid-column: 3 / span 5; /* when add testimonials change back to -span 5- */
-    }
-  }
-
-  .about {
-    border-radius: var(--rounded-corners);
-    padding: var(--space-l);
-    background: linear-gradient(to right, white, var(--color-neutral-1));
-    box-shadow: var(--shadow-light);
-    border: 1px solid var(--color-neutral-2-fade);
-
-    & header {
-      &.cluster {
-        --cluster-space: 2rem;
-      }
-    }
-  }
-
-  .headshot {
-    border-radius: 999px;
-    background: linear-gradient(
-      to bottom right,
-      var(--color-secondary-5),
-      var(--color-primary-4)
-    );
-
-    & img {
-      width: 5rem;
-      height: 5rem;
-      margin: 2px;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: 999px;
-      filter: grayscale(1);
-      mix-blend-mode: overlay;
-      opacity: 0.85;
-    }
-  }
-
-  @container contentWrapper (max-width: 768px) {
     .grid-9 {
-      & > :last-child {
-        grid-column: 1 / span all;
-      }
+        row-gap: var(--space-xl);
+
+        & > :first-child {
+            grid-column: span 5;
+        }
+
+        & > :nth-child(2) {
+            grid-column: 7 / span 3;
+        }
+
+        & > :nth-child(3) {
+            grid-column: 7 / span 3;
+            grid-row: 2/2;
+            align-self: center;
+        }
+
+        & > :last-child {
+            order: 9;
+            grid-column: 3 / span 5; /* when add testimonials change back to -span 5- */
+        }
     }
-  }
+
+    .about {
+        border-radius: var(--rounded-corners);
+        padding: var(--space-l);
+        background: linear-gradient(to right, white, var(--color-neutral-1));
+        box-shadow: var(--shadow-light);
+        border: 1px solid var(--color-neutral-2-fade);
+
+        & header {
+            &.cluster {
+                --cluster-space: 2rem;
+            }
+        }
+    }
+
+    .headshot {
+        border-radius: 999px;
+        background: linear-gradient(
+            to bottom right,
+            var(--color-secondary-5),
+            var(--color-primary-4)
+        );
+
+        & img {
+            width: 5rem;
+            height: 5rem;
+            margin: 2px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 999px;
+            filter: grayscale(1);
+            mix-blend-mode: overlay;
+            opacity: 0.85;
+        }
+    }
+
+    @container contentWrapper (max-width: 768px) {
+        .grid-9 {
+            & > :last-child {
+                grid-column: 1 / span all;
+            }
+        }
+    }
 </style>

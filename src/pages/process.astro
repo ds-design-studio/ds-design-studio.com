@@ -1,12 +1,12 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import InnerHero from "@components/page_sections/InnerHero.astro";
-import ProjectPhases from "@components/page_sections/ProjectPhases.astro";
-import SectionHeader from "@components/SectionHeader.astro";
+import { getCollection, getEntry } from "astro:content";
 import FAQs from "@components/page_sections/FAQs.astro";
 import Icon from "@components/Icon.astro";
 import type { IconName } from "@components/Icon.astro";
-import { getCollection, getEntry } from "astro:content";
+import InnerHero from "@components/page_sections/InnerHero.astro";
+import Layout from "@layouts/Layout.astro";
+import ProjectPhases from "@components/page_sections/ProjectPhases.astro";
+import SectionHeader from "@components/SectionHeader.astro";
 
 const faqs = await getEntry("faqs", "process-faqs");
 const principles = await getCollection("principles");
@@ -14,94 +14,100 @@ const principles = await getCollection("principles");
 const title = "Process";
 
 const ogParams = new URLSearchParams([
-  ["title", "Process"],
-  [
-    "subtitle",
-    "A brief overview of what it looks like to work with Daniel Saunders",
-  ],
+    ["title", "Process"],
+    [
+        "subtitle",
+        "A brief overview of what it looks like to work with Daniel Saunders",
+    ],
 ]);
 ---
 
 <Layout
-  headerTheme="dark"
-  meta={{
-    seo: {
-      title: title,
-      description:
-        "A brief overview of what it looks like to work with Daniel Saunders.",
-    },
-    openGraph: {
-      title: "Crafting beautiful experiences, step by step",
-      image: `/api/og?${ogParams.toString()}`,
-    },
-  }}
+    headerTheme="dark"
+    meta={{
+        seo: {
+            title: title,
+            description:
+                "A brief overview of what it looks like to work with Daniel Saunders.",
+        },
+        openGraph: {
+            title: "Crafting beautiful experiences, step by step",
+            image: `/api/og?${ogParams.toString()}`,
+        },
+    }}
 >
-  <main slot="content">
-    <InnerHero
-      title={title}
-      intro="A brief overview of what it looks like to work with me."
-    />
-    <ProjectPhases />
-    <article id="principles" class="section-bg-gradient">
-      <div class="content-wrapper">
-        <SectionHeader align="center">
-          <Fragment slot="text">
-            <div class="eyebrow | small-title text-gradient mx-auto">
-              My Principles
-            </div>
-            <h2 class="text-step-4">
-              A credo for building a better, more human web
-            </h2>
-          </Fragment>
-        </SectionHeader>
-        <div class="principles | grid-6">
-          {
-            principles
-              .sort((a, b) => a.data.order - b.data.order)
-              .map(({ data }, index) => (
-                <div class="flow">
-                  <div class="icon-wrapper gradient">
-                    <Icon
-                      name={data.icon as IconName}
-                      color={index % 2 ? "currentColor" : "currentColor"}
-                      size="1.5em"
-                    />
-                  </div>
-                  <h3>{data.title}</h3>
-                  <p>{data.summary}</p>
+    <main slot="content">
+        <InnerHero
+            intro="A brief overview of what it looks like to work with me."
+            title={title}
+        />
+        <ProjectPhases />
+        <article class="section-bg-gradient" id="principles">
+            <div class="content-wrapper">
+                <SectionHeader align="center">
+                    <Fragment slot="text">
+                        <div
+                            class="eyebrow | small-title text-gradient mx-auto"
+                        >
+                            My Principles
+                        </div>
+                        <h2 class="text-step-4">
+                            A credo for building a better, more human web
+                        </h2>
+                    </Fragment>
+                </SectionHeader>
+                <div class="principles | grid-6">
+                    {
+                        principles
+                            .sort((a, b) => a.data.order - b.data.order)
+                            .map(({ data }, index) => (
+                                <div class="flow">
+                                    <div class="icon-wrapper gradient">
+                                        <Icon
+                                            color={
+                                                index % 2
+                                                    ? "currentColor"
+                                                    : "currentColor"
+                                            }
+                                            name={data.icon as IconName}
+                                            size="1.5em"
+                                        />
+                                    </div>
+                                    <h3>{data.title}</h3>
+                                    <p>{data.summary}</p>
+                                </div>
+                            ))
+                    }
                 </div>
-              ))
-          }
-        </div>
-      </div>
-    </article>
-    <FAQs faqs={faqs} />
-  </main>
+            </div>
+        </article>
+        <FAQs faqs={faqs} />
+    </main>
 </Layout>
 
 <style>
-  .grid-6 {
-    row-gap: var(--space-2xl);
-  }
-
-  .principles {
-    margin-block-start: calc(var(--section-spacer) * 0.75);
-
-    & h3 {
-      font-size: var(--step-1);
+    .grid-6 {
+        row-gap: var(--space-2xl);
     }
-  }
 
-  @container contentWrapper (max-width: 640px) {
     .principles {
-      & > * {
-        text-align: center;
-        justify-content: center;
-      }
+        margin-block-start: calc(var(--section-spacer) * 0.75);
 
-      & .icon-wrapper {
-        align-self: center;
-      }
+        & h3 {
+            font-size: var(--step-1);
+        }
     }
-  }
+
+    @container contentWrapper (max-width: 640px) {
+        .principles {
+            & > * {
+                text-align: center;
+                justify-content: center;
+            }
+
+            & .icon-wrapper {
+                align-self: center;
+            }
+        }
+    }
 </style>

@@ -1,9 +1,9 @@
 ---
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 type Props = {
-  content: CollectionEntry<"testimonials">;
+    content: CollectionEntry<"testimonials">;
 };
 
 const { content } = Astro.props;
@@ -11,65 +11,65 @@ const { attribution, body } = content.data;
 ---
 
 <article class="flow">
-  <p>{body}</p>
-  <div class="attribution | cluster">
-    <Image
-      src={attribution.logo}
-      alt={`${attribution.organization} logo.`}
-      width={200}
-      format="webp"
-      loading="lazy"
-    />
-    <div>
-      <p class="small-title">{attribution.name}</p>
-      <p>{attribution.organization}</p>
+    <p>{body}</p>
+    <div class="attribution | cluster">
+        <Image
+            alt={`${attribution.organization} logo.`}
+            format="webp"
+            loading="lazy"
+            src={attribution.logo}
+            width={200}
+        />
+        <div>
+            <p class="small-title">{attribution.name}</p>
+            <p>{attribution.organization}</p>
+        </div>
     </div>
-  </div>
 </article>
 
 <style>
-  article {
-    container: testimonial / inline-size;
-    position: relative;
+    article {
+        container: testimonial / inline-size;
+        position: relative;
 
-    &::before {
-      content: "“";
-      position: absolute;
-      top: -0.75rem;
-      left: -2rem;
-      z-index: -1;
-      line-height: 1;
-      opacity: 0.1;
-      font-family: var(--font-heading);
-      font-weight: var(--font-heading-weight);
-      color: var(--color-primary-5);
-      font-size: 25cqw;
+        &::before {
+            content: "“";
+            position: absolute;
+            top: -0.75rem;
+            left: -2rem;
+            z-index: -1;
+            line-height: 1;
+            opacity: 0.1;
+            font-family: var(--font-heading);
+            font-weight: var(--font-heading-weight);
+            color: var(--color-primary-5);
+            font-size: 25cqw;
+        }
+
+        &.flow {
+            --flow-space: var(--space-m);
+        }
     }
 
-    &.flow {
-      --flow-space: var(--space-m);
-    }
-  }
+    .attribution {
+        & img {
+            width: auto;
+            height: 3rem;
+            filter: grayscale(1);
+            opacity: 0.3;
+        }
 
-  .attribution {
-    & img {
-      width: auto;
-      height: 3rem;
-      filter: grayscale(1);
-      opacity: 0.3;
+        & .small-title {
+            & + p {
+                font-size: var(--step--1);
+                opacity: 0.85;
+            }
+        }
     }
 
-    & .small-title {
-      & + p {
-        font-size: var(--step--1);
-        opacity: 0.85;
-      }
+    @container testimonial (min-width: 600px) {
+        article > p {
+            font-size: var(--step-1);
+        }
     }
-  }
-
-  @container testimonial (min-width: 600px) {
-    article > p {
-      font-size: var(--step-1);
-    }
-  }
 </style>

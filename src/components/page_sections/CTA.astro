@@ -7,79 +7,80 @@ import calloutBgImage from "@assets/shape-pattern-1.svg";
 ---
 
 <div class="cta-bg">
-  <article class="content-wrapper">
-    <div
-      class="cta callout | dark"
-      x-data="{ messages: ['marketing website', 'content website', 'non-profit website', 'consulting website', 'personal website', 'church website', 'business website', 'media website'] }"
-    >
-      <div
-        class="text | flow"
-        x-data="{ currentMessage: null, init() { this.currentMessage = this.messages[0]; setInterval(() => { let array = this.messages; let currentIndex = array.indexOf(this.currentMessage); let next = array[currentIndex === array.length - 1 ? 0 : currentIndex + 1]; this.currentMessage = next }, 4000) } }"
-        x-init="$watch('currentMessage', () => { $refs.text.classList.add('change'); setTimeout(() => $refs.text.classList.remove('change'), 500) })"
-      >
-        <h2 class="message">
-          Ready to elevate your next <span x-text="currentMessage" x-ref="text"
-          ></span>?
-        </h2>
-        <ButtonLink href="/contact">
-          <span>Get a Quote</span>
-          <Icon name="envelope" />
-        </ButtonLink>
-      </div>
-      <Image
-        class="bg-image"
-        src={calloutBgImage}
-        alt=""
-        width={600}
-        format="svg"
-        loading="lazy"
-      />
-    </div>
-  </article>
+    <article class="content-wrapper">
+        <div
+            class="cta callout | dark"
+            x-data="{ messages: ['marketing website', 'content website', 'non-profit website', 'consulting website', 'personal website', 'church website', 'business website', 'media website'] }"
+        >
+            <div
+                class="text | flow"
+                x-data="{ currentMessage: null, init() { this.currentMessage = this.messages[0]; setInterval(() => { let array = this.messages; let currentIndex = array.indexOf(this.currentMessage); let next = array[currentIndex === array.length - 1 ? 0 : currentIndex + 1]; this.currentMessage = next }, 4000) } }"
+                x-init="$watch('currentMessage', () => { $refs.text.classList.add('change'); setTimeout(() => $refs.text.classList.remove('change'), 500) })"
+            >
+                <h2 class="message">
+                    Ready to elevate your next <span
+                        x-ref="text"
+                        x-text="currentMessage"></span>?
+                </h2>
+                <ButtonLink href="/contact">
+                    <span>Get a Quote</span>
+                    <Icon name="envelope" />
+                </ButtonLink>
+            </div>
+            <Image
+                alt=""
+                class="bg-image"
+                format="svg"
+                loading="lazy"
+                src={calloutBgImage}
+                width={600}
+            />
+        </div>
+    </article>
 </div>
 
 <style>
-  .cta {
-    text-align: center;
-    margin-block: var(--section-spacer);
-  }
-
-  .text {
-    align-items: center;
-
-    &.flow {
-      --flow-space: var(--space-l);
+    .cta {
+        text-align: center;
+        margin-block: var(--section-spacer);
     }
-  }
 
-  .message {
-    & span {
-      display: inline-block;
-      color: var(--color-primary-4);
+    .text {
+        align-items: center;
+
+        &.flow {
+            --flow-space: var(--space-l);
+        }
     }
-  }
 
-  .change {
-    animation: 0.4s fade-up-long ease-out;
-  }
+    .message {
+        & span {
+            display: inline-block;
+            color: var(--color-primary-4);
+        }
+    }
 
-  .cta-bg {
-    border-block: 1px solid var(--color-neutral-2);
-    position: relative;
-    padding-block: calc(var(--section-spacer) * 0.5);
-    background-color: #ffffff;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23cfd7e2' fill-opacity='0.25'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    /* 
+    .change {
+        animation: 0.4s fade-up-long ease-out;
+    }
+
+    .cta-bg {
+        border-block: 1px solid var(--color-neutral-2);
+        position: relative;
+        padding-block: calc(var(--section-spacer) * 0.5);
+        background-color: #ffffff;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23cfd7e2' fill-opacity='0.25'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        /* 
     & img {
       position: absolute;
       inset: 0;
       z-index: -1;
     } */
-  }
-
-  @container contentWrapper (max-width: 768px) {
-    .cta {
-      margin-block: var(--space-l);
     }
-  }
+
+    @container contentWrapper (max-width: 768px) {
+        .cta {
+            margin-block: var(--space-l);
+        }
+    }
 </style>

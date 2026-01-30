@@ -1,114 +1,118 @@
 ---
 import ButtonLink from "@components/ButtonLink.astro";
-import Icon from "@components/Icon.astro";
 import type { CollectionEntry } from "astro:content";
+import Icon from "@components/Icon.astro";
 import { Image } from "astro:assets";
-import { getEntry } from "astro:content";
+import bgImage from "@assets/shape-pattern-1.svg";
+// import { getEntry } from "astro:content";
 
 // const featuredProject = await getEntry("projects", "haymarket-writing-freedom");
-import bgImage from "@assets/shape-pattern-1.svg";
 
 type Props = {
-  project: CollectionEntry<"projects">;
-  serviceType?: string;
-  // | "Web Design"
-  // | "Frontend Development"
-  // | "Digital Design"
-  // | "Ongoing Support";
+    project: CollectionEntry<"projects">;
+    serviceType?: string;
+    // | "Web Design"
+    // | "Frontend Development"
+    // | "Digital Design"
+    // | "Ongoing Support";
 };
 
 const { project, serviceType } = Astro.props;
 const { title, summary, featuredImage, scope } = project?.data;
 ---
 
-<article id="featured-project" class="featured | dark">
-  <div class="grid-9 | content-wrapper">
-    <Image
-      class="featured-img rounded-corners"
-      src={featuredImage.src}
-      alt={featuredImage.alt}
-      width={1200}
-      format="webp"
-      loading="lazy"
-    />
-    <div class="text | flow">
-      <header>
-        <div class="eyebrow | small-title text-gradient">
-          {serviceType ? `Featured ${serviceType} Project` : "Featured Project"}
+<article class="featured | dark" id="featured-project">
+    <div class="grid-9 | content-wrapper">
+        <Image
+            alt={featuredImage.alt}
+            class="featured-img rounded-corners"
+            format="webp"
+            loading="lazy"
+            src={featuredImage.src}
+            width={1200}
+        />
+        <div class="text | flow">
+            <header>
+                <div class="eyebrow | small-title text-gradient">
+                    {
+                        serviceType
+                            ? `Featured ${serviceType} Project`
+                            : "Featured Project"
+                    }
+                </div>
+                <h2>{title}</h2>
+            </header>
+            <p>{summary}</p>
+            <ul class="icon-list">
+                {
+                    scope.map((item: string) => (
+                        <li class="cluster">
+                            <Icon name="check-circle" />
+                            <span>{item}</span>
+                        </li>
+                    ))
+                }
+            </ul>
+            <ButtonLink href={`/work/${project?.id}`}>
+                <span>Go to Case Study</span>
+                <Icon name="arrow-right" />
+            </ButtonLink>
         </div>
-        <h2>{title}</h2>
-      </header>
-      <p>{summary}</p>
-      <ul class="icon-list" role="list">
-        {
-          scope.map((item: string) => (
-            <li class="cluster">
-              <Icon name="check-circle" />
-              <span>{item}</span>
-            </li>
-          ))
-        }
-      </ul>
-      <ButtonLink href={`/work/${project?.id}`}>
-        <span>Go to Case Study</span>
-        <Icon name="arrow-right" />
-      </ButtonLink>
     </div>
-  </div>
-  <Image
-    class="bg-image"
-    src={bgImage}
-    width={900}
-    alt=""
-    format="svg"
-    loading="lazy"
-  />
+    <Image
+        alt=""
+        class="bg-image"
+        format="svg"
+        loading="lazy"
+        src={bgImage}
+        width={900}
+    />
 </article>
 
 <style>
-  article {
-    position: relative;
-    padding-block: calc(var(--section-spacer) * 1.5);
-    background: var(--color-darker-gradient);
-    overflow: hidden;
+    article {
+        position: relative;
+        padding-block: calc(var(--section-spacer) * 1.5);
+        background: var(--color-darker-gradient);
+        overflow: hidden;
 
-    &::after {
-      content: "";
-      position: absolute;
-      height: 4px;
-      bottom: 0;
-      width: 100%;
-      background: linear-gradient(
-        to right,
-        var(--color-secondary-5),
-        var(--color-primary-4)
-      );
-    }
-  }
-
-  .grid-9 {
-    position: relative;
-    z-index: 2;
-    align-items: center;
-    gap: var(--space-2xl);
-  }
-
-  .text {
-    grid-column: 5/10;
-
-    &.flow {
-      --flow-space: var(--space-m);
-    }
-  }
-
-  ul {
-    columns: 2;
-
-    & > * + * {
-      margin-block-start: 0.75rem;
+        &::after {
+            content: "";
+            position: absolute;
+            height: 4px;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(
+                to right,
+                var(--color-secondary-5),
+                var(--color-primary-4)
+            );
+        }
     }
 
-    /* & .cluster {
+    .grid-9 {
+        position: relative;
+        z-index: 2;
+        align-items: center;
+        gap: var(--space-2xl);
+    }
+
+    .text {
+        grid-column: 5/10;
+
+        &.flow {
+            --flow-space: var(--space-m);
+        }
+    }
+
+    ul {
+        columns: 2;
+
+        & > * + * {
+            margin-block-start: 0.75rem;
+        }
+
+        /* & .cluster {
       --cluster-space: 0.5rem;
     }
 
@@ -119,45 +123,45 @@ const { title, summary, featuredImage, scope } = project?.data;
       width: 1em;
       height: 1em;
     } */
-  }
-
-  .featured-img {
-    grid-column: 1 / span 4;
-  }
-
-  .bg-image {
-    position: absolute;
-    left: -5%;
-    top: 0;
-    width: auto;
-    height: 100%;
-    opacity: 0.25;
-    mix-blend-mode: screen;
-    transform: scale(1.5);
-  }
-
-  @container contentWrapper (max-width: 999px) {
-    .text {
-      grid-column: span 9;
     }
 
     .featured-img {
-      grid-column: span 9;
-    }
-  }
-
-  @media (max-width: 640px) {
-    article {
-      padding-block: var(--space-3xl);
+        grid-column: 1 / span 4;
     }
 
-    .grid-9 {
-      row-gap: var(--space-l);
-      column-gap: 0;
+    .bg-image {
+        position: absolute;
+        left: -5%;
+        top: 0;
+        width: auto;
+        height: 100%;
+        opacity: 0.25;
+        mix-blend-mode: screen;
+        transform: scale(1.5);
     }
 
-    ul {
-      columns: 1;
+    @container contentWrapper (max-width: 999px) {
+        .text {
+            grid-column: span 9;
+        }
+
+        .featured-img {
+            grid-column: span 9;
+        }
     }
-  }
+
+    @media (max-width: 640px) {
+        article {
+            padding-block: var(--space-3xl);
+        }
+
+        .grid-9 {
+            row-gap: var(--space-l);
+            column-gap: 0;
+        }
+
+        ul {
+            columns: 1;
+        }
+    }
 </style>

@@ -3,51 +3,51 @@
 // const pathParts = path.split("/").filter(Boolean);
 
 type Props = {
-  current?: string;
-  parents?: {
-    name: string;
-    slug: string;
-  }[];
+    current?: string;
+    parents?: {
+        name: string;
+        slug: string;
+    }[];
 };
 
 const { current, parents } = Astro.props;
 ---
 
 <div class="breadcrumbs | cluster">
-  {
-    parents?.map((parent) => (
-      <>
-        <a class="small-title" href={`/${parent.slug}`}>
-          {parent.name}
-        </a>
-        <span>•</span>
-      </>
-    ))
-  }
-  <p class="current">{current}</p>
+    {
+        parents?.map((parent) => (
+            <Fragment>
+                <a class="small-title" href={`/${parent.slug}`}>
+                    {parent.name}
+                </a>
+                <span>•</span>
+            </Fragment>
+        ))
+    }
+    <p class="current">{current}</p>
 </div>
 
 <style>
-  .breadcrumbs {
-    --current-color: var(--color-text-body);
-    --divider-color: var(--color-text-link-hover);
-    position: relative;
+    .breadcrumbs {
+        --current-color: var(--color-text-body);
+        --divider-color: var(--color-text-link-hover);
+        position: relative;
 
-    &.cluster {
-      --cluster-space: 0.5rem;
+        &.cluster {
+            --cluster-space: 0.5rem;
+        }
+
+        & .current {
+            color: var(--current-color);
+        }
+
+        & span {
+            color: var(--divider-color);
+        }
     }
 
-    & .current {
-      color: var(--current-color);
+    :global(.dark) .breadcrumbs {
+        --current-color: var(--color-text-heading-dark);
+        --divider-color: var(--color-text-link-hover-dark);
     }
-
-    & span {
-      color: var(--divider-color);
-    }
-  }
-
-  :global(.dark) .breadcrumbs {
-    --current-color: var(--color-text-heading-dark);
-    --divider-color: var(--color-text-link-hover-dark);
-  }
 </style>

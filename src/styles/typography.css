@@ -1,67 +1,67 @@
 body {
-  font-family: var(--font-primary);
-  font-size: var(--step-0, 16px);
-  line-height: var(--leading-normal);
-  color: var(--color-text-body);
+    font-family: var(--font-primary);
+    font-size: var(--step-0, 16px);
+    line-height: var(--leading-normal);
+    color: var(--color-text-body);
 }
 
 :where(h1, h2, h3, h4, h5, .heading) {
-  font-family: var(--font-heading);
-  font-weight: var(--font-heading-weight);
-  line-height: var(--leading-tight);
-  color: var(--color-text-heading);
+    font-family: var(--font-heading);
+    font-weight: var(--font-heading-weight);
+    line-height: var(--leading-tight);
+    color: var(--color-text-heading);
 }
 
 :is(h1, .h1) {
-  font-size: var(--step-4);
+    font-size: var(--step-4);
 }
 
 :is(h2, .h2) {
-  font-size: var(--step-3);
+    font-size: var(--step-3);
 }
 
 :is(h3, .h3) {
-  font-size: var(--step-2);
+    font-size: var(--step-2);
 }
 
 :is(h4, .h4) {
-  font-size: var(--step-1);
+    font-size: var(--step-1);
 }
 
 a:not(.button-link, .logo, .nav-link, .panel-link) {
-  --link-color: var(--color-text-link);
-  --link-color-hover: var(--color-text-link-hover);
-  --link-line: var(--color-text-link-line);
-  --link-line-hover: var(--color-text-link-line-hover);
-  width: fit-content;
-  color: var(--link-color);
-  font-weight: 400;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 5px;
-  text-decoration-color: var(--link-line);
-  transition: all 0.2s ease;
+    --link-color: var(--color-text-link);
+    --link-color-hover: var(--color-text-link-hover);
+    --link-line: var(--color-text-link-line);
+    --link-line-hover: var(--color-text-link-line-hover);
+    width: fit-content;
+    color: var(--link-color);
+    font-weight: 400;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+    text-decoration-color: var(--link-line);
+    transition: all 0.2s ease;
 
-  &:hover {
-    color: var(--link-color-hover);
-    text-underline-offset: 7px;
-    text-decoration-color: var(--link-line-hover);
-    /* text-decoration-thickness: 2px; */
-  }
+    &:hover {
+        color: var(--link-color-hover);
+        text-underline-offset: 7px;
+        text-decoration-color: var(--link-line-hover);
+        /* text-decoration-thickness: 2px; */
+    }
 }
 
 :where(.dark, [data-theme="dark"]) {
-  color: var(--color-text-body-dark);
+    color: var(--color-text-body-dark);
 
-  & :is(h1, h2, h3) {
-    color: var(--color-text-heading-dark);
-  }
+    & :is(h1, h2, h3) {
+        color: var(--color-text-heading-dark);
+    }
 
-  & a:not(.button-link, .logo, .nav-link, .panel-link) {
-    --link-color: var(--color-text-link-dark);
-    --link-color-hover: var(--color-text-link-hover-dark);
-    --link-line: var(--color-text-link-line-dark);
-    --link-line-hover: var(--color-text-link-line-hover-dark);
-  }
+    & a:not(.button-link, .logo, .nav-link, .panel-link) {
+        --link-color: var(--color-text-link-dark);
+        --link-color-hover: var(--color-text-link-hover-dark);
+        --link-line: var(--color-text-link-line-dark);
+        --link-line-hover: var(--color-text-link-line-hover-dark);
+    }
 }
 
 /* a:not(.button-link, .logo):hover {
@@ -74,79 +74,79 @@ a:not(.button-link, .logo, .nav-link, .panel-link) {
 } */
 
 a.color-underline {
-  text-underline-offset: 3px;
-  text-decoration-color: transparent;
-  transition: all 0.2s linear;
+    text-underline-offset: 3px;
+    text-decoration-color: transparent;
+    transition: all 0.2s linear;
 
-  &:hover {
-    text-decoration-color: var(--color-text-link-line-hover);
-  }
+    &:hover {
+        text-decoration-color: var(--color-text-link-line-hover);
+    }
 }
 
 .button-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: fit-content;
-  line-height: var(--leading-tight);
-  padding: 0.75rem 1rem 0.65rem;
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.9em;
-  text-decoration: none;
-  color: var(--link-color);
-  background-color: var(--link-bg);
-  border: 1px solid var(--link-border);
-  border-radius: var(--rounded-corners-small);
-  transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    line-height: var(--leading-tight);
+    padding: 0.75rem 1rem 0.65rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: var(--link-color);
+    background-color: var(--link-bg);
+    border: 1px solid var(--link-border);
+    border-radius: var(--rounded-corners-small);
+    transition: all 0.2s ease;
 
-  &:hover {
-    background-color: var(--link-bg-hover);
-    border-color: var(--link-border-hover);
-    color: var(--link-color-hover);
-  }
-
-  & svg {
-    position: relative;
-    top: -1px;
-    height: 1em;
-    width: 1em;
-    transition: all 0.2s ease-out;
-  }
-
-  &.animate-up-right:hover {
-    & svg {
-      transform: translate(0.25rem, -0.1rem);
+    &:hover {
+        background-color: var(--link-bg-hover);
+        border-color: var(--link-border-hover);
+        color: var(--link-color-hover);
     }
-  }
 
-  &.animate-right:hover {
     & svg {
-      transform: translateX(0.25rem);
+        position: relative;
+        top: -1px;
+        height: 1em;
+        width: 1em;
+        transition: all 0.2s ease-out;
     }
-  }
+
+    &.animate-up-right:hover {
+        & svg {
+            transform: translate(0.25rem, -0.1rem);
+        }
+    }
+
+    &.animate-right:hover {
+        & svg {
+            transform: translateX(0.25rem);
+        }
+    }
 }
 
 .small-title {
-  font-size: var(--step--1, 14px);
-  font-weight: 700;
-  font-family: var(--font-heading);
-  line-height: var(--leading-normal);
-  text-transform: uppercase;
-  color: inherit;
-  letter-spacing: var(--caps-letter-spacing);
+    font-size: var(--step--1, 14px);
+    font-weight: 700;
+    font-family: var(--font-heading);
+    line-height: var(--leading-normal);
+    text-transform: uppercase;
+    color: inherit;
+    letter-spacing: var(--caps-letter-spacing);
 
-  &.eyebrow {
-    margin-block-end: var(--space-s);
-  }
+    &.eyebrow {
+        margin-block-end: var(--space-s);
+    }
 }
 
 .rich-content {
-  --block-spacing: var(--space-l);
-  max-width: var(--paragraph-measure);
-  margin-inline: auto;
+    --block-spacing: var(--space-l);
+    max-width: var(--paragraph-measure);
+    margin-inline: auto;
 
-  & > * + * {
-    margin-block-start: var(--block-spacing);
-  }
+    & > * + * {
+        margin-block-start: var(--block-spacing);
+    }
 }
