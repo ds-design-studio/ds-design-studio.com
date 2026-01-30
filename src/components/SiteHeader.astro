@@ -40,6 +40,7 @@ const { theme = "dark", position = "relative" } = Astro.props;
                   class="panel-wrapper"
                   x-popover:panel
                   x-anchor="$refs.button"
+                  x-cloak
                 >
                   {entry.title === "Services" ? (
                     <div class="panel">
@@ -86,7 +87,7 @@ const { theme = "dark", position = "relative" } = Astro.props;
                           </a>
                         ) : (
                           <a href={childEntry.slug}>{childEntry.title}</a>
-                        )
+                        ),
                       )}
                     </div>
                   )}
