@@ -1,7 +1,8 @@
 import { z, defineCollection, reference } from "astro:content";
+import { glob } from "astro/loaders";
 
 const navigation = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/navigation" }),
   schema: z.object({
     title: z.string(),
     entries: z.array(
@@ -24,7 +25,7 @@ const navigation = defineCollection({
 });
 
 const features = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/features" }),
   schema: z.object({
     title: z.string(),
     summary: z.string().optional(),
@@ -40,7 +41,7 @@ const features = defineCollection({
 });
 
 const services = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/services" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -65,7 +66,7 @@ const services = defineCollection({
 });
 
 const tools = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/tools" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -75,16 +76,16 @@ const tools = defineCollection({
     }),
 });
 
-const websiteTypes = defineCollection({
-  type: "data",
-  schema: z.object({
-    title: z.string(),
-    summary: z.string(),
-  }),
-});
+// const websiteTypes = defineCollection({
+//   type: "data",
+//   schema: z.object({
+//     title: z.string(),
+//     summary: z.string(),
+//   }),
+// });
 
 const designGallery = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/designGallery" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -97,7 +98,7 @@ const designGallery = defineCollection({
 });
 
 const projects = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/projects" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -133,7 +134,7 @@ const projects = defineCollection({
 });
 
 const supportPlans = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/supportPlans" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -152,7 +153,7 @@ const supportPlans = defineCollection({
 });
 
 const testimonials = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/testimonials" }),
   schema: ({ image }) =>
     z.object({
       body: z.string(),
@@ -165,7 +166,7 @@ const testimonials = defineCollection({
 });
 
 const projectPhases = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/projectPhases" }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),
@@ -175,7 +176,7 @@ const projectPhases = defineCollection({
 });
 
 const faqs = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/faqs" }),
   schema: z.object({
     entries: z.array(
       z.object({
@@ -187,7 +188,7 @@ const faqs = defineCollection({
 });
 
 const principles = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/principles" }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),
@@ -202,7 +203,7 @@ export const collections = {
   services,
   projects,
   tools,
-  websiteTypes,
+  // websiteTypes,
   designGallery,
   testimonials,
   supportPlans,

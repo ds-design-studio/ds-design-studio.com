@@ -27,7 +27,7 @@ const copyright = format({
       </p>
     </div>
     {
-      navigation.data.entries.map((entry) => (
+      navigation?.data.entries.map((entry) => (
         <div class="column | flow">
           <div class="small-title">{entry.title}</div>
           {entry.children && (

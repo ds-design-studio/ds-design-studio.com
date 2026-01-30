@@ -6,7 +6,7 @@ import FAQs from "@components/page_sections/FAQs.astro";
 import formatPrice from "@utils/formatPrice";
 import { Image } from "astro:assets";
 
-const faqs = await getEntry("faqs", "supportFaqs");
+const faqs = await getEntry("faqs", "support-faqs");
 const supportPlans = await getCollection("supportPlans");
 
 //// TODO: Add monthly/annual apline switcher

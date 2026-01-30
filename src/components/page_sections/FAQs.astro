@@ -3,7 +3,7 @@ import type { CollectionEntry } from "astro:content";
 
 type Props = {
   heading?: string;
-  faqs: CollectionEntry<"faqs">;
+  faqs?: CollectionEntry<"faqs">;
 };
 
 const { heading = "FAQs", faqs } = Astro.props;
@@ -14,7 +14,7 @@ const { heading = "FAQs", faqs } = Astro.props;
     <slot name="header"><h2>{heading}</h2></slot>
     <div class="grid-6">
       {
-        faqs.data.entries.map((faq) => (
+        faqs?.data.entries.map((faq) => (
           <div class="flow">
             <h3>{faq.question}</h3>
             <p set:html={faq.answer} />

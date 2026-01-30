@@ -24,8 +24,8 @@ const { theme = "dark", position = "relative" } = Astro.props;
     <Logo theme={theme} />
     <nav class="desktop-nav | cluster">
       {
-        navigation.data.entries.map((entry) => (
-          <>
+        navigation?.data.entries.map((entry) => (
+          <Fragment>
             {entry.children !== undefined ? (
               <div class="popover" x-data x-popover>
                 <button
@@ -49,7 +49,7 @@ const { theme = "dark", position = "relative" } = Astro.props;
                         .map((service) => (
                           <a
                             class="panel-link with-icon"
-                            href={`/services/${service.slug}`}
+                            href={`/services/${service.id}`}
                           >
                             <div class="icon-wrapper">
                               <Icon
@@ -98,7 +98,7 @@ const { theme = "dark", position = "relative" } = Astro.props;
                 {entry.title}
               </a>
             )}
-          </>
+          </Fragment>
         ))
       }
       <ButtonLink href="/contact">

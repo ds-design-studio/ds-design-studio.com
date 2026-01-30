@@ -10,7 +10,7 @@ import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
 import Gallery from "@components/page_sections/Gallery.astro";
 import CTA from "@components/page_sections/CTA.astro";
 import { Image } from "astro:assets";
-import { getEntry, getEntries, getCollection } from "astro:content";
+import { getEntry, getEntries, getCollection, render } from "astro:content";
 import Icon from "@components/Icon.astro";
 import type { IconName } from "@components/Icon.astro";
 
@@ -37,7 +37,7 @@ export async function getStaticPaths() {
 
   return pages.map((page) => {
     return {
-      params: { slug: page.slug },
+      params: { slug: page.id },
       props: { page },
     };
   });
@@ -57,7 +57,7 @@ const {
   showApproach,
 } = page.data;
 
-const { Content } = await page.render();
+const { Content } = await render(page);
 
 const ogParams = new URLSearchParams([
   ["title", title],
@@ -87,7 +87,7 @@ const ogParams = new URLSearchParams([
       }}
     />
     {
-      page.slug !== "ongoing-support" && (
+      page.id !== "ongoing-support" && (
         <div class="content-offset">
           <div class="section-bg-gradient">
             <div class="content-wrapper">
@@ -132,9 +132,9 @@ const ogParams = new URLSearchParams([
       )
     }
     <!-- Page specific sections -->
-    {page.slug === "frontend-development" && <Frameworks />}
-    {page.slug === "digital-design" && <Gallery />}
-    {page.slug === "ongoing-support" && <SupportPlans />}
+    {page.id === "frontend-development" && <Frameworks />}
+    {page.id === "digital-design" && <Gallery />}
+    {page.id === "ongoing-support" && <SupportPlans />}
     {
       page.featuredProject && (
         <FeaturedProject project={page.featuredProject} serviceType={title} />
@@ -146,7 +146,7 @@ const ogParams = new URLSearchParams([
         <div class="content-wrapper section-spacer">
           <div class="rich-content">
             <Content />
-            {page.slug === "web-design" && (
+            {page.id === "web-design" && (
               <Image
                 class="image-finale"
                 src={supplementaryImage1}
@@ -156,7 +156,7 @@ const ogParams = new URLSearchParams([
                 format="webp"
               />
             )}
-            {page.slug === "frontend-development" && (
+            {page.id === "frontend-development" && (
               <Image
                 class="image-finale"
                 src={supplementaryImage2}

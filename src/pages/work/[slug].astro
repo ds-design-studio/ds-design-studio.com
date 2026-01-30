@@ -5,7 +5,7 @@ import ButtonLink from "@components/ButtonLink.astro";
 import Icon from "@components/Icon.astro";
 import CTA from "@components/page_sections/CTA.astro";
 import { Image } from "astro:assets";
-import { getCollection, getEntries } from "astro:content";
+import { getCollection, getEntries, render } from "astro:content";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 
   return pages.map((page) => {
     return {
-      params: { slug: page.slug },
+      params: { slug: page.id },
       props: { page },
     };
   });
@@ -44,7 +44,7 @@ const {
   url,
 } = page.data;
 
-const { Content } = await page.render();
+const { Content } = await render(page);
 
 const ogParams = new URLSearchParams([
   ["title", title],
@@ -92,7 +92,7 @@ const ogParams = new URLSearchParams([
         <dd class="services | cluster">
           {
             page.services.map((service) => (
-              <a href={`/services/${service.slug}`}>{service.data.title}</a>
+              <a href={`/services/${service.id}`}>{service.data.title}</a>
             ))
           }
         </dd>
@@ -350,9 +350,9 @@ const ogParams = new URLSearchParams([
 
   /* Text element spacing */
   :global(
-      .rich-content.subgrid .feature .feature-content * + *,
-      .rich-content.subgrid .block * + *
-    ) {
+    .rich-content.subgrid .feature .feature-content * + *,
+    .rich-content.subgrid .block * + *
+  ) {
     margin-block-start: var(--text-spacing);
   }
 

@@ -11,7 +11,7 @@ const { title, summary, type, client, thumbnailImage } = project.data;
 ---
 
 <article class="project | flow">
-  <a href={`/work/${project.slug}`} class="image-hover-wrapper">
+  <a href={`/work/${project.id}`} class="image-hover-wrapper">
     <div class="overlay"><h2>{summary}</h2></div>
     <Image
       src={thumbnailImage.src}

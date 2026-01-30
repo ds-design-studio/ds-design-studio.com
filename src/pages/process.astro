@@ -8,7 +8,7 @@ import Icon from "@components/Icon.astro";
 import type { IconName } from "@components/Icon.astro";
 import { getCollection, getEntry } from "astro:content";
 
-const faqs = await getEntry("faqs", "processFaqs");
+const faqs = await getEntry("faqs", "process-faqs");
 const principles = await getCollection("principles");
 
 const title = "Process";

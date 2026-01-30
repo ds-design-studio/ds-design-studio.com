@@ -49,8 +49,8 @@ const { bgColor = "transparent", margin = true, padding = false } = Astro.props;
           format="webp"
           loading="eager"
         />
-        <h3 class="text-step-1">{principle1.data.title}</h3>
-        <p>{principle1.data.summary}</p>
+        <h3 class="text-step-1">{principle1?.data.title}</h3>
+        <p>{principle1?.data.summary}</p>
       </Card>
       <Card>
         <Image
@@ -61,8 +61,8 @@ const { bgColor = "transparent", margin = true, padding = false } = Astro.props;
           format="webp"
           loading="eager"
         />
-        <h3 class="text-step-1">{principle2.data.title}</h3>
-        <p>{principle2.data.summary}</p>
+        <h3 class="text-step-1">{principle2?.data.title}</h3>
+        <p>{principle2?.data.summary}</p>
       </Card>
       <Card>
         <Image
@@ -73,8 +73,8 @@ const { bgColor = "transparent", margin = true, padding = false } = Astro.props;
           format="webp"
           loading="eager"
         />
-        <h3 class="text-step-1">{principle3.data.title}</h3>
-        <p>{principle3.data.summary}</p>
+        <h3 class="text-step-1">{principle3?.data.title}</h3>
+        <p>{principle3?.data.summary}</p>
       </Card>
     </div>
     <div class="center-all">

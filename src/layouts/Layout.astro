@@ -1,6 +1,6 @@
 ---
-import "../styles/site.css";
-import { ViewTransitions } from "astro:transitions";
+import "@styles/site.css";
+import { ClientRouter } from "astro:transitions";
 import { SEO } from "astro-seo";
 import { getImage } from "astro:assets";
 import type { PageMetadata, Theme } from "../types";
@@ -105,28 +105,38 @@ const defaultOgImage = await getImage({
     <!-- Alpine Plugins -->
     <script
       defer
-      src="https://unpkg.com/@alpinejs/ui@3.13.7-beta.0/dist/cdn.min.js"
+      is:inline
+      src="https://unpkg.com/@alpinejs/ui@3.15.5/dist/cdn.min.js"></script>
+    <script
+      defer
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.15.5/dist/cdn.min.js"
     ></script>
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.13.7/dist/cdn.min.js"
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/anchor@3.15.5/dist/cdn.min.js"
     ></script>
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/@alpinejs/anchor@3.13.7/dist/cdn.min.js"
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.15.5/dist/cdn.min.js"
     ></script>
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.13.7/dist/cdn.min.js"
-    ></script>
-    <script defer src="https://unpkg.com/@alpinejs/focus@3.13.7/dist/cdn.min.js"
-    ></script>
+      is:inline
+      src="https://unpkg.com/@alpinejs/focus@3.15.5/dist/cdn.min.js"></script>
     <!-- Alpine Core -->
-    <script defer src="https://unpkg.com/alpinejs@3.13.7/dist/cdn.min.js"
-    ></script>
+    <script
+      defer
+      is:inline
+      src="https://unpkg.com/alpinejs@3.15.5/dist/cdn.min.js"></script>
     <!-- Fathom Analytics -->
-    <script src="https://cdn.usefathom.com/script.js" data-site="IIFOIXEE" defer
-    ></script>
+    <script
+      is:inline
+      src="https://cdn.usefathom.com/script.js"
+      data-site="IIFOIXEE"
+      defer></script>
     <style is:inline>
       @font-face {
         font-family: "Body Grotesque Fit";
@@ -168,7 +178,7 @@ const defaultOgImage = await getImage({
       }
     </style>
     <slot name="pageHead" />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <SiteHeader theme={headerTheme} />

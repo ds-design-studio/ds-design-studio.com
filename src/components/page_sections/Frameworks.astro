@@ -20,19 +20,24 @@ const statamic = await getEntry("tools", "statamic");
   </SectionHeader>
   <div class="grid-6 feature-span | content-wrapper" id="frameworks">
     <Card>
-      <Image src={astro.data.logo} alt="Astro logo" height={40} format="svg" />
-      <h3>{astro.data.title} Agency</h3>
-      <p set:html={astro.data.summary} />
+      <Image
+        src={astro?.data.logo!}
+        alt="Astro logo"
+        height={40}
+        format="svg"
+      />
+      <h3>{astro?.data.title} Agency</h3>
+      <p set:html={astro?.data.summary} />
     </Card>
     <Card>
       <Image
-        src={statamic.data.logo}
+        src={statamic?.data.logo!}
         alt="Statamic logo"
         height={40}
         format="svg"
       />
-      <h3>{statamic.data.title} Agency</h3>
-      <p set:html={statamic.data.summary} />
+      <h3>{statamic?.data.title} Agency</h3>
+      <p set:html={statamic?.data.summary} />
     </Card>
   </div>
   <Tools />

@@ -1,11 +1,11 @@
 import { ImageResponse } from "@vercel/og";
 // import type { APIRoute } from "astro";
 
-export const prerender = false;
+// export const prerender = false;
 
-export const config = {
-  runtime: "edge",
-};
+// export const config = {
+//   runtime: "edge",
+// };
 
 export async function GET({ request }: { request: Request }) {
   const defaultTitle = "DS Design Studio";

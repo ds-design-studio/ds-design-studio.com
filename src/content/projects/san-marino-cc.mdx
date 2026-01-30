@@ -43,7 +43,6 @@ import TextImageBlock from "../../components/mdx/TextImageBlock.astro";
 import TextCallout from "../../components/mdx/TextCallout.astro";
 import ImageBlock from "../../components/mdx/ImageBlock.astro";
 import Stats from "../../components/mdx/Stats.astro";
-
 import { Image } from "astro:assets";
 import image1 from "./smcc-body-1.jpg";
 import image2 from "./smcc-body-2.jpg";
@@ -70,16 +69,15 @@ import image6 from "./smcc-body-6.jpg";
 <TextImageBlock
   heading="Building a Fully Customized Content Management Experience"
   content={[
-    "Enter Sanity Studio, an open-source, headless content management system (CMS) designed for “composable” content creation. Through many content planning sessions with SMCC, we identified the crucial building blocks of content that were most important for the site—recurring groups like events, services, ministries, resources, and people—and developed custom re-usable schema types for each group.",
-    "Unlike a more traditional CMS such as WordPress, which forces all content to be conceived as pages or posts, these composable “atoms” of content gave us much greater freedom in structuring and reusing elements across the site.",
-    ,
+    `Enter Sanity Studio, an open-source, headless content management system (CMS) designed for “composable” content creation. Through many content planning sessions with SMCC, we identified the crucial building blocks of content that were most important for the site—recurring groups like events, services, ministries, resources, and people—and developed custom re-usable schema types for each group.`,
+    `Unlike a more traditional CMS such as WordPress, which forces all content to be conceived as pages or posts, these composable “atoms” of content gave us much greater freedom in structuring and reusing elements across the site.`,
   ]}
   image={image2}
   imageAlt="Web page design for church resource entries, featuring a dark blue and light blue color palette, bold typography, and a vibrant header image."
 />
 <TextImageBlock
   content={[
-    "Most importantly, the editing experience became much more approachable and productive for members of SMCC’s team. Sanity’s “headless” nature means that all of the custom content schemas live separately from the frontend of the site built in Astro. Editors no longer have to worry about breaking design elements on the site but can focus on content management through a beautiful, multi-player user interface finely tuned for their needs.",
+    `Most importantly, the editing experience became much more approachable and productive for members of SMCC’s team. Sanity’s “headless” nature means that all of the custom content schemas live separately from the frontend of the site built in Astro. Editors no longer have to worry about breaking design elements on the site but can focus on content management through a beautiful, multi-player user interface finely tuned for their needs.`,
   ]}
   image={image3}
   imageAlt="A screen from the Sanity Studio backend showing 'Resource Post' entries and editable fields associated with an individual post."
@@ -97,15 +95,15 @@ import image6 from "./smcc-body-6.jpg";
 <TextImageBlock
   heading="Making Static Feel Dynamic"
   content={[
-    "For the frontend of the site, I chose to utilize the Astro and Svelte frameworks to build an extremely fast, lightweight, performant, and interactive site. Astro was the perfect tool to generate a content-focused website containing over 100 pages and many more images, optimizing for speed, security, accessibility, and SEO at the same time.",
+    `For the frontend of the site, I chose to utilize the Astro and Svelte frameworks to build an extremely fast, lightweight, performant, and interactive site. Astro was the perfect tool to generate a content-focused website containing over 100 pages and many more images, optimizing for speed, security, accessibility, and SEO at the same time.`,
   ]}
   image={image1}
   imageAlt="Web page design for the page titled 'Giving', shown on a laptop screen."
 />
 <TextImageBlock
   content={[
-    "Astro pre-builds every page each time the site is deployed, ensuring a fast and SEO-friendly end-user experience. But this <a href='/services/frontend-development'>“static-first” approach</a> doesn’t mean a lack of dynamic features. Numerous interface components add elements of browser-based interactivity, enabling a more engaging user experience.",
-    "One notable example is the “Worship Live” page, which utilizes an interactive tab component to switch between multiple service types. Daily site builds ensure this page is always up to date with the latest services, and the tab component allows easy switching between them.",
+    `Astro pre-builds every page each time the site is deployed, ensuring a fast and SEO-friendly end-user experience. But this <a href='/services/frontend-development'>“static-first” approach</a> doesn’t mean a lack of dynamic features. Numerous interface components add elements of browser-based interactivity, enabling a more engaging user experience.`,
+    `One notable example is the “Worship Live” page, which utilizes an interactive tab component to switch between multiple service types. Daily site builds ensure this page is always up to date with the latest services, and the tab component allows easy switching between them.`,
   ]}
   image={image6}
   imageAlt="Web page design for 'Worship Live' section, with interactive tabs to switch between traditional or contemporary services for the current entry. The page also shows an archived index of many of weekly services."
