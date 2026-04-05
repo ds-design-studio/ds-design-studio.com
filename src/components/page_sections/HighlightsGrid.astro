@@ -1,0 +1,232 @@
+---
+import ButtonLink from "@components/ButtonLink.astro";
+import Card from "@components/Card.astro";
+import type { CollectionEntry } from "astro:content";
+import FrontendDevIllustration from "@components/page_sections/FrontendDevIllustration.astro";
+import Icon from "@components/Icon.astro";
+import type { IconName } from "@components/Icon.astro";
+import UXIllustration from "@components/illustrations/UXIllustration.astro";
+import WebDesignIllustration from "@components/illustrations/WebDesignIllustration.astro";
+import { getCollection } from "astro:content";
+
+// type Props = {
+//     entries: CollectionEntry<"services">[];
+// };
+
+// const { entries } = Astro.props;
+
+const highlights = await getCollection("highlights");
+---
+
+<div class="grid-6 feature-span">
+    {
+        highlights
+            .sort((a, b) => (a.data.order > b.data.order ? 1 : -1))
+            .map((entry, index) => {
+                let Illustration = undefined;
+                switch (entry.data.illustration) {
+                    case "fluid-design":
+                        Illustration = WebDesignIllustration;
+                        break;
+                    case "ux":
+                        Illustration = UXIllustration;
+                        break;
+                }
+
+                return (
+                    <Card id={entry.id}>
+                        {entry.data.icon && (
+                            <div class="icon-wrapper gradient">
+                                <Icon
+                                    color="currentColor"
+                                    name={entry.data.icon as IconName}
+                                    size="1em"
+                                />
+                            </div>
+                        )}
+                        <h3 class="text-step-1">{entry.data.title}</h3>
+                        <p>{entry.data.summary}</p>
+                        {entry.data.link && (
+                            <footer>
+                                <a
+                                    class="cluster"
+                                    href={entry.data.link.href}
+                                    style="--cluster-space: 0.5rem"
+                                >
+                                    <strong>{entry.data.link.text}</strong>
+                                    <Icon name="chevron-right" size="1em" />
+                                </a>
+                            </footer>
+                        )}
+                        {Illustration && <Illustration slot="after-content" />}
+                    </Card>
+                );
+            })
+    }
+    {
+        // entries.map((entry, index) => (
+        //     <Card>
+        //         <div class="icon-wrapper gradient">
+        //             <Icon
+        //                 color="currentColor"
+        //                 name={entry.data.icon as IconName}
+        //                 size="1em"
+        //             />
+        //         </div>
+        //         <h3 class="text-step-1">
+        //             <a class="color-underline" href={`/services/${entry.id}`}>
+        //                 {entry.data.preview.title}
+        //             </a>
+        //         </h3>
+        //         <p>{entry.data.preview.summary}</p>
+        //         <footer>
+        //             <a
+        //                 class="cluster"
+        //                 href={`/services/${entry.id}`}
+        //                 style="--cluster-space: 0.5rem"
+        //             >
+        //                 <strong>{entry.data.title} Services</strong>
+        //                 <Icon name="chevron-right" size="1em" />
+        //             </a>
+        //         </footer>
+        //         {/* {[0].includes(index) && <WebDesignIllustration slot="after-content" />} */}
+        //         {index === 0 && <WebDesignIllustration slot="after-content" />}
+        //         {index === 1 && (
+        //             <FrontendDevIllustration slot="after-content" />
+        //         )}
+        //         {/* {[0, 1].includes(index) && (
+        //   <img
+        //     slot="after-content"
+        //     class="after-content-image"
+        //     src={`/svg/${index === 0 ? "web-design-illustration" : "frontend-dev-illustration"}.svg`}
+        //     width="600"
+        //     alt=""
+        //     loading="eager"
+        //   />
+        // )} */}
+        //     </Card>
+        // ))
+    }
+    <!-- <Card theme="dark">
+        <div class="icon-wrapper gradient">
+            <Icon color="currentColor" name="envelope" size="1em" />
+        </div>
+        <h3 class="text-step-1">
+            <a class="color-underline" href={`/contact`}>Get in Touch</a>
+        </h3>
+        <p>
+            Whether you’re an organization, agency, or individual, reach out to
+            see how I can help level-up your online presence.
+        </p>
+        <ButtonLink href="/contact" theme="ghost">
+            <span>Get a Quote</span>
+            <Icon name="arrow-right" />
+        </ButtonLink>
+    </Card> -->
+</div>
+
+<script>
+    // @ts-ignore
+    import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+    import { Flip } from "gsap/Flip";
+    import { gsap } from "gsap";
+
+    document.addEventListener("astro:page-load", () => {
+        gsap.registerPlugin(Flip);
+        gsap.registerPlugin(DrawSVGPlugin);
+
+        /* USER EXPERIENCE */
+        const uxIllustration = document.querySelector(
+            "#optimal-user-experience .motion-illustration",
+        );
+
+        uxIllustration?.addEventListener("mouseenter", () => {
+            const tl = gsap.timeline();
+            const dot1 = uxIllustration?.querySelector(".dot.level-1");
+            const dot2 = uxIllustration?.querySelectorAll(".dot.level-2");
+            const dot3 = uxIllustration?.querySelectorAll(".dot.level-3");
+
+            tl.from(".motion-illustration .structure .path.main", {
+                duration: 1.5,
+                drawSVG: "50% 50%",
+            });
+            tl.from(
+                ".motion-illustration .structure .path.right",
+                {
+                    duration: 1,
+                    drawSVG: 0,
+                },
+                0.4,
+            );
+            tl.from(
+                ".motion-illustration .structure .path.left",
+                {
+                    duration: 1,
+                    drawSVG: "100% 100%",
+                },
+                0.4,
+            );
+            tl.from(
+                dot1,
+                {
+                    opacity: 0,
+                    duration: 0.4,
+                    scaleY: 1.1,
+                },
+                0,
+            );
+
+            dot2.forEach((dot) =>
+                tl.from(
+                    dot,
+                    {
+                        opacity: 0,
+                        duration: 0.4,
+                        scaleY: 1.1,
+                    },
+                    0.3,
+                ),
+            );
+
+            dot3.forEach((dot) =>
+                tl.from(dot, { opacity: 0, duration: 0.4, scaleY: 1.1 }, 0.6),
+            );
+        });
+
+        /* WEB DESIGN */
+        const webDesignIllustration = document.querySelector(
+            "#adaptable-design .motion-illustration",
+        );
+        const row = webDesignIllustration?.querySelector(".row.animate");
+        const screen = webDesignIllustration?.querySelector(".screen");
+        // const panes = webDesignIllustration?.querySelectorAll(".pane");
+
+        webDesignIllustration?.addEventListener("mouseenter", () => {
+            const state = Flip.getState(".pane, .screen");
+            // console.log(state);
+
+            screen?.classList.toggle("slim");
+            row?.classList.toggle("reorder");
+
+            Flip.from(state, {
+                absolute: true,
+                duration: 0.4,
+                ease: "power1.out",
+            });
+        });
+
+        webDesignIllustration?.addEventListener("mouseleave", () => {
+            const state = Flip.getState(".pane, .screen");
+            // console.log(state);
+
+            screen?.classList.toggle("slim");
+            row?.classList.toggle("reorder");
+
+            Flip.from(state, {
+                absolute: true,
+                duration: 0.3,
+                ease: "power1.out",
+            });
+        });
+    });
+</script>

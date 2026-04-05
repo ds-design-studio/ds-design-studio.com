@@ -1,105 +1,64 @@
 ---
 title: Writing Freedom Fellowship
 summary: Elevating the voices of system-impacted creative writers.
+order: 4
 client: Haymarket Books
 meta:
-  description: Web design and frontend development case study for Haymarket Books' Writing Freedom Fellowship project.
-  image:
-  imageAlt:
+    description: Web design and frontend development case study for Haymarket Books' Writing Freedom Fellowship project.
+    image:
+    imageAlt:
 featuredImage:
-  src: ./writing-freedom-feature-1.jpg
-  alt: "Writing Freedom Fellowship website home page: bold landing page in purple and pink color palette, with primary heading 'A literary fellowship for system-impacted writers'."
-thumbnailImage:
-  src: ./writing-freedom-body-3.jpg
-  alt: A laptop and mobile phone showing the Writing Freedom Fellowship website design on each of these screen sizes.
-galleryImages:
-  - src: ./writing-freedom-feature-1.jpg
+    src: ./writing-freedom-feature-1.jpg
     alt: "Writing Freedom Fellowship website home page: bold landing page in purple and pink color palette, with primary heading 'A literary fellowship for system-impacted writers'."
-  - src: ./writing-freedom-feature-2.jpg
-    alt: "'Call to Action' section design with heading 'About Haymarket Books', on a background of book covers published by Haymarket."
-  - src: ./writing-freedom-feature-3.jpg
-    alt: "'Our Mission' section design with quote text in a purple box and a graphic illustration of fists breaking chains."
-type: website
-services:
-  - web-design
-  - frontend-development
+thumbnailImage:
+    src: ./writing-freedom-body-3.jpg
+    alt: A laptop and mobile phone showing the Writing Freedom Fellowship website design on each of these screen sizes.
+galleryImages:
+    - src: ./writing-freedom-feature-1.jpg
+      alt: "Writing Freedom Fellowship website home page: bold landing page in purple and pink color palette, with primary heading 'A literary fellowship for system-impacted writers'."
+    - src: ./writing-freedom-feature-2.jpg
+      alt: "'Call to Action' section design with heading 'About Haymarket Books', on a background of book covers published by Haymarket."
+    - src: ./writing-freedom-feature-3.jpg
+      alt: "'Our Mission' section design with quote text in a purple box and a graphic illustration of fists breaking chains."
+type: nonprofit
 tools:
-  - figma
-  - astro
-  - sanity
-  - gsap
-scope:
-  - Responsive Web Design
-  - GSAP Animations
-  - Static/Jamstack Development
-  - Frontend Development
-  - Sanity CMS Integration
-url: https://writing-freedom.org
+    - astro
+    - sanity
+features:
+    - Prebuilt static pages
+    - Custom branded design
+    - Sanity CMS
+    - Scroll and click animations
+url: https://writing-freedom.org/
 ---
 
-import TextBlock from "../../components/mdx/TextBlock.astro";
-import TextImageBlock from "../../components/mdx/TextImageBlock.astro";
 import TextCallout from "../../components/mdx/TextCallout.astro";
-import ImageBlock from "../../components/mdx/ImageBlock.astro";
-import Stats from "../../components/mdx/Stats.astro";
-import { Image } from "astro:assets";
-import image1 from "./writing-freedom-body-1.jpg";
-import image2 from "./writing-freedom-body-2.jpg";
-import image3 from "./writing-freedom-body-3.jpg";
-import image4 from "./writing-freedom-body-4.jpg";
 
-<TextBlock
-  heading="Overview"
-  content={[
-    "Haymarket Books is a radical, independent publisher based in Chicago that features the work of socially- and politically-engaged writers such as Howard Zinn, Angela Y. Davis, and Keeanga-Yamahtta Taylor.",
-    "The Writing Freedom Fellowship is a new Haymarket initiative (in partnership with the Mellon Foundation and the Arts for Justice Fund) that highlights poets, fiction writers, and non-fiction writers impacted by carceral systems. I was honored to design and build the accompanying standalone website for this important program.",
-  ]}
-  centered
-/>
-{/* <Stats
-  items={[
-    { highlight: "100", description: "Avg. Lighthouse Score" },
-    { highlight: "30%", description: "Increase in Traffic" },
-    { highlight: "5", description: "Lorem ipsum dolor" },
-  ]}
-/> */}
-<TextImageBlock
-  heading="Centering the Fellows"
-  content={[
-    `The most important objective of this site was to showcase the 20 individuals awarded the fellowship each year. To encourage exploration of the fellows’ stories and facilitate sharing them across platforms, the site’s user navigation path was designed to end up on individual fellow pages, where users can read fellow biographies and hear audio clips of fellows reading from their works.`,
-    `A simple UI component, utilizing native operating system functionality, enables easy, platform-agnostic sharing.`,
-  ]}
-  image={image2}
-  imageAlt="Web page design for individual fellows, featuring a biography section and purple box with links and actions to share the page."
-/>
-<TextImageBlock
-  content={[
-    `On the content management backend in a fully customized Sanity Studio, organizing and editing fellow data is as easy as working with documents in a file system. Importantly, I developed flexible schemas that will help retain the same ease of management as the program continues to grow with more fellows each year.`,
-  ]}
-  image={image1}
-  imageAlt="A screen from the Sanity Studio backend showing editable fields for fellows, and which element on the frontend of the website these fields correspond to."
-  layout="flipped"
-/>
+## Overview
+
+[Haymarket Books](https://www.haymarketbooks.org/) is an independent publisher based in Chicago that features the work of socially- and politically-engaged writers such as Howard Zinn, Angela Y. Davis, and Keeanga-Yamahtta Taylor.
+
+The [Writing Freedom Fellowship](https://writing-freedom.org/) is a new Haymarket initiative (in partnership with the Mellon Foundation and the Arts for Justice Fund) that highlights poets, fiction writers, and non-fiction writers impacted by carceral systems. I was honored to design and build the accompanying standalone website for this important arts-based non-profit program.
+
+## Centering the Fellows
+
+The most important objective of this site is to showcase the 20 individuals awarded the fellowship each year. To encourage exploration of the fellows’ stories and facilitate sharing them across platforms, the site’s structure was designed to lead to individual pages for each fellow, where users can read biographies and hear audio clips of fellows reading from their works.
+
+![need alt](./writing-freedom-body-2.jpg)
+
+The site is fully editable with a customized [Sanity content management dashboard](https://www.sanity.io/). Reusable content schemas means site editors can easily add new fellows as the programs grows each year.
+
 <TextCallout
-  content="The live site not only makes it easy to discover and share fellow profiles, but it also delivers a seamless editing experience for site editors."
-  centered
+    content="The live site not only makes it easy to discover and share profiles of fellows, but it also delivers a seamless editing experience for site editors."
+    centered
 />
-<ImageBlock
-  image={image3}
-  imageAlt="A laptop and mobile phone showing the Writing Freedom Fellowship website design on each of these screen sizes."
-  span="full-width"
-/>
-<TextImageBlock
-  heading="Aligning Form & Function"
-  content={[
-    `With the art direction of the site, I sought to capture something of the vibrancy, depth, and hopefulness of the program’s activist and social justice influences. The bold Termina typeface lends a sense of significance and excitement to the message, while the pastel colors and winged imagery evoke the possibility of transformation.`,
-  ]}
-  image={image4}
-  imageAlt="Web page design for the page titled 'About the Program', shown on a laptop screen."
-/>
-<TextBlock
-  content={[
-    "The site was built with the Astro framework to deliver a minimal, lightweight end product, with just a dash of animation added in to make for a more pleasant user experience. Prioritizing simplicity means virtually no maintenance or time spent fixing plugins or bugs, just a focus on the site’s message itself.",
-  ]}
-  centered
-/>
+
+![need alt](./writing-freedom-body-1.jpg)
+
+## Aligning Form and Function
+
+With the custom design of the site, I sought to capture the vibrancy, depth, and hopefulness of the program’s activist and social justice influences. The bold [Termina typeface](https://fortfoundry.com/fonts/termina) lends a sense of significance and excitement to the message, while the pastel colors and winged imagery evoke the possibility of transformation.
+
+![need alt](./writing-freedom-body-3.jpg)
+
+The site was built with the [Astro framework](https://astro.build/) to deliver a minimal, lightweight end product, with just a dash of animation added in to make for a more pleasant user experience. Prioritizing simplicity means virtually no maintenance or time spent fixing plugins or bugs, just a focus on the site’s message itself.

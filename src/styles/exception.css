@@ -93,15 +93,20 @@
     }
 }
 
-/* Home page card service illustrations */
-.service-illustration {
+/* Home page card highlight/motion illustrations */
+.motion-illustration {
     position: relative;
+    aspect-ratio: 6/4;
 
     & > svg {
-        position: relative;
-        top: 12px;
-        width: 100%;
-        height: auto;
+        /* position: relative; */
+        /* top: 12px; */
+        /* width: 100%;
+        height: auto; */
+
+        /* &:has(.background-shapes) {
+            top: 12px;
+        } */
 
         & .background-shapes {
             transform-origin: center;

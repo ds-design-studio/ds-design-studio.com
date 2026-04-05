@@ -5,7 +5,7 @@ import { ClientRouter } from "astro:transitions";
 import { SEO } from "astro-seo";
 import SiteFooter from "@components/SiteFooter.astro";
 import SiteHeader from "@components/SiteHeader.astro";
-import fallbackOgImage from "@assets/isometric-laptop.png";
+import fallbackOgImage from "@assets/ds-design-studio-default-og.jpg";
 import { getImage } from "astro:assets";
 import site from "@data/site.json";
 
@@ -18,6 +18,8 @@ const { meta, headerTheme = "dark" } = Astro.props;
 
 const path = Astro.url.pathname;
 const canonicalUrl = new URL(path, Astro.site);
+
+// switch to just using default og image, don't use api service
 const defaultOgImage = await getImage({
     src: fallbackOgImage, //  meta?.openGraph?.image || fallbackOgImage, // include fallback source
     format: "jpeg",
@@ -44,9 +46,10 @@ const defaultOgImage = await getImage({
                         meta?.seo?.title ||
                         site.siteTitle,
                     type: "website",
-                    image:
-                        (meta?.openGraph?.image as string) ||
-                        defaultOgImage.src,
+                    image: defaultOgImage.src,
+                    // image:
+                    //     (meta?.openGraph?.image as string) ||
+                    //     defaultOgImage.src,
                     url: canonicalUrl,
                 },
                 image: {
@@ -65,20 +68,6 @@ const defaultOgImage = await getImage({
             title={meta?.seo?.title}
             titleDefault={site.siteTitle}
             titleTemplate={`%s • ${site.siteTitle}`}
-            twitter={{
-                card: "summary",
-                site: "@dothedan",
-                title:
-                    meta?.openGraph?.title ||
-                    meta?.seo?.title ||
-                    site.siteTitle,
-                image: (meta?.openGraph?.image as string) || defaultOgImage.src,
-                // imageAlt: ogImage.attributes.alt,
-                description:
-                    meta?.openGraph?.description ||
-                    meta?.seo?.description ||
-                    site.siteDescription,
-            }}
         />
         <link href="/sitemap-index.xml" rel="sitemap" />
         <link

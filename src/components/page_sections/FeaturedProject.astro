@@ -3,59 +3,72 @@ import ButtonLink from "@components/ButtonLink.astro";
 import type { CollectionEntry } from "astro:content";
 import Icon from "@components/Icon.astro";
 import { Image } from "astro:assets";
+import { WEBSITE_TYPES } from "@utils/websiteTypes";
 import bgImage from "@assets/shape-pattern-1.svg";
-// import { getEntry } from "astro:content";
-
-// const featuredProject = await getEntry("projects", "haymarket-writing-freedom");
 
 type Props = {
     project: CollectionEntry<"projects">;
-    serviceType?: string;
-    // | "Web Design"
-    // | "Frontend Development"
-    // | "Digital Design"
-    // | "Ongoing Support";
 };
 
-const { project, serviceType } = Astro.props;
-const { title, summary, featuredImage, scope } = project?.data;
+const { project } = Astro.props;
+
+const col1: string[] = [];
+const col2: string[] = [];
+const midpoint = Math.round(project.data.features.length / 2);
+
+for (let i = 0; i < project.data.features.length; i++) {
+    const item = project.data.features[i];
+    if (i <= midpoint - 1) {
+        col1.push(item);
+    } else {
+        col2.push(item);
+    }
+}
 ---
 
 <article class="featured | dark" id="featured-project">
     <div class="grid-9 | content-wrapper">
         <Image
-            alt={featuredImage.alt}
+            alt={project.data.featuredImage.alt}
             class="featured-img rounded-corners"
             format="webp"
             loading="lazy"
-            src={featuredImage.src}
+            src={project.data.featuredImage.src}
             width={1200}
         />
         <div class="text | flow">
             <header>
                 <div class="eyebrow | small-title text-gradient">
+                    {WEBSITE_TYPES[project.data.type]}
+                </div>
+                <h2>{project.data.client}</h2>
+            </header>
+            <!-- <p>{project.data.summary}</p> -->
+            <div class="icon-list">
+                <div class="col">
                     {
-                        serviceType
-                            ? `Featured ${serviceType} Project`
-                            : "Featured Project"
+                        col1.map((item) => (
+                            <p class="row">
+                                <Icon name="fa-circle-check" />
+                                <span>{item}</span>
+                            </p>
+                        ))
                     }
                 </div>
-                <h2>{title}</h2>
-            </header>
-            <p>{summary}</p>
-            <ul class="icon-list">
-                {
-                    scope.map((item: string) => (
-                        <li class="cluster">
-                            <Icon name="check-circle" />
-                            <span>{item}</span>
-                        </li>
-                    ))
-                }
-            </ul>
+                <div class="col">
+                    {
+                        col2.map((item) => (
+                            <p class="row">
+                                <Icon name="fa-circle-check" />
+                                <span>{item}</span>
+                            </p>
+                        ))
+                    }
+                </div>
+            </div>
             <ButtonLink href={`/work/${project?.id}`}>
-                <span>Go to Case Study</span>
-                <Icon name="arrow-right" />
+                <span>View Case Study</span>
+                <Icon name="fa-arrow-right" />
             </ButtonLink>
         </div>
     </div>
@@ -105,24 +118,29 @@ const { title, summary, featuredImage, scope } = project?.data;
         }
     }
 
-    ul {
-        columns: 2;
-
-        & > * + * {
-            margin-block-start: 0.75rem;
-        }
-
-        /* & .cluster {
-      --cluster-space: 0.5rem;
+    .small-title.eyebrow {
+        margin-block-end: var(--space-2xs);
     }
 
-    & svg {
-      position: relative;
-      top: -2px;
-      color: var(--color-primary-4);
-      width: 1em;
-      height: 1em;
-    } */
+    .icon-list {
+        margin-block-start: var(--space-2xs);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--space-s);
+    }
+
+    :global(.featured .icon-list svg) {
+        position: relative;
+        float: left;
+        margin-right: 0.5rem;
+        top: 3px;
+        color: var(--color-primary-4);
+        width: 1em;
+        height: 1em;
+    }
+
+    .col > * + * {
+        margin-block-start: 0.75rem;
     }
 
     .featured-img {
@@ -158,10 +176,6 @@ const { title, summary, featuredImage, scope } = project?.data;
         .grid-9 {
             row-gap: var(--space-l);
             column-gap: 0;
-        }
-
-        ul {
-            columns: 1;
         }
     }
 </style>

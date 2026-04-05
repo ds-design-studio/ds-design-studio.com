@@ -1,0 +1,145 @@
+---
+import Card from "@components/Card.astro";
+import Icon from "@components/Icon.astro";
+import type { IconName } from "@components/Icon.astro";
+import { Image } from "astro:assets";
+import InnerHero from "@components/page_sections/InnerHero.astro";
+import Layout from "@layouts/Layout.astro";
+import TechStack from "@components/page_sections/TechStack.astro";
+import TextImageBlock from "@components/TextImageBlock.astro";
+import WindowHighlightsIllustration from "@components/illustrations/WindowHighlightsIllustration.astro";
+import featuredImage1 from "@assets/isometric-desktop-2.png";
+import { getCollection } from "astro:content";
+import statamicLogo from "@content/tools/statamic-mark-lime.svg";
+
+const title = "Services";
+const tagline = `<span class="text-gradient">Engaging</span>, <span class="text-gradient">user-friendly</span> custom websites`;
+const taglinePlain = "Building engaging, user-friendly websites";
+
+const introTitle = "Website Design & Development";
+const introText = `I have an extensive background in both <strong>graphic design</strong>/<strong>web design</strong> and <strong>web development</strong>, which gives me the critical perspective needed to build <strong>efficient</strong>, <strong>successful</strong> websites that work <em>with</em> the modern web platform, not against it. Here are some of the features characteristic of all the sites I build, regardless of size or scale:`;
+
+const statamicTitle = "Statamic CMS Development";
+const statamicText = `<p><a href="https://statamic.com/vs/wordpress" rel="external">Statamic</a> is a next-generation <strong>content management system (CMS)</strong> that clients love using. It is beautifully designed, well-supported, and endlessly customizable, which is why I recommend it as a base website platform over outdated, limiting alternatives like <strong>WordPress</strong> or <strong>Webflow</strong>.</p><p>I supplement Statamic with a <strong>modern tech stack</strong>, which makes your site more resilient in a rapidly changing tech landscape.</p>`;
+const statamicHighlights = [
+    "Beautiful control panel for editors & admin",
+    "Lightweight, secure, and highly performant",
+    "No database overhead or plugin bloat",
+    "Product supported by a full-time team",
+    "Highly extensible through robust ecosystem",
+];
+
+const features = await getCollection("features", ({ data }) =>
+    data.categories.includes("webdev"),
+);
+---
+
+<Layout
+    meta={{
+        seo: {
+            title: "Services",
+            description:
+                "I have an extensive background in both graphic design/web design and web development, which gives me the critical perspective needed to build efficient, successful websites.",
+        },
+        openGraph: {
+            title: taglinePlain,
+        },
+    }}
+>
+    <main slot="content">
+        <InnerHero eyebrow={title} title={tagline} />
+        <div class="content-offset">
+            <div class="section-bg-gradient">
+                <div class="content-wrapper">
+                    <div class="intro">
+                        <TextImageBlock>
+                            <Fragment slot="image">
+                                <Image
+                                    alt={""}
+                                    format="webp"
+                                    loading="eager"
+                                    src={featuredImage1}
+                                    width={900}
+                                />
+                            </Fragment>
+                            <Fragment slot="text">
+                                <div class="flow">
+                                    <h2>{introTitle}</h2>
+                                    <p set:html={introText} />
+                                </div>
+                                {
+                                    /* <ButtonLink href="#">Get Quote</ButtonLink> */
+                                }
+                            </Fragment>
+                        </TextImageBlock>
+                    </div>
+                    <div class="features grid-6">
+                        {
+                            features
+                                .sort((a, b) =>
+                                    a.data.title < b.data.title ? -1 : 1,
+                                )
+                                .map((feature) => (
+                                    <Card>
+                                        <div class="icon-wrapper gradient">
+                                            <Icon
+                                                color="currentColor"
+                                                name={
+                                                    feature.data
+                                                        .icon as IconName
+                                                }
+                                                size="1em"
+                                            />
+                                        </div>
+                                        <h3 class="text-step-1">
+                                            {feature.data.title}
+                                        </h3>
+                                        <p set:html={feature.data.summary} />
+                                    </Card>
+                                ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tech-stack section-spacer">
+            <div class="content-wrapper">
+                <div class="grid-6 feature-span">
+                    <div class="flow">
+                        <Image
+                            alt="Statamic logo"
+                            format="svg"
+                            height={40}
+                            src={statamicLogo}
+                        />
+                        <h2 id="statamic">{statamicTitle}</h2>
+                        <Fragment set:html={statamicText} />
+                    </div>
+                    <div>
+                        <WindowHighlightsIllustration
+                            highlights={statamicHighlights}
+                            title="Statamic Highlights"
+                        />
+                    </div>
+                </div>
+                <TechStack />
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .intro {
+        margin-block-start: var(--space-xl);
+        margin-block-end: var(--space-3xl);
+    }
+
+    .tech-stack {
+        overflow-x: hidden;
+
+        & .grid-6 {
+            gap: var(--space-xl);
+            align-items: center;
+        }
+    }
+</style>

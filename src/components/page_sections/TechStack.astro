@@ -1,0 +1,101 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const tools = await getCollection("tools", ({ data }) =>
+    data.categories.includes("stack"),
+);
+---
+
+<div class="center-all">
+    <h3 class="small-title">Modern Tech Stack</h3>
+</div>
+<div class="logo-cloud | grid-6 centered">
+    {
+        tools
+            .sort((a, b) => {
+                if (a.data.order && b.data.order) {
+                    return a.data.order > b.data.order ? 1 : -1;
+                }
+                return a.data.title > b.data.title ? 1 : -1;
+            })
+            .filter((tool) => !tool.data.draft)
+            .map((tool) => (
+                <div class="logo-item flow">
+                    <Image
+                        alt={`${tool.data.title} logo`}
+                        format="svg"
+                        height={48}
+                        src={tool.data.logo}
+                        width={48}
+                    />
+                    {tool.data.link ? (
+                        <a class="title" href={tool.data.link} rel="external">
+                            {tool.data.title}
+                        </a>
+                    ) : (
+                        <span class="title">{tool.data.title}</span>
+                    )}
+                    {tool.data.summary && (
+                        <p class="summary">{tool.data.summary}</p>
+                    )}
+                </div>
+            ))
+    }
+</div>
+
+<style>
+    .logo-cloud {
+        margin-block-start: var(--space-l);
+        column-gap: var(--space-l);
+        row-gap: var(--space-xl);
+
+        & > div {
+            &:hover {
+                & img {
+                    transform: scale(1.15);
+                }
+            }
+        }
+    }
+
+    .logo-item {
+        --flow-space: 0.5rem;
+        align-items: center;
+
+        & img {
+            height: 3rem;
+            width: 3rem;
+            object-fit: contain;
+            transition: transform 0.3s linear;
+        }
+    }
+
+    .title {
+        font-family: var(--font-heading);
+    }
+
+    .summary {
+        font-size: 14px;
+    }
+
+    @container contentWrapper (max-width: 999px) {
+        .grid-6 {
+            & > * {
+                grid-column: span 2;
+            }
+        }
+    }
+
+    @container contentWrapper (max-width: 640px) {
+        .grid-6 {
+            & > * {
+                grid-column: span 3;
+            }
+        }
+
+        .small-title {
+            text-align: center;
+        }
+    }
+</style>

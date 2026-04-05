@@ -6,12 +6,13 @@ import CTA from "@components/page_sections/CTA.astro";
 import Icon from "@components/Icon.astro";
 import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
+import { WEBSITE_TYPES } from "@utils/websiteTypes";
 
 export async function getStaticPaths() {
     const projects = await getCollection("projects");
 
     const addReferences = projects.map(async (project) => {
-        const services = await getEntries(project.data.services);
+        const services = await getEntries(project.data.services || []);
         const tools = await getEntries(project.data.tools);
 
         return {
@@ -32,23 +33,12 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props;
-const {
-    title,
-    summary,
-    meta,
-    featuredImage,
-    galleryImages,
-    type,
-    services,
-    scope,
-    url,
-} = page.data;
 
 const { Content } = await render(page);
 
 const ogParams = new URLSearchParams([
-    ["title", title],
-    ["subtitle", meta.description as string],
+    ["title", page.data.title],
+    ["subtitle", page.data.meta.description as string],
 ]);
 ---
 
@@ -56,53 +46,46 @@ const ogParams = new URLSearchParams([
     headerTheme="normal"
     meta={{
         seo: {
-            title: title,
-            description: meta.description as string,
+            title: `${page.data.title} - ${WEBSITE_TYPES[page.data.type]} Case Study`,
+            description: page.data.meta.description as string,
         },
         openGraph: {
-            title: summary,
-            description: meta.description as string,
-            image: `/api/og?${ogParams.toString()}`,
+            title: page.data.summary,
+            description: page.data.meta.description as string,
         },
     }}
 >
     <main slot="content">
-        <article class="grid-9 content-wrapper section-spacer">
+        <article class="page-header | grid-9 content-wrapper section-spacer">
             <header class="hero">
                 <Breadcrumb
-                    current={title}
+                    current={WEBSITE_TYPES[page.data.type]}
                     parents={[{ name: "Work", slug: "work" }]}
                 />
-                <h1>{summary}</h1>
+                <h1>{page.data.title}</h1>
+                <p class="summary">{page.data.summary}</p>
                 {
-                    url && (
+                    page.data.url && (
                         <ButtonLink
                             classes={["mt-l", "animate-up-right"]}
-                            href={url}
+                            href={page.data.url}
+                            rel="external"
                             target="_blank"
                         >
-                            <span>Live Site</span>
-                            <Icon name="arrow-up-right" />
+                            <span>View Live Site</span>
+                            <Icon name="fa-arrow-up-right-from-square" />
                         </ButtonLink>
                     )
                 }
             </header>
             <dl>
-                <dt><strong>Services</strong></dt>
-                <dd class="services | cluster">
-                    {
-                        page.services.map((service) => (
-                            <a href={`/services/${service.id}`}>
-                                {service.data.title}
-                            </a>
-                        ))
-                    }
-                </dd>
-                <dt><strong>Scope</strong></dt>
+                <dt><strong>Client</strong></dt>
+                <dd>{page.data.client}</dd>
+                <dt><strong>Features</strong></dt>
                 <dd class="scope | cluster">
-                    {page.data.scope.join(", ")}
+                    {page.data.features.join(" / ")}
                 </dd>
-                <dt><strong>Tools</strong></dt>
+                <dt><strong>Tech Stack</strong></dt>
                 <dd class="tools | cluster">
                     {
                         page.tools.map((tool) => (
@@ -136,7 +119,7 @@ const ogParams = new URLSearchParams([
         </article>
         <div class="gallery">
             {
-                galleryImages?.map((image) => (
+                page.data.galleryImages?.map((image) => (
                     <Image
                         alt={image.alt}
                         format="webp"
@@ -148,21 +131,26 @@ const ogParams = new URLSearchParams([
                 ))
             }
         </div>
-        <div class="grid-9 content-wrapper">
-            <article class="rich-content | subgrid">
+        <div class="content-wrapper">
+            <article class="rich-content">
                 <Content />
             </article>
         </div>
-        <div class="center-all">
-            <ButtonLink
-                classes={["mt-l", "animate-up-right"]}
-                href={url}
-                target="_blank"
-            >
-                <span>View Live Site</span>
-                <Icon name="arrow-up-right" />
-            </ButtonLink>
-        </div>
+        {
+            page.data.url && (
+                <div class="end-cta center-all">
+                    <ButtonLink
+                        classes={["mt-l", "animate-up-right"]}
+                        href={page.data.url}
+                        rel="external"
+                        target="_blank"
+                    >
+                        <span>View Live Site</span>
+                        <Icon name="fa-arrow-up-right-from-square" />
+                    </ButtonLink>
+                </div>
+            )
+        }
         <CTA />
     </main>
 </Layout>
@@ -184,23 +172,35 @@ const ogParams = new URLSearchParams([
         margin-block-end: calc(var(--section-spacer) * 0.75);
     }
 
+    .page-header {
+        align-items: center;
+
+        & .summary {
+            font-size: var(--step-1);
+            margin-block-start: var(--space-s);
+            max-width: 85%;
+        }
+    }
+
     .hero {
         grid-column: main-start / main-end;
         padding-inline-end: var(--space-2xl);
 
         & + dl {
             display: grid;
-            grid-template-columns: subgrid;
+            grid-template-columns: 1fr 2fr;
             grid-column: sidebar-start / sidebar-end;
             font-size: var(--step--1);
             margin-block-start: calc(var(--space-xl) + 1rem);
+            row-gap: var(--space-m);
+            column-gap: var(--space-xs);
 
-            & :is(dt, dd):not(:first-of-type) {
+            /* & :is(dt, dd):not(:first-of-type) {
                 margin-block-start: var(--space-m);
-            }
+            } */
 
             & dd {
-                grid-column: span 2;
+                grid-column: 2/3;
 
                 &.cluster {
                     --cluster-align: flex-start;
@@ -226,12 +226,13 @@ const ogParams = new URLSearchParams([
 
     h1 {
         margin-block-start: var(--space-l);
+        max-width: 90%;
     }
 
     .gallery {
         position: relative;
         display: flex;
-        gap: var(--space-2xl);
+        gap: var(--space-l);
         justify-content: center;
         align-items: center;
         background: var(--color-dark-gradient);
@@ -270,13 +271,20 @@ const ogParams = new URLSearchParams([
         margin-block-end: var(--section-spacer);
     }
 
-    /* Rich content subgrid block elements */
-    .rich-content {
-        --block-spacing: var(--space-3xl);
-        --text-spacing: var(--space-m);
-        margin-block-end: var(--section-spacer);
+    .end-cta {
+        margin-block-start: var(--space-l);
     }
 
+    /* TODO: Replace subgrid, rethink rich content */
+    /* Rich content subgrid block elements */
+    .rich-content {
+        /* --block-spacing: var(--space-3xl); */
+        /* --text-spacing: var(--space-m); */
+        --rich-content-max-width: 44rem;
+        /* margin-block-end: var(--section-spacer); */
+    }
+
+    /* Subgrid deprecated */
     .rich-content.subgrid {
         display: grid;
         grid-template-columns: subgrid;

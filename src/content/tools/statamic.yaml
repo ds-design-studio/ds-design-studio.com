@@ -1,6 +1,0 @@
-title: Statamic
-summary: <a href="https://statamic.com/" target="_blank">Statamic</a> is an award-winning, open-source content management system built on top of the Laravel PHP framework. Its beautiful interface, ease of use, and large ecosystem makes it desirable for sites that require more <strong>dynamic content, frequent (daily/weekly) updates, authenticated member areas, or app-like functionality</strong>.
-logo: ./statamic-logo.svg
-order: 2
-link: https://statamic.com/
-draft: false

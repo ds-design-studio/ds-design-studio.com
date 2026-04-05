@@ -1,0 +1,240 @@
+---
+import { Image } from "astro:assets";
+import bgGradient from "@assets/blob-bg-2-grain.png";
+
+interface Props {
+    title: string;
+    highlights: string[];
+    theme?: "primary" | "dark";
+}
+
+const { title, highlights, theme = "primary" } = Astro.props;
+---
+
+<div class="illustration" data-theme={theme}>
+    <div class="window-wrapper">
+        <div class="window">
+            <div class="header-bar">
+                <div class="cluster">
+                    <div class="circles">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span class="small-title">{title}</span>
+                </div>
+                <svg
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        clip-rule="evenodd"
+                        d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z"
+                        fill-rule="evenodd"></path>
+                </svg>
+            </div>
+            <ul class="icon-list flow">
+                {
+                    highlights.map((item) => (
+                        <li>
+                            <svg
+                                aria-hidden="true"
+                                fill="currentColor"
+                                viewBox="0 0 640 640"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576zM404.5 215L285.1 379.2L216 310.1L182.1 344L271 432.9L290.8 452.8L307.3 430.1L443.2 243.2L457.3 223.8L418.5 195.5L404.4 214.9z" />
+                            </svg>
+                            <span set:html={item} />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="illustration-bg">
+        <div class="grid-lines">
+            <div class="vert"></div>
+            <div class="vert"></div>
+            <div class="vert"></div>
+            <div class="vert"></div>
+            <div class="horiz"></div>
+            <div class="horiz"></div>
+            <div class="horiz"></div>
+            <div class="horiz"></div>
+        </div>
+        <Image alt="" format="webp" src={bgGradient} width={900} />
+    </div>
+</div>
+
+<style>
+    .illustration {
+        position: relative;
+
+        &[data-theme="dark"] {
+            --header-bar-bg: var(--color-neutral-8);
+        }
+    }
+
+    .window-wrapper {
+        position: relative;
+        z-index: 2;
+        padding: var(--space-l);
+    }
+
+    ul {
+        & li {
+            display: inline;
+
+            & svg {
+                top: 2px;
+                margin-right: 0.25rem;
+            }
+        }
+    }
+
+    .window {
+        position: relative;
+        width: 100%;
+        /* background-color: #ffffffb3; */
+        backdrop-filter: blur(6px);
+        border: 1px solid var(--color-primary-2);
+        padding-top: var(--space-2xl);
+        padding-bottom: var(--space-l);
+        padding-inline: var(--space-l);
+        border-radius: var(--rounded-corners);
+        box-shadow:
+            0 0 39px -32px #000,
+            0 0 16px -10px #de005180;
+    }
+
+    .header-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.65rem 1.25rem 0.5rem;
+        background: var(
+            --header-bar-bg,
+            linear-gradient(
+                to right,
+                var(--color-primary-4),
+                var(--color-primary-5)
+            )
+        );
+        border-radius: var(--rounded-corners) var(--rounded-corners) 0 0;
+        color: var(--color-primary-1);
+
+        & .cluster {
+            --cluster-space: var(--space-xs);
+        }
+
+        & .circles {
+            position: relative;
+            top: -1px;
+            display: flex;
+            gap: 6px;
+
+            & span {
+                display: block;
+                height: 10px;
+                width: 10px;
+                border-radius: 50%;
+                background-color: var(--color-primary-2);
+            }
+        }
+
+        & svg {
+            position: relative;
+            top: -1px;
+            height: 1.25em;
+        }
+    }
+
+    /* Panels BG Illustration */
+    .grid-lines {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        opacity: 0.3;
+        z-index: -1;
+
+        & > * {
+            position: absolute;
+            background-color: var(--color-primary-4);
+        }
+
+        & .vert {
+            width: 1px;
+            height: 125%;
+            mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 50%,
+                transparent 100%
+            );
+
+            &:nth-child(1) {
+                left: 20%;
+            }
+
+            &:nth-child(2) {
+                left: 40%;
+            }
+
+            &:nth-child(3) {
+                left: 60%;
+            }
+
+            &:nth-child(4) {
+                left: 80%;
+            }
+        }
+
+        & .horiz {
+            width: 120%;
+            height: 1px;
+            mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                black 50%,
+                transparent 100%
+            );
+
+            &:nth-child(5) {
+                top: 12%;
+            }
+
+            &:nth-child(6) {
+                top: 37%;
+            }
+
+            &:nth-child(7) {
+                top: 62%;
+            }
+
+            &:nth-child(8) {
+                top: 88%;
+            }
+        }
+    }
+
+    .illustration-bg {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        opacity: 1;
+
+        & img {
+            opacity: 0.2;
+        }
+    }
+</style>

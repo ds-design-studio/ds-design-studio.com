@@ -1,9 +1,9 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Icon from "@components/Icon.astro";
 import ButtonLink from "@components/ButtonLink.astro";
-import InnerHero from "@components/page_sections/InnerHero.astro";
+import Icon from "@components/Icon.astro";
 import { Image } from "astro:assets";
+import InnerHero from "@components/page_sections/InnerHero.astro";
+import Layout from "@layouts/Layout.astro";
 import illustration from "@assets/isometric-desktop-2.png";
 import site from "@data/site.json";
 
@@ -51,9 +51,6 @@ const ogParams = new URLSearchParams([
             title: title,
             description: description,
         },
-        openGraph: {
-            image: `/api/og?${ogParams.toString()}`,
-        },
     }}
 >
     <main slot="content">
@@ -63,11 +60,11 @@ const ogParams = new URLSearchParams([
                 <article class="form-wrapper | grid-9">
                     <div class="text | flow">
                         <Image
+                            alt=""
                             class="illustration"
+                            loading="eager"
                             src={illustration}
                             width={300}
-                            alt=""
-                            loading="eager"
                         />
                         <h2>Project Inquiry</h2>
                         <p>
@@ -82,82 +79,38 @@ const ogParams = new URLSearchParams([
                         </p>
                     </div>
                     <form
-                        id="project-inquiry"
                         action="https://formspree.io/f/xpwaaane"
+                        id="project-inquiry"
                         method="POST"
                     >
                         <div class="form-item | col-3">
                             <label for="name">Your Name</label>
                             <input
-                                type="text"
-                                name="name"
-                                id="name"
                                 autocomplete="name"
+                                id="name"
+                                name="name"
                                 required
+                                type="text"
                             />
                         </div>
                         <div class="form-item | col-3">
                             <label for="org">Your Organization (Optional)</label
                             >
-                            <input type="text" name="org" id="org" />
+                            <input id="org" name="org" type="text" />
                         </div>
                         <div class="form-item | col-4">
                             <label for="email">Your Email</label>
                             <input
-                                type="email"
-                                name="email"
-                                id="email"
                                 autocomplete="email"
+                                id="email"
+                                name="email"
                                 required
+                                type="email"
                             />
                         </div>
-                        <fieldset class="form-item checkbox-group | col-4">
-                            <legend
-                                ><strong>Select any number of services:</strong
-                                ></legend
-                            >
-                            <div>
-                                <label for="services-website">Website</label>
-                                <input
-                                    type="checkbox"
-                                    name="services-website"
-                                    id="services-website"
-                                    checked
-                                />
-                            </div>
-                            <div>
-                                <label for="services-cms"
-                                    >Content Management System</label
-                                >
-                                <input
-                                    type="checkbox"
-                                    name="services-cms"
-                                    id="services-cms"
-                                />
-                            </div>
-                            <div>
-                                <label for="services-ongoing-support"
-                                    >Web Support Plan</label
-                                >
-                                <input
-                                    type="checkbox"
-                                    name="services-ongoing-support"
-                                    id="services-ongoing-support"
-                                />
-                            </div>
-                            <div>
-                                <label for="services-design">Other Design</label
-                                >
-                                <input
-                                    type="checkbox"
-                                    name="services-design"
-                                    id="services-design"
-                                />
-                            </div>
-                        </fieldset>
                         <div class="form-item | col-3">
                             <label for="budget">Budget</label>
-                            <select name="budget" id="budget" required>
+                            <select id="budget" name="budget" required>
                                 {
                                     pricing.map((item) => (
                                         <option
@@ -175,44 +128,48 @@ const ogParams = new URLSearchParams([
                         <div class="form-item | col-6">
                             <label for="message">Message</label>
                             <textarea
-                                name="message"
                                 id="message"
-                                rows="6"
+                                name="message"
                                 placeholder="Please provide some additional context about your project."
-                                required></textarea>
+                                required
+                                rows="6"></textarea>
                         </div>
                         <ButtonLink type="submit">
                             <span class="button-text">Submit</span>
-                            <img class="loading-spinner" src="/svg/oval.svg" />
+                            <img
+                                alt=""
+                                class="loading-spinner"
+                                src="/svg/oval.svg"
+                            />
                         </ButtonLink>
                         <p class="form-status | cluster">
                             <svg
+                                aria-hidden="true"
                                 class="success-icon"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
                                 fill="currentColor"
                                 height="1em"
+                                viewBox="0 0 24 24"
                                 width="1em"
-                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
                             >
                                 <path
-                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
                                     d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                    clip-rule="evenodd"></path>
+                                    fill-rule="evenodd"></path>
                             </svg>
                             <svg
+                                aria-hidden="true"
                                 class="error-icon"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
                                 fill="currentColor"
                                 height="1em"
+                                viewBox="0 0 24 24"
                                 width="1em"
-                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
                             >
                                 <path
-                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
                                     d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                                    clip-rule="evenodd"></path>
+                                    fill-rule="evenodd"></path>
                             </svg>
                             <span class="message"></span>
                         </p>

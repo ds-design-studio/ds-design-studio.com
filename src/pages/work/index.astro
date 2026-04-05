@@ -4,7 +4,7 @@ import Layout from "@layouts/Layout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import { getCollection } from "astro:content";
 
-const projects = await getCollection("projects");
+const projects = await getCollection("projects", ({ data }) => !data.draft);
 
 const title = "Selected Work";
 const description =
@@ -26,7 +26,6 @@ const ogParams = new URLSearchParams([
         openGraph: {
             title: "Selected Web Design Work by Daniel Saunders",
             description: description,
-            image: `/api/og?${ogParams.toString()}`,
         },
     }}
 >
@@ -37,11 +36,13 @@ const ogParams = new URLSearchParams([
         </article>
         <div class="grid-6 | content-wrapper" id="projects">
             {
-                projects.map((project) => (
-                    <div>
-                        <ProjectCard project={project} />
-                    </div>
-                ))
+                projects
+                    .sort((a, b) => (a.data.order > b.data.order ? 1 : -1))
+                    .map((project) => (
+                        <div>
+                            <ProjectCard project={project} />
+                        </div>
+                    ))
             }
         </div>
         <CTA />
@@ -63,16 +64,17 @@ const ogParams = new URLSearchParams([
     }
 
     .grid-6 {
-        gap: var(--space-2xl);
+        column-gap: var(--space-l);
+        row-gap: var(--space-xl);
         margin-block-end: var(--section-spacer);
 
         & > * {
             grid-column: span 3;
         }
 
-        & > :nth-child(even) {
+        /* & > :nth-child(even) {
             margin-block-start: var(--space-2xl);
-        }
+        } */
     }
 
     @media (max-width: 768px) {

@@ -11,18 +11,24 @@ type Props = {
             slug: string;
         }[];
     };
+    eyebrow?: string;
 };
 
-const { title, intro, breadcrumbs } = Astro.props;
+const { title, intro, breadcrumbs, eyebrow } = Astro.props;
 ---
 
 <article class="hero | dark">
     <div class="grid-9 | content-wrapper background-lines">
         <header class="text | flow">
-            <Breadcrumb
-                current={breadcrumbs?.current}
-                parents={breadcrumbs?.parents}
-            />
+            {
+                breadcrumbs && (
+                    <Breadcrumb
+                        current={breadcrumbs?.current}
+                        parents={breadcrumbs?.parents}
+                    />
+                )
+            }
+            {eyebrow && <div class="small-title eyebrow">{eyebrow}</div>}
             <h1 set:html={title} />
             {intro && <p>{intro}</p>}
         </header>
@@ -40,6 +46,11 @@ const { title, intro, breadcrumbs } = Astro.props;
         padding-block-end: 8rem;
         background: var(--color-dark-gradient);
         overflow: hidden;
+    }
+
+    .small-title.eyebrow {
+        color: white;
+        margin-block-end: -0.5rem;
     }
 
     .text {

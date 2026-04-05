@@ -3,20 +3,20 @@ title: Web Design
 tagline: Designing for the <span class="text-gradient">fluidity</span> of the web
 taglinePlain: Designing for the fluidity of the web
 preview:
-  title: Adaptable Web Design
-  summary: My approach to web design focuses on designing for the medium, which means embracing the fluidity of the web and its unlimited viewport sizes.
+    title: Adaptable Web Design
+    summary: My approach to web design focuses on designing for the medium, which means embracing the fluidity of the web and its unlimited viewport sizes.
 featuredImage:
-  src: ../../assets/isometric-desktop-2.png
-  alt: ""
+    src: ../../assets/isometric-desktop-2.png
+    alt: ""
 icon: layout
 order: 1
 features:
-  - solid-principles
-  - adaptable-design
-  - flexible-typography
-  - beautiful-ui
-  - friendly-ux
-  - unique-look-and-feel
+    - solid-principles
+    - adaptable-design
+    - flexible-typography
+    - beautiful-ui
+    - friendly-ux
+    - unique-look-and-feel
 prologue: My approach to web design focuses on designing <em>for</em> the medium, which means embracing the fluidity of the web and its unlimited viewport sizes. It also means leveraging time-honored design principles, typographic best practices, and smart UI/UX decisions to deliver a seamless and enjoyable user experience.
 featuredProject: haymarket-writing-freedom
 showContent: true

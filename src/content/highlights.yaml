@@ -1,0 +1,27 @@
+- id: optimal-user-experience
+  title: Optimal User Experience
+  summary: "I understand your users’ needs and how a well-organized, logical site structure can make your content more effective and easily navigable."
+  icon: fa-arrow-progress
+  order: 1
+  illustration: ux
+- id: adaptable-design
+  title: Smart & Adaptable Design
+  summary: "My approach to web design embraces the inherent fluidity of the web, using intelligent patterns to make your site look good on any screen size."
+  icon: fa-objects-column
+  order: 2
+  illustration: fluid-design
+- id: simple-editing
+  title: Simple Editing
+  summary: "Easily add to and extend your site’s pages with a built-in page builder and content management system (CMS)."
+  icon: fa-display-code
+  order: 3
+- id: best-practices
+  title: Web Best Practices
+  summary: "I follow modern best practices for accessibility, SEO, and performance, making your site searchable and usable by all."
+  icon: fa-browsers
+  order: 4
+- id: dedicated-support
+  title: Dedicated Support
+  summary: "I offer ongoing support for web hosting and maintenance, so your site remains secure and reachable by your users."
+  icon: fa-comments-question
+  order: 5

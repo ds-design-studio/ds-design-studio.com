@@ -1,31 +1,31 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
+import { WEBSITE_TYPES } from "@utils/websiteTypes";
 
 type Props = {
     project: CollectionEntry<"projects">;
 };
 
 const { project } = Astro.props;
-const { title, summary, type, client, thumbnailImage } = project.data;
 ---
 
 <article class="project | flow">
     <a class="image-hover-wrapper" href={`/work/${project.id}`}>
-        <div class="overlay"><h2>{summary}</h2></div>
+        <div class="overlay"><h2>{project.data.summary}</h2></div>
         <Image
-            alt={thumbnailImage.alt}
+            alt={project.data.thumbnailImage.alt}
             format="webp"
             loading="eager"
-            src={thumbnailImage.src}
+            src={project.data.thumbnailImage.src}
             width={1200}
         />
     </a>
     <div class="text | flow">
         <p class="details | cluster">
-            <span class="small-title">{client}</span><span class="divider"
-                >•</span
-            ><span>{title}</span>
+            <span class="small-title">{project.data.client}</span><span
+                class="divider">•</span
+            ><span>{WEBSITE_TYPES[project.data.type]}</span>
         </p>
     </div>
 </article>

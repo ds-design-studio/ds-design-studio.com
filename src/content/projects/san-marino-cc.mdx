@@ -1,111 +1,63 @@
 ---
-title: Church Content Website
-summary: Expanding the image and online capabilities of a large and growing church.
+title: San Marino Community Church
+summary: Expanding the online capabilities of a large and growing church.
+order: 6
 client: San Marino Community Church
 meta:
-  description: Web design and frontend development case study for San Marino Community Church.
-  image:
-  imageAlt:
+    description: Web design and frontend development case study for San Marino Community Church.
+    image:
+    imageAlt:
 featuredImage:
-  src: ./smcc-feature-1.jpg
-  alt: "SMCC site header design: A full-width fly-out navigation menu with columns titled 'Welcome', 'Worship', 'Connect', 'Who We Are', and 'Resources' in a dark blue and light blue color palette."
-thumbnailImage:
-  src: ./smcc-body-5.jpg
-  alt: A laptop and mobile phone showing the San Marino Community Church website design on each of these screen sizes.
-galleryImages:
-  - src: ./smcc-feature-1.jpg
+    src: ./smcc-feature-1.jpg
     alt: "SMCC site header design: A full-width fly-out navigation menu with columns titled 'Welcome', 'Worship', 'Connect', 'Who We Are', and 'Resources' in a dark blue and light blue color palette."
-  - src: ./smcc-feature-3.jpg
-    alt: "'Resources' section design with various categories on a dark blue background and resource card links featuring vibrant images below."
-  - src: ./smcc-feature-2.jpg
-    alt: "'Upcoming Events' section design with event card links grouped by month."
-type: website
+thumbnailImage:
+    src: ./smcc-body-5.jpg
+    alt: A laptop and mobile phone showing the San Marino Community Church website design on each of these screen sizes.
+galleryImages:
+    - src: ./smcc-feature-1.jpg
+      alt: "SMCC site header design: A full-width fly-out navigation menu with columns titled 'Welcome', 'Worship', 'Connect', 'Who We Are', and 'Resources' in a dark blue and light blue color palette."
+    - src: ./smcc-feature-3.jpg
+      alt: "'Resources' section design with various categories on a dark blue background and resource card links featuring vibrant images below."
+    - src: ./smcc-feature-2.jpg
+      alt: "'Upcoming Events' section design with event card links grouped by month."
+type: faith
 services:
-  - web-design
-  - frontend-development
+    - web-design
+    - frontend-development
 tools:
-  - figma
-  - astro
-  - sanity
-  - svelte
-scope:
-  - Responsive Web Design
-  - Content Strategy
-  - Static/Jamstack Development
-  - Frontend Development
-  - Calendar & Donation Integrations
-  - Sanity CMS Integration
-url: https://sanmarinocommunitychurch.com
+    - astro
+    - sanity
+    - vue
+features:
+    - Prebuilt static pages
+    - Sanity CMS
+    - Calendar & donation integrations
+url: https://sanmarinocommunitychurch.com/
 ---
 
-import TextBlock from "../../components/mdx/TextBlock.astro";
-import TextImageBlock from "../../components/mdx/TextImageBlock.astro";
 import TextCallout from "../../components/mdx/TextCallout.astro";
-import ImageBlock from "../../components/mdx/ImageBlock.astro";
-import Stats from "../../components/mdx/Stats.astro";
-import { Image } from "astro:assets";
-import image1 from "./smcc-body-1.jpg";
-import image2 from "./smcc-body-2.jpg";
-import image3 from "./smcc-body-3.jpg";
-import image4 from "./smcc-body-4.jpg";
-import image5 from "./smcc-body-5.jpg";
-import image6 from "./smcc-body-6.jpg";
 
-<TextBlock
-  heading="Overview"
-  content={[
-    "San Marino Community Church (SMCC) is a large, multi-generational church with many programs and events happening every week. When they reached out to me for a website redesign, they felt that their then-current platform—a template-based website builder tied to a private, proprietary backend owned by a large company—did not meet their needs for custom content management or meaningful design.",
-    "I took on this project not just to refresh the visual design of the website, but to help SMCC deeply rethink how the site’s content itself could be restructured to fit the needs of this growing community.",
-  ]}
-  centered
-/>
-<Stats
-  items={[
-    { highlight: "200+", description: "Total Number of Pages" },
-    { highlight: "7", description: "Custom Content Schemas" },
-    { highlight: "99%", description: "Average Lighthouse Score (Desktop)" },
-  ]}
-/>
-<TextImageBlock
-  heading="Building a Fully Customized Content Management Experience"
-  content={[
-    `Enter Sanity Studio, an open-source, headless content management system (CMS) designed for “composable” content creation. Through many content planning sessions with SMCC, we identified the crucial building blocks of content that were most important for the site—recurring groups like events, services, ministries, resources, and people—and developed custom re-usable schema types for each group.`,
-    `Unlike a more traditional CMS such as WordPress, which forces all content to be conceived as pages or posts, these composable “atoms” of content gave us much greater freedom in structuring and reusing elements across the site.`,
-  ]}
-  image={image2}
-  imageAlt="Web page design for church resource entries, featuring a dark blue and light blue color palette, bold typography, and a vibrant header image."
-/>
-<TextImageBlock
-  content={[
-    `Most importantly, the editing experience became much more approachable and productive for members of SMCC’s team. Sanity’s “headless” nature means that all of the custom content schemas live separately from the frontend of the site built in Astro. Editors no longer have to worry about breaking design elements on the site but can focus on content management through a beautiful, multi-player user interface finely tuned for their needs.`,
-  ]}
-  image={image3}
-  imageAlt="A screen from the Sanity Studio backend showing 'Resource Post' entries and editable fields associated with an individual post."
-  layout="flipped"
-/>
+## Overview
+
+[San Marino Community Church](https://sanmarinocommunitychurch.com/) (SMCC) is a large, multi-generational church with many programs and events happening every week. When they reached out to me for a website redesign, they felt that their then-current platform—a confusing proprietary platform managed by a large, faceless company—did not meet their needs for custom content management or meaningful design.
+
+I took on this project not just to refresh the visual design of the website, but to help SMCC deeply rethink how the site’s content itself could be restructured to fit the needs of this growing community.
+
+![need alt](./smcc-body-5.jpg)
+
+## A Fully Customized Content Management Experience
+
+In working with SMCC, we identified the crucial building blocks of content that were most important for the site—recurring types like events, services, ministries, resources, and people—and developed custom, reusable content templates for each group. Within a [Sanity content management dashboard](https://www.sanity.io/), site editors can easily update and add new content items, which allows the site to grow over time.
+
+![need alt](./smcc-body-3.jpg)
+
+Unlike a more traditional content management system such as WordPress, which forces all content to be conceived as either _pages_ or _posts_, these reusable “atoms” of content gave us much greater freedom in structuring and reusing elements across the site.
+
+The result is a dynamic site of more than 200 pages, which features a broad range of content types that are editable from a single source. The site is easily traversed through a main super-menu, as well as numerous contextual submenus and sidebar links.
+
 <TextCallout
-  content="In the end, we solved one of SMCC’s major pain points by moving from a rigid, expensive backend system to a flexible, extensible, open-source, and low-cost alternative."
-  centered
+    content="We ultimately solved one of SMCC’s major pain points by moving from a rigid, expensive backend system to a flexible, extensible, and low-cost alternative."
+    centered
 />
-<ImageBlock
-  image={image5}
-  imageAlt="A laptop and mobile phone showing the San Marino Community Church website design on each of these screen sizes."
-  span="full-width"
-/>
-<TextImageBlock
-  heading="Making Static Feel Dynamic"
-  content={[
-    `For the frontend of the site, I chose to utilize the Astro and Svelte frameworks to build an extremely fast, lightweight, performant, and interactive site. Astro was the perfect tool to generate a content-focused website containing over 100 pages and many more images, optimizing for speed, security, accessibility, and SEO at the same time.`,
-  ]}
-  image={image1}
-  imageAlt="Web page design for the page titled 'Giving', shown on a laptop screen."
-/>
-<TextImageBlock
-  content={[
-    `Astro pre-builds every page each time the site is deployed, ensuring a fast and SEO-friendly end-user experience. But this <a href='/services/frontend-development'>“static-first” approach</a> doesn’t mean a lack of dynamic features. Numerous interface components add elements of browser-based interactivity, enabling a more engaging user experience.`,
-    `One notable example is the “Worship Live” page, which utilizes an interactive tab component to switch between multiple service types. Daily site builds ensure this page is always up to date with the latest services, and the tab component allows easy switching between them.`,
-  ]}
-  image={image6}
-  imageAlt="Web page design for 'Worship Live' section, with interactive tabs to switch between traditional or contemporary services for the current entry. The page also shows an archived index of many of weekly services."
-  layout="flipped"
-/>
+
+![need alt](./smcc-body-1.jpg)

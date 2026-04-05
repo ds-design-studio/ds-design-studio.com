@@ -3,10 +3,9 @@ import Icon from "@components/Icon.astro";
 import { Image } from "astro:assets";
 // import Testimonial from "@components/Testimonial.astro";
 import { getCollection } from "astro:content";
+import headshot from "@assets/ds-pro-avatar.jpg";
 
 const testimonials = await getCollection("testimonials");
-
-import headshot from "@assets/ds-pro-avatar.jpg";
 ---
 
 <div class="content-wrapper" id="testimonials">
@@ -25,7 +24,7 @@ import headshot from "@assets/ds-pro-avatar.jpg";
                 <header class="cluster">
                     <div class="headshot">
                         <Image
-                            alt="My headshot: a white man with short hair, glasses, and a friendly smile."
+                            alt="My headshot: a man with short hair, glasses, and a friendly smile."
                             format="webp"
                             loading="lazy"
                             src={headshot}

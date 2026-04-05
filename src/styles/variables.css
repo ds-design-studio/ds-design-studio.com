@@ -62,7 +62,7 @@
     --color-text-link-line-hover: var(--color-primary-5);
 
     /* Text against dark background */
-    --color-text-body-dark: var(--color-neutral-3);
+    --color-text-body-dark: var(--color-neutral-2);
     --color-text-heading-dark: var(--color-neutral-1);
     --color-text-link-dark: inherit;
     --color-text-link-hover-dark: var(--color-primary-3);
@@ -85,6 +85,7 @@
     --step--2: clamp(0.64rem, calc(0.61rem + 0.16vw), 0.72rem);
     --step--1: clamp(0.8rem, calc(0.76rem + 0.2vw), 0.9rem);
     --step-0: clamp(1rem, calc(0.95rem + 0.24vw), 1.13rem);
+    --step-0_5: clamp(1.125rem, calc(1.07rem + 0.27vw), 1.27rem);
     --step-1: clamp(1.25rem, calc(1.19rem + 0.3vw), 1.41rem);
     --step-2: clamp(1.56rem, calc(1.49rem + 0.38vw), 1.76rem);
     --step-3: clamp(1.95rem, calc(1.86rem + 0.48vw), 2.2rem);

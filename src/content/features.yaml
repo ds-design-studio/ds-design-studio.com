@@ -1,0 +1,45 @@
+- id: accessibility
+  title: Accessibility
+  summary: Compliance with <a href="https://www.w3.org/WAI/standards-guidelines/wcag/glance/" rel="external">WCAG 2</a> accessibility guidelines, ensuring your site is usable by all people.
+  icon: fa-universal-access
+  categories: [webdev, design]
+- id: clean-design
+  title: Clean Design
+  summary: An engaging, elegant look and feel drawing on timeless design principles to showcase your brand.
+  icon: fa-swatchbook
+  categories: [webdev, design]
+- id: modern-architecture
+  title: Modern Architecture
+  summary: A leaner, faster, more performant site using the best next-generation tools of the web.
+  icon: fa-browsers
+  categories: [webdev]
+- id: healthy-vitals
+  title: Healthy Vitals
+  summary: Implementation of <a href="https://web.dev/articles/vitals#core-web-vitals" rel="external">Core Web Vitals</a> best practices, leading to better perceived user experience.
+  icon: fa-shield-check
+  categories: [webdev]
+- id: cms
+  title: Built-In CMS
+  summary: Ability for non-technical editors to make changes, manage media, and add new content.
+  icon: fa-file-circle-plus
+  categories: [webdev, content]
+- id: seo
+  title: SEO
+  summary: Optimizations to site architecture and performance to make your site visible to search engines.
+  icon: fa-magnifying-glass-chart
+  categories: [webdev]
+- id: integrations
+  title: Outside Integrations
+  summary: Easy integration with your existing newsletter, donation/payment processor, or user portal.
+  icon: fa-grid-2-plus
+  categories: [webdev]
+- id: responsive-design
+  title: Responsive Design
+  summary: Responsive and adaptable styles that ensure your content is readable on any screen size.
+  icon: fa-laptop-mobile
+  categories: [webdev]
+- id: managed-hosting
+  title: Managed Hosting
+  summary: Fully managed web hosting to keep your site secure and reachable by your users.
+  icon: fa-server
+  categories: [webdev]

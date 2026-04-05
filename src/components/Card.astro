@@ -3,10 +3,10 @@ import { Image } from "astro:assets";
 import bgImage from "@assets/blob-bg.png";
 // import featureImage from "@assets/shapes-bg.png";
 
-const { theme = "normal" } = Astro.props;
+const { theme = "normal", ...props } = Astro.props;
 ---
 
-<article class="card" data-theme={theme}>
+<article class="card" data-theme={theme} {...props}>
     <!-- <div class="img-wrapper">
     <Image src={featureImage} alt="" width={900} format="webp" />
   </div> -->

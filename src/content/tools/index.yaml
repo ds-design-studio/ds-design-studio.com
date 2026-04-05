@@ -1,0 +1,59 @@
+- id: statamic
+  title: Statamic
+  summary: CMS & Site Builder
+  logo: ./statamic-logo.svg
+  link: https://statamic.com
+  categories: [frontend, backend, stack]
+  order: 2
+- id: alpine
+  title: Alpine JS
+  summary: Frontend Framework
+  link: https://alpinejs.dev
+  logo: ./alpine-logo.svg
+  categories: [frontend, stack]
+  order: 4
+- id: vue
+  title: Vue
+  summary: Frontend Framework
+  link: https://vuejs.org
+  logo: ./vue-logo.svg
+  categories: [frontend]
+  order: 4
+  draft: true
+- id: ploi
+  title: Ploi
+  summary: Server Management
+  link: https://ploi.io
+  logo: ./ploi-logo.svg
+  categories: [admin, stack]
+  order: 6
+- id: laravel
+  title: Laravel
+  summary: Backend Framework
+  logo: ./laravel-logo.svg
+  link: https://laravel.com
+  categories: [backend, stack]
+  order: 3
+- id: digital-ocean
+  title: Digital Ocean
+  summary: VPS Hosting
+  logo: ./digital-ocean-logo.svg
+  link: https://www.digitalocean.com
+  categories: [backend, admin, stack]
+  order: 5
+- id: basics
+  title: HTML, CSS & JS
+  summary: Core Web Building Blocks
+  logo: ./css-logo.svg
+  categories: [frontend, stack]
+  order: 1
+- id: astro
+  title: Astro
+  summary: Frontend Framework & Site Builder
+  logo: ./astro-logo.svg
+  categories: [frontend]
+- id: sanity
+  title: Sanity
+  summary: CMS
+  logo: ./sanity-logo.svg
+  categories: [backend]

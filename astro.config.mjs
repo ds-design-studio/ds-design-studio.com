@@ -19,7 +19,7 @@ export default defineConfig({
         },
     },
     redirects: {
-        "/services": "/#services",
+        // "/services": "/#services",
         "/our-approach": "/process",
         "/site-benefits": "/services/frontend-development",
         "/about-us": "/about",

@@ -1,5 +1,6 @@
-import { z, defineCollection, reference } from "astro:content";
-import { glob } from "astro/loaders";
+import { defineCollection, reference } from "astro:content";
+import { z } from "astro/zod";
+import { glob, file } from "astro/loaders";
 
 const navigation = defineCollection({
     loader: glob({ pattern: "**/*.yaml", base: "./src/content/navigation" }),
@@ -24,17 +25,45 @@ const navigation = defineCollection({
     }),
 });
 
+// const features = defineCollection({
+//     loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/features" }),
+//     schema: z.object({
+//         title: z.string(),
+//         summary: z.string().optional(),
+//         order: z.number().optional(),
+//         icon: z.string().optional(),
+//         image: z
+//             .object({
+//                 src: z.string(),
+//                 alt: z.string(),
+//             })
+//             .optional(),
+//     }),
+// });
+
 const features = defineCollection({
-    loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/features" }),
+    loader: file("src/content/features.yaml"),
     schema: z.object({
         title: z.string(),
-        summary: z.string().optional(),
+        summary: z.string().max(200).optional(),
+        icon: z.string().startsWith("fa-").optional(),
+        categories: z.array(z.enum(["webdev", "content", "design"])),
         order: z.number().optional(),
-        icon: z.string().optional(),
-        image: z
+    }),
+});
+
+const highlights = defineCollection({
+    loader: file("src/content/highlights.yaml"),
+    schema: z.object({
+        title: z.string(),
+        summary: z.string().max(150),
+        icon: z.string().startsWith("fa-").optional(),
+        order: z.number(),
+        illustration: z.string().optional(),
+        link: z
             .object({
-                src: z.string(),
-                alt: z.string(),
+                href: z.string().startsWith("/"),
+                text: z.string(),
             })
             .optional(),
     }),
@@ -66,17 +95,33 @@ const services = defineCollection({
 });
 
 const tools = defineCollection({
-    loader: glob({ pattern: "**/*.yaml", base: "./src/content/tools" }),
+    loader: file("src/content/tools/index.yaml"),
     schema: ({ image }) =>
         z.object({
             title: z.string(),
-            summary: z.string().optional(),
+            summary: z.string().max(135).optional(),
             logo: image(),
-            order: z.number(),
-            link: z.string().optional(),
-            draft: z.boolean(),
+            order: z.number().optional(),
+            link: z.url().optional(),
+            categories: z.array(
+                z.enum(["frontend", "backend", "admin", "design", "stack"]),
+            ),
+            draft: z.boolean().optional(),
         }),
 });
+
+// const tools = defineCollection({
+//     loader: glob({ pattern: "**/*.yaml", base: "./src/content/tools" }),
+//     schema: ({ image }) =>
+//         z.object({
+//             title: z.string(),
+//             summary: z.string().optional(),
+//             logo: image(),
+//             order: z.number(),
+//             link: z.string().optional(),
+//             draft: z.boolean(),
+//         }),
+// });
 
 // const websiteTypes = defineCollection({
 //   type: "data",
@@ -97,6 +142,37 @@ const designGallery = defineCollection({
             }),
             order: z.number().optional(),
         }),
+});
+
+const posts = defineCollection({
+    loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/content/posts" }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            summary: z.string(),
+            meta: z.object({
+                description: z.string().optional().nullable(),
+                image: z.string().optional().nullable(),
+                imageAlt: z.string().optional().nullable(),
+            }),
+            featuredImage: z
+                .object({
+                    src: image(),
+                    alt: z.string(),
+                })
+                .optional(),
+            category: reference("categories"),
+            published_on: z.coerce.date(),
+            updated_on: z.coerce.date().optional(),
+        }),
+});
+
+const categories = defineCollection({
+    loader: file("src/content/categories.yaml"),
+    schema: z.object({
+        name: z.string(),
+        description: z.string().optional(),
+    }),
 });
 
 const projects = defineCollection({
@@ -127,11 +203,20 @@ const projects = defineCollection({
                 )
                 .optional(),
             client: z.string(),
-            type: z.string(),
-            services: z.array(reference("services")),
+            type: z.enum([
+                "nonprofit",
+                "faith",
+                "business",
+                "artist",
+                "consultant",
+                "solopreneur",
+            ]),
+            services: z.array(reference("services")).optional(),
             tools: z.array(reference("tools")),
-            scope: z.array(z.string()),
-            url: z.string().url().optional(),
+            features: z.array(z.string()),
+            url: z.url().optional(),
+            order: z.number(),
+            draft: z.boolean().optional(),
         }),
 });
 
@@ -202,8 +287,11 @@ const principles = defineCollection({
 export const collections = {
     navigation,
     features,
+    highlights,
     services,
     projects,
+    posts,
+    categories,
     tools,
     // websiteTypes,
     designGallery,

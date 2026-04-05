@@ -10,11 +10,11 @@
         "astro": "astro"
     },
     "dependencies": {
-        "@astrojs/mdx": "^4.3.13",
-        "@astrojs/sitemap": "^3.7.0",
+        "@astrojs/mdx": "^5.0.3",
+        "@astrojs/sitemap": "^3.7.2",
         "@formkit/tempo": "^0.1.2",
         "@vercel/og": "^0.6.2",
-        "astro": "^5.17.1",
+        "astro": "^6.1.1",
         "astro-seo": "^0.8.4",
         "gsap": "^3.12.5",
         "lightningcss": "^1.31.1"
