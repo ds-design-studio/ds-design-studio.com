@@ -1,6 +1,5 @@
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
-import cloudflare from "@astrojs/cloudflare";
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -29,5 +28,4 @@ export default defineConfig({
     },
 
     integrations: [mdx(), sitemap()],
-    adapter: cloudflare(),
 });
