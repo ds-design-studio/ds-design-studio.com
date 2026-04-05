@@ -79,9 +79,10 @@ const ogParams = new URLSearchParams([
                         </p>
                     </div>
                     <form
-                        action="https://formspree.io/f/xpwaaane"
-                        id="project-inquiry"
+                        data-netlify="true"
                         method="POST"
+                        name="contact"
+                        netlify-honeypot="astronomy"
                     >
                         <div class="form-item | col-3">
                             <label for="name">Your Name</label>
@@ -134,6 +135,7 @@ const ogParams = new URLSearchParams([
                                 required
                                 rows="6"></textarea>
                         </div>
+                        <input class="sr-only" name="astronomy" type="text" />
                         <ButtonLink type="submit">
                             <span class="button-text">Submit</span>
                             <img
@@ -343,94 +345,3 @@ const ogParams = new URLSearchParams([
         }
     }
 </style>
-
-<script>
-    const form = document.querySelector("form") as HTMLFormElement;
-    const checkboxGroup = document.querySelector("form fieldset");
-    const values = [...checkboxGroup?.querySelectorAll("input")!];
-    const defaultErrorMessage =
-        "Sorry, there was a problem submitting your form. Please try again in a moment.";
-
-    values.forEach((value) =>
-        value.addEventListener("change", () => {
-            if (!values.some((value) => value.checked)) {
-                checkboxGroup
-                    ?.querySelector("input")
-                    ?.setCustomValidity("Please select at least one service.");
-            } else {
-                checkboxGroup?.querySelector("input")?.setCustomValidity("");
-            }
-        }),
-    );
-
-    // AJAX form submit to Formspree
-    async function handleFormSubmit(event: Event) {
-        // Prevent form behavior
-        event?.preventDefault();
-        const target = event.target as HTMLFormElement;
-
-        // Get elements
-        const submitButton = form.querySelector("button") as HTMLElement;
-        const loadingSpinner = form.querySelector(
-            ".loading-spinner",
-        ) as HTMLElement;
-        const status = document.querySelector(".form-status") as HTMLElement;
-        const successIcon = status.querySelector(".success-icon") as SVGElement;
-        const errorIcon = status.querySelector(".error-icon") as SVGElement;
-        const statusMessage = status.querySelector(".message") as HTMLElement;
-
-        // Compile form data
-        const formData = new FormData(target);
-
-        // Try submitting to Formspree endpoint
-        try {
-            // Disable button and add loading spinner
-            submitButton?.setAttribute("disabled", "");
-            loadingSpinner.style.display = "block";
-
-            const res = await fetch(target.action, {
-                method: target.method,
-                body: formData,
-                headers: {
-                    Accept: "application/json",
-                },
-            });
-
-            if (res.ok) {
-                // On success, reset form but remove button to encourage one submission
-                form.reset();
-                submitButton.style.display = "none";
-                // Add success elements and message
-                status.classList.add("success");
-                successIcon.style.display = "block";
-                statusMessage.innerHTML = "Thanks for your submission!";
-            } else {
-                // On fail, make button available again and remove spinner
-                submitButton.removeAttribute("disabled");
-                loadingSpinner.style.display = "none";
-                // If there was a json response, capture it
-                const data = await res.json();
-                // Add error elements and message
-                status.classList.add("error");
-                errorIcon.style.display = "block";
-                // Display error repsonse from server if exists
-                if (Object.hasOwn(data, "errors")) {
-                    statusMessage.innerHTML = data["errors"]
-                        .map((err: any) => err["message"])
-                        .join(", ");
-                } else {
-                    statusMessage.innerHTML = defaultErrorMessage;
-                }
-            }
-        } catch (error) {
-            // On general fail, make button available and show error
-            submitButton.removeAttribute("disabled");
-            loadingSpinner.style.display = "none";
-            status.classList.add("error");
-            errorIcon.style.display = "block";
-            statusMessage.innerHTML = defaultErrorMessage;
-        }
-    }
-
-    form.addEventListener("submit", handleFormSubmit);
-</script>
