@@ -1,3 +1,19 @@
 [build]
 command = "npm run build"
 publish = "dist/"
+
+[[redirects]]
+from = "/services/web-design"
+to = "/services"
+
+[[redirects]]
+from = "/services/frontend-development"
+to = "/services"
+
+[[redirects]]
+from = "/services/digital-design"
+to = "/services"
+
+[[redirects]]
+from = "/services/ongoing-support"
+to = "/services"
