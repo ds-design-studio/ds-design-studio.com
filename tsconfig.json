@@ -1,19 +1,39 @@
 {
-    "extends": "astro/tsconfigs/strict",
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "@components/*": ["src/components/*"],
-            "@content/*": ["src/content/*"],
-            "@layouts/*": ["src/layouts/*"],
-            "@assets/*": ["src/assets/*"],
-            "@utils/*": ["src/utils/*"],
-            "@data/*": ["src/data/*"],
-            "@styles/*": ["src/styles/*"]
-        },
-        "jsx": "react-jsx",
-        "jsxImportSource": "react"
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@content/*": [
+        "src/content/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@data/*": [
+        "src/data/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ]
     },
-    "include": [".astro/types.d.ts", "**/*"],
-    "exclude": ["dist"]
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "include": [
+    ".astro/types.d.ts",
+    "**/*",
+    "./worker-configuration.d.ts"
+  ],
+  "exclude": [
+    "dist"
+  ]
 }
