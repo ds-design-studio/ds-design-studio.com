@@ -1,7 +1,7 @@
 - id: statamic
   title: Statamic
   summary: CMS & Site Builder
-  logo: ./statamic-logo.svg
+  logo: ./statamic-mark-lime.svg
   link: https://statamic.com
   categories: [frontend, backend, stack]
   order: 2
@@ -55,5 +55,6 @@
 - id: sanity
   title: Sanity
   summary: CMS
+  link: https://www.sanity.io/studio
   logo: ./sanity-logo.svg
   categories: [backend]

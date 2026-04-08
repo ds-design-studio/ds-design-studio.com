@@ -10,11 +10,10 @@ import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import SectionHeader from "@components/SectionHeader.astro";
 import Testimonials from "@components/page_sections/HomeTestimonials.astro";
+import shapes1 from "@assets/shapes-1.png";
 
 // const services = await getCollection("services");
 const featuredProject = await getEntry("projects", "sepsf");
-
-import shapes1 from "@assets/shapes-1.png";
 
 const eyebrow = "Why Work with Me?";
 const heading = "Elevate your online presence with a strategic partner";
@@ -48,9 +47,9 @@ const text =
                     <HighlightsGrid />
                     <div class="cluster cta-links">
                         <ButtonLink href="/services">View Services</ButtonLink>
-                        <ButtonLink href="/process" theme="ghostPrimary"
+                        <!-- <ButtonLink href="/process" theme="ghostPrimary"
                             >My Process</ButtonLink
-                        >
+                        > -->
                     </div>
                 </article>
             </div>

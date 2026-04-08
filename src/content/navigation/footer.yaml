@@ -24,8 +24,8 @@ entries:
             slug: services
           - title: Work
             slug: work
-          - title: Process
-            slug: process
+          # - title: Process
+          #   slug: process
           - title: About
             slug: about
           # - title: Blog

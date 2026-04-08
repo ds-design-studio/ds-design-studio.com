@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import headshot from "@assets/ds-pro-avatar.jpg";
+
+interface Props {
+    size?: "small" | "default" | "large";
+}
+
+const { size = "default" } = Astro.props;
+---
+
+<div class="avatar" data-size={size}>
+    <Image
+        alt="My headshot: a man with short hair, glasses, and a friendly smile."
+        format="webp"
+        loading="lazy"
+        src={headshot}
+        width={200}
+    />
+</div>
+
+<style>
+    .avatar {
+        --small: 2.5rem;
+        --default: 3.75rem;
+        --large: 6rem;
+        border-radius: 999px;
+        background: linear-gradient(
+            to bottom right,
+            var(--color-secondary-5),
+            var(--color-primary-4)
+        );
+
+        & img {
+            width: var(--avatar-size, var(--default));
+            height: var(--avatar-size, var(--default));
+            margin: 1.5px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 999px;
+            filter: grayscale(1);
+            mix-blend-mode: overlay;
+            opacity: 0.85;
+        }
+
+        &[data-size="small"] {
+            --avatar-size: var(--small);
+        }
+
+        &[data-size="large"] {
+            --avatar-size: var(--large);
+        }
+    }
+</style>

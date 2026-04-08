@@ -36,6 +36,10 @@ const ogParams = new URLSearchParams([
 ]);
 
 // TODO: add my new values
+
+const expertiseTitle = "Areas of Expertise";
+// const expertiseText = `In an era of fractured specializations, I wear the badge of “web generalist” with pride. I’m comfortable on all sides of the technological and creative spectrums, able to move seamlessly between content schemas, typographic pairings, and software libraries. One of the reasons why I love working in web development is that there is always something new to learn or an interesting problem to solve. I bring that <strong>passion for discovery</strong> to all my projects.`;
+const expertiseText = `In an era of fractured specializations, I wear the badge of “web generalist” with pride. I’m comfortable on all sides of the technological and creative spectrums, and learning new things is one of the main reasons I love this work! I bring that <strong>passion for discovery</strong> to all my projects.`;
 ---
 
 <Layout
@@ -63,19 +67,8 @@ const ogParams = new URLSearchParams([
             <article class="callout | dark">
                 <div class="grid-6 feature-span">
                     <header class="flow">
-                        <h2 class="text-gradient">Areas of Expertise</h2>
-                        <p>
-                            In an era of fractured specializations, I wear the
-                            badge of “web generalist” with pride. I’m
-                            comfortable on all sides of the technological and
-                            creative spectrums, able to move seamlessly between
-                            content schemas, typographic pairings, and software
-                            libraries. One of the reasons why I love working in
-                            web development is that there is always something
-                            new to learn or an interesting problem to solve. I
-                            bring that <strong>passion for discovery</strong> to all
-                            my projects.
-                        </p>
+                        <h2 class="text-gradient">{expertiseTitle}</h2>
+                        <p set:html={expertiseText} />
                     </header>
                     <div class="capabilities | cluster">
                         {capabilities.map((item) => <p>{item}</p>)}

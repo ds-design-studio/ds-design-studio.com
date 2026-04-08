@@ -19,13 +19,13 @@
   icon: fa-shield-check
   categories: [webdev]
 - id: cms
-  title: Built-In CMS
+  title: Easy Content Management
   summary: Ability for non-technical editors to make changes, manage media, and add new content.
   icon: fa-file-circle-plus
   categories: [webdev, content]
 - id: seo
-  title: SEO
-  summary: Optimizations to site architecture and performance to make your site visible to search engines.
+  title: Search Engine Optimization
+  summary: Optimizations to site architecture and performance to make your site visible to search engines (SEO).
   icon: fa-magnifying-glass-chart
   categories: [webdev]
 - id: integrations

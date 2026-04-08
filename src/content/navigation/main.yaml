@@ -22,7 +22,7 @@ entries:
       #       tagline: Lorem ipsum sit dolor amet
     - title: Work
       slug: /work
-    - title: Process
-      slug: /process
+    # - title: Process
+    #   slug: /process
     - title: About
       slug: /about

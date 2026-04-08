@@ -1,9 +1,10 @@
 ---
+import Avatar from "@components/Avatar.astro";
 import ButtonLink from "@components/ButtonLink.astro";
 import FeatureIllustration from "@components/page_sections/HomeIllustration.astro";
 
 const text =
-    "I’m Daniel Saunders, a freelance web designer and developer based in Los Angeles, CA. I create engaging, thoughtful, and user-friendly websites using modern tools and best practices.";
+    "I’m Daniel Saunders, a freelance web designer and developer based in Los Angeles. I create engaging, thoughtful, and user-friendly websites using modern tools and best practices.";
 ---
 
 <article class="hero | dark">
@@ -14,7 +15,10 @@ const text =
                     <span class="text-gradient">Hand-crafted</span> sites for the
                     <span class="text-gradient">modern</span> web
                 </h1>
-                <p>{text}</p>
+                <div class="cluster">
+                    <Avatar size="large" />
+                    <p>{text}</p>
+                </div>
             </header>
             <div class="cluster">
                 <ButtonLink href="/contact">Get in Touch</ButtonLink>

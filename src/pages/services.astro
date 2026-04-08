@@ -10,21 +10,27 @@ import TextImageBlock from "@components/TextImageBlock.astro";
 import WindowHighlightsIllustration from "@components/illustrations/WindowHighlightsIllustration.astro";
 import featuredImage1 from "@assets/isometric-desktop-2.png";
 import { getCollection } from "astro:content";
+import illustration from "@assets/isometric-screen.png";
 import statamicLogo from "@content/tools/statamic-mark-lime.svg";
 
 const title = "Services";
-const tagline = `<span class="text-gradient">Engaging</span>, <span class="text-gradient">user-friendly</span> custom websites`;
+const tagline = `<span class="text-gradient">Engaging</span>, user-friendly <span class="text-gradient">custom</span> websites`;
 const taglinePlain = "Building engaging, user-friendly websites";
 
-const introTitle = "Website Design & Development";
-const introText = `I have an extensive background in both <strong>graphic design</strong>/<strong>web design</strong> and <strong>web development</strong>, which gives me the critical perspective needed to build <strong>efficient</strong>, <strong>successful</strong> websites that work <em>with</em> the modern web platform, not against it. Here are some of the features characteristic of all the sites I build, regardless of size or scale:`;
+const introTitle = "Bespoke Website Design & Development";
+// const introText = `I have an extensive background in both <strong>graphic design</strong>/<strong>web design</strong> and <strong>web development</strong>, which gives me the critical perspective needed to build <strong>efficient</strong>, <strong>successful</strong> websites that work <em>with</em> the modern web platform, not against it. Here are some of the features characteristic of all the sites I build, regardless of size or scale:`;
+const introText = `If you’re looking for a website with more craftsmanship than an off-the-shelf theme can provide and a trustworthy guide who can help you bring it to life, then you’re in the right place. When you work with me, you get an <strong>efficient, engaging website</strong> that has the following features:`;
+const introTextAfter = `My extensive experience in both <strong>graphic/web design</strong> and <strong>web development</strong> gives me the critical perspective needed to elevate your site from a formulaic template to an <strong>authentic, well-crafted experience</strong> that connects with your audience.`;
 
-const statamicTitle = "Statamic CMS Development";
-const statamicText = `<p><a href="https://statamic.com/vs/wordpress" rel="external">Statamic</a> is a next-generation <strong>content management system (CMS)</strong> that clients love using. It is beautifully designed, well-supported, and endlessly customizable, which is why I recommend it as a base website platform over outdated, limiting alternatives like <strong>WordPress</strong> or <strong>Webflow</strong>.</p><p>I supplement Statamic with a <strong>modern tech stack</strong>, which makes your site more resilient in a rapidly changing tech landscape.</p>`;
+// const statamicTitle = "Statamic CMS Development";
+const statamicTitle = `A Best-in-Class Site Editor Experience`;
+const statamicText = `<p>Your site needs a rock-solid <strong>content management system (CMS)</strong> for non-technical editors to update pages, manage media, and add new content after launch. That’s why I opt for <a href="https://statamic.com/vs/wordpress" rel="external">Statamic</a> as my CMS of choice when building new sites, which gives you ongoing control over your site’s content.</p><p>I supplement Statamic with a <strong>modern tech stack</strong>, which makes your site more resilient in a rapidly changing tech landscape.</p>`;
+// const statamicText = `<p><a href="https://statamic.com/vs/wordpress" rel="external">Statamic</a> is a next-generation <strong>content management system (CMS)</strong> that clients love using. It is beautifully designed, well-supported, and endlessly customizable, which is why I recommend it as a base website platform over outdated, limiting alternatives like <strong>WordPress</strong> or <strong>Webflow</strong>.</p><p>I supplement Statamic with a <strong>modern tech stack</strong>, which makes your site more resilient in a rapidly changing tech landscape.</p>`;
 const statamicHighlights = [
-    "Beautiful control panel for editors & admin",
-    "Lightweight, secure, and highly performant",
-    "No database overhead or plugin bloat",
+    "Intuitive control panel for site editors",
+    "Live preview page editing",
+    // "Lightweight, secure, and highly performant",
+    // "No database overhead or plugin bloat",
     "Product supported by a full-time team",
     "Highly extensible through robust ecosystem",
 ];
@@ -99,6 +105,19 @@ const features = await getCollection("features", ({ data }) =>
                                 ))
                         }
                     </div>
+                    <div class="cluster">
+                        <Image
+                            alt=""
+                            format="webp"
+                            loading="eager"
+                            slot="image"
+                            src={illustration}
+                            width={300}
+                        />
+                        <div class="rich-content">
+                            <p set:html={introTextAfter} />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,19 +125,19 @@ const features = await getCollection("features", ({ data }) =>
             <div class="content-wrapper">
                 <div class="grid-6 feature-span">
                     <div class="flow">
-                        <Image
+                        <!-- <Image
                             alt="Statamic logo"
                             format="svg"
                             height={40}
                             src={statamicLogo}
-                        />
+                        /> -->
                         <h2 id="statamic">{statamicTitle}</h2>
                         <Fragment set:html={statamicText} />
                     </div>
                     <div>
                         <WindowHighlightsIllustration
                             highlights={statamicHighlights}
-                            title="Statamic Highlights"
+                            title="Site Editor Highlights"
                         />
                     </div>
                 </div>
