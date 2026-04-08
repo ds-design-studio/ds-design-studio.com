@@ -1,5 +1,6 @@
 ---
 // import ButtonLink from "@components/ButtonLink.astro";
+import Availability from "./Availability.astro";
 import Logo from "@components/Logo.astro";
 import { format } from "@formkit/tempo";
 import { getEntry } from "astro:content";
@@ -19,15 +20,15 @@ const copyright = format({
         <div class="brand | flow">
             <Logo /><p>
                 DS Design is the Los Angeles-based web design studio practice of
-                Daniel Saunders. Contact us for web design, frontend
-                development, digital marketing, and more.
+                Daniel Saunders. Contact me for your next hand-crafted web
+                design and development project.
             </p>
             <p>
                 <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
             </p>
         </div>
         {
-            navigation?.data.entries.map((entry) => (
+            navigation?.data.entries.map((entry, idx) => (
                 <div class="column | flow">
                     <div class="small-title">{entry.title}</div>
                     {entry.children && (
@@ -41,6 +42,7 @@ const copyright = format({
                             ))}
                         </ul>
                     )}
+                    {idx === 1 && <Availability />}
                 </div>
             ))
         }
