@@ -2,8 +2,10 @@
 import Icon from "@components/Icon.astro";
 import { Image } from "astro:assets";
 // import Testimonial from "@components/Testimonial.astro";
+import featuredImage from "@assets/ds-mexico.jpg";
 import { getCollection } from "astro:content";
 import headshot from "@assets/ds-pro-avatar.jpg";
+import shapes1 from "@assets/shapes-1.png";
 
 const testimonials = await getCollection("testimonials");
 ---
@@ -11,6 +13,15 @@ const testimonials = await getCollection("testimonials");
 <div class="content-wrapper" id="testimonials">
     <h2 class="sr-only">Testimonials</h2>
     <div class="grid-9">
+        <div class="image-wrapper">
+            <Image
+                alt=""
+                class="featured-image"
+                format="webp"
+                src={featuredImage}
+                width={800}
+            />
+        </div>
         <!-- TODO: Get new testimonials -->
         <!-- {
       testimonials.slice(0, 3).map((testimonial) => (
@@ -21,20 +32,18 @@ const testimonials = await getCollection("testimonials");
     } -->
         <article class="about">
             <div class="text | flow">
-                <header class="cluster">
-                    <div class="headshot">
-                        <Image
-                            alt="My headshot: a man with short hair, glasses, and a friendly smile."
-                            format="webp"
-                            loading="lazy"
-                            src={headshot}
-                            width={600}
-                        />
-                    </div>
-                    <div>
-                        <h3>About</h3>
-                        <p>Daniel Saunders, Principal</p>
-                    </div>
+                <Image
+                    alt=""
+                    class="shapes"
+                    format="webp"
+                    src={shapes1}
+                    width={600}
+                />
+                <header>
+                    <h3>About Daniel Saunders</h3>
+                    <p class="small-title text-gradient">
+                        Principal Designer/Developer
+                    </p>
                 </header>
                 <p>
                     I’m a freelance web designer and developer with over a
@@ -48,7 +57,7 @@ const testimonials = await getCollection("testimonials");
                     style="--cluster-space: 0.5rem"
                 >
                     <strong>About Me</strong>
-                    <Icon name="chevron-right" size="0.875em" />
+                    <Icon name="fa-chevron-right" size="0.875em" />
                 </a>
             </div>
         </article>
@@ -62,8 +71,9 @@ const testimonials = await getCollection("testimonials");
 
     .grid-9 {
         row-gap: var(--space-xl);
+        /* align-items: center; */
 
-        & > :first-child {
+        /* & > :first-child {
             grid-column: span 5;
         }
 
@@ -79,8 +89,27 @@ const testimonials = await getCollection("testimonials");
 
         & > :last-child {
             order: 9;
-            grid-column: 3 / span 5; /* when add testimonials change back to -span 5- */
-        }
+            grid-column: 3 / span 5;
+        } */
+    }
+
+    .featured-image {
+        mix-blend-mode: hard-light;
+    }
+
+    .image-wrapper {
+        grid-column: 2 / 5;
+        border-radius: var(--rounded-corners);
+        overflow: hidden;
+        background: linear-gradient(
+            to bottom right,
+            var(--color-primary-4),
+            var(--color-secondary-5)
+        );
+    }
+
+    .shapes {
+        max-width: 6rem;
     }
 
     .about {
@@ -89,10 +118,17 @@ const testimonials = await getCollection("testimonials");
         background: linear-gradient(to right, white, var(--color-neutral-1));
         box-shadow: var(--shadow-light);
         border: 1px solid var(--color-neutral-2-fade);
+        grid-column: span 4;
 
         & header {
+            margin-block-start: var(--space-2xs);
+
             &.cluster {
                 --cluster-space: 2rem;
+            }
+
+            & .small-title {
+                margin-block-start: var(--space-2xs);
             }
         }
     }

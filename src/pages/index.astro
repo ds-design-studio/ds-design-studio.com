@@ -6,6 +6,7 @@ import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
 import HighlightsGrid from "@components/page_sections/HighlightsGrid.astro";
 import HomeApproach from "@components/page_sections/HomeApproach.astro";
 import HomeHero from "@components/page_sections/HomeHero.astro";
+import Icon from "@components/Icon.astro";
 import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import SectionHeader from "@components/SectionHeader.astro";
@@ -46,10 +47,10 @@ const text =
                     </SectionHeader>
                     <HighlightsGrid />
                     <div class="cluster cta-links">
-                        <ButtonLink href="/services">View Services</ButtonLink>
-                        <!-- <ButtonLink href="/process" theme="ghostPrimary"
-                            >My Process</ButtonLink
-                        > -->
+                        <ButtonLink href="/services">
+                            <span>View Services</span>
+                            <Icon name="fa-arrow-right" />
+                        </ButtonLink>
                     </div>
                 </article>
             </div>

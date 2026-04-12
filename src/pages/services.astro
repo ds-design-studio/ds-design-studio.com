@@ -1,5 +1,7 @@
 ---
+import { getCollection, getEntry } from "astro:content";
 import Card from "@components/Card.astro";
+import FeaturedProject from "@components/page_sections/FeaturedProject.astro";
 import Icon from "@components/Icon.astro";
 import type { IconName } from "@components/Icon.astro";
 import { Image } from "astro:assets";
@@ -9,9 +11,8 @@ import TechStack from "@components/page_sections/TechStack.astro";
 import TextImageBlock from "@components/TextImageBlock.astro";
 import WindowHighlightsIllustration from "@components/illustrations/WindowHighlightsIllustration.astro";
 import featuredImage1 from "@assets/isometric-desktop-2.png";
-import { getCollection } from "astro:content";
 import illustration from "@assets/isometric-screen.png";
-import statamicLogo from "@content/tools/statamic-mark-lime.svg";
+// import statamicLogo from "@content/tools/statamic-mark-lime.svg";
 
 const title = "Services";
 const tagline = `<span class="text-gradient">Engaging</span>, user-friendly <span class="text-gradient">custom</span> websites`;
@@ -38,6 +39,8 @@ const statamicHighlights = [
 const features = await getCollection("features", ({ data }) =>
     data.categories.includes("webdev"),
 );
+
+const featuredProject = await getEntry("projects", "st-albans-westwood");
 ---
 
 <Layout
@@ -121,6 +124,7 @@ const features = await getCollection("features", ({ data }) =>
                 </div>
             </div>
         </div>
+        {featuredProject && <FeaturedProject project={featuredProject} />}
         <div class="tech-stack section-spacer">
             <div class="content-wrapper">
                 <div class="grid-6 feature-span">
